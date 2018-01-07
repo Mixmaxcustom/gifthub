@@ -1,0 +1,28 @@
+<div class="mt-3">
+    <h1><i class="fas fa-sm fa-gift"></i>  {{pagetitle}}</h1>
+</div>
+<p class="lead">{{content}}</p>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Manfacturer</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>URL</th>
+      </tr>
+    </thead>
+    <tbody>
+        {{#each gifts as | gift |}}
+            <tr data-value="{{gift.gift_id}}">
+                <td>{{gift.gift_name}}</td>
+                <td><a href="{{gift.manufacturer_url}}">{{gift.gift_manufacturer}}</a></td>
+                <td>${{gift.gift_price}}</td>
+                <td>-</td>
+                <td><a href="{{gift.gift_url1}}" target="_blank">link</a></td>
+            </tr>
+        {{/each}}
+    </tbody>
+  </table>
+
+  <a class="btn btn-primary" href="/gifts/add">New Gift</a>

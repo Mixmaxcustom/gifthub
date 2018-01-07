@@ -1,0 +1,225 @@
+/* Fonts
+  -------------------------------------------------- */
+
+
+/*
+font-family: 'Slabo 27px', serif;
+font-family: 'Source Sans Pro', sans-serif;
+font-family: 'Cabin', sans-serif;
+*/
+@import url('https://fonts.googleapis.com/css?family=Cabin|Slabo+27px|Source+Sans+Pro');
+
+/* github font :) */
+@font-face {
+	font-family: 'Collegia';
+	src: url('../fonts/Collegia.otf');
+}
+
+
+/* Sticky footer styles (from Bootstrap examples)
+  -------------------------------------------------- */
+
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+	font-family: 'Cabin', sans-serif;
+	/* Margin bottom by footer height */
+	margin-bottom: 60px;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	/* Set the fixed height of the footer here */
+	height: 60px;
+	line-height: 60px;
+	/* Vertically center the text there */
+	background-color: #f5f5f5;
+}
+
+
+
+/* Dashboard
+  -------------------------------------------------- */
+
+
+/*
+ * Base structure
+ */
+
+
+/* Move down content because we have a fixed navbar that is 3.5rem tall */
+
+body {
+	padding-top: 3.5rem;
+}
+
+
+/*
+* Typography
+*/
+
+h1 {
+	margin-bottom: 20px;
+	padding-bottom: 9px;
+	border-bottom: 1px solid #eee;
+}
+
+
+/*
+* Sidebar
+*/
+
+.sidebar {
+	position: fixed;
+	top: 51px;
+	bottom: 0;
+	left: 0;
+	z-index: 1000;
+	padding: 20px;
+	overflow-x: hidden;
+	overflow-y: auto;
+	/* Scrollable contents if viewport is shorter than content. */
+	border-right: 1px solid #eee;
+}
+
+
+/* Sidebar navigation */
+
+.sidebar {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.sidebar .nav {
+	margin-bottom: 20px;
+}
+
+.sidebar .nav-item {
+	width: 100%;
+}
+
+.sidebar .nav-item+.nav-item {
+	margin-left: 0;
+}
+
+.sidebar .nav-link {
+	border-radius: 0;
+}
+
+
+/*
+* Dashboard
+*/
+
+
+/* Placeholders */
+
+.placeholders {
+	padding-bottom: 3rem;
+}
+
+.placeholder img {
+	padding-top: 1.5rem;
+	padding-bottom: 1.5rem;
+}
+
+
+/* Custom page CSS
+  -------------------------------------------------- */
+
+
+/* Not required for template or sticky footer method. */
+
+body>.container {
+	padding: 60px 15px 0;
+}
+
+.footer>.container {
+	padding-right: 15px;
+	padding-left: 15px;
+}
+
+code {
+	font-size: 80%;
+}
+
+
+/* Application Custom CSS
+  -------------------------------------------------- */
+
+* {
+	/* Gets rid of the effing blue border */
+	outline: none !important;
+}
+
+
+h1 {
+	text-shadow: 1px 1px 3px #acacac;
+}
+
+.btn {
+	border-radius: 0.4rem;
+	text-shadow: 1px 1px 0 #1b1b1b55;
+	border-bottom: 0.25rem solid #0a0a0a33;
+}
+
+/* Correct image cropping	 */
+
+.crop {
+	width: 270px;
+	height: 175px;
+	overflow: hidden;
+}
+
+img {
+	display: block;
+	margin: 0 auto;
+}
+
+/* page logo */
+.app-logo {
+	font-family: 'Collegia';
+	font-size: 200%;
+	/* 16 * 0.0625 = 1px */
+	letter-spacing: 0.031em;
+	text-shadow: 1px 1px 1px #d3d3d34d;
+}
+
+/* API navigation sidebar  */
+.gh-nav-pills .nav-link.active {
+	background-color: #7e7e7e;
+}
+
+a.nav-link {
+	color: #444444;
+}
+
+
+/* Large devices (desktops, less than 1200px) */
+
+@media (max-width: 1023px) {}
+
+
+/* Medium devices (tablets, less than 992px) */
+
+@media (max-width: 991px) {}
+
+
+/* Small devices (landscape phones, less than 768px) */
+
+@media (max-width: 767px) {}
+
+
+/* Extra small devices (portrait phones, less than 576px) */
+
+@media (max-width: 575px) {
+	html,
+	* {
+		font-size: 80%;
+	}
+}
