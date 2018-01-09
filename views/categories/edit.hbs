@@ -1,0 +1,27 @@
+<div class="mt-3">
+    <h1>{{pagetitle}}</h1>
+</div>
+<p class="lead">{{content}}</p>
+<form role="form" id="edit-category-form">
+    <div class="form-row">
+        <div class="col">
+            <div class="form-group">
+                <label for="input-category-name">Category Name</label>
+                <input type="text" class="form-control" id="input-category-name" value="{{category.category_name}}" required>
+                <!-- invalid message -->
+                <div class="invalid-feedback">
+                    Please provide a valid city.
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <label for="input-category-description">Description</label>
+                <input type="text" class="form-control" id="input-category-description" value="{{category.category_description}}" required>
+            </div>
+        </div>
+    </div>
+    <button type="submit" id="edit-category-submit" data-value="{{category.category_id}}" class="btn btn-primary">Submit</button>
+    <a class="btn btn-secondary" href="/categories">Cancel</a>
+</form>
+</div>

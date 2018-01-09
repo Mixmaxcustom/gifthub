@@ -1,6 +1,6 @@
 <header>
     <!-- Fixed navbar -->
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-sm navbar-dark fixed-top bg-dark">
         <div>
             <a href="/">
                 <i class="fas fa-inverse fa-gift fa-lg"></i>
@@ -13,20 +13,52 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
+                
                 <li class="nav-item">
                     <a class="nav-link" href="/users">Users</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/categories">Categories</a>
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="/gifts">Gifts</a>
                 </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/categories">Categories</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/vendors">Vendors</a>
+                </li>
+
+
             </ul>
-            <form class="form-inline mt-2 mt-md-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-            </form>
+
+                {{!-- user logged in --}}
+                {{#if is_logged_in}}
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown dropright">
+                        
+                            {{!-- user menu --}}
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-user-circle"></i>
+                                <span>{{user_firstname}}</span>
+                            </a>
+                            
+                            {{!-- sub-menu --}}
+                            <div class="dropdown-menu" aria-labelledby="dropdown07">
+                                <a class="dropdown-item" href="/profile">Profile</a>
+                                <a class="dropdown-item" href="/logout">Logout</a>
+                            </div>
+                        </li>
+                        
+                    </ul>
+                {{else}}
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login">Login</a>
+                        </li>
+                    </ul>
+                {{/if}}
         </div>
     </nav>
 </header>

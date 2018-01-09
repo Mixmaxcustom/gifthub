@@ -199,6 +199,25 @@ a.nav-link {
 	color: #444444;
 }
 
+/* data tables */
+tbody tr.selected {
+	background-color: #3478f7;
+	color: #fff;
+}
+
+tr.selected a {
+	color: #fff;
+}
+
+tbody tr.selected:nth-of-type(odd) {
+	background-color: #3478f7;
+	color: #fff;
+}
+
+tbody tr.selected td {
+	border-left-color: #5c8be2;
+	border-right-color: #5c8be2;
+}
 
 /* Large devices (desktops, less than 1200px) */
 

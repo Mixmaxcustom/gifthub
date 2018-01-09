@@ -3,7 +3,7 @@ const db = require("../models/");
 let pageContent = {
 	title: "gifthub",
 	header: "API",
-	projname: "gifthub",
+	projname: "gifthub-api",
 	layout: 'api',
 	admin: true
 }

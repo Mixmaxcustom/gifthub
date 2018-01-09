@@ -3,14 +3,19 @@ const express = require('express');
 const bp = require('body-parser');
 const exphbs = require("express-handlebars");
 const path = require("path");
+const cookieParser = require('cookie-parser')
 
 const db = require("./models");
 
 // use process.env for heroku
 const port = process.env.PORT || 5000;
 
+
 // create & configure express app
 var app = express();
+app.use(cookieParser());
+// user session data
+app.user_data = {user_id: -1, user_firstname: null};
 
 app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }));
@@ -37,7 +42,10 @@ require("./routes/index")(app);
 require("./routes/users")(app);
 require("./routes/categories")(app);
 require("./routes/gifts")(app);
-require("./routes/api")(app);
+require("./routes/profile")(app);
+require("./routes/login")(app);
+require("./routes/vendors")(app);
+require("./config/auth")(app);
 
 
 // sync database and run app
