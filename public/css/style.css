@@ -181,6 +181,19 @@ img {
 	margin: 0 auto;
 }
 
+/* images used in gift detail */
+
+.img-gift-detail {
+    max-width: 400px;
+}
+
+
+/* images used in user profiles */
+
+.img-profile-sm {
+    max-width: 160px;
+}
+
 /* page logo */
 .app-logo {
 	font-family: 'Collegia';
@@ -218,6 +231,7 @@ tbody tr.selected td {
 	border-left-color: #5c8be2;
 	border-right-color: #5c8be2;
 }
+
 
 /* Large devices (desktops, less than 1200px) */
 

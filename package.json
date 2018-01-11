@@ -1,6 +1,6 @@
 {
   "name": "gifthub",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Gift list sharing app",
   "main": "server.js",
   "scripts": {
@@ -28,6 +28,7 @@
     "express": "^4.16.2",
     "express-handlebars": "^3.0.0",
     "fs": "0.0.1-security",
+    "jsonwebtoken": "^8.1.0",
     "moment": "^2.20.1",
     "mysql2": "^1.5.1",
     "nodemon": "^1.14.8",

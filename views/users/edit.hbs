@@ -21,6 +21,7 @@
             </div>
         </div>
     </div>
+
     <div class="form-row">
         <div class="col">
             <div class="form-group">
@@ -35,6 +36,12 @@
             </div>
         </div>
     </div>
+
+    <div class="form-group">
+        <label for="input-user-bio">Bio</label>
+        <input type="text" class="form-control" id="input-user-bio" value="{{user.user_bio}}" required>
+    </div>
+
     <div class="form-row">
         <div class="col">
             <div class="form-group">
@@ -45,7 +52,7 @@
         <div class="col">
             <div class="form-group">
                 <label for="input-user-state">State</label>
-                <select id="input-user-state" class="form-control">
+                <select id="input-user-state" data-value="{{user.user_state}}" class="form-control">
                     <option value="{{user.user_state}}" hidden="hidden" selected="selected">{{user.user_state}}</option>
                 </select>
             </div>
@@ -54,14 +61,15 @@
     <div class="form-row">
         <div class="col">
             <div class="form-group">
-                <label for="input-user-login">Login Name</label>
-                <input type="text" class="form-control" id="input-user-login" value="{{user.user_login}}">
-            </div>
-        </div>
-        <div class="col">
-            <div class="form-group">
                 <label for="input-user-password">Password</label>
                 <input type="password" class="form-control" id="input-user-password" placeholder="Password">
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="form-group">
+                <label for="input-user-password-confirm">Confirm</label>
+                <input type="password" class="form-control" id="input-user-password-confirm" placeholder="Password">
             </div>
         </div>
     </div>

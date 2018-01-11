@@ -2,16 +2,30 @@
     <h1>{{pagetitle}}</h1>
 </div>
 <p class="lead">{{content}}</p>
-    <form role="form" id="add-category-form">
-        <div class="form-group">
-            <label for="input-category-name">Category Name</label>
-            <input type="text" class="form-control" id="input-category-name" placeholder="Gift Name" required>
+<form role="form" id="add-category-form">
+
+    <div class="form-row">
+        <div class="col">
+            <div class="form-group">
+                <label for="input-category-name">Category Name</label>
+                <input type="text" class="form-control" id="input-category-name" placeholder="Gift Name" required>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="input-category-description">Description</label>
-            <input type="text" class="form-control" id="input-category-description" placeholder="Description" required>
+        
+        <div class="col">
+            <div class="form-group">
+                <label for="input-category-age-limit">Age</label>
+                <input type="number" class="form-control" id="input-category-age-limit" value="0">
+            </div>
         </div>
-        <button type="submit" id="add-category-submit" class="btn btn-primary">Submit</button>
-        <a class="btn btn-secondary" href="/categories">Cancel</a>
-    </form>
+    </div>
+
+
+    <div class="form-group">
+        <label for="input-category-description">Description</label>
+        <input type="text" class="form-control" id="input-category-description" placeholder="Description" required>
+    </div>
+    <button type="submit" id="add-category-submit" class="btn btn-primary">Submit</button>
+    <a class="btn btn-secondary" href="/categories">Cancel</a>
+</form>
 </div>

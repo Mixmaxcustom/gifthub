@@ -9,9 +9,7 @@
                 <label for="input-user-firstname">First Name</label>
                 <input type="text" class="form-control" id="input-user-firstname" value="{{user.user_firstname}}" required>
                 <!-- invalid message -->
-                <div class="invalid-feedback">
-                    Please provide a valid city.
-                </div>
+                <div class="invalid-feedback">Please provide a name.</div>
             </div>
         </div>
         <div class="col">
@@ -35,6 +33,12 @@
             </div>
         </div>
     </div>
+
+    <div class="form-group">
+        <label for="input-user-bio">Bio</label>
+        <input type="text" class="form-control" id="input-user-bio" value="{{user.user_bio}}" required>
+    </div>
+
     <div class="form-row">
         <div class="col">
             <div class="form-group">
@@ -45,28 +49,13 @@
         <div class="col">
             <div class="form-group">
                 <label for="input-user-state">State</label>
-                <select id="input-user-state" class="form-control">
+                <select id="input-user-state" data-value="{{user.user_state}}" class="form-control">
                     <option selected>Choose...</option>
                 </select>
             </div>
         </div>
     </div>
-    {{!-- user login details --}}
-    {{!-- <div class="form-row">
-        <div class="col">
-            <div class="form-group">
-                <label for="input-user-login">Login Name</label>
-                <input type="text" class="form-control" id="input-user-login" placeholder="Create a username" required>
-            </div>
-        </div>
-        <div class="col">
-            <div class="form-group">
-                <label for="input-user-password">Password</label>
-                <input type="password" class="form-control" id="input-user-password" placeholder="Password" required>
-            </div>
-        </div>
-    </div> --}}
-    <button type="submit" id="edit-user-submit" class="btn btn-primary">Update</button>
+    <button type="submit" id="edit-user-submit" data-value="{{user.user_id}}" class="btn btn-primary">Update</button>
     <a class="btn btn-secondary" href="/profile">Cancel</a>
 </form>
 </div>

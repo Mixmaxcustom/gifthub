@@ -3,7 +3,7 @@ const db = require("../models/");
 
 let pageContent = {
 	title: "gifthub",   // head title
-	projname: "gifthub-api",   // top nav app name
+	projname: "gifthub",   // top nav app name
 	table: "categories"
 }
 
@@ -11,36 +11,42 @@ module.exports = function (app) {
 	// categories list
 	app.get("/categories", function (req, res) {
 		console.log(` - requesting ${req.url}`);
-		app.readAuthenticationCookie(req);
+		app.checkUserAuthentication(req);
 		pageContent.pagetitle = "Categories";
 		pageContent.content = "Browse gift categories here.";
 		pageContent.is_logged_in = (app.user_data.user_id > 0);
-        pageContent.user_firstname = app.user_data.user_firstname || 'none';
+		pageContent.user_firstname = app.user_data.user_firstname || 'none';
+
+		let template = (pageContent.is_logged_in == true) ? 'categories/index' : 'login';
+
 		db.categories.findAll().then(categories => {
 			pageContent.categories = categories;
 			pageContent.category_count = categories.length;
-			res.render('categories', pageContent);
+			res.render(template, pageContent);
 		})
 	});
 
 	// add new category form
 	app.get("/categories/add", function (req, res) {
 		console.log(` - requesting ${req.url}`);
-		app.readAuthenticationCookie(req);
+		app.checkUserAuthentication(req);
 		pageContent.pagetitle = "Add Category";
 		pageContent.content = "Add a new gift category.";
 		pageContent.is_logged_in = (app.user_data.user_id > 0);
-        pageContent.user_firstname = app.user_data.user_firstname || 'none';
-		db.gifts.findAll().then(gifts => {
-			pageContent.gifts = gifts;
-			res.render('categories/add', pageContent);
+		pageContent.user_firstname = app.user_data.user_firstname || 'none';
+
+		let template = (pageContent.is_logged_in == true) ? 'categories/add' : 'login';
+
+		db.gifts.findAll().then(categories => {
+			pageContent.categories = categories;
+			res.render(template, pageContent);
 		})
 	});
 
 	// add a new category
 	app.post("/categories", function (req, res) {
 		console.log(` - posting ${req.url}`);
-		app.readAuthenticationCookie(req);
+		app.checkUserAuthentication(req);
 		let categoryData = req.body;
 		db.categories.create(categoryData,
 		).then(function(data) {
@@ -52,7 +58,7 @@ module.exports = function (app) {
 	// get category detail
 	app.get("/categories/:category_id", function (req, res) {
 		let category_id = req.params.category_id;
-		app.readAuthenticationCookie(req);
+		app.checkUserAuthentication(req);
 
 		pageContent.pagetitle = "Edit Category";
 		pageContent.content = "Change category details";
@@ -72,18 +78,19 @@ module.exports = function (app) {
 	// category edited
 	app.put("/categories/:category_id", function (req, res) {
 		console.log(` - putting ${req.url}`);
-		app.readAuthenticationCookie(req);
+		app.checkUserAuthentication(req);
 		let categoryData = req.body;
 
 		db.categories.update({
-			category_name: req.body.category_name,
-			category_description: req.body.category_description
+			category_name: categoryData.category_name,
+			category_age_limit: categoryData.category_age_limit,
+			category_description: categoryData.category_description
 		}, {
 			where: {
 				category_id: req.params.category_id
 			}
 		  }).then(category => {
-				res.json({status: "Success", redirect: '/categories'});
+				res.json({status: "Success", redirect: '/categories', category: category});
 		  });
 	});
 

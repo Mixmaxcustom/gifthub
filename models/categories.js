@@ -7,7 +7,8 @@ module.exports = function (sequelize, DataTypes) {
 			primaryKey: true
 		},
 		category_name: DataTypes.STRING,
-		category_description: DataTypes.STRING
+		category_description: DataTypes.STRING,
+		category_age_limit: DataTypes.INTEGER
 	});
 	return categories;
 };

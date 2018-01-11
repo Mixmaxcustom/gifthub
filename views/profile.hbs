@@ -2,14 +2,7 @@
     <h1>{{pagetitle}}</h1>
 </div>
 <div class="container">
-    <div class="flex-row"> 
-        <div class="card"> 
-            <div class="card-body"> 
-                <h4 class="card-title">{{user.user_firstname}} {{user.user_lastname}}</h4> 
-                <h6 class="card-subtitle mb-2 text-muted">{{user.user_city}}, {{user.user_state}}</h6> 
-                <p class="card-text">Birthday: {{formatTime user.user_birthday "MMM. D, YYYY"}}</p> 
-                <a href="/profile/edit" class="btn btn-primary">Edit</a> 
-            </div>             
-        </div>
+    <div class="flex-row">
+        {{>users/user-profile}}
     </div>
 </div>

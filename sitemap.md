@@ -1,4 +1,4 @@
-```
+  ```
   /config
     auth.js
     config.js
@@ -6,10 +6,11 @@
 
   /models
     categories.js
+    vendors.js
     users.js
     index.js
     gifts.js
-
+  
   /public
     /css
       reset.css
@@ -17,7 +18,6 @@
 
     /js
       auth.js
-      locations.js
       view.js
 
     /img
@@ -27,13 +27,14 @@
     schema.sql
 
   /views
-    success.hbs
     profile.hbs
-    users.hbs
-    categories.hbs
     index.hbs
-    gifts.hbs
     login.hbs
+
+    /vendors
+      edit.hbs
+      index.hbs
+      add.hbs
 
     /products
       add.hbs
@@ -43,6 +44,7 @@
 
     /gifts
       edit.hbs
+      index.hbs
       add.hbs
 
     /layouts
@@ -50,10 +52,12 @@
 
     /users
       edit.hbs
+      index.hbs
       add.hbs
 
     /categories
       edit.hbs
+      index.hbs
       add.hbs
 
     /partials
@@ -63,9 +67,9 @@
   /routes
     profile.js
     categories.js
+    vendors.js
     users.js
     index.js
     login.js
     gifts.js
-    api.j
 ```
