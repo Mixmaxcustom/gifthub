@@ -58,6 +58,10 @@ module.exports = function (app) {
 		pageContent.pagetitle = "Edit User";
 		pageContent.content = "Update user details";
 
+		db.users.findOne({where:{user_id:user_id}, include:[{model:categories, as:'categories', where:{is_valid:1, is_vertify:1},   required:false}]}).success(function(result) {
+			callback(result);
+		});
+
 		db.users.findOne({
             where: {
                 user_id: user_id
