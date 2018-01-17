@@ -40,12 +40,8 @@ app.set("view engine", "hbs");
 
 // routing
 require("./routes/index")(app);
-require("./routes/users")(app);
-require("./routes/categories")(app);
-require("./routes/gifts")(app);
-require("./routes/profile")(app);
 require("./routes/login")(app);
-require("./routes/vendors")(app);
+require("./routes/profile")(app);
 require("./config/auth")(app);
 
 

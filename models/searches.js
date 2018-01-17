@@ -1,6 +1,6 @@
 // user searches table
 module.exports = function (sequelize, DataTypes) {
-	var searches = sequelize.define("searches", {
+	var saved_searches = sequelize.define("saved_searches", {
 		search_id: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
@@ -11,5 +11,5 @@ module.exports = function (sequelize, DataTypes) {
 		createdAt: DataTypes.DATE,
 		updatedAt: DataTypes.DATE,
 	});
-	return searches;
+	return saved_searches;
 };

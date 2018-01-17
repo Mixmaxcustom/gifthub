@@ -72,7 +72,7 @@ module.exports = function (app) {
         pageContent.is_logged_in = false;
         pageContent.pagetitle = "Login";
         pageContent.content = "Please sign into your account";
-        res.clearCookie('gifthub-user').render('login', pageContent);
+        res.clearCookie('jwttoken').render('login', pageContent);
     });
     
     // user registration
@@ -81,11 +81,7 @@ module.exports = function (app) {
         pageContent.content = "Create an account here.";
         pageContent.is_logged_in = (app.user_data.user_id > 0);
         pageContent.user_firstname = app.user_data.user_firstname || 'none';
-
-		db.users.findAll().then(users => {
-            pageContent.users = users;
-            res.render('register', pageContent);
-		});
+        res.render('register', pageContent);
 	});
 };
 

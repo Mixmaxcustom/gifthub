@@ -1,13 +1,29 @@
-<div class="navbar-fixed">
-	<nav>
-		<div class="nav-wrapper blue-grey">
-			<a href="index.html" class="brand-logo">
-				<i class="fa fa-gift" aria-hidden="true"></i>GiftHub</a>
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+	<li><a href="/profile"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
+	<li><a href="/profile/settings"><i class="fa fa-cogs" aria-hidden="true"></i>Settings</a></li>
+	<li class="divider"></li>
+	<li><a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
+</ul>
+
+<!-- Top Navbar -->
+<nav>
+	<div class="nav-wrapper blue-grey">
+
+		<a href="/" class="brand-logo"><i class="fa fa-gift" aria-hidden="true"></i>GiftHub</a>
+
+		{{#if is_logged_in}} {{!-- user logged in --}}
+
+		<ul class="right hide-on-med-and-down">
+			<li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+			<li><a class="dropdown-button" href="/" data-activates="dropdown1"><i class="fa fa-user-circle" aria-hidden="true"></i> Michael<i class="material-icons right">arrow_drop_down</i></a></li>
+		</ul>
+
+		{{else}} {{!-- user is not logged in --}}
 			<ul class="right hide-on-med-and-down">
-				<li class="waves-effect">
-					<a>Login/Signup</a>
-				</li>
+				<li><a href="/register"> Login / Signup</a></li>
 			</ul>
-		</div>
-	</nav>
-</div>
+		{{/if}}
+
+	</div>
+</nav>
