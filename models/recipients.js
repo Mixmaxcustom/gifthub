@@ -1,4 +1,4 @@
-// users table
+// recipients table
 module.exports = function (sequelize, DataTypes) {
 	var recipients = sequelize.define("recipients", {
 		recipient_id: {
@@ -10,6 +10,7 @@ module.exports = function (sequelize, DataTypes) {
 		recipient_firstname: DataTypes.STRING,
 		recipient_lastname: DataTypes.STRING,
 		recipient_email: DataTypes.STRING,
+		recipient_max_price: DataTypes.DECIMAL(10, 2),
 		recipient_birthday: DataTypes.DATEONLY,
 		recipient_bio: DataTypes.TEXT,
 		recipient_city: DataTypes.STRING,

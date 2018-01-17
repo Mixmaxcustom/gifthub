@@ -39,10 +39,17 @@ app.engine('hbs', exphbs({
 app.set("view engine", "hbs");
 
 // routing
+require("./routes/authtest")(app);
 require("./routes/index")(app);
 require("./routes/login")(app);
 require("./routes/profile")(app);
+require("./routes/user")(app);
 require("./config/auth")(app);
+
+
+// api
+const apiroutes = require('./routes/api');
+app.use('/api', apiroutes);
 
 
 // sync database and run app

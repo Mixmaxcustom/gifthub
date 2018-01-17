@@ -1,4 +1,6 @@
-<!-- Dropdown Structure -->
+
+{{!-- Dropdown Structure --}}
+
 <ul id="dropdown1" class="dropdown-content">
 	<li><a href="/profile"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
 	<li><a href="/profile/settings"><i class="fa fa-cogs" aria-hidden="true"></i>Settings</a></li>
@@ -6,23 +8,48 @@
 	<li><a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
 </ul>
 
-<!-- Top Navbar -->
+
+
 <nav>
 	<div class="nav-wrapper blue-grey">
 
 		<a href="/" class="brand-logo"><i class="fa fa-gift" aria-hidden="true"></i>GiftHub</a>
+		<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 
-		{{#if is_logged_in}} {{!-- user logged in --}}
+		{{!-- user logged in --}}
+		{{#if is_logged_in}} 
 
-		<ul class="right hide-on-med-and-down">
-			<li><a href="/"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-			<li><a class="dropdown-button" href="/" data-activates="dropdown1"><i class="fa fa-user-circle" aria-hidden="true"></i> Michael<i class="material-icons right">arrow_drop_down</i></a></li>
-		</ul>
-
-		{{else}} {{!-- user is not logged in --}}
+			{{!--  Menu (normal) --}}
 			<ul class="right hide-on-med-and-down">
-				<li><a href="/register"> Login / Signup</a></li>
+				<li><a href="/user/home"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+				<li><a class="dropdown-button" href="/" data-activates="dropdown1"><i class="fa fa-user-circle" aria-hidden="true"></i> Michael<i class="material-icons right">arrow_drop_down</i></a></li>
 			</ul>
+
+			{{!-- Menu (collapsed) --}}
+			<ul class="side-nav" id="mobile-demo">
+				<li><a href="/user/home"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
+				<li><a href="/profile"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
+				<li><a href="/profile/settings"><i class="fa fa-cogs" aria-hidden="true"></i>Settings</a></li>
+				<li class="divider"></li>
+				<li><a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
+			</ul>
+
+		{{!-- user not logged in --}}
+		{{else}}
+
+			{{!--  Menu (normal) --}}
+			<ul class="right hide-on-med-and-down">
+				<li><a href="/login">Login</a> </li>
+				<li>/</li>
+				<li><a href="/register">Register</a></li>
+			</ul>
+			
+			{{!-- Menu (collapsed) --}}
+			<ul class="side-nav" id="mobile-demo">
+				<li><a href="/register"><i class="material-icons left">person_pin</i>Register</a></li>
+				<li><a href="/login"><i class="material-icons left">lock</i>Login</a></li>
+			</ul>
+
 		{{/if}}
 
 	</div>

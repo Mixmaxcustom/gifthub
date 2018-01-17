@@ -52,9 +52,15 @@ $(document).ready(function () {
 		closeOnSelect: false // Close upon selecting a date,
 	});
 
-	$(".dropdown-button").dropdown();
+
 	// initialize text fields
 	Materialize.updateTextFields();
 	$('select').material_select();
 	setupStateMenu();
+
+	$(".dropdown-button").dropdown({
+        hover: false
+	});
+	
+	$('ul.tabs').tabs();
 });

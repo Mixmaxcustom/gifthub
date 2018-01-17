@@ -9,39 +9,11 @@
         <br>
 
         <div class="row form-questions">
-            <form class="col s12">
-                <div class="row form-row">
-                    <div class="input-field col s12 m6">
-
-                        {{!-- Categories Menu --}}
-                        <select id="gift_category_menu">
-                            <option value="" disabled selected>Gift Type</option>
-                            
-                            {{#each categories as | category |}}                           
-                                <option value="{{category.category_id}}" data-value="{{category.category_name}}">{{category.category_description}}</option>
-                            {{/each}}
-
-                        </select>
-                        <label>Gift Type</label>
-                    </div>
-                    <div class="input-field col s12 m6">
-                        <select id="max-price">
-                            <option value="" disabled selected>Maximum Price</option>
-                            <option value="1">$25</option>
-                            <option value="2">$50</option>
-                            <option value="3">$100</option>
-                            <option value="4">$200</option>
-                            <option value="5">$300</option>
-                            <option value="6">$500</option>
-                        </select>
-                        <label>Maximum Price</label>
-                    </div>
-                </div>
-            </form>
+            {{>gift-search}}
         </div>
 
         <div class="row center submit-button-row">
-            <a href="#" id="search-button" class="btn-large waves-effect waves-light blue-grey">Find Gifts!</a>
+            <a href="/results" id="search-button" class="btn-large waves-effect waves-light blue-grey">Find Gifts!</a>
         </div>
     </div>
 </div>

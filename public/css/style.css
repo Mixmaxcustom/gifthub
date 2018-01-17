@@ -18,20 +18,24 @@ font-family: 'Cabin', sans-serif;
 }
 
 
-/* Sticky footer styles (from Bootstrap examples)
-  -------------------------------------------------- */
-
 html {
 	position: relative;
 	min-height: 100%;
 }
 
+
 body {
 	font-family: 'Cabin', sans-serif;
 	/* Margin bottom by footer height */
 	margin-bottom: 60px;
+	display: flex;
+    min-height: 100vh;
+    flex-direction: column;
 }
 
+main {
+    flex: 1 0 auto;
+}
 
 /* Materialize */
 
@@ -51,6 +55,7 @@ body {
 .form-questions {
 	margin: 0;
 }
+
 
 #price-range {
 	margin: 0;
@@ -75,6 +80,16 @@ hr {
 	align-content: center;
 }
 
+footer a,
+footer a:active {
+	text-decoration: none;
+	color: #adccda;
+}
+
+footer a:hover {
+	color: #75c1e5;
+	cursor: default;  
+}
 
 /* Application Custom CSS
   -------------------------------------------------- */
@@ -119,6 +134,24 @@ img {
 }
 
 
+/* Materialize Tabs
+  -------------------------------------------------- */
+
+.tabs .tab a, .tab a:hover, .tabs .tab a.active {
+	color: #75c1e5;
+}
+
+.tabs .tab a:hover {
+	color: #b09e88;
+}
+
+.tabs .indicator {
+	background-color: #75c1e5;
+}
+
+.tabs .tab {
+	text-transform: none;
+}
 
 /* Large devices (desktops, less than 1200px) */
 
@@ -127,7 +160,9 @@ img {
 
 /* Medium devices (tablets, less than 992px) */
 
-@media (max-width: 991px) {}
+@media (max-width: 991px) {
+
+}
 
 
 /* Small devices (landscape phones, less than 768px) */
@@ -137,12 +172,7 @@ img {
 
 /* Extra small devices (portrait phones, less than 576px) */
 
-@media (max-width: 575px) {
-	html,
-	* {
-		font-size: 80%;
-	}
-}
+@media (max-width: 575px) {}
 
 
 /* Materialize */

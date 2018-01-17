@@ -1,6 +1,6 @@
 /* UI Helper Functions */
 
-
+// validate the user registration form
 function validateUserRegistrationForm() {
 	console.log(`# validating user registration...`);
 	$("#user_registration_form").validate({
@@ -45,6 +45,13 @@ function validateUserRegistrationForm() {
 	});
 }
 
+
+// validate the recipient registration form
+function validateUserRegistrationForm() {
+	console.log(`# validating recipient registration...`);
+}
+
+
 // encode a string to base64
 function b64EncodeUnicode(str) {
 	return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
@@ -79,6 +86,30 @@ $(document).ready(function () {
 		let button = $(event.currentTarget);
 
 		validateUserRegistrationForm();
-
 	});
+
+	// recipient registration clicked
+	$('body').on('click', '#recipient_registration_submit', event => {
+		event.preventDefault();
+		event.stopPropagation();
+
+		let button = $(event.currentTarget);
+
+		validateUserRegistrationForm();
+	});
+
+	
 });
+
+
+const allRelationships = ['husband', 'wife', 'father', 'mother', 'son', 'sister', 'mother-in-law', 'father-in-law', 'brother']
+
+/*
+
+// selected category category_name
+('#gift_category_menu').find(":selected").data();
+
+// selected category category_id
+('#gift_category_menu').find(":selected").val();
+
+*/

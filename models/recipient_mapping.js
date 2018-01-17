@@ -1,4 +1,4 @@
-// user -> category table
+// user -> recipients table
 module.exports = function (sequelize, DataTypes) {
 	var recipient_mapping = sequelize.define("recipient_mapping", {
 		rmap_id: {
@@ -7,7 +7,7 @@ module.exports = function (sequelize, DataTypes) {
 			primaryKey: true
 		},
 		user_id: DataTypes.INTEGER,
-		category_id: DataTypes.INTEGER,
+		recipient_id: DataTypes.INTEGER,
 	});
 	return recipient_mapping;
 };
