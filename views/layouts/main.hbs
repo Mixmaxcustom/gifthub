@@ -1,54 +1,147 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-	<link rel="stylesheet" href="/css/reset.css">
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
-	<meta name="author" content="">
-	<link rel="shortcut icon" type="assets/png" href="/img/favicon.png" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+	<title>GiftHub Home</title>
 
-	<title>{{title}}</title>
-
-	<!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
-	 crossorigin="anonymous">
-
-	<!-- Custom CSS -->
-	<link rel="stylesheet" href="/css/style.css">
-	<script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+	<!-- CSS  -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+	<link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+	<script src="https://use.fontawesome.com/3f13c469b8.js"></script>
 </head>
+
 <body>
 
-	<!-- Header -->
-	<header>
-		{{>header}}
-	</header>
+	<div class="navbar-fixed">
+		<!-- Header -->
+		<nav>
+			{{>header}}
+		</nav>
+	</div>
 
 
-	<!-- Begin page content -->
-	<main role="main" class="container">
-		{{{body}}}
-	</main>
+	<ul id="slide-out" class="side-nav">
+		<li>
+			<div class="user-view">
+				<div class="background"><img src="/img/pineapple.jpg"></div>
+				<a href="#!user"><img class="circle" src="/img/woman.jpg"></a>
+				<a href="#!name"><span class="white-text name">John Doe</span></a>
+				<a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+			</div>
+		</li>
 
+		<li>
+			<a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a>
+		</li>
+
+		<li>
+			<a href="#!">Second Link</a>
+		</li>
+
+		<li>
+			<div class="divider"></div>
+		</li>
+
+		<li>
+			<a class="subheader">Subheader</a>
+		</li>
+		
+		<li>
+			<a class="waves-effect" href="#!">Third Link With Waves</a>
+		</li>
+	</ul>
+
+
+	<a href="#" data-activates="slide-out" class="button-collapse">Login/Signup</a>
+
+
+	<div class="section no-pad-bot" id="index-banner">
+		<div class="container">
+			<br>
+			<h1 class="header center blue-grey-text">GiftHub</h1>
+			<div class="row center main-section">
+				<h5 class="header col s12 light">Great gift ideas for everyone!</h5>
+			</div>
+			<br>
+			<br>
+			<div class="row form-questions">
+				<form class="col s12">
+					<div class="row form-row">
+						<div class="input-field col s12 m6">
+							<select id="gift-category">
+								<option value="" disabled selected>Gift Type</option>
+								<option value="1">Food and Beverages</option>
+								<option value="2">Games and Puzzles</option>
+								<option value="3">Tech</option>
+							</select>
+							<label>Event Type</label>
+						</div>
+						<div class="input-field col s12 m6">
+							<select id="max-price">
+								<option value="" disabled selected>Maximum Price</option>
+								<option value="1">$25</option>
+								<option value="2">$50</option>
+								<option value="3">$100</option>
+								<option value="4">$200</option>
+								<option value="5">$300</option>
+								<option value="6">$500</option>
+							</select>
+							<label>Maximum Price</label>
+						</div>
+					</div>
+				</form>
+			</div>
+
+			<div class="row center submit-button-row">
+				<a href="#" id="search-button" class="btn-large waves-effect waves-light blue-grey">Find Gifts!</a>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="section">
+
+			<!--   Icon Section   -->
+			<div class="row">
+				<div class="col s12 m6">
+					<div class="icon-block">
+						<h2 class="center blue-grey-text lighten-1">
+							<i class="material-icons">sentiment_very_dissatisfied</i>
+						</h2>
+						<h5 class="center">The Gift Dilemma</h5>
+						<p class="light center-align">Holidays, birthdays, weddings. Brother, sister, mom, dad, Aunt Susan. We all know how difficult it is to find meaningful
+							gifts to give to those we love and even those we barely know.</p>
+					</div>
+				</div>
+
+				<div class="col s12 m6">
+					<div class="icon-block">
+						<h2 class="center blue-grey-text lighten-1">
+							<i class="material-icons">sentiment_very_satisfied</i>
+						</h2>
+						<h5 class="center">The Gift Solution</h5>
+						<p class="light center-align">Our gift idea generator can help you to find the perfect gift! Simply search using the gift idea criteria and we will
+							help you find something amazing to give. It's just that simple!</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 	<!-- Footer -->
-	<footer class="footer">
+	<footer class="page-footer blue-grey">
 		{{>footer}}
 	</footer>
 
-	<!-- Bootstrap core JavaScript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
+
+	<!--  Scripts-->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-
-
-	<!-- Application functions -->
-	<script src="/js/auth.js" type="text/javascript"></script>
-	<script src="/js/view.js" type="text/javascript"></script>
+	<script src="/js/materialize.js"></script>
+	<script src="/js/init.js"></script>
 
 </body>
+
 </html>
