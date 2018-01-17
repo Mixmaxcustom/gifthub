@@ -46,7 +46,7 @@ require("./routes/profile")(app);
 require("./routes/login")(app);
 require("./routes/vendors")(app);
 require("./config/auth")(app);
-
+require("./routes/recipients")(app);
 
 // sync database and run app
 db.sequelize.sync().then(function () {
