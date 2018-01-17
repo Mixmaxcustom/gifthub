@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+    <title>GiftHub - Family and Friends</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <script src="https://use.fontawesome.com/3f13c469b8.js"></script>
+</head>
+
+<body>
+
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper blue-grey">
+                <a href="userHome.html" class="brand-logo">
+                    <i class="fa fa-gift" aria-hidden="true"></i>GiftHub</a>
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <a>Hello,
+                            <span>Steve</span>
+                        </a>
+                    </li>
+                    <li class="waves-effect">
+                        <a href="userHome.html">
+                            <i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                    </li>
+                    <li class="waves-effect">
+                        <a href="results.html">
+                            <i class="fa fa-gift" aria-hidden="true"></i> Find Gifts</a>
+                    </li>
+                    <li class="waves-effect">
+                        <a href="profiles.html">
+                            <i class="fa fa-user-circle" aria-hidden="true"></i> Family and Friends</a>
+                    </li>
+                    <li class="waves-effect">
+                        <a href="#">
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>Signout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <h4>Friends and Family Profiles</h4>
+                </div>
+                <div class="col s12 m6">
+                    <h6>Keep track of saved gifts and budgets for each loved one here!</h6>
+                </div>
+                <div class="col s12 m6 right-align">
+                    <!-- Modal Trigger -->
+                    <button data-target="modal1" class="btn modal-trigger blue-grey lighten-1">Add New</button>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+
+    <div class="container">
+        <div class="section">
+
+            <!--   Profiles Section   -->
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="card large">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="images/woman.jpg">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Samantha
+                                <i class="material-icons right">more_vert</i>
+                            </span>
+                            <p>
+                                Gift Budget Total: $127 of $150
+                            </p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Samantha
+                                <i class="material-icons right">close</i>
+                            </span>
+                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col s12 m6">
+                    <div class="card large">
+                        <div class="card-image waves-effect waves-block waves-light">
+                            <img class="activator" src="images/grandma.jpg">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title activator grey-text text-darken-4">Great Aunt Susan
+                                <i class="material-icons right">more_vert</i>
+                            </span>
+                            <p>
+                                Gift Budget Total: $127 of $150
+                            </p>
+                        </div>
+                        <div class="card-reveal">
+                            <span class="card-title grey-text text-darken-4">Card Title
+                                <i class="material-icons right">close</i>
+                            </span>
+                            <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="page-footer blue-grey">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m6">
+                    <h5 class="white-text">About Us</h5>
+                    <p class="grey-text text-lighten-4">We are a team of regular joes working to solve life's dilemma of meaningful gift giving. After hearing
+                        the phrase "We never know what to get you anymore." one thousand times over the holidays, we wanted
+                        to take action. We strive to make finding that perfect gift less stressful than ever before. At the
+                        very least, we can help you find a suitable gift for Aunt Susan. I mean, come on. There's only so
+                        many times you can show up empty-handed before being known as a cheapskate.</p>
+                </div>
+
+                <div class="col s12 m6">
+                    <h5 class="white-text">Connect</h5>
+                    <p class="grey-text text-lighten-4">Please get in touch with us by emailing
+                        <a>contact@gifthub.com</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal bottom-sheet">
+            <div class="modal-content">
+                <div class="row">
+                    <h5 class="black-text">Create New</h5>
+                </div>
+                <div class="row">
+                    <form class="col s12">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input placeholder="Great Aunt Susan" id="recipient_name" type="text" class="validate black-text">
+                                <label for="first_name">Name</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input placeholder="This is my great aunt." id="recipient_bio" type="text" class="validate black-text">
+                                <label for="first_name">Bio</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input placeholder="10/29/1956" id="recipient_birthday" type="text" class="datepicker black-text">
+                                <label for="datepicker">Birthday</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <input placeholder="$100" id="recipient_budget" type="number" class="validate black-text">
+                                <label for="first_name">Budget</label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a class="modal-action modal-close waves-effect waves-green btn-flat blue-grey lighten-3">Create</a>
+            </div>
+        </div>
+
+
+        <div class="footer-copyright blue-grey lighten-1">
+            <div class="container">
+                Made by GiftHub</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="js/init.js"></script>
+
+</body>
+
+</html>

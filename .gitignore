@@ -2,7 +2,7 @@
 package-lock.json
 doc/
 bin/
-template/
+private/
 
 # Logs
 logs
