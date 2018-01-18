@@ -60,6 +60,7 @@ function b64EncodeUnicode(str) {
 		}));
 }
 
+
 // decode a base64-encoded string
 function b64DecodeUnicode(str) {
 	// Going backwards: from bytestream, to percent-encoding, to original string.
@@ -67,6 +68,7 @@ function b64DecodeUnicode(str) {
 		return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
 	}).join(''));
 }
+
 
 // yep, these are globals
 var currentUserID;
@@ -131,6 +133,8 @@ $(document).ready(function () {
 const allRelationships = ['husband', 'wife', 'father', 'mother', 'son', 'sister', 'mother-in-law', 'father-in-law', 'brother']
 
 /*
+// launch search results modal
+$('#search-results-modal').modal('open');
 
 // selected category category_name
 ('#gift_category_menu').find(":selected").data();

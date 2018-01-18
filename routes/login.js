@@ -14,7 +14,17 @@ module.exports = function (app) {
 
     // user logged out
 	app.get("/logout", function (req, res) {
-        res.clearCookie('gifthub-user').render('login');
+
+        // reset the page content user
+        app.pageContent.user = {
+            user_id: -1,
+            user_email: null,
+            user_firstname: null,
+            is_logged_in: false
+        }
+
+        // clear the cookie
+        res.clearCookie('gifthub-user').render('login');        
     });
     
     // user registration

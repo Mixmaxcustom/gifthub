@@ -10,9 +10,7 @@ const jwt = require("jsonwebtoken");
 module.exports = (app) => {
 
 	app.get("*", (req, res, next) => {
-        app.pageContent = { layout: 'main', projname: null, user: { user_id: -1, user_email: null, user_firstname: null, is_logged_in: false}};
         let cookies = req.cookies;
-
         var token = cookies['gifthub-user'] || {};
 
         if (token.length > 0) {
@@ -21,7 +19,7 @@ module.exports = (app) => {
                     //this is never hit due to controls in the jsonwebtoken package
                     res.clearCookie('gifthub-user');
                     res.json({ status: 402, message: err, redirect: '/login' });
-                    
+
                 } else {
                     //successful authentication
                     // console.log(`   - user ${data.user_firstname} authenticated!`);
