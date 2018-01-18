@@ -19,8 +19,9 @@ module.exports = (app) => {
             jwt.verify(token, secret, (err, data) => {
                 if (err) {
                     //this is never hit due to controls in the jsonwebtoken package
-                    // res.redirect('/login')
+                    res.clearCookie('gifthub-user');
                     res.json({ status: 402, message: err, redirect: '/login' });
+                    
                 } else {
                     //successful authentication
                     // console.log(`   - user ${data.user_firstname} authenticated!`);
