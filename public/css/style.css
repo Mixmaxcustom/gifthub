@@ -6,6 +6,7 @@
 font-family: 'Slabo 27px', serif;
 font-family: 'Source Sans Pro', sans-serif;
 font-family: 'Cabin', sans-serif;
+paytone-one
 */
 
 @import url('https://fonts.googleapis.com/css?family=Cabin|Slabo+27px|Source+Sans+Pro');
@@ -160,6 +161,11 @@ img {
 
 .tabs .tab {
 	text-transform: none;
+}
+
+/* fix for side nav on mobile */
+#sidenav-overlay {
+    margin-left: 300px;
 }
 
 /* Large devices (desktops, less than 1200px) */
