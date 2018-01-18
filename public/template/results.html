@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+    <title>GiftHub - Search Results</title>
+
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <script src="https://use.fontawesome.com/3f13c469b8.js"></script>
+</head>
+
+<body>
+
+    <div class="navbar-fixed">
+        <nav>
+            <div class="nav-wrapper blue-grey">
+                <a href="userHome.html" class="brand-logo">
+                    <i class="fa fa-gift" aria-hidden="true"></i>GiftHub</a>
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <a>Hello,
+                            <span>Steve</span>
+                        </a>
+                    </li>
+                    <li class="waves-effect">
+                        <a href="userHome.html">
+                            <i class="fa fa-home" aria-hidden="true"></i> Home</a>
+                    </li>
+                    <li class="waves-effect">
+                        <a href="results.html">
+                            <i class="fa fa-gift" aria-hidden="true"></i> Find Gifts</a>
+                    </li>
+                    <li class="waves-effect">
+                        <a href="profiles.html">
+                            <i class="fa fa-user-circle" aria-hidden="true"></i> Family and Friends</a>
+                    </li>
+                    <li class="waves-effect">
+                        <a href="#">
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>Signout</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+    <div class="section no-pad-bot" id="index-banner">
+        <div class="container">
+            <br>
+            <br>
+            <div class="row form-questions">
+                <form class="col s12">
+                    <div class="row form-row">
+                        <div class="input-field col s12 m5">
+                            <select>
+                                <option value="" disabled selected>Gift Type</option>
+                                <option value="1">Food and Beverages</option>
+                                <option value="2">Games and Puzzles</option>
+                                <option value="3">Tech</option>
+                            </select>
+                            <label>Event Type</label>
+                        </div>
+                        <div class="input-field col s12 m5">
+                            <select>
+                                <option value="" disabled selected>Maximum Price</option>
+                                <option value="1">$25</option>
+                                <option value="2">$50</option>
+                                <option value="3">$100</option>
+                                <option value="4">$200</option>
+                                <option value="5">$300</option>
+                                <option value="6">$500</option>
+                            </select>
+                            <label>Maximum Price</label>
+                        </div>
+                        <div class="col s12 m2">
+                            <a id="download-button" class="btn-large waves-effect waves-light blue-grey">Find Gifts!</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h4>Search Results</h2>
+
+                <!--   Results Section   -->
+                <div class="row">
+                    <div class="col s6 m4">
+                        <div class="card small">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="images/pineapple.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Card Title
+                                    <i class="material-icons right">more_vert</i>
+                                </span>
+                                <p>
+                                    <a href="#">This is a link</a>
+                                </p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Card Title
+                                    <i class="material-icons right">close</i>
+                                </span>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s6 m4">
+                        <div class="card small">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="images/pineapple.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Card Title
+                                    <i class="material-icons right">more_vert</i>
+                                </span>
+                                <p>
+                                    <a href="#">This is a link</a>
+                                </p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Card Title
+                                    <i class="material-icons right">close</i>
+                                </span>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s6 m4">
+                        <div class="card small">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img class="activator" src="images/pineapple.jpg">
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">Card Title
+                                    <i class="material-icons right">more_vert</i>
+                                </span>
+                                <p>
+                                    <a href="#">This is a link</a>
+                                </p>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-darken-4">Card Title
+                                    <i class="material-icons right">close</i>
+                                </span>
+                                <p>Here is some more information about this product that is only revealed once clicked on.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <ul class="pagination right-align">
+                        <li class="disabled">
+                            <a href="#!">
+                                <i class="material-icons">chevron_left</i>
+                            </a>
+                        </li>
+                        <li class="active blue-grey lighten-1">
+                            <a href="#!">1</a>
+                        </li>
+                        <li class="waves-effect">
+                            <a href="#!">2</a>
+                        </li>
+                        <li class="waves-effect">
+                            <a href="#!">3</a>
+                        </li>
+                        <li class="waves-effect">
+                            <a href="#!">4</a>
+                        </li>
+                        <li class="waves-effect">
+                            <a href="#!">5</a>
+                        </li>
+                        <li class="waves-effect">
+                            <a href="#!">
+                                <i class="material-icons">chevron_right</i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+    </div>
+
+    <footer class="page-footer blue-grey">
+        <div class="container">
+            <div class="row">
+                <div class="col s12 m6">
+                    <h5 class="white-text">About Us</h5>
+                    <p class="grey-text text-lighten-4">We are a team of regular joes working to solve life's dilemma of meaningful gift giving. After hearing
+                        the phrase "We never know what to get you anymore." one thousand times over the holidays, we wanted
+                        to take action. We strive to make finding that perfect gift less stressful than ever before. At the
+                        very least, we can help you find a suitable gift for Aunt Susan. I mean, come on. There's only so
+                        many times you can show up empty-handed before being known as a cheapskate.</p>
+                </div>
+
+                <div class="col s12 m6">
+                    <h5 class="white-text">Connect</h5>
+                    <p class="grey-text text-lighten-4">Please get in touch with us by emailing
+                        <a>contact@gifthub.com</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright blue-grey lighten-1">
+            <div class="container">
+                Made by GiftHub</a>
+            </div>
+        </div>
+    </footer>
+
+
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="js/init.js"></script>
+
+</body>
+
+</html>

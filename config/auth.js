@@ -15,14 +15,4 @@ module.exports = function (app) {
             return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
         }).join(''));
     }
-
-    // read user authentication
-    app.checkUserAuthentication = function(req) {
-        // todo: assign template name here based on login status
-        app.user_data = req.cookies['gifthub-user'] || { user_firstname: null, user_lastname: null, user_email: null, user_id: -1 };
-        // decodeURIComponent(req.headers.cookie)  // need to split on '='
-        // console.log(app.user_data);
-        app.user_data = (typeof app.user_data == "string") ? JSON.parse(app.user_data) : app.user_data;
-        console.log(` - reading auth dataL ${JSON.stringify(app.user_data)}`);
-    };
 }

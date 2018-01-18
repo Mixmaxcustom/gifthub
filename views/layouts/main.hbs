@@ -1,54 +1,64 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-	<link rel="stylesheet" href="/css/reset.css">
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<meta name="description" content="">
-	<meta name="author" content="">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
 	<link rel="shortcut icon" type="assets/png" href="/img/favicon.png" />
+	<title>GiftHub Home</title>
 
-	<title>{{title}}</title>
-
-	<!-- Bootstrap core CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy"
-	 crossorigin="anonymous">
-
-	<!-- Custom CSS -->
-	<link rel="stylesheet" href="/css/style.css">
-	<script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+	<!-- CSS  -->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+	<link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+	<script src="https://use.fontawesome.com/3f13c469b8.js"></script>
+	{{!-- <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script> --}}
 </head>
+
 <body>
 
 	<!-- Header -->
-	<header>
-		{{>header}}
-	</header>
+	<div class="navbar-fixed">
+		{{> header}}
+	</div>
 
 
-	<!-- Begin page content -->
-	<main role="main" class="container">
+	<ul id="slide-out" class="side-nav">
+		<li>
+			<div class="user-view">
+				<div class="background"><img src="/img/gifts/pineapple.jpg"></div>
+				<a href="#!user"><img class="circle" src="/img/recipients/woman.jpg"></a>
+				<a href="#!name"><span class="white-text name">John Doe</span></a>
+				<a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+			</div>
+		</li>
+
+		<li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+		<li><a href="#!">Second Link</a></li>
+		<li><div class="divider"></div></li>
+		<li><a class="subheader">Subheader</a></li>
+		<li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+	</ul>
+
+	{{!-- <a href="#" data-activates="slide-out" class="button-collapse">Login/Signup</a> --}}
+
+	<!-- Body -->
+	<main>
 		{{{body}}}
 	</main>
 
-
 	<!-- Footer -->
-	<footer class="footer">
-		{{>footer}}
+	<footer class="page-footer blue-grey">
+		{{> footer}}
 	</footer>
 
-	<!-- Bootstrap core JavaScript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
+
+	<!--  Scripts-->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" crossorigin="anonymous"></script>
-
-
-	<!-- Application functions -->
-	<script src="/js/auth.js" type="text/javascript"></script>
-	<script src="/js/view.js" type="text/javascript"></script>
-
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+	<script src="/js/materialize.js"></script>
+	<script src="/js/init.js"></script>
+	<script src="/js/view.js"></script>
+	<script src="/js/amazon.js"></script>
 </body>
 </html>

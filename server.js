@@ -7,6 +7,7 @@ const cookieParser = require('cookie-parser')
 
 const db = require("./models");
 
+
 // use process.env for heroku
 const port = process.env.PORT || 5000;
 
@@ -21,6 +22,9 @@ app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }));
 app.use(bp.text());
 app.use(bp.json({ type: "application/vnd.api+json" }));
+
+
+app.pageContent = { layout: 'main', projname: null, user: { user_id: -1, user_email: null, user_firstname: null, is_logged_in: false}};
 
 
 // serve static content from the "public" 
@@ -38,15 +42,17 @@ app.engine('hbs', exphbs({
 app.set("view engine", "hbs");
 
 // routing
+require("./routes/auth")(app);
 require("./routes/index")(app);
-require("./routes/users")(app);
-require("./routes/categories")(app);
-require("./routes/gifts")(app);
-require("./routes/profile")(app);
 require("./routes/login")(app);
-require("./routes/vendors")(app);
+require("./routes/profile")(app);
+require("./routes/user")(app);
+require("./routes/amazon")(app);
+require("./routes/api")(app);
 require("./config/auth")(app);
 require("./routes/recipients")(app);
+
+
 
 // sync database and run app
 db.sequelize.sync().then(function () {

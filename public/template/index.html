@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+  <title>GiftHub Home</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <script src="https://use.fontawesome.com/3f13c469b8.js"></script>
+</head>
+
+<body>
+
+    <div class="navbar-fixed">
+        <nav>
+          <div class="nav-wrapper blue-grey">
+              <a href="index.html" class="brand-logo"><i class="fa fa-gift" aria-hidden="true"></i>GiftHub</a>
+            <ul class="right hide-on-med-and-down">
+              <li class="waves-effect"><a>Login/Signup</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+
+
+      <ul id="slide-out" class="side-nav">
+          <li><div class="user-view">
+            <div class="background">
+              <img src="images/pineapple.jpg">
+            </div>
+            <a href="#!user"><img class="circle" src="images/woman.jpg"></a>
+            <a href="#!name"><span class="white-text name">John Doe</span></a>
+            <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
+          </div></li>
+          <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+          <li><a href="#!">Second Link</a></li>
+          <li><div class="divider"></div></li>
+          <li><a class="subheader">Subheader</a></li>
+          <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
+        </ul>
+
+        
+        <a href="#" data-activates="slide-out" class="button-collapse">Login/Signup</a>
+
+
+  <div class="section no-pad-bot" id="index-banner">
+    <div class="container">
+      <br>
+      <h1 class="header center blue-grey-text">GiftHub</h1>
+      <div class="row center main-section">
+        <h5 class="header col s12 light">Great gift ideas for everyone!</h5>
+      </div>    
+      <br>
+      <br>
+      <div class="row form-questions">
+        <form class="col s12">
+          <div class="row form-row">
+            <div class="input-field col s12 m6">
+              <select id="gift-category">
+                <option value="" disabled selected>Gift Type</option>
+                <option value="1">Food and Beverages</option>
+                <option value="2">Games and Puzzles</option>
+                <option value="3">Tech</option>
+              </select>
+              <label>Event Type</label>
+            </div>
+            <div class="input-field col s12 m6">
+              <select id="max-price">
+                <option value="" disabled selected>Maximum Price</option>
+                <option value="1">$25</option>
+                <option value="2">$50</option>
+                <option value="3">$100</option>
+                <option value="4">$200</option>
+                <option value="5">$300</option>
+                <option value="6">$500</option>
+              </select>
+              <label>Maximum Price</label>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="row center submit-button-row">
+        <a href="#" id="search-button" class="btn-large waves-effect waves-light blue-grey">Find Gifts!</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m6">
+          <div class="icon-block">
+            <h2 class="center blue-grey-text lighten-1">
+              <i class="material-icons">sentiment_very_dissatisfied</i>
+            </h2>
+            <h5 class="center">The Gift Dilemma</h5>
+            <p class="light center-align">Holidays, birthdays, weddings. Brother, sister, mom, dad, Aunt Susan. We all know
+              how difficult it is to find meaningful gifts to give to those we love and even those we barely know.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m6">
+          <div class="icon-block">
+            <h2 class="center blue-grey-text lighten-1">
+              <i class="material-icons">sentiment_very_satisfied</i>
+            </h2>
+            <h5 class="center">The Gift Solution</h5>
+            <p class="light center-align">Our gift idea generator can help you to find the perfect gift! Simply search using the gift idea
+              criteria and we will help you find something amazing to give. It's just that simple!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="page-footer blue-grey">
+    <div class="container">
+      <div class="row">
+        <div class="col s12 m6">
+          <h5 class="white-text">About Us</h5>
+          <p class="grey-text text-lighten-4">We are a team of regular joes working to solve life's dilemma of meaningful gift giving. After hearing the phrase
+            "We never know what to get you anymore." one thousand times over the holidays, we wanted to take action. We strive
+            to make finding that perfect gift less stressful than ever before. At the very least, we can help you find a
+            suitable gift for Aunt Susan. I mean, come on. There's only so many times you can show up empty-handed before
+            being known as a cheapskate.</p>
+        </div>
+
+        <div class="col s12 m6">
+          <h5 class="white-text">Connect</h5>
+          <p class="grey-text text-lighten-4">Please get in touch with us by emailing
+            <a>contact@gifthub.com</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright blue-grey lighten-1">
+      <div class="container">
+        Made by GiftHub</a>
+      </div>
+    </div>
+  </footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="js/materialize.js"></script>
+  <script src="js/init.js"></script>
+
+</body>
+
+</html>

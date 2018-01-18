@@ -1,0 +1,50 @@
+
+* {
+	/* Gets rid of the effing blue border */
+	outline: none !important;
+}
+
+h1 {
+	text-shadow: 1px 1px 3px #acacac;
+}
+
+
+
+.btn {
+	border-radius: 0.4rem;
+	text-shadow: 1px 1px 0 #1b1b1b55;
+	border-bottom: 0.25rem solid #0a0a0a33;
+}
+
+
+/* API navigation sidebar  */
+
+.gh-nav-pills .nav-link.active {
+	background-color: #7e7e7e;
+}
+
+a.nav-link {
+	color: #444444;
+}
+
+
+/* data tables */
+
+tbody tr.selected {
+	background-color: #3478f7;
+	color: #fff;
+}
+
+tr.selected a {
+	color: #fff;
+}
+
+tbody tr.selected:nth-of-type(odd) {
+	background-color: #3478f7;
+	color: #fff;
+}
+
+tbody tr.selected td {
+	border-left-color: #5c8be2;
+	border-right-color: #5c8be2;
+}

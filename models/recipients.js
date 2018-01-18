@@ -12,6 +12,7 @@ module.exports = function (sequelize, DataTypes) {
 		recipient_email: DataTypes.STRING,
 		recipient_birthday: DataTypes.DATEONLY,
 		recipient_bio: DataTypes.TEXT,
+		recipient_city: DataTypes.STRING,
         recipient_photo: DataTypes.STRING,
         recipient_max_budget: DataTypes.INTEGER,
 		createdAt: DataTypes.DATE,
