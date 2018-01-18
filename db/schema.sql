@@ -8,10 +8,30 @@ DROP DATABASE IF EXISTS `gifthub_db`;
 CREATE DATABASE `gifthub_db`;
 USE `gifthub_db`;
 
+/*
+categories
+gift_category_mapping
+gift_recipient_mapping
+gifts
+recipient_mapping
+recipients
+saved_searches
+search_mapping
+user_category_mapping
+user_events
+*/
+
+/*
+remove:
+
+user_event_mapping
+recipient_mapping (unless we want to share?)
+*/
 
 -- TABLES
 
--- users
+-- account holders
+
 CREATE TABLE users (
   user_id int auto_increment,
   user_firstname varchar(255) not null,
@@ -29,6 +49,7 @@ CREATE TABLE users (
   PRIMARY KEY(user_id)
 );
 
+-- friends & relatives of users
 
 CREATE TABLE recipients (
   recipient_id int auto_increment,
@@ -48,17 +69,6 @@ CREATE TABLE recipients (
 );
 
 
--- saved user searches
-
-CREATE TABLE saved_searches (
-  search_id int auto_increment,
-  search_name varchar(255) not null,
-  search_description mediumtext,
-  createdAt datetime,
-  updatedAt datetime,
-  PRIMARY KEY(search_id)
-);
-
 
 -- gift categories
 
@@ -71,10 +81,11 @@ CREATE TABLE categories (
   createdAt datetime,
   updatedAt datetime,
   PRIMARY KEY(category_id)
-);
+) COMMENT='Gift categories/user interests';
 
 
--- gifts
+
+-- saved gift ideas for recipients
 
 CREATE TABLE gifts (
   gift_id int auto_increment,
@@ -84,12 +95,39 @@ CREATE TABLE gifts (
   gift_upc varchar(255),
   gift_photo varchar(255),
   gift_price decimal(10,2) default 0,
+  gift_purchased boolean default 0,
   gift_url varchar(255),
   createdAt datetime,
   updatedAt datetime,
   PRIMARY KEY(gift_id)
-);
+) COMMENT='Saved gift ideas for friends & relatives';
 
+
+
+-- saved user searches
+
+CREATE TABLE saved_searches (
+  search_id int auto_increment,
+  search_name varchar(255) not null,
+  search_description mediumtext,
+  createdAt datetime,
+  updatedAt datetime,
+  PRIMARY KEY(search_id)
+) COMMENT='Saved user searches';
+
+
+-- saved user events
+
+CREATE TABLE user_events (
+  event_id int auto_increment,
+  event_name varchar(255) not null,
+  event_description mediumtext,
+  event_date date,
+  event_budget decimal(10, 2) default 0,
+  createdAt datetime,
+  updatedAt datetime,
+  PRIMARY KEY(event_id)
+) COMMENT='Saved user events';
 
 
 -- MAPPINGS
@@ -134,6 +172,7 @@ CREATE TABLE recipient_mapping (
 ) COMMENT='Map users to recipients';
 
 
+-- map user -> saved search
 
 CREATE TABLE search_mapping (
   search_map_id int auto_increment,
@@ -141,6 +180,27 @@ CREATE TABLE search_mapping (
   search_id int not null,
   PRIMARY KEY(search_map_id)
 ) COMMENT='Map users to saved searches';
+
+
+-- map user -> event
+
+CREATE TABLE user_event_mapping (
+  uevent_map_id int auto_increment,
+  user_id int not null,
+  event_id int not null,
+  PRIMARY KEY(uevent_map_id)
+) COMMENT='Map users to saved events';
+
+
+-- map event -> recipient
+
+CREATE TABLE event_recipient_mapping (
+  er_map_id int auto_increment,
+  event_id int not null,
+  recipient_id int not null,
+  PRIMARY KEY(er_map_id)
+) COMMENT='Map saved events to recipients';
+
 
 
 -- Users
@@ -387,3 +447,15 @@ VALUES (4, 39);
 
 
 
+-- User Events
+INSERT INTO user_events (event_name, event_description, event_date)
+VALUES ('Christmas', 'Christmas 2018', '2018-12-25');
+
+INSERT INTO user_event_mapping (user_id, event_id)
+VALUES (1, 1);
+
+INSERT INTO user_events (event_name, event_description, event_date)
+VALUES ('Easter', 'Easter 2018', '2018-04-11');
+
+INSERT INTO user_event_mapping (user_id, event_id)
+VALUES (1, 2);
