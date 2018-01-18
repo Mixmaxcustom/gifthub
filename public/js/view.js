@@ -113,7 +113,7 @@ $(document).ready(function () {
 			type: "POST",
 			data: user
 		}).done(data => {
-			console.log(data);
+			console.log(`data`);
 
 			if (data.status == 100) {
 				window.location = data.redirect;

@@ -133,6 +133,15 @@ img {
 	text-shadow: 1px 1px 1px #d3d3d34d;
 }
 
+/* Materialize Buttons
+  -------------------------------------------------- */
+.btn, .btn-large {
+	border-radius: 0.7rem;
+	text-shadow: 0px 1px 0 #1b1b1b55;
+	text-transform: none;
+    border-bottom: 4px solid #0a0a0a33;
+}
+
 
 /* Materialize Tabs
   -------------------------------------------------- */
