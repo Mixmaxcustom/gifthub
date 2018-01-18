@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     // user clicked login button
     $('body').on('click', '#submit-btn', event => {
-        console.log(`Searching...`);
+        console.log(`# Searching...`);
 
         let searchData = {
             category: $('#gift-category').val(),

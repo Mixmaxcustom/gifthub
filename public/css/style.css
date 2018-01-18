@@ -6,6 +6,7 @@
 font-family: 'Slabo 27px', serif;
 font-family: 'Source Sans Pro', sans-serif;
 font-family: 'Cabin', sans-serif;
+paytone-one
 */
 
 @import url('https://fonts.googleapis.com/css?family=Cabin|Slabo+27px|Source+Sans+Pro');
@@ -133,6 +134,15 @@ img {
 	text-shadow: 1px 1px 1px #d3d3d34d;
 }
 
+/* Materialize Buttons
+  -------------------------------------------------- */
+.btn, .btn-large {
+	border-radius: 0.7rem;
+	text-shadow: 0px 1px 0 #1b1b1b55;
+	text-transform: none;
+    border-bottom: 4px solid #0a0a0a33;
+}
+
 
 /* Materialize Tabs
   -------------------------------------------------- */
@@ -151,6 +161,11 @@ img {
 
 .tabs .tab {
 	text-transform: none;
+}
+
+/* fix for side nav on mobile */
+#sidenav-overlay {
+    margin-left: 300px;
 }
 
 /* Large devices (desktops, less than 1200px) */
@@ -178,12 +193,20 @@ img {
 /* Materialize */
 
 @media only screen and (max-width: 600px) {
+	.brand-logo,
+	nav .brand-logo i,
+	nav .brand-logo {
+		float: none;
+	}
+
 	.form-row {
 		margin: 0;
 	}
+	
 	#slider {
 		width: 100%;
 	}
+
 	.submit-button-row {
 		margin-top: 40px;
 	}

@@ -28,6 +28,7 @@ module.exports = function (app) {
 
         // TODO: sanity check user
 
+        // look for the current user in the database
         db.users.findOne({
             where: {
                 user_email: userData.user_email
@@ -36,7 +37,6 @@ module.exports = function (app) {
 
             // user match in database
             if (user) {
-                
                 // user logged in successfully
                 if (user.user_password === userData.user_password) {
 

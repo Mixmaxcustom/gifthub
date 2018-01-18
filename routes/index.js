@@ -1,6 +1,5 @@
-const db = require('../models/');
+const db 	 = require('../models/');
 const cookie = require('cookie');
-
 
 
 module.exports = function (app) {

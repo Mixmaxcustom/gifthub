@@ -50,7 +50,7 @@ require("./routes/user")(app);
 require("./routes/amazon")(app);
 require("./routes/api")(app);
 require("./config/auth")(app);
-
+require("./routes/recipients")(app);
 
 
 

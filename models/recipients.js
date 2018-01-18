@@ -5,19 +5,18 @@ module.exports = function (sequelize, DataTypes) {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
 			primaryKey: true
-		},
-		recipient_title: DataTypes.STRING,
+        },
+        recipient_title: DataTypes.STRING,
 		recipient_firstname: DataTypes.STRING,
 		recipient_lastname: DataTypes.STRING,
 		recipient_email: DataTypes.STRING,
-		recipient_max_price: DataTypes.DECIMAL(10, 2),
 		recipient_birthday: DataTypes.DATEONLY,
 		recipient_bio: DataTypes.TEXT,
 		recipient_city: DataTypes.STRING,
-		recipient_state: DataTypes.STRING,
-		recipient_photo: DataTypes.STRING,
+        recipient_photo: DataTypes.STRING,
+        recipient_max_budget: DataTypes.INTEGER,
 		createdAt: DataTypes.DATE,
-		updatedAt: DataTypes.DATE,
+        updatedAt: DataTypes.DATE,
 	});
 	return recipients;
 };
