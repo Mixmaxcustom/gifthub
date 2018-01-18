@@ -2,7 +2,8 @@
 package-lock.json
 doc/
 bin/
-template/
+pg/
+amazon/
 
 # Logs
 logs
@@ -11,3 +12,7 @@ npm-debug.log*
 
 # Dependency directories
 node_modules/
+
+
+# Mac Stuff
+*.numbers
