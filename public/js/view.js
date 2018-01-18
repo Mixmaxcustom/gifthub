@@ -94,10 +94,36 @@ $(document).ready(function () {
 		event.stopPropagation();
 
 		let button = $(event.currentTarget);
-
 		validateUserRegistrationForm();
 	});
 
+	// user clicked login button
+	$('body').on('click', '#user_login_submit', event => {
+		event.preventDefault();
+		event.stopPropagation();
+		let user_email = $('#input_user_email').val();
+		let user_password = $('#input_user_password').val();
+
+		let user = {
+			user_email: user_email,
+			user_password: b64EncodeUnicode(user_password)
+		}
+
+		$.ajax("/login", {
+			type: "POST",
+			data: user
+		}).done(data => {
+			console.log(data);
+
+			if (data.status == 100) {
+				window.location = data.redirect;
+			
+			} else if (data.status > 400) {
+				$('#card-login-alert').removeClass('hide');
+				$('#login-error-msg').text(data.message);
+			} 
+		});
+	});
 	
 });
 

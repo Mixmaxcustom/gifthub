@@ -24,6 +24,9 @@ app.use(bp.text());
 app.use(bp.json({ type: "application/vnd.api+json" }));
 
 
+app.pageContent = { layout: 'main', projname: null, user: { user_id: -1, user_email: null, user_firstname: null, is_logged_in: false}};
+
+
 // serve static content from the "public" 
 app.use(express.static(path.join(__dirname, 'public')));
 // app.use(express.static("public"));
@@ -39,17 +42,16 @@ app.engine('hbs', exphbs({
 app.set("view engine", "hbs");
 
 // routing
-require("./routes/authtest")(app);
+require("./routes/auth")(app);
 require("./routes/index")(app);
 require("./routes/login")(app);
 require("./routes/profile")(app);
 require("./routes/user")(app);
+require("./routes/amazon")(app);
+require("./routes/api")(app);
 require("./config/auth")(app);
 
 
-// api
-const apiroutes = require('./routes/api');
-app.use('/api', apiroutes);
 
 
 // sync database and run app

@@ -146,7 +146,7 @@ CREATE TABLE search_mapping (
 -- Users
 
 INSERT INTO  users  ( user_id, user_firstname, user_lastname, user_password, user_is_admin, user_email, user_birthday, user_bio, user_city, user_state, user_photo, createdAt, updatedAt ) 
-VALUES (1, 'Michael', 'Fessenden', 'cGFzc3dvcmQ', 1, 'michael.fessenden@gmail.com', '1980-02-19', NULL, 'Portsmouth', 'NH', 'img/user-avatar.png', '2018-01-12 01:44:57', '2018-01-12 01:44:57');
+VALUES (1, 'Michael', 'Fessenden', 'cGFzc3dvcmQ=', 1, 'michael.fessenden@gmail.com', '1980-02-19', NULL, 'Portsmouth', 'NH', 'img/user-avatar.png', '2018-01-12 01:44:57', '2018-01-12 01:44:57');
 
 INSERT INTO  users  ( user_id, user_firstname, user_lastname, user_password, user_is_admin, user_email, user_birthday, user_bio, user_city, user_state, user_photo, createdAt, updatedAt ) 
 VALUES (2, 'Elizah', 'Hulseman', 'aHVzcw==', 0, 'ehulseman@gmail.com', '1990-11-01', NULL, 'Portsmouth', 'NH', 'img/user-avatar.png', '2018-01-12 01:44:57', '2018-01-12 01:44:57');

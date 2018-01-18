@@ -1,33 +1,69 @@
 const db = require("../models/");
 const auth = require("../config/auth");
 const cookie = require('cookie');
+const jwt = require("jsonwebtoken");
+const secret = require("../config/secret").secret;
 
 
-// var setCookie = cookie.serialize('foo', 'bar');
-
-let pageContent = {
-	title: "gifthub", // head title
-	projname: "gifthub", // top nav app name
-	table: "users",
-    admin: false,
-    is_logged_in: false
-}
 
 module.exports = function (app) {
 	// user login
 	app.get("/login", function (req, res) {
-		res.render('login', pageContent);
+		res.render('login', app.pageContent);
 	});
 
     // user logged out
 	app.get("/logout", function (req, res) {
-        // res.clearCookie('jwttoken').render('login', pageContent);
-        res.render('register', pageContent);
+        res.clearCookie('gifthub-user').render('login');
     });
     
     // user registration
 	app.get("/register", function (req, res) {
-        res.render('register', pageContent);
+        res.render('register', app.pageContent);
 	});
+
+    // check user credentials
+    app.post("/login", (req, res, next) => {
+        let userData = req.body;
+
+        // TODO: sanity check user
+
+        db.users.findOne({
+            where: {
+                user_email: userData.user_email
+              }
+        }).then( user => {
+
+            // user match in database
+            if (user) {
+                
+                // user logged in successfully
+                if (user.user_password === userData.user_password) {
+
+                    let dbuser = {
+                        user_firstname: user.user_firstname,
+                        user_email: user.user_email,
+                        user_id: user.user_id,
+                        user_is_admin: user.user_is_admin
+                    }
+
+                    // sign and create cookie
+                    const token = jwt.sign(dbuser, secret);
+                    // res.cookie('gifthub-user', token, { maxAge: 86400 });
+                    res.cookie('gifthub-user', token);
+                    res.json({ status: 100, redirect: '/' });
+
+                // user is in database, but passwords don't match
+                } else {
+                    res.json({ status: 403, message: 'incorrect password.', redirect: '/login' });
+                }
+            
+            // email not found in the database
+            } else {
+                // res.status(500).json({ error: 'message', redirect: '/login' });
+                res.json({ status: 401, message: 'user not in database.', redirect: '/login' });
+            }
+        });
+    });
 };
 

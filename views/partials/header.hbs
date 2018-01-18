@@ -5,6 +5,8 @@
 	<li><a href="/profile"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
 	<li><a href="/profile/settings"><i class="fa fa-cogs" aria-hidden="true"></i>Settings</a></li>
 	<li class="divider"></li>
+	<li><a href="/amazon"><i class="fa fa-amazon" aria-hidden="true"></i>Amazon Search</a></li>
+	<li class="divider"></li>
 	<li><a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
 </ul>
 
@@ -17,7 +19,7 @@
 		<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 
 		{{!-- user logged in --}}
-		{{#if is_logged_in}} 
+		{{#if user.is_logged_in}} 
 
 			{{!--  Menu (normal) --}}
 			<ul class="right hide-on-med-and-down">
@@ -30,6 +32,8 @@
 				<li><a href="/user/home"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
 				<li><a href="/profile"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
 				<li><a href="/profile/settings"><i class="fa fa-cogs" aria-hidden="true"></i>Settings</a></li>
+				<li class="divider"></li>
+				<li><a href="/amazon"><i class="fa fa-amazon" aria-hidden="true"></i>Amazon Search</a></li>
 				<li class="divider"></li>
 				<li><a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
 			</ul>

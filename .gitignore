@@ -2,6 +2,7 @@
 doc/
 bin/
 pg/
+amazon/
 
 # Logs
 logs
