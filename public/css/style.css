@@ -187,12 +187,20 @@ img {
 /* Materialize */
 
 @media only screen and (max-width: 600px) {
+	.brand-logo,
+	nav .brand-logo i,
+	nav .brand-logo {
+		float: none;
+	}
+
 	.form-row {
 		margin: 0;
 	}
+	
 	#slider {
 		width: 100%;
 	}
+
 	.submit-button-row {
 		margin-top: 40px;
 	}

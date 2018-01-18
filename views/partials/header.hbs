@@ -14,9 +14,13 @@
 
 <nav>
 	<div class="nav-wrapper blue-grey">
+		<div class="row">
+			<div class="col s12">
+				<a href="/" class="brand-logo"><i class="fa fa-gift" aria-hidden="true"></i>GiftHub</a>
+				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+			</div>
+		
 
-		<a href="/" class="brand-logo"><i class="fa fa-gift" aria-hidden="true"></i>GiftHub</a>
-		<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
 
 		{{!-- user logged in --}}
 		{{#if user.is_logged_in}} 
@@ -55,6 +59,6 @@
 			</ul>
 
 		{{/if}}
-
+</div>
 	</div>
 </nav>
