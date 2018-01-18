@@ -1,4 +1,4 @@
-// user authentication
+// user authentication helpers
 module.exports = function (app) {
     // base64 encode a string
     app.b64EncodeUnicode = function(str) {

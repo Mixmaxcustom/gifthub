@@ -9,14 +9,22 @@ font-family: 'Cabin', sans-serif;
 paytone-one
 */
 
-@import url('https://fonts.googleapis.com/css?family=Cabin|Slabo+27px|Source+Sans+Pro');
+@import url('https://fonts.googleapis.com/css?family=Cabin|Cabin+Condensed|Slabo+27px|Source+Sans+Pro');
 
 /* github font :) */
 
 @font-face {
 	font-family: 'Collegia';
-	src: url('../fonts/Collegia.otf');
+	src: url('../fonts/collegia/Collegia.otf') format('otf');
+	font-style: normal;
+    font-weight: 500;
 }
+
+
+@font-face {
+    font-family: 'Cabin', sans-serif;
+}
+
 
 
 html {
@@ -24,9 +32,11 @@ html {
 	min-height: 100%;
 }
 
+/* body & main tweaks for sticky footer */
+
 
 body {
-	font-family: 'Cabin', sans-serif;
+	/* font-family: 'Cabin', sans-serif; */
 	/* Margin bottom by footer height */
 	margin-bottom: 60px;
 	display: flex;
@@ -34,11 +44,17 @@ body {
     flex-direction: column;
 }
 
+
 main {
     flex: 1 0 auto;
 }
 
+
 /* Materialize */
+
+.multiply {
+	background-blend-mode: multiply;
+}
 
 .icon-block {
 	padding: 0 15px;
@@ -109,6 +125,9 @@ img {
 	margin: 0 auto;
 }
 
+.card .card-image img {
+	/* max-height: 230px; */
+}
 
 /* images used in gift detail */
 
@@ -143,6 +162,34 @@ img {
     border-bottom: 4px solid #0a0a0a33;
 }
 
+.btn-flat,
+.btn-flat:hover  {
+	border-radius: 0.7rem;
+	border: 1px solid #98989820;
+}
+
+.btn-flat:hover {
+	background-color: #ededed;
+}
+
+
+.page-footer h2,
+.page-footer h3,
+.page-footer h4, 
+.page-footer h5 {
+	text-shadow: 1px 2px 1px #46464691;
+}
+
+/* fix for white text in modals */
+.page-footer {
+	color: #000;
+}
+
+/* logo headline */
+.page-header {
+	text-shadow: 1px 2px 0 #46464691;
+}
+
 
 /* Materialize Tabs
   -------------------------------------------------- */
@@ -167,6 +214,34 @@ img {
 #sidenav-overlay {
     margin-left: 300px;
 }
+
+/* Materialize Badges
+  -------------------------------------------------- */
+
+.user-categories  {
+
+}
+
+span.category-badge {
+	font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+	background-color: #286fff;
+	color: #fff;
+	/* text-transform: capitalize; */
+	font-size: 1rem;
+	border-radius: 4rem;
+	padding: 0.1rem 1rem 0.1rem 1rem;
+	margin: 0 1px 0 1px;
+}
+
+
+.dropdown-content li>a, .dropdown-content li>span {
+	font-size: 14px;
+}
+
+
+/* Modals */
+.collection .collection-item.avatar
 
 /* Large devices (desktops, less than 1200px) */
 
@@ -209,5 +284,9 @@ img {
 
 	.submit-button-row {
 		margin-top: 40px;
+	}
+
+	.card.large {
+		height: 300px;
 	}
 }
