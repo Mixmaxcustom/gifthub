@@ -17,15 +17,12 @@
 
 				{{!--  Menu (normal) --}}
 				<ul class="right hide-on-med-and-down">
-					<li><a href="/user/home"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
-					<li><a class="dropdown-button" href="/" data-activates="dropdown1"><i class="fa fa-user-circle" aria-hidden="true"></i> Michael<i class="material-icons right">arrow_drop_down</i></a></li>
+					<li><a class="dropdown-button" href="/" data-activates="dropdown1"><i class="fa fa-user-circle" aria-hidden="true"></i> {{user.user_firstname}} {{user.user_lastname}}<i class="material-icons right">arrow_drop_down</i></a></li>
 				</ul>
 
 				{{!-- Menu (collapsed) --}}
 				<ul class="side-nav" id="mobile-demo">
-					<li><a href="/user/home"><i class="fa fa-home" aria-hidden="true"></i> Home</a></li>
 					<li><a href="/profile"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
-					<li><a href="/profile/settings"><i class="fa fa-cogs" aria-hidden="true"></i>Settings</a></li>
 					<li class="divider"></li>
 					<li><a href="/amazon"><i class="fa fa-amazon" aria-hidden="true"></i>Amazon Search</a></li>
 					<li class="divider"></li>
@@ -58,7 +55,6 @@
 
 <ul id="dropdown1" class="dropdown-content">
 	<li><a href="/profile"><i class="fa fa-user" aria-hidden="true"></i>Profile</a></li>
-	<li><a href="/profile/settings"><i class="fa fa-cogs" aria-hidden="true"></i>Settings</a></li>
 	<li class="divider"></li>
 	<li><a href="/amazon"><i class="fa fa-amazon" aria-hidden="true"></i>Amazon Search</a></li>
 	<li class="divider"></li>

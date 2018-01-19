@@ -1,7 +1,9 @@
 -- Heroku
+/*
 DROP DATABASE IF EXISTS `pbtid0lyjykvxit5`;
 CREATE DATABASE `pbtid0lyjykvxit5`;
 USE `pbtid0lyjykvxit5`;
+*/
 
 -- Local Database
 DROP DATABASE IF EXISTS `gifthub_db`;
@@ -70,7 +72,7 @@ CREATE TABLE recipients (
 
 
 
--- gift categories
+-- gift(amazon) categories
 
 CREATE TABLE categories (
   category_id int auto_increment,
@@ -82,6 +84,20 @@ CREATE TABLE categories (
   updatedAt datetime,
   PRIMARY KEY(category_id)
 ) COMMENT='Gift categories/user interests';
+
+
+-- user interests
+
+CREATE TABLE user_interests (
+  interest_id int auto_increment,
+  interest_name varchar(255) not null,
+  -- tag is an alias to another tag (ie "movies" -> "entertainment")
+  interest_description mediumtext,
+  createdAt datetime,
+  updatedAt datetime,
+  PRIMARY KEY(interest_id)
+) COMMENT='User interests';
+
 
 
 
@@ -202,260 +218,15 @@ CREATE TABLE event_recipient_mapping (
 ) COMMENT='Map saved events to recipients';
 
 
+-- map user -> user interest
 
--- Users
+CREATE TABLE user_interest_mapping (
+  uint_map_id int auto_increment,
+  -- this is really recipient
+  user_id int default -1,
+  recipient_id int not null,
+  interest_id int not null,
+  PRIMARY KEY(uint_map_id)
+) COMMENT='Map recipients to interests.';
 
-INSERT INTO  users  ( user_id, user_firstname, user_lastname, user_password, user_is_admin, user_email, user_birthday, user_bio, user_city, user_state, user_photo, createdAt, updatedAt ) 
-VALUES (1, 'Michael', 'Fessenden', 'cGFzc3dvcmQ=', 1, 'michael.fessenden@gmail.com', '1980-02-19', NULL, 'Portsmouth', 'NH', 'img/user-avatar.png', '2018-01-12 01:44:57', '2018-01-12 01:44:57');
 
-INSERT INTO  users  ( user_id, user_firstname, user_lastname, user_password, user_is_admin, user_email, user_birthday, user_bio, user_city, user_state, user_photo, createdAt, updatedAt ) 
-VALUES (2, 'Elizah', 'Hulseman', 'aHVzcw==', 0, 'ehulseman@gmail.com', '1990-11-01', NULL, 'Portsmouth', 'NH', 'img/user-avatar.png', '2018-01-12 01:44:57', '2018-01-12 01:44:57');
-
-INSERT INTO  users  ( user_id, user_firstname, user_lastname, user_password, user_is_admin, user_email, user_birthday, user_bio, user_city, user_state, user_photo, createdAt, updatedAt ) 
-VALUES (3, 'Jacob', 'Letourneau', 'M0lmNEEkI3JyNE1k', 0, 'mntypython74@gmail.com', '1992-06-03', NULL, 'Dover', 'NH', 'img/user-avatar.png', '2018-01-12 01:46:54', '2018-01-12 01:46:54');
-
-INSERT INTO  users  ( user_id, user_firstname, user_lastname, user_password, user_is_admin, user_email, user_birthday, user_bio, user_city, user_state, user_photo, createdAt, updatedAt ) 
-VALUES (4, 'Mike', 'Sherman', 'UXdlcnR5XzEyMw==', 0, 'msherman83@gmail.com', '1983-05-01', NULL, 'Portsmouth', 'NH', 'img/user-avatar.png', '2018-01-12 02:16:39', '2018-01-12 02:16:39');
-
-INSERT INTO  users  ( user_id, user_firstname, user_lastname, user_password, user_is_admin, user_email, user_birthday, user_bio, user_city, user_state, user_photo, createdAt, updatedAt ) 
-VALUES (5, 'James', 'Roth', 'cGFzc3dvcmQ=', 1, 'jkltroth@gmail.com', '1991-10-30', NULL, 'Danville', 'NH', 'img/user-avatar.png', '2018-01-12 02:18:21', '2018-01-12 02:18:21');
-
-
--- Categories
-
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('All', 'All Departments', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('Appliances', 'Appliances', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('ArtsAndCrafts', 'Arts, Crafts & Sewing', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('Automotive', 'Automotive', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('Baby', 'Baby', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('Beauty', 'Beauty', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('Books', 'Books', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('Collectibles', 'Collectibles & Fine Arts', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('Electronics', 'Electronics', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('Fashion', 'Clothing, Shoes & Jewelry', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('FashionBaby', 'Clothing, Shoes & Jewelry - Baby', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('FashionBoys', 'Clothing, Shoes & Jewelry - Boys', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('FashionGirls', 'Clothing, Shoes & Jewelry - Girls', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('FashionMen', 'Clothing, Shoes & Jewelry - Men', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('FashionWomen', 'Clothing, Shoes & Jewelry - Women', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('GiftCards', 'Gift Cards', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('Grocery', 'Grocery & Gourmet Food', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('Handmade', 'Handmade', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('HealthPersonalCare', 'Health & Personal Care', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('HomeGarden', 'Home & Kitchen', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('Industrial', 'Industrial & Scientific', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('KindleStore', 'Kindle Store', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('LawnAndGarden', 'Patio, Lawn & Garden', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('Luggage', 'Luggage & Travel Gear', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('Magazines', 'Magazine Subscriptions', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('Marketplace', NULL, 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('Merchants', NULL, 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('MobileApps', 'Apps & Games', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('Movies', 'Movies & TV', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('MP3Downloads', 'Digital Music', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('Music', 'CDs & Vinyl', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('MusicalInstruments', 'Musical Instruments', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('OfficeProducts', 'Office Products', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('Pantry', 'Prime Pantry', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('PCHardware', 'Computers', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('PetSupplies', 'Pet Supplies', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('Software', 'Software', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('Tools', 'Tools & Home Improvement', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('Toys', 'Toys & Games', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('UnboxVideo', 'Amazon Instant Video', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('Vehicles', 'Vehicles', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('VideoGames', 'Video Games', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('Wine', 'Wine', 0);
-
-INSERT INTO categories (category_name, category_description, category_age_limit)
-VALUES ('Wireless', 'Cell Phones & Accessories', 0);
-
-
--- Recipients
-
-INSERT INTO recipients (recipient_title, recipient_firstname, recipient_lastname, recipient_email, recipient_birthday, recipient_bio, recipient_city, recipient_state, recipient_photo)
-VALUES (null, 'Samantha', null, null, null, "don't worry, she has other hats", 'Boston', 'MA', '/img/recipients/woman.jpg');
-
-
-INSERT INTO recipients (recipient_title, recipient_firstname, recipient_lastname, recipient_email, recipient_birthday, recipient_bio, recipient_city, recipient_state, recipient_photo)
-VALUES (null, 'Peter', 'Stewart', null, null, 'my favorite cousin', 'Bowling Green', 'KY', '/img/recipients/glasses-guy.png');
-
-
-
-INSERT INTO recipients (recipient_title, recipient_firstname, recipient_lastname, recipient_email, recipient_birthday, recipient_bio, recipient_city, recipient_state, recipient_photo)
-VALUES ('Great Aunt Susan', null, null, null, null, 'had some trouble taking this photo', 'Los Angeles', 'CA', '/img/recipients/grandma.jpg');
-
-
-
-INSERT INTO recipient_mapping (user_id,recipient_id)
-VALUES (1, 2);
-
-
-INSERT INTO recipient_mapping (user_id,recipient_id)
-VALUES (2, 2);
-
-
-INSERT INTO recipient_mapping (user_id,recipient_id)
-VALUES (3, 2);
-
-
-INSERT INTO recipient_mapping (user_id,recipient_id)
-VALUES (4, 2);
-
-
-INSERT INTO recipient_mapping (user_id,recipient_id)
-VALUES (5, 2);
-
-
--- Gifts
-
-INSERT INTO gifts (gift_name, gift_description, gift_asin, gift_upc, gift_photo, gift_price, gift_url)
-VALUES ('Art That Changed the World', 
-'Art That Changed the World tells the story of every major art style, movement by movement, giving art lovers a visual timeline showing key paintings that sparked each transition and explaining major events that shaped their evolution..',
-'1465414355', null, 'https://images-na.ssl-images-amazon.com/images/I/61Y1UqLcEYL._SX420_BO1,204,203,200_.jpg', 28.21, 'https://www.amazon.com/dp/1465414355');
-
-
-INSERT INTO gift_category_mapping (gift_id, category_id)
-VALUES (1, 3);
-
-INSERT INTO gift_category_mapping (gift_id, category_id)
-VALUES (1, 7);
-
-
-
-INSERT INTO gifts (gift_name, gift_description, gift_asin, gift_upc, gift_photo, gift_price, gift_url)
-VALUES ('Kat Von D Shade + Light Glimmer Eye Palette', 'An eye contouring palette with 12 neutral shades in a range of glimmer finishes.',
-'B073WJ24TN', '816657022117', 'https://images-na.ssl-images-amazon.com/images/I/41OU%2Bavm7CL.jpg', 61.99, 'https://www.amazon.com/dp/B073WJ24TN');
-
-INSERT INTO gift_category_mapping (gift_id, category_id)
-VALUES (2, 6);
-
-INSERT INTO gift_category_mapping (gift_id, category_id)
-VALUES (2, 19);
-
-
-
-INSERT INTO gifts (gift_name, gift_description, gift_asin, gift_upc, gift_photo, gift_price, gift_url)
-VALUES ('9Greenbox Best Gift Bonsai Juniper Tree, 4 Pound', 'Bonsai is popularized by Japanese people as an art of growing ornamental, dwarf trees.',
-'B00HG9SIO8', '797734699852', 'https://images-na.ssl-images-amazon.com/images/I/413GVvTH6UL.jpg', 12.79, 'https://www.amazon.com/dp/B00HG9SIO8');
-
-
-INSERT INTO gift_category_mapping (gift_id, category_id)
-VALUES (3, 17);
-
-INSERT INTO gift_category_mapping (gift_id, category_id)
-VALUES (3, 23);
-
-
-
-INSERT INTO gifts (gift_name, gift_description, gift_asin, gift_upc, gift_photo, gift_price, gift_url)
-VALUES ('Perler Beads 80-42935 Secret Life of Pets Fused Bead Bucket', 'The Perler Secret lives of pets fused bead bucket includes: 6000 beads, 3 small square pegboards, pattern sheet, ironing paper, and easy instructions.',
-'B01H4Y4528', '80-42935', 'https://images-na.ssl-images-amazon.com/images/I/71wdrsjhL2L._SL1200_.jpg', 11.26, 'https://www.amazon.com/dp/B01H4Y4528');
-
-
-INSERT INTO gift_category_mapping (gift_id, category_id)
-VALUES (4, 3);
-
-INSERT INTO gift_category_mapping (gift_id, category_id)
-VALUES (4, 39);
-
-
-
--- User Events
-INSERT INTO user_events (event_name, event_description, event_date)
-VALUES ('Christmas', 'Christmas 2018', '2018-12-25');
-
-INSERT INTO user_event_mapping (user_id, event_id)
-VALUES (1, 1);
-
-INSERT INTO user_events (event_name, event_description, event_date)
-VALUES ('Easter', 'Easter 2018', '2018-04-11');
-
-INSERT INTO user_event_mapping (user_id, event_id)
-VALUES (1, 2);

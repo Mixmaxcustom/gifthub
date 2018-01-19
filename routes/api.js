@@ -3,7 +3,7 @@ const db = require('../models/')
 
 
 
-module.exports = function (app) {
+module.exports = (app) => {
 	// api home
 	app.get("/api", function (req, res) {
 		app.pageContent.layout = 'api';

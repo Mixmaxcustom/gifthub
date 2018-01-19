@@ -5,20 +5,29 @@ $(document).ready(function () {
 
     // user clicked login button
     $('body').on('click', '#submit-btn', event => {
-        console.log(`# Searching...`);
+        console.log(`# Querying Amazon...`);
 
         let searchData = {
-            category: $('#gift-category').val(),
-            keyword: $('#keyword').val(),
-            max_price: $('#max-price').val()
+            SearchIndex: $('#gift-category').val(),
+            Keywords: $('#keyword').val(),
+            MaximumPrice: parseInt($('#max-price').val()) * 100
         }
 
         $.ajax("/amazon", {
             type: "POST",
             data: searchData
-        }).done(data => {
-            // do something with data
-        });
+        }).done( data => {
 
+            $('#json-output').removeClass('hide');
+            $('#json-response').val(JSON.stringify(data, null, 4));
+        });
+    });
+
+    $('body').on('click', '.code-format', event => {
+        console.log(`code clicked...`);
+        $('.code-format').select();
     });
 });
+
+
+
