@@ -21,9 +21,10 @@ paytone-one
 }
 
 
-@font-face {
-    font-family: 'Cabin', sans-serif;
-}
+@font-face { font-family: 'Cabin', sans-serif;}
+@font-face { font-family: 'Slabo 27px', serif;}
+@font-face { font-family: 'Source Sans Pro', sans-serif;}
+@font-face { font-family: 'Cabin', sans-serif;}
 
 
 
@@ -105,7 +106,7 @@ footer a:active {
 
 footer a:hover {
 	color: #75c1e5;
-	cursor: default;  
+	cursor: default;
 }
 
 /* Application Custom CSS
@@ -175,7 +176,7 @@ img {
 
 .page-footer h2,
 .page-footer h3,
-.page-footer h4, 
+.page-footer h4,
 .page-footer h5 {
 	text-shadow: 1px 2px 1px #46464691;
 }
@@ -212,8 +213,10 @@ img {
 
 /* fix for side nav on mobile */
 #sidenav-overlay {
-    margin-left: 300px;
+    /*margin-left: 300px;*/
+	z-index: 996;
 }
+
 
 /* Materialize Badges
   -------------------------------------------------- */
@@ -232,6 +235,11 @@ span.category-badge {
 	border-radius: 4rem;
 	padding: 0.1rem 1rem 0.1rem 1rem;
 	margin: 0 1px 0 1px;
+}
+
+.badge-container {
+	display: flow-root;
+	padding: 0.8rem 0 0.5rem 0;
 }
 
 
@@ -287,7 +295,7 @@ span.gift-title {
 	.form-row {
 		margin: 0;
 	}
-	
+
 	#slider {
 		width: 100%;
 	}

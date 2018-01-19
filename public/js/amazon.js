@@ -1,7 +1,25 @@
 // amazon api module
+
+// format a float for passing to Amazon
+Number.prototype.__defineGetter__('amazonPrice', function () {
+    // return (parseInt(this * 100));
+
+    if (!this % 1 === 0) {
+        return (parseInt(this) / 100).toFixed(2);
+    }; return this.toFixed(2);
+});
+
+// format an Amazon price
+Number.prototype.__defineGetter__('priceFormatted', function () {
+    if (this % 1 === 0) {
+        return (parseInt(this) / 100).toFixed(2);
+    }; return this.toFixed(2);
+});
+
+
 $(document).ready(function () {
 
-    console.log(`# Loading Amazon API module...`);
+    console.log(`> loading Amazon API...`);
 
     // user clicked login button
     $('body').on('click', '#submit-btn', event => {
@@ -28,6 +46,3 @@ $(document).ready(function () {
         $('.code-format').select();
     });
 });
-
-
-

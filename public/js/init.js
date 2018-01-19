@@ -2,66 +2,80 @@
 
 
 const allStates = ["AK", "AL", "AR", "AS", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "GU", "HI", "IA", "ID", "IL", "IN",
-	"KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV",
-	"NY", "OH", "OK", "OR", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VI", "VT", "WA", "WI", "WV", "WY"
+    "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV",
+    "NY", "OH", "OK", "OR", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UT", "VA", "VI", "VT", "WA", "WI", "WV", "WY"
 ];
 
 
 // initialize the states menu
 function setupStateMenu() {
-	let statesmenu = $('#input_user_state');
-	// var curstate = statesmenu.find(":selected").text();
-	if (statesmenu.length > 0) {
-		let selected_state = statesmenu.data().value;
-		statesmenu.empty();
-		statesmenu.append($(`<option selected>Choose...</option>`));
-		allStates.forEach(state => {
-			statesmenu.append($(`<option date-value="${state}">${state}</option>`));
-		})
-		statesmenu.val(selected_state);
-	}
-	$('select').material_select();
+    let statesmenu = $('#input_user_state');
+    // var curstate = statesmenu.find(":selected").text();
+    if (statesmenu.length > 0) {
+        let selected_state = statesmenu.data().value;
+        statesmenu.empty();
+        statesmenu.append($(`<option selected>Choose...</option>`));
+        allStates.forEach(state => {
+            statesmenu.append($(`<option date-value="${state}">${state}</option>`));
+        })
+        statesmenu.val(selected_state);
+    }
+    $('select').material_select();
 }
 
 
+// document start
+(function($){
+  $(function(){
+
+    $('.button-collapse').sideNav();
+
+    console.log(`> initializing Materialize...`);
+
+    //Dropdowns
+    $('select').material_select();
+
+    //Side Nav - Landing Page
+    // Initialize collapse button
+    // $(".button-collapse").sideNav();
+    // $('.button-collapse').sideNav('hide');
+    $('.button-collapse').sideNav({'edge': 'left'});
+
+    //Modal Dialog for profile page
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('.modal').modal();
+
+    //Modal Dialog Date Picker
+    $('.datepicker').pickadate({
+        selectMonths: true, // Creates a dropdown to control month
+        selectYears: 100,
+        today: 'Today',
+        clear: 'Clear',
+        close: 'Ok',
+        closeOnSelect: false // Close upon selecting a date,
+    });
 
 
-$(document).ready(function () {
+    // initialize text fields
+    Materialize.updateTextFields();
+    $('select').material_select();
+    setupStateMenu();
 
-	console.log(`# Loading materialize initialization module...`);
-
-	//Dropdowns
-	$('select').material_select();
-
-	//Side Nav - Landing Page
-	// Initialize collapse button
-	$(".button-collapse").sideNav();
-	$('.button-collapse').sideNav('hide');
-
-	//Modal Dialog for profile page
-	// the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-	$('.modal').modal();
-
-	//Modal Dialog Date Picker
-	$('.datepicker').pickadate({
-		selectMonths: true, // Creates a dropdown to control month
-		selectYears: 100,
-		today: 'Today',
-		clear: 'Clear',
-		close: 'Ok',
-		closeOnSelect: false // Close upon selecting a date,
-	});
-
-
-	// initialize text fields
-	Materialize.updateTextFields();
-	$('select').material_select();
-	setupStateMenu();
-
-	$(".dropdown-button").dropdown({
+    $(".dropdown-button").dropdown({
         hover: false
-	});
-	
-	$('ul.tabs').tabs();
-	$('.materialboxed').materialbox();
-});
+    });
+
+    $('ul.tabs').tabs();
+    $('.materialboxed').materialbox();
+
+    $('.chat-collapse').sideNav('hide');
+	$('.chat-collapse').sideNav({
+      menuWidth: 300,
+      edge: 'right',
+    });
+
+
+    // chat-collapse
+
+}); // end of document ready
+})(jQuery); // end of jQuery name space

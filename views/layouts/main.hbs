@@ -22,44 +22,33 @@
 		{{> header}}
 	</header>
 
-	<ul id="slide-out" class="side-nav">
-		<li>
-			<div class="user-view">
-				<div class="background"><img src="/img/gifts/pineapple.jpg"></div>
-				<a href="#!user"><img class="circle" src="/img/recipients/woman.jpg"></a>
-				<a href="#!name"><span class="white-text name">John Doe</span></a>
-				<a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
-			</div>
-		</li>
-
-		<li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
-		<li><a href="#!">Second Link</a></li>
-		<li><div class="divider"></div></li>
-		<li><a class="subheader">Subheader</a></li>
-		<li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
-	</ul>
-
-	{{!-- <a href="#" data-activates="slide-out" class="button-collapse">Login/Signup</a> --}}
 
 	<!-- Body -->
 	<main>
 		{{{body}}}
 	</main>
 
+
 	<!-- Footer -->
 	<footer class="page-footer blue-grey multiply">
 		{{> footer}}
 	</footer>
 
+	<!-- Dynamic Content -->
 
+	{{> actions}}
+	{{> sidebar}}
 	{{> modals/search-btm}}
+
 
 	<!--  Scripts-->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 	<script src="/js/materialize.js"></script>
 	<script src="/js/init.js"></script>
+	<script src="/js/materialize-pagination.js"></script>
 	<script src="/js/view.js"></script>
 	<script src="/js/amazon.js"></script>
+	<script src="/js/user.js"></script>
 </body>
 </html>

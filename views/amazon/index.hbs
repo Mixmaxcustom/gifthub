@@ -1,0 +1,48 @@
+<div class="container">
+
+    <div class="row">
+        <h4>Amazon Search</h4>
+    </div>
+
+    <div class="row">
+        <div class="form-group row">
+            <label for="gift-category" class="col-2 col-form-label">Gift Category</label>
+            {{!-- Categories Menu --}}
+            <select id="gift_category_menu">
+                <option value="" disabled selected>Gift Type</option>
+
+                {{#each categories as | category |}}
+                    <option value="{{category.category_id}}" data-value="{{category.category_name}}">{{category.category_description}}</option>
+                {{/each}}
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="keyword" class="col-2 col-form-label">Keywords</label>
+        <div class="col-10">
+            <input class="form-control" type="search" id="keyword">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="max-price" class="col-2 col-form-label">Max Price</label>
+        <div class="col-10">
+            <input class="form-control" type="currency" value="500.00" id="max-price">
+        </div>
+    </div>
+
+    <div class="form-group" class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" id="search-button" style="padding:0px;">
+            <button id="submit-btn" type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </div>
+    <br>
+    <br> {{!-- Content Results --}}
+
+    <div id="json-output" class="code-format hide">
+        <h5 id="json-output-header" >Results:</h4>
+        <textarea name="response" id="json-response" cols="30" rows="100"></textarea>
+    </div>
+</div>
+</div>
