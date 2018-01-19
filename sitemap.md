@@ -10,7 +10,7 @@
     users.js
     index.js
     gifts.js
-  
+
   /public
     /css
       reset.css
@@ -73,3 +73,9 @@
     login.js
     gifts.js
 ```
+
+
+
+
+
+views/profile.hbs - user profile home page

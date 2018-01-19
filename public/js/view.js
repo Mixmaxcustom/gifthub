@@ -78,7 +78,7 @@ var currentCategoryID;
 
 // document load
 $(document).ready(function () {
-	console.log(`# Loading view module...`);
+	console.log(`> loading view module...`);
 
 
 	// user registration clicked
@@ -95,8 +95,32 @@ $(document).ready(function () {
 		event.preventDefault();
 		event.stopPropagation();
 
-		let button = $(event.currentTarget);
-		validateUserRegistrationForm();
+
+		let recipient = {
+			recipient_title: $('#recipient_title').val(),
+			recipient_firstname: $('#recipient_firstname').val() || null,
+			recipient_lastname: $('#recipient_lastname').val() || null,
+			recipient_birthday: $('#recipient_birthday').val() || null,
+			recipient_email: $('#recipient_email').val() || null,
+			recipient_bio: $('#recipient_email').val() || null
+		}
+
+		console.log(recipient);
+
+		$.ajax("/recipients", {
+			type: "POST",
+			data: recipient
+		}).done( results => {
+			console.log(results);
+
+			if (data.status == 100) {
+				// window.location = data.redirect;
+				console.log(`added user!`);
+
+			} else if (data.status > 400) {
+				console.log(`Error: ${res.message}`);
+			}
+		});
 	});
 
 	// user clicked login button
@@ -119,14 +143,14 @@ $(document).ready(function () {
 
 			if (data.status == 100) {
 				window.location = data.redirect;
-			
+
 			} else if (data.status > 400) {
 				$('#card-login-alert').removeClass('hide');
 				$('#login-error-msg').text(data.message);
-			} 
+			}
 		});
 	});
-	
+
 });
 
 

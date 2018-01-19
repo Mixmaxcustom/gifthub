@@ -45,7 +45,7 @@ CREATE TABLE users (
   user_bio mediumtext,
   user_city varchar(255),
   user_state varchar(255),
-  user_photo varchar(255) default "img/user-avatar.png",
+  user_photo varchar(255) default "/img/user-avatar.png",
   createdAt datetime,
   updatedAt datetime,
   PRIMARY KEY(user_id)
@@ -59,12 +59,12 @@ CREATE TABLE recipients (
   recipient_firstname varchar(255),
   recipient_lastname varchar(255),
   recipient_email varchar(255),
-  recipient_max_price decimal(10, 2) default 0,
+  recipient_max_budget decimal(10, 2) default 0,
   recipient_birthday date,
   recipient_bio mediumtext,
   recipient_city varchar(255),
   recipient_state varchar(255),
-  recipient_photo varchar(255) default "img/user-avatar.png",
+  recipient_photo varchar(255) default "/img/user-avatar.png",
   createdAt datetime,
   updatedAt datetime,
   PRIMARY KEY(recipient_id)
@@ -79,6 +79,7 @@ CREATE TABLE categories (
   category_name varchar(255) not null,
   -- tag is an alias to another tag (ie "movies" -> "entertainment")
   category_description mediumtext,
+  category_icon varchar(255) default 'play_circle_filled',
   category_age_limit int default 0,
   createdAt datetime,
   updatedAt datetime,
@@ -228,5 +229,3 @@ CREATE TABLE user_interest_mapping (
   interest_id int not null,
   PRIMARY KEY(uint_map_id)
 ) COMMENT='Map recipients to interests.';
-
-
