@@ -240,8 +240,18 @@ span.category-badge {
 }
 
 
+.code-format {
+	font-family: monospace;
+	white-space: pre-wrap;
+	font-size: 75%;
+}
+
+span.gift-title {
+	font-weight: 800;
+}
+
 /* Modals */
-.collection .collection-item.avatar
+/* .collection .collection-item.avatar {} */
 
 /* Large devices (desktops, less than 1200px) */
 

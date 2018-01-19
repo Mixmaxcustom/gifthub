@@ -1,4 +1,4 @@
-// user -> category table
+// user -> event table
 module.exports = function (sequelize, DataTypes) {
 	var user_event_mapping = sequelize.define("user_event_mapping", {
 		uevent_map_id: {
