@@ -43,6 +43,7 @@ app.set("view engine", "hbs");
 
 //  routing
 require("./routes/auth")(app);
+require("./routes/events")(app);
 require("./routes/index")(app);
 require("./routes/login")(app);
 require("./routes/profile")(app);

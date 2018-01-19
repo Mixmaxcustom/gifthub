@@ -1,11 +1,7 @@
 // Amazon API client module
-const awsclient = require('./config/amazon');
+const AmazonClient = require('./config/amazon');
 
 
-var AmazonClient = {
-    client: awsclient
-};
 
-
-console.log(`# Initializing Amazon API Client...`);
+console.log(`> initializing Amazon API Client...`);
 module.exports = AmazonClient;

@@ -3,7 +3,6 @@ package-lock.json
 doc/
 bin/
 pg/
-amazon/
 
 # Logs
 logs

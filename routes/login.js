@@ -5,8 +5,7 @@ const jwt = require("jsonwebtoken");
 const secret = require("../config/secret").secret;
 
 
-
-module.exports = function (app) {
+module.exports = (app) => {
 	// user login
 	app.get("/login", function (req, res) {
 		res.render('login', app.pageContent);
@@ -20,6 +19,7 @@ module.exports = function (app) {
             user_id: -1,
             user_email: null,
             user_firstname: null,
+            user_lastname: null,
             is_logged_in: false
         }
 
@@ -52,6 +52,7 @@ module.exports = function (app) {
 
                     let dbuser = {
                         user_firstname: user.user_firstname,
+                        user_lastname: user.user_lastname,
                         user_email: user.user_email,
                         user_id: user.user_id,
                         user_is_admin: user.user_is_admin
