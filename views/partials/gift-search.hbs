@@ -1,6 +1,6 @@
 <form class="col s12">
     <div class="row form-row">
-        <div class="input-field col s12 m6">
+        <div class="input-field col s12 m4">
 
             {{!-- Categories Menu --}}
             <select id="gift_category_menu">
@@ -14,8 +14,13 @@
             <label>Gift Type</label>
         </div>
 
+         <div class="input-field col s12 m4">
+             <input id="keyword" type="text">
+
+         </div>
+
         {{!-- Price Menu --}}
-        <div class="input-field col s12 m6">
+        <div class="input-field col s12 m4">
             <select id="max-price">
                 <option value="" disabled selected>Maximum Price</option>
 
@@ -29,6 +34,10 @@
 
             </select>
             <label>Maximum Price</label>
+
+            <a id="search-submit-btn" class="btn">
+            <i class="material-icons">search</i>Search</a>
+            
         </div>
     </div>
 </form>

@@ -8,6 +8,7 @@ const secret = require("../config/secret").secret;
 module.exports = (app) => {
 	// user login
 	app.get("/login", function (req, res) {
+        app.pageContent.layout = 'home';
         res.render('login', app.pageContent);
 	});
 
@@ -24,7 +25,8 @@ module.exports = (app) => {
         }
 
         // clear the cookie
-        res.clearCookie('gifthub-user').render('login');        
+        app.pageContent.layout = 'home';
+        res.clearCookie('gifthub-user').render('login', app.pageContent);        
     });
     
     // user registration

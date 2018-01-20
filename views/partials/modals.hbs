@@ -1,0 +1,46 @@
+
+{{!-- New Recipient Modal --}}
+
+<div id="add_new_recipient" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <h4>Add New Recipient</h4>
+        <p>( not working just yet )</p>
+        <form>
+            <div class="row"> 
+                <div class="input-field col s12"> 
+                    <input id="recipient_title" type="text" class="validate"> 
+                    <label for="recipient_title">Title</label>                                 
+                </div>                             
+            </div>
+            <div class="row"> 
+                <div class="input-field col s6"> 
+                    <input id="recipient_firstname" type="text" class="validate"> 
+                    <label for="recipient_firstname">First Name</label>                                 
+                </div>                             
+                <div class="input-field col s6"> 
+                    <input id="recipient_lastname" type="text" class="validate"> 
+                    <label for="recipient_lastname">Last Name</label>                                 
+                </div>                             
+            </div>                         
+            <div class="row"> 
+                <div class="input-field col s3"> 
+                    <input id="recipient_birthday" type="text" class="datepicker validate"> 
+                    <label for="recipient_birthday">Birthday</label>                                 
+                </div>                             
+                <div class="input-field col s9"> 
+                    <input id="recipient_email" type="email" class="validate"> 
+                    <label for="recipient_email">Email (optional)</label>                                 
+                </div>                             
+            </div>                         
+            <div class="row"> 
+                <div class="input-field col s12"> 
+                    <textarea id="recipient_bio" class="materialize-textarea"></textarea>                                 
+                    <label for="recipient_bio">Recipient Details</label>                                 
+                </div>                             
+            </div>                         
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a id="recipient_registration_submit" class="modal-action modal-close waves-effect waves-green btn-flat ">Save</a>
+    </div>
+</div>

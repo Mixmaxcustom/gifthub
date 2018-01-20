@@ -12,44 +12,34 @@
 	<link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
 	<link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 	<script src="https://use.fontawesome.com/3f13c469b8.js"></script>
-	{{!-- <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script> --}}
+
+  <!-- Google Fonts  -->
+  <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Berkshire+Swash|Raleway" rel="stylesheet">
 </head>
 
 <body>
 
-	<!-- Header -->
-	<header>
-		{{> header}}
-	</header>
+<main>
+
+{{{body}}}
 
 
-	<!-- Body -->
-	<main>
-		{{{body}}}
-	</main>
+</main>
 
 
-	<!-- Footer -->
-	<footer class="page-footer footer-fixed blue-grey multiply">
-		{{> footer}}
-	</footer>
-
-	<!-- Dynamic Content -->
-
-	{{> actions}}
-	{{> sidebar}}
-	{{> modals }}
 
 
 	<!--  Scripts-->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
-	<script src="/vendor/js/jquery.nestable.js"></script>
 	<script src="/js/materialize.js"></script>
 	<script src="/js/init.js"></script>
 	<script src="/js/materialize-pagination.js"></script>
 	<script src="/js/view.js"></script>
 	<script src="/js/amazon.js"></script>
 	<script src="/js/user.js"></script>
+
 </body>
+
 </html>

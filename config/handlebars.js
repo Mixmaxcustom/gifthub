@@ -17,6 +17,11 @@ module.exports = {
         return `${shdate}/XXXX`;
     },
 
+    // price formatter
+    formatPrice: (price) => {
+        return (price / 100).toFixed(2);
+    },
+
     component: (partial, options) => {
         const template = Handlebars.compile(Handlebars.partials[partial])
         const html = template(options.hash)

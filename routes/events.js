@@ -6,7 +6,9 @@ module.exports = (app) => {
     app.get("/events", function(req, res) {
         // look for the current user in the database
         db.user_events.findAll().then( events => {
-            res.json(events)
+            // res.json(events)
+            app.pageContent.events = events;
+            res.render('events', app.pageContent)
         })
     });
 

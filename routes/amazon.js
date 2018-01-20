@@ -1,6 +1,6 @@
 const db 			= require("../models/");
 const path 			= require('path');
-const AmazonClient 	= require('../amazon-client');
+const client 		= require('../amazon-client');
 
 
 module.exports = (app) => {
@@ -20,11 +20,14 @@ module.exports = (app) => {
 		// if getting values via url params, query the Request.query
 		let searchData = (Object.keys(req.query).length > 0) ? req.query : req.body;
 
-		AmazonClient.itemSearch(
+		client.itemSearch(
 			searchData
 		).then( results => {
 			console.log(`   - getting results...`);
-			res.json(results);
+			app.pageContent.gifts = results;
+            res.render('search', app.pageContent);
+			// postman
+			// res.json(results);
 		}).catch( err => {
 			console.log(err[0].Error[0].Message[0]);
 			res.json(err);

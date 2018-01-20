@@ -5,6 +5,11 @@ module.exports = (app) => {
 	// user profile
 	app.get("/search", (req, res) => {
         console.log(` - requesting ${req.url}`);
-		res.render('search', app.pageContent);
+
+		db.categories.findAll().then(categories => {
+			app.pageContent.layout = 'main';
+			app.pageContent.categories = categories;
+			res.render('search', app.pageContent);
+		});
 	});
 };

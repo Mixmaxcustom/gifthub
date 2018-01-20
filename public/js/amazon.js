@@ -21,28 +21,26 @@ $(document).ready(function () {
 
     console.log(`> loading Amazon API...`);
 
-    // user clicked login button
-    $('body').on('click', '#submit-btn', event => {
-        console.log(`# Querying Amazon...`);
-
+    // user clicked search button
+    $('body').on('click', '#search-submit-btn', event => {
+        $('#search-results-modal').modal('open');
         let searchData = {
-            SearchIndex: $('#gift-category').val(),
+            SearchIndex: $('#gift_category_menu').find('option:selected').text(),
             Keywords: $('#keyword').val(),
             MaximumPrice: parseInt($('#max-price').val()) * 100
         }
 
+        // post to amazon
         $.ajax("/amazon", {
             type: "POST",
             data: searchData
         }).done( data => {
-
-            $('#json-output').removeClass('hide');
-            $('#json-response').val(JSON.stringify(data, null, 4));
+            // $('#json-response').text(JSON.stringify(data, null, 4));
         });
     });
 
-    $('body').on('click', '.code-format', event => {
-        console.log(`code clicked...`);
-        $('.code-format').select();
+    // close the search results
+    $('body').on('click', '#search-results-close', event => {
+        $('#search-results-modal').modal('close');
     });
 });

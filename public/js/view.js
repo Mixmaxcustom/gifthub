@@ -101,6 +101,8 @@ $(document).ready(function () {
 			recipient_firstname: $('#recipient_firstname').val() || null,
 			recipient_lastname: $('#recipient_lastname').val() || null,
 			recipient_birthday: $('#recipient_birthday').val() || null,
+			recipient_city: $('#recipient_city').val() || null,
+			recipient_state: $('#recipient_state').val() || null,
 			recipient_email: $('#recipient_email').val() || null,
 			recipient_bio: $('#recipient_email').val() || null
 		}
@@ -165,5 +167,7 @@ $('#search-results-modal').modal('open');
 
 // selected category category_id
 ('#gift_category_menu').find(":selected").val();
+
+Materialize.toast('I am a toast!', 4000)
 
 */

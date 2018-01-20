@@ -8,6 +8,7 @@ module.exports = (app) => {
 		console.log(` - requesting ${req.url}`);
 		
 		db.categories.findAll().then(categories => {
+			app.pageContent.layout = 'main';
 			app.pageContent.categories = categories;
             res.render('index', app.pageContent);
 		});

@@ -8,7 +8,7 @@ module.exports = function (sequelize, DataTypes) {
 		},
 
 		gift_name: DataTypes.STRING,
-		gift_description: DataTypes.STRING,
+		gift_description: DataTypes.STRING,		
 		gift_asin: DataTypes.STRING,
 		gift_part_num: DataTypes.STRING,
 		gift_photo: DataTypes.STRING,
