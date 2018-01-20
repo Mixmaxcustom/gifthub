@@ -6,14 +6,16 @@ Number.prototype.__defineGetter__('amazonPrice', function () {
 
     if (!this % 1 === 0) {
         return (parseInt(this) / 100).toFixed(2);
-    }; return this.toFixed(2);
+    };
+    return this.toFixed(2);
 });
 
 // format an Amazon price
 Number.prototype.__defineGetter__('priceFormatted', function () {
     if (this % 1 === 0) {
         return (parseInt(this) / 100).toFixed(2);
-    }; return this.toFixed(2);
+    };
+    return this.toFixed(2);
 });
 
 
@@ -33,11 +35,17 @@ $(document).ready(function () {
 
         $.ajax("/amazon", {
             type: "POST",
-            data: searchData
-        }).done( data => {
+            data: searchData,
+            traditional: true
+        }).done(productInfoObject => {
+            // Unique console.log message here to confirm AJAX receipt of object -JR
+            console.log("This is the data: " + productInfoObject);
+            console.log(productInfoObject);
 
-            $('#json-output').removeClass('hide');
-            $('#json-response').val(JSON.stringify(data, null, 4));
+            //------Do something with "productInfoObject" here------
+
+            // $('#json-output').removeClass('hide');
+            // $('#json-response').val(JSON.stringify(data, null, 4));
         });
     });
 
