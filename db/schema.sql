@@ -109,7 +109,7 @@ CREATE TABLE gifts (
   gift_name varchar(255),
   gift_description mediumtext,
   gift_asin varchar(255),
-  gift_upc varchar(255),
+  gift_part_num varchar(255),
   gift_photo varchar(255),
   gift_price decimal(10,2) default 0,
   gift_purchased boolean default 0,
