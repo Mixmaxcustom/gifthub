@@ -64,18 +64,17 @@ $(document).ready(function () {
 			recipient.recipient_birthday = birthday;
 		}
 
-		console.log(recipient);
-
 		$.ajax("/recipients", {
 			type: "POST",
 			data: recipient
 		}).done( results => {
 			console.log(results);
-			if (data.status == 100) {
+			if (results.status == 100) {
 				// window.location = data.redirect;
 				console.log(`added user!`);
+				$( "#recipient_title" ).load('/profile');
 
-			} else if (data.status > 400) {
+			} else if (results.status > 400) {
 				console.log(`Error: ${res.message}`);
 			}
 		}).fail( data => {

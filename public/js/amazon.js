@@ -1,21 +1,5 @@
 // amazon api module
 
-// format a float for passing to Amazon
-Number.prototype.__defineGetter__('amazonPrice', function () {
-    // return (parseInt(this * 100));
-
-    if (!this % 1 === 0) {
-        return (parseInt(this) / 100).toFixed(2);
-    }; return this.toFixed(2);
-});
-
-// format an Amazon price
-Number.prototype.__defineGetter__('priceFormatted', function () {
-    if (this % 1 === 0) {
-        return (parseInt(this) / 100).toFixed(2);
-    }; return this.toFixed(2);
-});
-
 
 $(document).ready(function () {
 
@@ -23,7 +7,7 @@ $(document).ready(function () {
 
     // user clicked search button
     $('body').on('click', '#search-submit-btn', event => {
-        $('#search-results-modal').modal('open');
+
         let searchData = {
             SearchIndex: $('#gift_category_menu').find('option:selected').text(),
             Keywords: $('#keyword').val(),
@@ -35,12 +19,11 @@ $(document).ready(function () {
             type: "POST",
             data: searchData
         }).done( data => {
-            // $('#json-response').text(JSON.stringify(data, null, 4));
-        });
-    });
+            // success
+            // console.log(data);
 
-    // close the search results
-    $('body').on('click', '#search-results-close', event => {
-        $('#search-results-modal').modal('close');
+        }).fail( data => {
+            // fail
+        });
     });
 });

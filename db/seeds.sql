@@ -198,7 +198,7 @@ INSERT INTO recipients (recipient_title, recipient_firstname, recipient_lastname
 VALUES ('Aunt Fran', 'Fran', 'Lebowski', null,  100.00, '1947-10-29', "She's still got that mustache problem...perhaps haircare and grooming products?", 'Dorchester', 'MA', '/img/recipients/fran.jpg');
 
 INSERT INTO recipients (recipient_title, recipient_firstname, recipient_lastname, recipient_email, recipient_max_budget, recipient_birthday, recipient_bio, recipient_city, recipient_state, recipient_photo)
-VALUES ('Fred from Work', 'Fred', 'Farmer', 'fred@farmer.com',  50.00, '1987-04-18', "likes Widow Jane", 'Seattle', 'WA', null);
+VALUES ('Fred from Work', 'Fred', 'Farmer', 'fred@farmer.com',  50.00, '1987-04-18', "likes Widow Jane bourbon", 'Seattle', 'WA', null);
 
 
 INSERT INTO recipient_mapping (user_id,recipient_id)
