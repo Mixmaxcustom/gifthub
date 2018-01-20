@@ -369,9 +369,9 @@ span.gift-title {
 	font-family: 'Material Icons';
 	font-style: normal;
 	font-weight: 400;
-	src: local("Material Icons"), 
+	src: local("Material Icons"),
 	local("MaterialIcons-Regular"),
-	url("../fonts/material-design-icons/MaterialIcons-Regular.ttf") format("truetype"), 
+	url("../fonts/material-design-icons/MaterialIcons-Regular.ttf") format("truetype"),
 	url("../fonts/material-design-icons/MaterialIcons-Regular.woff2") format("woff2"),
 }
 
@@ -449,14 +449,14 @@ span.gift-title {
 	width: 100%;
 	height: 100%;
   }
-  
+
   #home-image {
 	width: 100%;
 	height: 100vh;
 	margin: 0;
 	padding: 0;
   }
-  
+
   .text-centered {
 	position: absolute;
 	width: 25%;
@@ -467,43 +467,43 @@ span.gift-title {
 	color:rgb(53, 49, 49);
 	text-align: center;
   }
-  
+
   h1 {
 	font-family: 'Berkshire Swash', cursive;
   }
-  
+
   h5,
   input {
 	font-family: 'Raleway', sans-serif;
 	padding: 0;
 	margin: 0;
   }
-  
-  #email, 
+
+  #email,
   #password {
 	margin: 0;
 	color:rgb(53, 49, 49);
   }
-  
+
   .icon-block {
 	padding: 0 15px;
   }
   .icon-block .material-icons {
 	  font-size: inherit;
   }
-  
+
   .brand-logo {
 	margin-left: 20px;
   }
-  
-  
+
+
   .main-section,
   .form-questions {
 	margin: 0;
   }
-  
-  
-  
+
+
+
   hr {
 	width: 70%;
 	align-content: center;

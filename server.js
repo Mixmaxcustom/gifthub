@@ -26,7 +26,7 @@ require("./config/init")(app);
 require("./config/auth")(app);
 
 
-// serve static content from the "public" 
+// serve static content from the "public"
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
 
@@ -50,7 +50,6 @@ require("./routes/profile")(app);
 require("./routes/search")(app);
 require("./routes/user")(app);
 require("./routes/amazon")(app);
-require("./routes/api")(app);
 require("./routes/recipients")(app);
 require("./routes/dbtest")(app);
 

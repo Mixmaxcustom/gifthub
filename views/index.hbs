@@ -1,48 +1,58 @@
 {{!-- Home/Landing Page --}}
 <div class="section no-pad-bot" id="index-banner">
     <div class="container">
-        <br>
-        <h1 class="header center blue-grey-text">GiftHub</h1>
-        <div class="row center main-section">
-            <h5 class="header col s12 light">Great gift ideas for everyone!</h5>
-        </div>
-        <br>
-        <br>
+            <div class="row">
+                <div class="col s12 m6">
+                    
+                    <h3 class="header blue-grey-text">Create Profiles</h3>
+                    <div class="card horizontal">
+                        <div class="card-image">
+                            <img src="/img/recipients/grandma.jpg">
+                        </div>
 
-        <div class="row form-questions">
-            {{> gift-search}}
-        </div>
-
-        <div class="row center submit-button-row">
-            <a href="/results" id="search-button" class="waves-effect waves-light btn"><i class="material-icons left">search</i> Find Gifts!</a>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="section">
-
-        <!--   Icon Section   -->
-        <div class="row">
-            <div class="col s12 m6">
-                <div class="icon-block">
-                    <h2 class="center blue-grey-text lighten-1">
-                        <i class="material-icons">sentiment_very_dissatisfied</i>
-                    </h2>
-                    <h5 class="center">The Gift Dilemma</h5>
-                    <p class="light center-align">Holidays, birthdays, weddings. Brother, sister, mom, dad, Aunt Susan. We all know how difficult it is to find meaningful
-                        gifts to give to those we love and even those we barely know.</p>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <p>Create profiles for your family and friends. Save gift ideas to your profiles from your gift
+                                    searches. Create and keep track of gift budgets.</p>
+                            </div>
+                            <div class="card-action">
+                                <a href="/profile" class="blue-grey-text">Family & Friends Page</a>
+                            </div>
+                        </div>
                 </div>
             </div>
-
             <div class="col s12 m6">
-                <div class="icon-block">
-                    <h2 class="center blue-grey-text lighten-1">
-                        <i class="material-icons">sentiment_very_satisfied</i>
-                    </h2>
-                    <h5 class="center">The Gift Solution</h5>
-                    <p class="light center-align">Our gift idea generator can help you to find the perfect gift! Simply search using the gift idea criteria and we will
-                        help you find something amazing to give. It's just that simple!</p>
+                    <h3 class="header blue-grey-text">Search for Gifts</h3>
+                    <div class="card horizontal">
+                        <div class="card-image">
+                            <img src="/img/gifts/pineapple.jpg">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <p>Search for gifts for your loved ones and save gifts to their profiles.</p>
+                            </div>
+                            <div class="card-action">
+                                <a href="/search" class="blue-grey-text">Search Page</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <h3 class="header blue-grey-text">Create Events</h3>
+                    <div class="card horizontal">
+                        <div class="card-image">
+                            <img src="/img/event.jpg">
+                        </div>
+                        <div class="card-stacked">
+                            <div class="card-content">
+                                <p>Create and track events and the event attendees.</p>
+                            </div>
+                            <div class="card-action">
+                                <a href="results.html" class="blue-grey-text">Event Page</a>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
