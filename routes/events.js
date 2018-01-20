@@ -8,6 +8,7 @@ module.exports = (app) => {
         db.user_events.findAll().then( events => {
             // res.json(events)
             app.pageContent.events = events;
+            app.pageContent.pagetitle = 'Events'
             res.render('events', app.pageContent)
         })
     });

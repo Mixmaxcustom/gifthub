@@ -1,19 +1,19 @@
 <div class="container">
 
-        
+
         <div class="section">
             <h4>{{pagetitle}}</h2>
 
-                {{> gift-search}}
+                {{> search-bar}}
 
                 {{!-- Results Section --}}
                 <div id="search-result-cards" class="row">
-                    
+
                     {{#each gifts as | gift |}}
                         {{> gifts/gift-result}}
                     {{/each}}
 
-                
+
                 {{!-- Row End --}}
                 </div>
 

@@ -53,11 +53,15 @@ $(document).ready(function () {
 			recipient_title: $('#recipient_title').val(),
 			recipient_firstname: $('#recipient_firstname').val() || null,
 			recipient_lastname: $('#recipient_lastname').val() || null,
-			recipient_birthday: $('#recipient_birthday').val() || null,
 			recipient_city: $('#recipient_city').val() || null,
 			recipient_state: $('#recipient_state').val() || null,
 			recipient_email: $('#recipient_email').val() || null,
 			recipient_bio: $('#recipient_email').val() || null
+		}
+
+		let birthday = $('#recipient_birthday').val();
+		if (birthday) {
+			recipient.recipient_birthday = birthday;
 		}
 
 		console.log(recipient);
@@ -67,7 +71,6 @@ $(document).ready(function () {
 			data: recipient
 		}).done( results => {
 			console.log(results);
-
 			if (data.status == 100) {
 				// window.location = data.redirect;
 				console.log(`added user!`);
@@ -75,6 +78,8 @@ $(document).ready(function () {
 			} else if (data.status > 400) {
 				console.log(`Error: ${res.message}`);
 			}
+		}).fail( data => {
+			console.log(data);
 		});
 	});
 

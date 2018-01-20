@@ -26,51 +26,18 @@
 <div class="container">
     <div class="section">
 
+        {{!-- Results Section --}}
+        <div id="search-result-cards" class="row">
 
-        {{!-- Card #1 --}}
-        <div class="row">
-            <div class="col s12 m6">
-                <div class="card large">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="responsive-img" src="/img/recipients/woman.jpg">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Samantha
-                            <i class="material-icons right">more_vert</i>
-                        </span>
-                        <p>Gift Budget Total: $127 of $150</p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Samantha
-                            <i class="material-icons right">close</i>
-                        </span>
-                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                    </div>
-                </div>
-            </div>
-
-            {{!-- Card #2 --}}
-            <div class="col s12 m6">
-                <div class="card large">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="responsive-img" src="/img/recipients/grandma.jpg">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Great Aunt Susan
-                            <i class="material-icons right">more_vert</i>
-                        </span>
-                        <p>Gift Budget Total: $127 of $150</p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Card Title
-                            <i class="material-icons right">close</i>
-                        </span>
-                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                    </div>
-                </div>
-            </div>
+            {{#each recipients as | recipient |}}
+                {{> recipients/recipient-detail}}
+            {{/each}}
 
 
+        {{!-- Row End --}}
         </div>
+
+
+
     </div>
 </div>
