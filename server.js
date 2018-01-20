@@ -47,6 +47,7 @@ require("./routes/events")(app);
 require("./routes/index")(app);
 require("./routes/login")(app);
 require("./routes/profile")(app);
+require("./routes/search")(app);
 require("./routes/user")(app);
 require("./routes/amazon")(app);
 require("./routes/api")(app);

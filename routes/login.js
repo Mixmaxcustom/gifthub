@@ -8,7 +8,7 @@ const secret = require("../config/secret").secret;
 module.exports = (app) => {
 	// user login
 	app.get("/login", function (req, res) {
-		res.render('login', app.pageContent);
+        res.render('login', app.pageContent);
 	});
 
     // user logged out
