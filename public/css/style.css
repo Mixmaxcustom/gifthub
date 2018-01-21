@@ -17,35 +17,42 @@ paytone-one
 	font-family: 'Collegia';
 	src: url('../fonts/collegia/Collegia.otf') format('otf');
 	font-style: normal;
-    font-weight: 500;
+	font-weight: 500;
 }
 
+@font-face {
+	font-family: 'Cabin', sans-serif;
+}
 
-@font-face { font-family: 'Cabin', sans-serif;}
-@font-face { font-family: 'Slabo 27px', serif;}
-@font-face { font-family: 'Source Sans Pro', sans-serif;}
-@font-face { font-family: 'Cabin', sans-serif;}
+@font-face {
+	font-family: 'Slabo 27px', serif;
+}
 
+@font-face {
+	font-family: 'Source Sans Pro', sans-serif;
+}
 
+@font-face {
+	font-family: 'Cabin', sans-serif;
+}
 
 html {
 	position: relative;
 	min-height: 100%;
 }
 
-/* body & main tweaks for sticky footer */
 
+/* body & main tweaks for sticky footer */
 
 body {
 	/* font-family: 'Cabin', sans-serif; */
 	display: flex;
-    min-height: 100vh;
-    flex-direction: column;
+	min-height: 100vh;
+	flex-direction: column;
 }
 
-
 main {
-    flex: 1 0 auto;
+	flex: 1 0 auto;
 }
 
 
@@ -67,11 +74,14 @@ main {
 	margin-left: 20px;
 }
 
+a.button-collapse {
+	float: right;
+}
+
 .main-section,
 .form-questions {
 	margin: 0;
 }
-
 
 #price-range {
 	margin: 0;
@@ -106,6 +116,7 @@ footer a:hover {
 	color: #75c1e5;
 	cursor: default;
 }
+
 
 /* Application Custom CSS
   -------------------------------------------------- */
@@ -145,6 +156,7 @@ img[class] {
 	/*left: 25%;*/
 }
 
+
 /* images used in gift detail */
 
 .img-gift-detail {
@@ -169,6 +181,7 @@ img[class] {
 	text-shadow: 1px 1px 1px #d3d3d34d;
 }
 
+
 /* Materialize Buttons
   -------------------------------------------------- */
 
@@ -177,11 +190,11 @@ img[class] {
 	border-radius: 0.7rem;
 	text-shadow: 0px 1px 0 #1b1b1b55;
 	text-transform: none;
-    border-bottom: 4px solid #0a0a0a33;
+	border-bottom: 4px solid #0a0a0a33;
 }
 
 .btn-flat,
-.btn-flat:hover  {
+.btn-flat:hover {
 	border-radius: 0.7rem;
 	border: 1px solid #98989820;
 }
@@ -190,7 +203,6 @@ img[class] {
 	background-color: #ededed;
 }
 
-
 .page-footer h2,
 .page-footer h3,
 .page-footer h4,
@@ -198,12 +210,16 @@ img[class] {
 	text-shadow: 1px 2px 1px #46464691;
 }
 
+
 /* fix for white text in modals */
+
 .page-footer {
 	color: #000;
 }
 
+
 /* logo headline */
+
 .page-header {
 	text-shadow: 1px 2px 0 #46464691;
 }
@@ -212,7 +228,9 @@ img[class] {
 /* Materialize Tabs
   -------------------------------------------------- */
 
-.tabs .tab a, .tab a:hover, .tabs .tab a.active {
+.tabs .tab a,
+.tab a:hover,
+.tabs .tab a.active {
 	color: #75c1e5;
 }
 
@@ -228,9 +246,11 @@ img[class] {
 	text-transform: none;
 }
 
+
 /* fix for side nav on mobile */
+
 #sidenav-overlay {
-    /*margin-left: 300px;*/
+	/*margin-left: 300px;*/
 	z-index: 996;
 }
 
@@ -257,11 +277,10 @@ span.category-badge {
 	padding: 0.8rem 0 0.5rem 0;
 }
 
-
-.dropdown-content li>a, .dropdown-content li>span {
+.dropdown-content li>a,
+.dropdown-content li>span {
 	font-size: 14px;
 }
-
 
 .code-format {
 	font-family: monospace;
@@ -364,17 +383,14 @@ span.gift-title {
 }
 
 .mdi-action-grade:before {
-    content: "\e632";
+	content: "\e632";
 }
 
 @font-face {
 	font-family: 'Material Icons';
 	font-style: normal;
 	font-weight: 400;
-    src: local("Material Icons"),
-	local("MaterialIcons-Regular"),
-	url("../fonts/material-design-icons/MaterialIcons-Regular.ttf") format("truetype"),
-	url("../fonts/material-design-icons/MaterialIcons-Regular.woff2") format("woff2"),
+	src: local("Material Icons"), local("MaterialIcons-Regular"), url("../fonts/material-design-icons/MaterialIcons-Regular.ttf") format("truetype"), url("../fonts/material-design-icons/MaterialIcons-Regular.woff2") format("woff2"),
 }
 
 .material-icons {
@@ -442,20 +458,34 @@ span.gift-title {
 }
 
 
+/**RECIPIENT CARD STYLING**/
+
+#recipient-card-image {
+	max-height: 85%;
+}
+
+#recipient-card-content {
+	padding: 15px;
+}
+#recipient-card-title {
+	margin-bottom: 0px;
+}
+
+
 /* Custom Stylesheet */
 
 .home-container {
-    background-image: url("/img/gift-background.jpg");
-    background-repeat: no-repeat;
+	background-image: url("/img/gift-background.jpg");
+	background-repeat: no-repeat;
 	background-size: cover;
 	background-attachment: fixed;
-    height: 100vh;
-
+	height: 100vh;
 	/*  materialize valign */
 	display: flex;
 	align-items: center;
 	margin: 0px;
 }
+
 
 /*
 .home-container {
@@ -491,21 +521,19 @@ span.gift-title {
   }
 */
 
-
 h1.homepage {
 	font-family: 'Berkshire Swash', cursive;
-  }
+}
 
 input.homepage,
 h5.homepage {
 	font-family: 'Raleway', sans-serif;
 	padding: 0;
 	margin: 0;
-  }
-
+}
 
 .btn.homepage {
-    background-color: #F7C9A1;
+	background-color: #F7C9A1;
 	border-radius: 0;
 	border: 0;
 }
@@ -515,35 +543,35 @@ h5.homepage {
 	font-size: 0.7rem;
 }
 
-#email, #password {
+#email,
+#password {
 	margin: 0;
-    color: rgb(53, 49, 49);
-  }
+	color: rgb(53, 49, 49);
+}
 
-  .icon-block {
+.icon-block {
 	padding: 0 15px;
-  }
+}
 
-  .icon-block .material-icons {
-	  font-size: inherit;
-  }
+.icon-block .material-icons {
+	font-size: inherit;
+}
 
-  .brand-logo {
+.brand-logo {
 	margin-left: 20px;
-  }
+}
 
-
-  .main-section,
-  .form-questions {
+.main-section,
+.form-questions {
 	margin: 0;
-  }
+}
 
-
-
-  hr {
+hr {
 	width: 70%;
 	align-content: center;
-  }
+}
+
+
 /* Modals */
 
 
@@ -564,7 +592,11 @@ h5.homepage {
 
 /* Medium devices (tablets, less than 992px) */
 
-@media (max-width: 991px) {}
+@media (max-width: 992px) {
+	hr {
+		width: 85%;
+	}
+}
 
 
 /* Small devices (landscape phones, less than 768px) */
@@ -600,5 +632,24 @@ h5.homepage {
 	.item {
 		/* width: 20%; */
 		width: 100%;
+	}
+	#recipient-card-image {
+		max-height: 75%;
+	}
+	#recipient-card-content {
+		padding: 8px;
+	}
+	#recipient-card-title {
+		margin-bottom: 0px;
+	}
+
+	#add-new-row {
+		text-align: left;
+		padding-top: 8px;
+	}
+
+	hr {
+		padding-top: 0px;
+		width: 90%;
 	}
 }
