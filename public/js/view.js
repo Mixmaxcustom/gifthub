@@ -40,7 +40,32 @@ $(document).ready(function () {
 		event.preventDefault();
 		event.stopPropagation();
 		let button = $(event.currentTarget);
-		validateUserRegistrationForm();
+
+		let userData = {
+			user_firstname: $('#input_user_firstname').val(),
+			user_lastname: $('#input_user_lastname').val() || null,
+			user_password: $('#input_user_password').val() || null,
+			user_email: $('#input_user_email').val() || null,
+			user_birthday: $('#input_user_birthday').val() || null,
+			user_city: $('#input_user_city').val() || null,
+			user_state: $('#input_user_state').val() || null
+		}
+
+        // has password on the client side
+		if (userData.user_password != null) {
+			userData.user_password = b64EncodeUnicode(userData.user_password)
+		}
+
+		$.ajax("/register", {
+			type: "POST",
+			data: userData
+		}).done( user => {
+			if (user.status == 100) {
+				console.log(`added user id: ${user.user_id}`);
+			}
+		}).fail( data => {
+			console.log(data);
+		});
 	});
 
 	// recipient registration clicked

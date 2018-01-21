@@ -14,7 +14,7 @@ function setupStateMenu() {
     if (statesmenu.length > 0) {
         let selected_state = statesmenu.data().value;
         statesmenu.empty();
-        statesmenu.append($(`<option selected>Choose...</option>`));
+        statesmenu.append($(`<option selected>State</option>`));
         allStates.forEach(state => {
             statesmenu.append($(`<option date-value="${state}">${state}</option>`));
         })
@@ -25,8 +25,8 @@ function setupStateMenu() {
 
 
 // document start
-(function($){
-  $(function(){
+(function($) {
+    $(function() {
 
     $('.button-collapse').sideNav();
 
@@ -39,7 +39,9 @@ function setupStateMenu() {
     // Initialize collapse button
     // $(".button-collapse").sideNav();
     // $('.button-collapse').sideNav('hide');
-    $('.button-collapse').sideNav({'edge': 'left'});
+        $('.button-collapse').sideNav({
+            'edge': 'left'
+        });
 
     //Modal Dialog for profile page
     // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
@@ -75,7 +77,33 @@ function setupStateMenu() {
     });
 
 
-    // chat-collapse
+        $('.chips').material_chip();
+        $('.chips-initial').material_chip({
+            data: [{
+                tag: 'Apple',
+            }, {
+                tag: 'Microsoft',
+            }, {
+                tag: 'Google',
+            }],
+        });
+
+        $('.chips-placeholder').material_chip({
+            placeholder: 'Enter a tag',
+            secondaryPlaceholder: '+Tag',
+        });
+
+        $('.chips-autocomplete').material_chip({
+            autocompleteOptions: {
+                data: {
+                    'Apple': null,
+                    'Microsoft': null,
+                    'Google': null
+                },
+                limit: Infinity,
+                minLength: 1
+            }
+        });
 
 }); // end of document ready
 })(jQuery); // end of jQuery name space
