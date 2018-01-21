@@ -28,8 +28,8 @@ CREATE TABLE Users (
   user_city varchar(255),
   user_state varchar(255),
   user_photo varchar(255) default "/img/user-avatar.png",
-  createdAt datetime,
-  updatedAt datetime,
+  created_at datetime,
+  updated_at datetime,
   PRIMARY KEY(user_id)
 );
 
@@ -43,8 +43,8 @@ CREATE TABLE Categories (
   category_description mediumtext,
   category_icon varchar(255) default 'play_circle_filled',
   category_age_limit int default 0,
-  createdAt datetime,
-  updatedAt datetime,
+  created_at datetime,
+  updated_at datetime,
   PRIMARY KEY(category_id)
 ) COMMENT='Gift categories/user interests';
 
@@ -57,8 +57,8 @@ CREATE TABLE Events (
   event_description mediumtext,
   event_date date,
   event_budget integer default 0,
-  createdAt datetime,
-  updatedAt datetime,
+  created_at datetime,
+  updated_at datetime,
   PRIMARY KEY(event_id)
 ) COMMENT='Saved user events';
 
@@ -76,8 +76,8 @@ CREATE TABLE Gifts (
   gift_price integer default 0,
   gift_purchased boolean default 0,
   gift_url varchar(255),
-  createdAt datetime,
-  updatedAt datetime,
+  created_at datetime,
+  updated_at datetime,
   PRIMARY KEY(gift_id)
 ) COMMENT='Saved gift ideas for friends & relatives';
 
@@ -90,8 +90,10 @@ CREATE TABLE Interests (
   -- tag is an alias to another tag (ie "movies" -> "entertainment")
   interest_description mediumtext,
   interest_icon varchar(255),
-  createdAt datetime,
-  updatedAt datetime,
+  interest_age_min integer default 0,
+  interest_female boolean default 0,
+  created_at datetime,
+  updated_at datetime,
   PRIMARY KEY(interest_id)
 ) COMMENT='User interests';
 
@@ -112,8 +114,8 @@ CREATE TABLE Recipients (
   recipient_city varchar(255),
   recipient_state varchar(255),
   recipient_photo varchar(255) default "/img/user-avatar.png",
-  createdAt datetime,
-  updatedAt datetime,
+  created_at datetime,
+  updated_at datetime,
   PRIMARY KEY(recipient_id)
 );
 
@@ -124,7 +126,7 @@ CREATE TABLE Searches (
   search_id int auto_increment,
   search_name varchar(255) not null,
   search_description mediumtext,
-  createdAt datetime,
-  updatedAt datetime,
+  created_at datetime,
+  updated_at datetime,
   PRIMARY KEY(search_id)
 ) COMMENT='Saved user searches';

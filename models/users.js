@@ -1,6 +1,6 @@
 // users table
 module.exports = function (sequelize, DataTypes) {
-	var users = sequelize.define("users", {
+	var Users = sequelize.define("Users", {
 		user_id: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
@@ -16,27 +16,21 @@ module.exports = function (sequelize, DataTypes) {
 		user_city: DataTypes.STRING,
 		user_state: DataTypes.STRING,
 		user_photo: DataTypes.STRING,
-		createdAt: DataTypes.DATE,
-		updatedAt: DataTypes.DATE,
+		created_at: DataTypes.DATE,
+		updated_at: DataTypes.DATE,
 	}, {
-		freezeTableName: true
-	});
+        timestamps: true,
+        underscored: true
+    });
 
-	/*
-	users.associate = (models) => {
-		// When an user is deleted, also delete any associated recipients
-		users.hasMany(models.recipients, {
-			onDelete: "cascade"
-		});
-	};*/
-
-	users.associate = (models) => {
-		users.belongsToMany(models.user_events, {
-			through: 'user_event_mapping',
-			as: 'events',
+	Users.associate = (models) => {
+		Users.belongsToMany(models.Recipients, {
+			through: 'search_gift_mappings',
+			as: 'users',
 			foreignKey: 'user_id'
 		});
 	};
 
-	return users;
+
+	return Users;
 };

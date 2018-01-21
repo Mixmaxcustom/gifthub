@@ -5,7 +5,7 @@ module.exports = (app) => {
     // all recipients list
     app.get("/events", function(req, res) {
         // look for the current user in the database
-        db.user_events.findAll().then( events => {
+        db.Events.findAll().then( events => {
             // res.json(events)
             app.pageContent.events = events;
             app.pageContent.pagetitle = 'Events'
@@ -16,7 +16,7 @@ module.exports = (app) => {
     // add a new event screen
     app.get("/add-event", function(req, res) {
         // look for the current user in the database
-        db.user_events.findAll().then( events => {
+        db.Events.findAll().then( events => {
             res.json(events)
         })
     });
@@ -27,7 +27,7 @@ module.exports = (app) => {
         console.log(` - requesting ${req.url}`);
         console.log(eventData);
         // look for the current user in the database
-        db.user_events.create(
+        db.Events.create(
             eventData
         ).then( data => {
             //console.log( recipient.get({plain: true }))

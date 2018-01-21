@@ -7,7 +7,7 @@ module.exports = (app) => {
         console.log(` - requesting ${req.url}`);
 
 
-        db.users.findAll({
+        db.Users.findAll({
             include: [{
                 model: db.user_event_mapping,
 				as: 'events',

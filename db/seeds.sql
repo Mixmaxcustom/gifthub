@@ -15,19 +15,19 @@ TRUNCATE TABLE Searches;
 
 -- Users
 
-INSERT INTO  Users  ( user_id, user_firstname, user_lastname, user_password, user_is_admin, user_email, user_birthday, user_bio, user_city, user_state, user_photo, createdAt, updatedAt )
+INSERT INTO  Users  ( user_id, user_firstname, user_lastname, user_password, user_is_admin, user_email, user_birthday, user_bio, user_city, user_state, user_photo, created_at, updated_at )
 VALUES (1, 'Michael', 'Fessenden', 'cGFzc3dvcmQ=', 1, 'michael.fessenden@gmail.com', '1980-02-19', NULL, 'Portsmouth', 'NH', '/img/avatars/avatar-12.png', '2018-01-12 01:44:57', '2018-01-12 01:44:57');
 
-INSERT INTO  Users  ( user_id, user_firstname, user_lastname, user_password, user_is_admin, user_email, user_birthday, user_bio, user_city, user_state, user_photo, createdAt, updatedAt )
+INSERT INTO  Users  ( user_id, user_firstname, user_lastname, user_password, user_is_admin, user_email, user_birthday, user_bio, user_city, user_state, user_photo, created_at, updated_at )
 VALUES (2, 'Elizah', 'Hulseman', 'aHVzcw==', 0, 'ehulseman@gmail.com', '1990-11-01', NULL, 'Portsmouth', 'NH', '/img/avatars/avatar-14.png', '2018-01-12 01:44:57', '2018-01-12 01:44:57');
 
-INSERT INTO  Users  ( user_id, user_firstname, user_lastname, user_password, user_is_admin, user_email, user_birthday, user_bio, user_city, user_state, user_photo, createdAt, updatedAt )
+INSERT INTO  Users  ( user_id, user_firstname, user_lastname, user_password, user_is_admin, user_email, user_birthday, user_bio, user_city, user_state, user_photo, created_at, updated_at )
 VALUES (3, 'Jacob', 'Letourneau', 'M0lmNEEkI3JyNE1k', 0, 'mntypython74@gmail.com', '1992-06-03', NULL, 'Dover', 'NH', '/img/avatars/avatar-13.png', '2018-01-12 01:46:54', '2018-01-12 01:46:54');
 
-INSERT INTO  Users  ( user_id, user_firstname, user_lastname, user_password, user_is_admin, user_email, user_birthday, user_bio, user_city, user_state, user_photo, createdAt, updatedAt )
+INSERT INTO  Users  ( user_id, user_firstname, user_lastname, user_password, user_is_admin, user_email, user_birthday, user_bio, user_city, user_state, user_photo, created_at, updated_at )
 VALUES (4, 'Mike', 'Sherman', 'UXdlcnR5XzEyMw==', 0, 'msherman83@gmail.com', '1983-05-01', NULL, 'Portsmouth', 'NH', '/img/avatars/avatar-12.png', '2018-01-12 02:16:39', '2018-01-12 02:16:39');
 
-INSERT INTO  Users  ( user_id, user_firstname, user_lastname, user_password, user_is_admin, user_email, user_birthday, user_bio, user_city, user_state, user_photo, createdAt, updatedAt )
+INSERT INTO  Users  ( user_id, user_firstname, user_lastname, user_password, user_is_admin, user_email, user_birthday, user_bio, user_city, user_state, user_photo, created_at, updated_at )
 VALUES (5, 'James', 'Roth', 'cGFzc3dvcmQ=', 1, 'jkltroth@gmail.com', '1991-10-30', NULL, 'Danville', 'NH', '/img/avatars/avatar-11.png', '2018-01-12 02:18:21', '2018-01-12 02:18:21');
 
 
@@ -254,3 +254,98 @@ INSERT INTO Gifts (gift_name, gift_description, gift_asin, gift_part_num, gift_p
 VALUES ('Starburst Cherry - 1 Pound', "Approximately 85-90 pieces of Cherry Starburst.",
 'B00JYK73G6', null, 'https://pixel.nymag.com/imgs/daily/strategist/2016/12/15/25-Gifts/Starburst-only-cherry.w540.h356.jpg', 1500,
 'https://www.amazon.com/Starburst-Cherry-1-Pound/dp/B00JYK73G6');
+
+-- Interests
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Adventure', null, null, 13, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Anytime', null, null, 13, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Art & Design', null, null, 13, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Arts & Crafts', null, null, 13, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Beauty', null, null, 13, 1);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Books', null, null, 13, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Building Toys', null, null, 0, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Cooking & Entertaining', null, null, 13, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Education & Science', null, null, 0, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Electronic Toys', null, null, 0, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Fitness & Sports', null, null, 13, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Funny', null, null, 13, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Games & Puzzles', null, null, 13, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Geeky', null, null, 13, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Happy Hour', null, null, 13, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Home & Garden', null, null, 13, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Home Improvement', null, null, 13, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Movies', null, null, 13, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Movies & TV', null, null, 13, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Music', null, null, 13, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Outdoor', null, null, 13, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Outdoor Toys', null, null, 0, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Personalized', null, null, 13, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Reading', null, null, 0, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Self Care & Grooming', null, null, 13, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Style & Fashion', null, null, 13, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Super Heroes', null, null, 0, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Tech & Gadgets', null, null, 13, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Travel', null, null, 13, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Unique', null, null, 13, 0);
+
+INSERT INTO Interests (interest_name, interest_description, interest_icon, interest_age_min, interest_female)
+VALUES ('Workplace', null, null, 13, 0);

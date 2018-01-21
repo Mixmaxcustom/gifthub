@@ -1,6 +1,6 @@
 // user searches table
 module.exports = function (sequelize, DataTypes) {
-	var user_interests = sequelize.define("user_interests", {
+	var Interests = sequelize.define("Interests", {
 		interest_id: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
@@ -9,19 +9,37 @@ module.exports = function (sequelize, DataTypes) {
 		interest_name: DataTypes.STRING ,
 		interest_description: DataTypes.TEXT,
 		interest_icon: DataTypes.STRING,
-		createdAt: DataTypes.DATE,
-		updatedAt: DataTypes.DATE,
-	});
+		interest_age_min: {
+			type: DataTypes.INTEGER ,
+			defaultValue: 13
+		},
+		interest_female: {
+			type: DataTypes.BOOLEAN ,
+			defaultValue: 0
+		},
+		created_at: DataTypes.DATE,
+		updated_at: DataTypes.DATE,
+	}, {
+        timestamps: true,
+        underscored: true
+    });
 
 
-	user_interests.associate = (models) => {
-		user_interests.belongsToMany(models.recipients, {
-			through: 'user_interest_mapping',
-			as: 'recipients',
+	Interests.associate = (models) => {
+		Interests.belongsToMany(models.Recipients, {
+			through: 'recipient_interest_mappings',
+			as: 'interests',
 			foreignKey: 'interest_id'
 		});
 	};
 
+	Interests.associate = (models) => {
+		Interests.belongsToMany(models.Categories, {
+			through: 'recipient_interest_mappings',
+			as: 'interests',
+			foreignKey: 'interest_id'
+		});
+	};
 
-	return user_interests;
+	return Interests;
 };

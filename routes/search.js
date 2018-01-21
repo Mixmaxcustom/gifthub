@@ -2,11 +2,23 @@ const db = require("../models/");
 
 
 module.exports = (app) => {
-	// user profile
+
+	// search page
 	app.get("/search", (req, res) => {
         console.log(` - requesting ${req.url}`);
 
-		db.categories.findAll().then(categories => {
+		db.Categories.findAll().then(categories => {
+			app.pageContent.layout = 'main';
+			app.pageContent.categories = categories;
+			res.render('search', app.pageContent);
+		});
+	});
+
+	// search results
+	app.get("/results", (req, res) => {
+		console.log(` - requesting ${req.url}`);
+
+		db.Categories.findAll().then(categories => {
 			app.pageContent.layout = 'main';
 			app.pageContent.categories = categories;
 			res.render('search', app.pageContent);

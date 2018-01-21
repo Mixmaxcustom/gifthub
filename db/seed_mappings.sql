@@ -8,7 +8,7 @@ TRUNCATE TABLE recipient_mappings;
 TRUNCATE TABLE search_mappings;
 TRUNCATE TABLE user_category_mappings;
 TRUNCATE TABLE user_event_mappings;
-TRUNCATE TABLE user_interest_mappings;
+TRUNCATE TABLE recipient_interest_mappings;
 
 
 
@@ -91,11 +91,11 @@ INSERT INTO user_event_mappings (user_id, event_id)
 VALUES (1, 2);
 
 
-INSERT INTO Interests (interest_name, interest_description, createdAt)
+INSERT INTO Interests (interest_name, interest_description, created_at)
 VALUES ('Art', 'Arts & Crafts', now());
 
-INSERT INTO Interests (interest_name, interest_description, createdAt)
+INSERT INTO Interests (interest_name, interest_description, created_at)
 VALUES ('Boozy', 'Libations and breathilizers', now());
 
-INSERT INTO Interests (interest_name, interest_description, createdAt)
+INSERT INTO Interests (interest_name, interest_description, created_at)
 VALUES ('BDSM', 'Ummm...', '2017-11-09 01:28:19');

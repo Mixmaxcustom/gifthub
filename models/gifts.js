@@ -1,6 +1,6 @@
 // gifts table
 module.exports = function (sequelize, DataTypes) {
-	var gifts = sequelize.define("gifts", {
+	var Gifts = sequelize.define("Gifts", {
 		gift_id: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
@@ -15,8 +15,21 @@ module.exports = function (sequelize, DataTypes) {
 		gift_price: DataTypes.INTEGER,
 		gift_purchased: DataTypes.BOOLEAN,
 		gift_url: DataTypes.STRING,
-		createdAt: DataTypes.DATE,
-		updatedAt: DataTypes.DATE
-	});
-	return gifts;
+		created_at: DataTypes.DATE,
+		updated_at: DataTypes.DATE
+	}, {
+        timestamps: true,
+        underscored: true
+    });
+
+	Gifts.associate = (models) => {
+		Gifts.belongsToMany(models.Searches, {
+			through: 'search_gift_mappings',
+			as: 'gifts',
+			foreignKey: 'gift_id'
+		});
+	};
+
+
+	return Gifts;
 };

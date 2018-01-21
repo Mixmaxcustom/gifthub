@@ -1,6 +1,6 @@
 // recipients table
 module.exports = function(sequelize, DataTypes) {
-    var recipients = sequelize.define("recipients", {
+    var Recipients = sequelize.define("Recipients", {
         recipient_id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -22,18 +22,21 @@ module.exports = function(sequelize, DataTypes) {
         },
 
         recipient_budget: DataTypes.INTEGER,
-        createdAt: DataTypes.DATE,
-        updatedAt: DataTypes.DATE,
+        created_at: DataTypes.DATE,
+        updated_at: DataTypes.DATE,
+    }, {
+        timestamps: true,
+        underscored: true
     });
 
-
-    recipients.associate = (models) => {
-        recipients.belongsToMany(models.user_interests, {
-            through: 'user_interest_mapping',
-            as: 'interests',
-            foreignKey: 'recipient_id'
+    Recipients.associate = (models) => {
+        Recipients.belongsToMany(models.Recipients, {
+            through: 'search_gift_mappings',
+            as: 'users',
+            foreignKey: 'user_id'
         });
     };
 
-    return recipients;
+
+    return Recipients;
 };

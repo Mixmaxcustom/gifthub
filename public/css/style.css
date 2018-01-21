@@ -172,10 +172,10 @@ img[class] {
   -------------------------------------------------- */
 
 .btn, .btn-large {
-    border-radius: 0.7rem;
+    /*border-radius: 0.7rem;*/
     text-shadow: 0px 1px 0 #1b1b1b55;
     text-transform: none;
-    border-bottom: 4px solid #0a0a0a33;
+    border-bottom: 2px solid #0a0a0a33;
 }
 
 .btn-flat, .btn-flat:hover {

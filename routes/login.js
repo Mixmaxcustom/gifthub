@@ -20,7 +20,7 @@ module.exports = (app) => {
         // TODO: sanity check user
 
         // look for the current user in the database
-        db.users.findOne({
+        db.Users.findOne({
             where: {
                 user_email: userData.user_email
               }
@@ -67,10 +67,10 @@ module.exports = (app) => {
 	app.post("/register", (req, res, next) => {
 		let userData = (Object.keys(req.query).length > 0) ? req.query : req.body;
         console.log(` - requesting ${req.url}`);
-		
+
         // add a new recipient
         // TODO: need to check that user email isn't registered already
-        db.users.create(
+        db.Users.create(
             userData
         ).then( data => {
             res.status(200);
