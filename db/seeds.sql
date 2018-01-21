@@ -193,24 +193,27 @@ VALUES ('Wireless', 'Cell Phones & Accessories', 'play_circle_filled', 0);
 -- Recipients
 
 INSERT INTO Recipients (recipient_title, recipient_firstname, recipient_lastname, recipient_email, recipient_budget, recipient_birthday, recipient_bio, recipient_city, recipient_state, recipient_photo)
-VALUES (null, 'Samantha', null, null,  7500, '1989-01-30', "Need to get her something better for her head...", 'Boston', 'MA', '/img/Recipients/woman.jpg');
+VALUES (null, 'Samantha', null, null,  7500, '1989-01-30', "Need to get her something better for her head...", 'Boston', 'MA', '/img/recipients/woman.jpg');
 
 
 INSERT INTO Recipients (recipient_title, recipient_firstname, recipient_lastname, recipient_email, recipient_budget, recipient_birthday, recipient_bio, recipient_city, recipient_state, recipient_photo)
-VALUES (null, 'Peter', 'Stewart', null,  10000, '1981-11-03', 'my favorite cousin', 'Bowling Green', 'KY', '/img/Recipients/glasses-guy.png');
+VALUES (null, 'Peter', 'Stewart', null,  10000, '1981-11-03', 'my favorite cousin', 'Bowling Green', 'KY', '/img/recipients/glasses-guy.png');
 
 
 INSERT INTO Recipients (recipient_title, recipient_firstname, recipient_lastname, recipient_email, recipient_budget, recipient_birthday, recipient_bio, recipient_city, recipient_state, recipient_photo)
-VALUES ('Great Aunt Susan', null, null, null,  20000, '1941-03-09', "She's kind of grumpy, but she makes the best moonshine so remember her birthday!", 'Los Angeles', 'CA', '/img/Recipients/grandma.jpg');
+VALUES ('Great Aunt Susan', null, null, null,  20000, '1941-03-09', "She's kind of grumpy, but she makes the best moonshine so remember her birthday!", 'Los Angeles', 'CA', '/img/recipients/grandma.jpg');
 
 
 INSERT INTO Recipients (recipient_title, recipient_firstname, recipient_lastname, recipient_email, recipient_budget, recipient_birthday, recipient_bio, recipient_city, recipient_state, recipient_photo)
-VALUES ('Aunt Fran', 'Fran', 'Lebowski', null,  10000, '1947-10-29', "She's still got that mustache problem...perhaps haircare and grooming products?", 'Dorchester', 'MA', '/img/Recipients/fran.jpg');
+VALUES ('Aunt Fran', 'Fran', 'Lebowski', null,  10000, '1947-10-29', "She's still got that mustache problem...perhaps haircare and grooming products?", 'Dorchester', 'MA', '/img/recipients/fran.jpg');
 
 
 INSERT INTO Recipients (recipient_title, recipient_firstname, recipient_lastname, recipient_email, recipient_budget, recipient_birthday, recipient_bio, recipient_city, recipient_state, recipient_photo)
 VALUES ('Fred from Work', 'Fred', 'Farmer', 'fred@farmer.com',  5000, '1987-04-18', "likes Widow Jane bourbon", 'Seattle', 'WA', null);
 
+
+INSERT INTO Recipients (recipient_title, recipient_firstname, recipient_lastname, recipient_email, recipient_budget, recipient_birthday, recipient_bio, recipient_city, recipient_state, recipient_photo)
+VALUES ('Cousin It', null, null, 'cousinit@adaams.com',  5000, '1956-10-31', "he's pretty dmn hairy", null, null, "http://images2.fanpop.com/images/photos/5600000/Addams-Family-Cousin-Itt-addams-family-5684028-356-288.jpg");
 
 -- Gifts
 
