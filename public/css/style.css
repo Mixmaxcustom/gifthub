@@ -6,10 +6,9 @@
 font-family: 'Slabo 27px', serif;
 font-family: 'Source Sans Pro', sans-serif;
 font-family: 'Cabin', sans-serif;
-paytone-one
 */
 
-@import url('https://fonts.googleapis.com/css?family=Cabin|Cabin+Condensed|Slabo+27px|Source+Sans+Pro');
+@import url('https://fonts.googleapis.com/css?family=Cabin|Cabin+Condensed|Slabo+27px|Source+Sans+Pro|Berkshire+Swash|Raleway');
 
 /* github font :) */
 
@@ -65,6 +64,10 @@ main {
 
 .brand-logo {
 	margin-left: 20px;
+}
+
+a.button-collapse {
+	float: right;
 }
 
 .main-section,
@@ -442,6 +445,20 @@ span.gift-title {
 }
 
 
+/**RECIPIENT CARD STYLING**/
+
+#recipient-card-image {
+	max-height: 85%;
+}
+
+#recipient-card-content {
+	padding: 15px;
+}
+#recipient-card-title {
+	margin-bottom: 0px;
+}
+
+
 /* Custom Stylesheet */
 
 .home-container {
@@ -532,18 +549,17 @@ h5.homepage {
 	margin-left: 20px;
   }
 
-
   .main-section,
   .form-questions {
 	margin: 0;
   }
 
-
-
   hr {
 	width: 70%;
 	align-content: center;
   }
+
+
 /* Modals */
 
 
@@ -565,6 +581,10 @@ h5.homepage {
 /* Medium devices (tablets, less than 992px) */
 
 @media (max-width: 991px) {}
+	hr {
+		width: 85%;
+	}
+}
 
 
 /* Small devices (landscape phones, less than 768px) */
@@ -600,5 +620,24 @@ h5.homepage {
 	.item {
 		/* width: 20%; */
 		width: 100%;
+	}
+	#recipient-card-image {
+		max-height: 75%;
+	}
+	#recipient-card-content {
+		padding: 8px;
+	}
+	#recipient-card-title {
+		margin-bottom: 0px;
+	}
+
+	#add-new-row {
+		text-align: left;
+		padding-top: 8px;
+	}
+
+	hr {
+		padding-top: 0px;
+		width: 90%;
 	}
 }
