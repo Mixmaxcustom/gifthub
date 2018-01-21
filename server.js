@@ -48,6 +48,7 @@ require("./routes/index")(app);
 require("./routes/login")(app);
 require("./routes/profile")(app);
 require("./routes/search")(app);
+require("./routes/test")(app);
 require("./routes/user")(app);
 require("./routes/amazon")(app);
 require("./routes/recipients")(app);

@@ -1,20 +1,25 @@
-const db = require("../models/");
-const auth = require("../config/auth");
-const cookie = require('cookie');
-const jwt = require("jsonwebtoken");
-const secret = require("../config/secret").secret;
+const db 		= require("../models/");
+const auth 		= require("../config/auth");
+const cookie 	= require('cookie');
+const jwt 		= require("jsonwebtoken");
+const secret 	= require("../config/secret").secret;
 
 
 module.exports = (app) => {
+
 	// user login
 	app.get("/login", function (req, res) {
-        app.pageContent.layout = 'home';
-        res.render('login', app.pageContent);
+		if (app.pageContent.user.is_logged_in == true) {
+			//app.pageContent.layout = 'main';
+			//res.render('index', app.pageContent);
+			//return;
+		}
+		app.pageContent.layout = 'home';
+		res.render('login', app.pageContent);
 	});
 
     // user logged out
 	app.get("/logout", function (req, res) {
-
         // reset the page content user
         app.pageContent.user = {
             user_id: -1,
@@ -26,11 +31,17 @@ module.exports = (app) => {
 
         // clear the cookie
         app.pageContent.layout = 'home';
-        res.clearCookie('gifthub-user').render('login', app.pageContent);        
+        res.clearCookie('gifthub-user').render('login', app.pageContent);
     });
-    
+
     // user registration
-	app.get("/register", function (req, res) {
+	app.get("/register", function (req, res, next) {
+		if (app.pageContent.user.is_logged_in == true) {
+			//app.pageContent.layout = 'main';
+			//res.render('index', app.pageContent);
+			//return;
+		}
+		app.pageContent.layout = 'home';
         res.render('register', app.pageContent);
 	});
 
@@ -70,7 +81,7 @@ module.exports = (app) => {
                 } else {
                     res.json({ status: 403, message: 'incorrect password.', redirect: '/login' });
                 }
-            
+
             // email not found in the database
             } else {
                 // res.status(500).json({ error: 'message', redirect: '/login' });
@@ -79,4 +90,3 @@ module.exports = (app) => {
         });
     });
 };
-
