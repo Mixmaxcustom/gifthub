@@ -9,43 +9,11 @@ module.exports = (app) => {
 
 	// user login
 	app.get("/login", function (req, res) {
-		if (app.pageContent.user.is_logged_in == true) {
-			//app.pageContent.layout = 'main';
-			//res.render('index', app.pageContent);
-			//return;
-		}
 		app.pageContent.layout = 'home';
 		res.render('login', app.pageContent);
 	});
 
-    // user logged out
-	app.get("/logout", function (req, res) {
-        // reset the page content user
-        app.pageContent.user = {
-            user_id: -1,
-            user_email: null,
-            user_firstname: null,
-            user_lastname: null,
-            is_logged_in: false
-        }
-
-        // clear the cookie
-        app.pageContent.layout = 'home';
-        res.clearCookie('gifthub-user').render('login', app.pageContent);
-    });
-
-    // user registration
-	app.get("/register", function (req, res, next) {
-		if (app.pageContent.user.is_logged_in == true) {
-			//app.pageContent.layout = 'main';
-			//res.render('index', app.pageContent);
-			//return;
-		}
-		app.pageContent.layout = 'home';
-        res.render('register', app.pageContent);
-	});
-
-    // check user credentials
+	// check user credentials
     app.post("/login", (req, res, next) => {
         let userData = req.body;
 
@@ -89,4 +57,45 @@ module.exports = (app) => {
             }
         });
     });
+
+    // user registration
+	app.get("/register", function (req, res, next) {
+        res.render('register', app.pageContent);
+	});
+
+	// check user credentials
+	app.post("/register", (req, res, next) => {
+		let userData = (Object.keys(req.query).length > 0) ? req.query : req.body;
+        console.log(` - requesting ${req.url}`);
+		
+        // add a new recipient
+        // TODO: need to check that user email isn't registered already
+        db.users.create(
+            userData
+        ).then( data => {
+            res.status(200);
+			res.json({ status: 200, redirect: '/' });
+            // res.json(data.get({ plain: true }));
+        }).catch( err => {
+            res.status(500);
+            res.json({error: err, stackError: err.stack});
+        })
+	});
+
+	// user logged out
+	app.get("/logout", function (req, res) {
+		// reset the page content user
+		app.pageContent.user = {
+			user_id: -1,
+			user_email: null,
+			user_firstname: null,
+			user_lastname: null,
+			is_logged_in: false
+		}
+
+		// clear the cookie
+		app.pageContent.layout = 'home';
+		res.clearCookie('gifthub-user').render('login', app.pageContent);
+	});
+
 };

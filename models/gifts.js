@@ -8,11 +8,11 @@ module.exports = function (sequelize, DataTypes) {
 		},
 
 		gift_name: DataTypes.STRING,
-		gift_description: DataTypes.STRING,		
+		gift_description: DataTypes.STRING,
 		gift_asin: DataTypes.STRING,
 		gift_part_num: DataTypes.STRING,
 		gift_photo: DataTypes.STRING,
-		gift_price: DataTypes.DECIMAL(10, 2),
+		gift_price: DataTypes.INTEGER,
 		gift_purchased: DataTypes.BOOLEAN,
 		gift_url: DataTypes.STRING,
 		createdAt: DataTypes.DATE,

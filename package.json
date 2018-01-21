@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
+    "db": "node ./bin/setup schema.sql",
     "seed": "node ./bin/setup seeds.sql",
-    "setup": "node ./bin/setup schema.sql"
+    "mapping": "node ./bin/setup seed_mappings.sql"
   },
   "repository": {
     "type": "git",

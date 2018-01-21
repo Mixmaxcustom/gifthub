@@ -1,7 +1,6 @@
 /* Fonts
   -------------------------------------------------- */
 
-
 /*
 font-family: 'Slabo 27px', serif;
 font-family: 'Source Sans Pro', sans-serif;
@@ -9,233 +8,226 @@ font-family: 'Cabin', sans-serif;
 paytone-one
 */
 
-@import url('https://fonts.googleapis.com/css?family=Cabin|Cabin+Condensed|Slabo+27px|Source+Sans+Pro');
+/* [#A39081] */
 
+@import url('https://fonts.googleapis.com/css?family=Cabin|Cabin+Condensed|Slabo+27px|Source+Sans+Pro');
 /* github font :) */
 
 @font-face {
-	font-family: 'Collegia';
-	src: url('../fonts/collegia/Collegia.otf') format('otf');
-	font-style: normal;
+    font-family: 'Collegia';
+    src: url('../fonts/collegia/Collegia.otf') format('otf');
+    font-style: normal;
     font-weight: 500;
 }
 
+@font-face {
+    font-family: 'Cabin', sans-serif;
+}
 
-@font-face { font-family: 'Cabin', sans-serif;}
-@font-face { font-family: 'Slabo 27px', serif;}
-@font-face { font-family: 'Source Sans Pro', sans-serif;}
-@font-face { font-family: 'Cabin', sans-serif;}
+@font-face {
+    font-family: 'Slabo 27px', serif;
+}
 
+@font-face {
+    font-family: 'Source Sans Pro', sans-serif;
+}
 
+@font-face {
+    font-family: 'Cabin', sans-serif;
+}
 
 html {
-	position: relative;
-	min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 /* body & main tweaks for sticky footer */
 
-
 body {
-	/* font-family: 'Cabin', sans-serif; */
-	/* Margin bottom by footer height */
-	margin-bottom: 60px;
-	display: flex;
+    /* font-family: 'Cabin', sans-serif; */
+    display: flex;
     min-height: 100vh;
     flex-direction: column;
 }
-
 
 main {
     flex: 1 0 auto;
 }
 
-
 /* Materialize */
 
 .multiply {
-	background-blend-mode: multiply;
+    background-blend-mode: multiply;
 }
 
 .icon-block {
-	padding: 0 15px;
+    padding: 0 15px;
 }
 
 .icon-block .material-icons {
-	font-size: inherit;
+    font-size: inherit;
 }
 
 .brand-logo {
-	margin-left: 20px;
+    margin-left: 20px;
 }
 
-.main-section,
-.form-questions {
-	margin: 0;
+.main-section, .form-questions {
+    margin: 0;
 }
-
 
 #price-range {
-	margin: 0;
-	font-size: 0.8rem;
-	color: #9e9e9e;
-	padding-bottom: 6px;
+    margin: 0;
+    font-size: 0.8rem;
+    color: #9e9e9e;
+    padding-bottom: 6px;
 }
 
 .range-field {
-	margin: 0 0 2px 0;
+    margin: 0 0 2px 0;
 }
 
 #slider {
-	margin: 0;
-	border: none;
-	width: 100%;
-	padding-top: 20px;
+    margin: 0;
+    border: none;
+    width: 100%;
+    padding-top: 20px;
 }
 
 hr {
-	width: 70%;
-	align-content: center;
+    width: 70%;
+    align-content: center;
 }
 
-footer a,
-footer a:active {
-	text-decoration: none;
-	color: #adccda;
+footer a, footer a:active {
+    text-decoration: none;
+    color: #adccda;
 }
 
 footer a:hover {
-	color: #75c1e5;
-	cursor: default;
+    color: #75c1e5;
+    cursor: default;
 }
 
 /* Application Custom CSS
   -------------------------------------------------- */
 
-
 /* Correct image cropping	 */
 
 .crop {
-	/*width: 350px;*/
-	height: 260px;
-	overflow: hidden;
+    /*width: 350px;*/
+    height: 260px;
+    overflow: hidden;
 }
 
 img {
-	height: 260px display: block;
-	margin: 0 auto;
+    height: 260px display: block;
+    margin: 0 auto;
 }
 
 img[class] {
-	width: 350px
+    width: 350px
 }
 
 .object-fit_fill {
-	object-fit: fill;
+    object-fit: fill;
 }
 
 .object-fit_contain {
-	object-fit: fill;
+    object-fit: fill;
 }
 
 .flex-container {
-	flex-flow: row wrap;
+    flex-flow: row wrap;
 }
 
 .card .card-image img {
-	/* max-height: 260px; */
-	/*left: 25%;*/
+    /* max-height: 260px; */
+    /*left: 25%;*/
 }
 
 /* images used in gift detail */
 
 .img-gift-detail {
-	max-width: 400px;
+    max-width: 400px;
 }
-
 
 /* images used in user profiles */
 
 .img-profile-sm {
-	max-width: 160px;
+    max-width: 160px;
 }
-
 
 /* page logo */
 
 .app-logo {
-	font-family: 'Collegia';
-	font-size: 200%;
-	/* 16 * 0.0625 = 1px */
-	letter-spacing: 0.031em;
-	text-shadow: 1px 1px 1px #d3d3d34d;
+    font-family: 'Collegia';
+    font-size: 200%;
+    /* 16 * 0.0625 = 1px */
+    letter-spacing: 0.031em;
+    text-shadow: 1px 1px 1px #d3d3d34d;
 }
 
 /* Materialize Buttons
   -------------------------------------------------- */
 
-.btn,
-.btn-large {
-	border-radius: 0.7rem;
-	text-shadow: 0px 1px 0 #1b1b1b55;
-	text-transform: none;
+.btn, .btn-large {
+    border-radius: 0.7rem;
+    text-shadow: 0px 1px 0 #1b1b1b55;
+    text-transform: none;
     border-bottom: 4px solid #0a0a0a33;
 }
 
-.btn-flat,
-.btn-flat:hover  {
-	border-radius: 0.7rem;
-	border: 1px solid #98989820;
+.btn-flat, .btn-flat:hover {
+    border-radius: 0.7rem;
+    border: 1px solid #98989820;
 }
 
 .btn-flat:hover {
-	background-color: #ededed;
+    background-color: #ededed;
 }
 
-
-.page-footer h2,
-.page-footer h3,
-.page-footer h4,
-.page-footer h5 {
-	text-shadow: 1px 2px 1px #46464691;
+.page-footer h2, .page-footer h3, .page-footer h4, .page-footer h5 {
+    text-shadow: 1px 2px 1px #46464691;
 }
 
 /* fix for white text in modals */
+
 .page-footer {
-	color: #000;
+    color: #000;
 }
 
 /* logo headline */
-.page-header {
-	text-shadow: 1px 2px 0 #46464691;
-}
 
+.page-header {
+    text-shadow: 1px 2px 0 #46464691;
+}
 
 /* Materialize Tabs
   -------------------------------------------------- */
 
 .tabs .tab a, .tab a:hover, .tabs .tab a.active {
-	color: #75c1e5;
+    color: #75c1e5;
 }
 
 .tabs .tab a:hover {
-	color: #b09e88;
+    color: #b09e88;
 }
 
 .tabs .indicator {
-	background-color: #75c1e5;
+    background-color: #75c1e5;
 }
 
 .tabs .tab {
-	text-transform: none;
+    text-transform: none;
 }
 
 /* fix for side nav on mobile */
+
 #sidenav-overlay {
     /*margin-left: 300px;*/
-	z-index: 996;
+    z-index: 996;
 }
-
 
 /* Materialize Badges
   -------------------------------------------------- */
@@ -243,214 +235,217 @@ img[class] {
 .user-categories {}
 
 span.category-badge {
-	font-family: 'Roboto', sans-serif;
-	font-weight: 300;
-	background-color: #286fff;
-	color: #fff;
-	/* text-transform: capitalize; */
-	font-size: 1rem;
-	border-radius: 4rem;
-	padding: 0.1rem 1rem 0.1rem 1rem;
-	margin: 0 1px 0 1px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+    background-color: #286fff;
+    color: #fff;
+    /* text-transform: capitalize; */
+    font-size: 1rem;
+    border-radius: 4rem;
+    padding: 0.1rem 1rem 0.1rem 1rem;
+    margin: 0 1px 0 1px;
 }
 
 .badge-container {
-	display: flow-root;
-	padding: 0.8rem 0 0.5rem 0;
+    display: flow-root;
+    padding: 0.8rem 0 0.5rem 0;
 }
-
 
 .dropdown-content li>a, .dropdown-content li>span {
-	font-size: 14px;
+    font-size: 14px;
 }
 
-
 .code-format {
-	font-family: monospace;
-	white-space: pre-wrap;
-	font-size: 75%;
+    font-family: monospace;
+    white-space: pre-wrap;
+    font-size: 75%;
 }
 
 span.gift-title {
-	font-weight: 800;
+    font-weight: 800;
 }
-
 
 /*----------------------------------------
     EXTRAS
 ------------------------------------------*/
 
 .product .card .btn-price {
-	width: 65px;
-	height: 65px;
-	font-weight: 600;
-	font-size: 1.0rem;
-	line-height: 65px;
-	margin: 10px;
-	position: absolute;
-	top: 0;
-	letter-spacing: 0;
-	border-radius: 3rem;
-	text-transform: none;
-	border-bottom: none;
+    width: 65px;
+    height: 65px;
+    font-weight: 600;
+    font-size: 1.0rem;
+    line-height: 65px;
+    margin: 10px;
+    position: absolute;
+    top: 0;
+    letter-spacing: 0;
+    border-radius: 3rem;
+    text-transform: none;
+    border-bottom: none;
 }
 
-.item-card .card .card-content .card-title,
-.item-card .card .card-reveal .card-title {
-	font-size: 1.2rem;
-	line-height: 1.6rem;
-	font-weight: 400;
+.item-card .card .card-content .card-title, .item-card .card .card-reveal .card-title {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    font-weight: 400;
 }
 
 .item-card .card {
-	margin: 0;
+    margin: 0;
 }
 
 .item-card .card .card-content {
-	padding: 24px;
+    padding: 24px;
 }
 
 .item-card ul.card-action-buttons {
-	margin: -26px 10px 0 0;
-	text-align: right;
+    margin: -26px 10px 0 0;
+    text-align: right;
 }
 
 .item-card ul.card-action-buttons li {
-	display: inline-block;
-	padding-left: 5px;
+    display: inline-block;
+    padding-left: 5px;
 }
 
-.item .card .card-content .card-title,
-.item .card .card-reveal .card-title {
-	font-size: 1.2rem;
-	line-height: 1.6rem;
-	font-weight: 400;
+.item .card .card-content .card-title, .item .card .card-reveal .card-title {
+    font-size: 1.2rem;
+    line-height: 1.6rem;
+    font-weight: 400;
 }
 
 .item {
-	/* width: 20%; */
-	width: 30%;
-	padding: 10px;
-	/* Fix for item rows  */
-	float: left;
+    /* width: 20%; */
+    width: 30%;
+    padding: 10px;
+    /* Fix for item rows  */
+    float: left;
 }
 
 .item .card {
-	margin: 0;
+    margin: 0;
 }
 
 .item .card .card-content {
-	padding: 24px;
+    padding: 24px;
 }
 
 .item ul.card-action-buttons {
-	margin: -26px 10px 0 0;
-	text-align: right;
+    margin: -26px 10px 0 0;
+    text-align: right;
 }
 
 .item ul.card-action-buttons li {
-	display: inline-block;
-	padding-left: 5px;
+    display: inline-block;
+    padding-left: 5px;
 }
 
 .item-sizer {
-	width: 20%;
+    width: 20%;
 }
 
 .item-post-content {
-	padding-bottom: 10px;
+    padding-bottom: 10px;
 }
 
 .profile {
-	color: #607d8b;
+    color: #607d8b;
+}
+
+.mdi-action-grade:before {
+    content: "\e632";
 }
 
 @font-face {
-	font-family: 'Material Icons';
-	font-style: normal;
-	font-weight: 400;
-	src: local("Material Icons"),
-	local("MaterialIcons-Regular"),
-	url("../fonts/material-design-icons/MaterialIcons-Regular.ttf") format("truetype"),
-	url("../fonts/material-design-icons/MaterialIcons-Regular.woff2") format("woff2"),
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: local("Material Icons"), local("MaterialIcons-Regular"), url("../fonts/material-design-icons/MaterialIcons-Regular.ttf") format("truetype"), url("../fonts/material-design-icons/MaterialIcons-Regular.woff2") format("woff2"),
 }
 
 .material-icons {
-	font-family: 'Material Icons';
-	font-weight: normal;
-	font-style: normal;
-	font-size: 24px;
-	/* Preferred icon size */
-	display: inline-block;
-	line-height: 1;
-	text-transform: none;
-	letter-spacing: normal;
-	word-wrap: normal;
-	white-space: nowrap;
-	direction: ltr;
-	/* Support for all WebKit browsers. */
-	-webkit-font-smoothing: antialiased;
-	/* Support for Safari and Chrome. */
-	text-rendering: optimizeLegibility;
-	/* Support for Firefox. */
-	-moz-osx-font-smoothing: grayscale;
-	/* Support for IE. */
-	font-feature-settings: 'liga';
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+    /* Support for IE. */
+    font-feature-settings: 'liga';
 }
-
 
 /* Rules for sizing the icon. */
 
 .material-icons.md-18 {
-	font-size: 18px;
+    font-size: 18px;
 }
 
 .material-icons.md-24 {
-	font-size: 24px;
+    font-size: 24px;
 }
 
 .material-icons.md-36 {
-	font-size: 36px;
+    font-size: 36px;
 }
 
 .material-icons.md-48 {
-	font-size: 48px;
+    font-size: 48px;
 }
-
 
 /* Rules for using icons as black on a light background. */
 
 .material-icons.md-dark {
-	color: rgba(0, 0, 0, 0.54);
+    color: rgba(0, 0, 0, 0.54);
 }
 
 .material-icons.md-dark.md-inactive {
-	color: rgba(0, 0, 0, 0.26);
+    color: rgba(0, 0, 0, 0.26);
 }
-
 
 /* Rules for using icons as white on a dark background. */
 
 .material-icons.md-light {
-	color: white;
+    color: white;
 }
 
 .material-icons.md-light.md-inactive {
-	color: rgba(255, 255, 255, 0.3);
+    color: rgba(255, 255, 255, 0.3);
 }
-
 
 /* Custom Stylesheet */
 
+.home-container {
+    background-image: url("/img/gift-background.jpg");
+    background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+    height: 100vh;
+
+	/*  materialize valign */
+	display: flex;
+	align-items: center;
+	margin: 0px;
+}
+
+/*
 .home-container {
 	position: relative;
 	margin: 0;
 	padding: 0;
 	width: 100%;
 	height: 100%;
-
-	background-size: cover;
-	background-position: center;
   }
 
   #home-image {
@@ -471,101 +466,110 @@ span.gift-title {
 	text-align: center;
   }
 
-  h1 {
-	font-family: 'Berkshire Swash', cursive;
-  }
-
-  h5,
   input {
+      font-family: 'Raleway', sans-serif;
+      padding: 0;
+      margin: 0;
+  }
+*/
+
+
+h1.homepage {
+    font-family: 'Berkshire Swash', cursive;
+}
+
+input.homepage,
+h5.homepage {
 	font-family: 'Raleway', sans-serif;
 	padding: 0;
 	margin: 0;
-  }
-
-  #email,
-  #password {
-	margin: 0;
-	color:rgb(53, 49, 49);
-  }
-
-  .icon-block {
-	padding: 0 15px;
-  }
-  .icon-block .material-icons {
-	  font-size: inherit;
-  }
-
-  .brand-logo {
-	margin-left: 20px;
-  }
+}
 
 
-  .main-section,
-  .form-questions {
-	margin: 0;
-  }
+.btn.homepage {
+    background-color: #F7C9A1;
+	border-radius: 0;
+	border: 0;
+}
 
+.home-login a {
+	font-family: 'Raleway', sans-serif;
+	font-size: 0.7rem;
+}
 
+#email, #password {
+    margin: 0;
+    color: rgb(53, 49, 49);
+}
 
-  hr {
-	width: 70%;
-	align-content: center;
-  }
+.icon-block {
+    padding: 0 15px;
+}
+
+.icon-block .material-icons {
+    font-size: inherit;
+}
+
+.brand-logo {
+    margin-left: 20px;
+}
+
+.main-section, .form-questions {
+    margin: 0;
+}
+
+hr {
+    width: 70%;
+    align-content: center;
+}
+
 /* Modals */
 
-
 /* .collection .collection-item.avatar {} */
-
 
 /* Large devices (desktops, less than 1200px) */
 
 @media (max-width: 1500px) {
-	.item {
-		/* width: 20%; */
-		width: 50%;
-	}
+    .item {
+        /* width: 20%; */
+        width: 50%;
+    }
 }
 
 @media (max-width: 1023px) {}
-
 
 /* Medium devices (tablets, less than 992px) */
 
 @media (max-width: 991px) {}
 
-
 /* Small devices (landscape phones, less than 768px) */
 
 @media (max-width: 767px) {}
-
 
 /* Extra small devices (portrait phones, less than 576px) */
 
 @media (max-width: 575px) {}
 
-
 /* Materialize */
 
 @media only screen and (max-width: 600px) {
-	.brand-logo,
-	nav .brand-logo i,
-	nav .brand-logo {
-		float: none;
-	}
-	.form-row {
-		margin: 0;
-	}
-	#slider {
-		width: 100%;
-	}
-	.submit-button-row {
-		margin-top: 40px;
-	}
-	.card.large {
-		height: 300px;
-	}
-	.item {
-		/* width: 20%; */
-		width: 100%;
-	}
+    .brand-logo, nav .brand-logo i, nav .brand-logo {
+        float: none;
+    }
+    .form-row {
+        margin: 0;
+    }
+    #slider {
+        width: 100%;
+    }
+    .submit-button-row {
+        margin-top: 40px;
+    }
+    .card.large {
+        height: 300px;
+    }
+    .item {
+        /* width: 20%; */
+        width: 100%;
+    }
 }

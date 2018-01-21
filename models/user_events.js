@@ -9,7 +9,7 @@ module.exports = function (sequelize, DataTypes) {
 		event_name: DataTypes.STRING ,
         event_description: DataTypes.TEXT,
 		event_date: DataTypes.DATE,
-		event_budget: DataTypes.DECIMAL(10, 2),
+		event_budget: DataTypes.INTEGER,
 		createdAt: DataTypes.DATE,
 		updatedAt: DataTypes.DATE,
 	});

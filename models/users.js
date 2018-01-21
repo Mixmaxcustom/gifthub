@@ -18,6 +18,25 @@ module.exports = function (sequelize, DataTypes) {
 		user_photo: DataTypes.STRING,
 		createdAt: DataTypes.DATE,
 		updatedAt: DataTypes.DATE,
+	}, {
+		freezeTableName: true
 	});
+
+	/*
+	users.associate = (models) => {
+		// When an user is deleted, also delete any associated recipients
+		users.hasMany(models.recipients, {
+			onDelete: "cascade"
+		});
+	};*/
+
+	users.associate = (models) => {
+		users.belongsToMany(models.user_events, {
+			through: 'user_event_mapping',
+			as: 'events',
+			foreignKey: 'user_id'
+		});
+	};
+
 	return users;
 };
