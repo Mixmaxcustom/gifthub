@@ -68,6 +68,12 @@
 	<li><a href="/profile"><i class="fa fa-users" aria-hidden="true"></i>Friends & Family</a></li>
 	<li><a href="/search"><i class="fa fa-search" aria-hidden="true"></i>Search for Gifts</a></li>
 	<!-- <li><a href="/events"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>Events</a></li> -->
+
+	{{#if ./user.user_is_admin}}
+		<li class="divider"></li>
+		<li><a href="/api"><i class="fa fa-cogs" aria-hidden="true"></i>API</a></li>
+	{{/if}}
+
 	<li class="divider"></li>
 	<li><a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
 </ul>
