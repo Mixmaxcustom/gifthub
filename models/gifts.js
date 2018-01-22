@@ -1,6 +1,6 @@
 // gifts table
 module.exports = function (sequelize, DataTypes) {
-	var Gifts = sequelize.define("Gifts", {
+	var Gifts = sequelize.define("gifts", {
 		gift_id: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
@@ -23,10 +23,8 @@ module.exports = function (sequelize, DataTypes) {
     });
 
 	Gifts.associate = (models) => {
-		Gifts.belongsToMany(models.Searches, {
-			through: 'search_gift_mappings',
-			as: 'gifts',
-			foreignKey: 'gift_id'
+		Gifts.belongsToMany(models.searches, {
+			through: 'search_gift_mappings'
 		});
 	};
 

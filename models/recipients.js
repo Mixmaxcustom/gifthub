@@ -1,6 +1,6 @@
 // recipients table
 module.exports = function(sequelize, DataTypes) {
-    var Recipients = sequelize.define("Recipients", {
+    var Recipients = sequelize.define("recipients", {
         recipient_id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -30,12 +30,12 @@ module.exports = function(sequelize, DataTypes) {
     });
 
     Recipients.associate = (models) => {
-        Recipients.belongsToMany(models.Recipients, {
-            through: 'search_gift_mappings',
-            as: 'users',
-            foreignKey: 'user_id'
+        Recipients.belongsToMany(models.users, {
+            through: 'user_recipient_mappings'
         });
     };
+
+    
 
 
     return Recipients;

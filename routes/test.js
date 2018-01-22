@@ -7,7 +7,7 @@ module.exports = (app) => {
         console.log(` - requesting ${req.url}`);
 
 
-        db.Users.findAll({
+        db.users.findAll({
             include: [{
                 model: db.user_event_mapping,
 				as: 'events',
@@ -16,8 +16,8 @@ module.exports = (app) => {
                 }
             }]
         }).then( users => {
-			app.pageContent.users = users;
-			res.render('test/index', app.pageContent);
+			app.content.users = users;
+			res.render('test/index', app.content);
 		})
     });
 };

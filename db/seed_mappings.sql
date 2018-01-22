@@ -77,25 +77,25 @@ INSERT INTO gift_category_mappings (gift_id, category_id)
 VALUES (7, 17);
 
 
-INSERT INTO Events (event_name, event_description, event_date)
+INSERT INTO events (event_name, event_description, event_date)
 VALUES ('Christmas', 'Christmas 2018', '2018-12-25');
 
 
 INSERT INTO user_event_mappings (user_id, event_id)
 VALUES (1, 1);
 
-INSERT INTO Events (event_name, event_description, event_date)
+INSERT INTO events (event_name, event_description, event_date)
 VALUES ('Easter', 'Easter 2018', '2018-04-11');
 
 INSERT INTO user_event_mappings (user_id, event_id)
 VALUES (1, 2);
 
 
-INSERT INTO Interests (interest_name, interest_description, created_at)
+INSERT INTO interests (interest_name, interest_description, created_at)
 VALUES ('Art', 'Arts & Crafts', now());
 
-INSERT INTO Interests (interest_name, interest_description, created_at)
+INSERT INTO interests (interest_name, interest_description, created_at)
 VALUES ('Boozy', 'Libations and breathilizers', now());
 
-INSERT INTO Interests (interest_name, interest_description, created_at)
+INSERT INTO interests (interest_name, interest_description, created_at)
 VALUES ('BDSM', 'Ummm...', '2017-11-09 01:28:19');

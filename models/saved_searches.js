@@ -1,6 +1,6 @@
 // user searches table
 module.exports = function (sequelize, DataTypes) {
-	var Searches = sequelize.define("Searches", {
+	var Searches = sequelize.define("searches", {
 		search_id: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
@@ -17,10 +17,8 @@ module.exports = function (sequelize, DataTypes) {
 
 
 	Searches.associate = (models) => {
-		Searches.belongsToMany(models.Users, {
-			through: 'user_search_mappings',
-			as: 'searches',
-			foreignKey: 'search_id'
+		Searches.belongsToMany(models.users, {
+			through: 'user_search_mappings'
 		});
 	};
 

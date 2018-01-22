@@ -1,7 +1,7 @@
 // page content init module
 
 // globals for page rendering
-var pageContent = {
+var content = {
     layout: 'main',
     projname: 'gifthub',
     pagetitle: '',
@@ -13,7 +13,8 @@ var pageContent = {
         user_email: null,
         user_firstname: null,
         user_lastname: null,
-        is_logged_in: false
+        user_is_logged_in: false,
+        user_is_admin: false
     },
     searchData: {
         seachCategory: null,
@@ -23,5 +24,5 @@ var pageContent = {
 
 
 module.exports = function (app) {
-    app.pageContent = pageContent;
+    app.content = content;
 };

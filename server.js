@@ -43,15 +43,17 @@ app.set("view engine", "hbs");
 
 //  routing
 require("./routes/auth")(app);
-require("./routes/events")(app);
-require("./routes/index")(app);
 require("./routes/login")(app);
+require("./routes/index")(app);
+require("./routes/events")(app);
 require("./routes/profile")(app);
 require("./routes/search")(app);
-require("./routes/test")(app);
 require("./routes/user")(app);
 require("./routes/amazon")(app);
 require("./routes/recipients")(app);
+//  test routes
+require("./routes/test")(app);
+require("./routes/api")(app);
 require("./routes/dbtest")(app);
 
 

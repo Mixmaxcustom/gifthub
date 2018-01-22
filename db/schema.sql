@@ -16,7 +16,7 @@ USE `gifthub_db`;
 
 -- account holders
 
-CREATE TABLE Users (
+CREATE TABLE users (
   user_id int auto_increment,
   user_firstname varchar(255) not null,
   user_lastname varchar(255),
@@ -36,7 +36,7 @@ CREATE TABLE Users (
 
 -- gift(amazon) categories
 
-CREATE TABLE Categories (
+CREATE TABLE categories (
   category_id int auto_increment,
   category_name varchar(255) not null,
   -- tag is an alias to another tag (ie "movies" -> "entertainment")
@@ -51,7 +51,7 @@ CREATE TABLE Categories (
 
 -- saved user events
 
-CREATE TABLE Events (
+CREATE TABLE events (
   event_id int auto_increment,
   event_name varchar(255) not null,
   event_description mediumtext,
@@ -66,7 +66,7 @@ CREATE TABLE Events (
 
 -- saved gift ideas for recipients
 
-CREATE TABLE Gifts (
+CREATE TABLE gifts (
   gift_id int auto_increment,
   gift_name varchar(255),
   gift_description mediumtext,
@@ -84,7 +84,7 @@ CREATE TABLE Gifts (
 
 -- user interests
 
-CREATE TABLE Interests (
+CREATE TABLE interests (
   interest_id int auto_increment,
   interest_name varchar(255) not null,
   -- tag is an alias to another tag (ie "movies" -> "entertainment")
@@ -102,7 +102,7 @@ CREATE TABLE Interests (
 
 -- friends & relatives of users
 
-CREATE TABLE Recipients (
+CREATE TABLE recipients (
   recipient_id int auto_increment,
   recipient_title varchar(255),
   recipient_firstname varchar(255),
@@ -122,7 +122,7 @@ CREATE TABLE Recipients (
 
 -- saved user searches
 
-CREATE TABLE Searches (
+CREATE TABLE searches (
   search_id int auto_increment,
   search_name varchar(255) not null,
   search_description mediumtext,

@@ -29,9 +29,10 @@ module.exports = (app) => {
 
 				// successful authentication
                 } else {
-
-                    app.pageContent.user = data;
-                    app.pageContent.user.is_logged_in = true;
+                    app.content.user = data;
+                    app.content.user.user_is_logged_in = true;
+					app.content.user.is_admin = data.user_is_admin;
+					console.log(`- [auth] user logged in with id: ${data.user_id}...`);
 
                     // continue to the next step
                     next();
@@ -45,4 +46,20 @@ module.exports = (app) => {
 			res.render(nonUserURL, {layout: 'home'})
         }
     });
+
+    // get user data
+	app.getUser = (user_id) => {
+		// return the promise itself
+		return db.users.find({
+			where: {
+			   user_id: user_id
+			}
+		}).then( user => {
+			if (!user) {
+				return 'not find';
+			}
+			return user.dataValues;
+		 });
+	}
+
 };

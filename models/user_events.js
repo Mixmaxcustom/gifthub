@@ -1,6 +1,6 @@
 // user searches table
 module.exports = function (sequelize, DataTypes) {
-	var Events = sequelize.define("Events", {
+	var Events = sequelize.define("events", {
 		event_id: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
@@ -18,19 +18,15 @@ module.exports = function (sequelize, DataTypes) {
     });
 
 	Events.associate = (models) => {
-		Events.belongsToMany(models.Users, {
-			through: 'user_event_mappings',
-			as: 'events',
-			foreignKey: 'event_id'
+		Events.belongsToMany(models.users, {
+			through: 'user_event_mappings'
 		});
 	};
 
 
 	Events.associate = (models) => {
-		Events.belongsToMany(models.Recipients, {
-			through: 'recipient_event_mappings',
-			as: 'events',
-			foreignKey: 'event_id'
+		Events.belongsToMany(models.recipients, {
+			through: 'recipient_event_mappings'
 		});
 	};
 

@@ -68,7 +68,7 @@ class GiftCard {
     get html() {
         let output =
             `<div class="item product">` +
-            `<div class="card">` +
+            `<div class="card medium">` +
             `<div class="card-image waves-effect waves-block waves-light crop">` +
             `<a target="_blank" href="${this.detailsURL}" class="btn-floating btn-large btn-price waves-effect waves-light accent-4 teal">${this.formattedPrice}</a>` +
             // `<a href="#"><img class="responsive-img object-fit_fill" src="${this.image}" alt="item-img"></a>` +
@@ -83,7 +83,7 @@ class GiftCard {
             `<div class="row">` +
             `<div class="col s12">` +
             `<p class="card-title grey-text text-darken-4">` +
-            `<a href="#" class="grey-text text-darken-4">${this.title}</a>` +
+            `<a href="#" class="grey-text text-darken-4 truncate" alt="${this.title}">${this.title}</a>` +
             `</p>` +
             `</div></div>` +
             `<div class="row">` +

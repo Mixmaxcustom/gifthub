@@ -1,6 +1,6 @@
 // categories table
 module.exports = function (sequelize, DataTypes) {
-	var Categories = sequelize.define("Categories", {
+	var Categories = sequelize.define("categories", {
 		category_id: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
@@ -15,7 +15,7 @@ module.exports = function (sequelize, DataTypes) {
     });
 
 	Categories.associate = (models) => {
-		Categories.belongsToMany(models.Gifts, {
+		Categories.belongsToMany(models.gifts, {
 			through: 'gift_category_mappings',
 			as: 'categories',
 			foreignKey: 'category_id'
@@ -23,26 +23,20 @@ module.exports = function (sequelize, DataTypes) {
 	};
 
 	Categories.associate = (models) => {
-		Categories.belongsToMany(models.Recipients, {
-			through: 'recipient_category_mappings',
-			as: 'categories',
-			foreignKey: 'category_id'
+		Categories.belongsToMany(models.recipients, {
+			through: 'recipient_category_mappings'
 		});
 	};
 
 	Categories.associate = (models) => {
-		Categories.belongsToMany(models.Searches, {
-			through: 'search_category_mappings',
-			as: 'categories',
-			foreignKey: 'category_id'
+		Categories.belongsToMany(models.searches, {
+			through: 'search_category_mappings'
 		});
 	};
 
 	Categories.associate = (models) => {
-		Categories.belongsToMany(models.Interests, {
-			through: 'interest_category_mappings',
-			as: 'categories',
-			foreignKey: 'category_id'
+		Categories.belongsToMany(models.interests, {
+			through: 'interest_category_mappings'
 		});
 	};
 

@@ -5,7 +5,7 @@ const db 	= require("../models/");
 module.exports = (app) => {
 	app.get("/test", (req, res) => {
 		console.log(` - requesting ${req.url}`);
-		res.render('dbtest', app.pageContent);
+		res.render('dbtest', app.content);
 	});
 
 	// dumb the contents of the given table to json
@@ -16,7 +16,7 @@ module.exports = (app) => {
 		console.log(` - posting ${req.url}`);
 		console.log(`    - table: ${table}`);
 		console.log(dbdata);
-	
+
 
 		db[table].findAll().then( data => {
 			res.status(200).json(data)
@@ -34,7 +34,7 @@ module.exports = (app) => {
 		console.log(` - posting ${req.url}`);
 		console.log(`    - table: ${table}`);
 		console.log(dbdata);
-	
+
 
 		db[table].findAll().then( data => {
 			res.status(200).json(data)
@@ -43,5 +43,4 @@ module.exports = (app) => {
             res.json({error:err, stackError:err.stack});
 		});
 	});
-
 };

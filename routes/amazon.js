@@ -4,10 +4,11 @@ const client 		= require('../config/amazon');
 const amazon 		= require('amazon-product-api');
 
 
-var ProductCard = function(asin, title, image, price, detailsURL, description, category) {
+var ProductCard = function(asin, title, image, thumbnail, price, detailsURL, description, category) {
     this.asin = asin,
     this.title = title,
     this.image = image,
+    this.thumbnail = thumbnail,
     this.price = parseInt(price),
     this.detailsURL = detailsURL,
 	this.description = description,
@@ -19,9 +20,9 @@ module.exports = (app) => {
 	app.get("/amazon", (req, res, next) => {
 		console.log(` - requesting ${req.url}`);
 
-		db.Categories.findAll().then( categories => {
-			app.pageContent.categories = categories;
-            res.render('amazon/index', app.pageContent);
+		db.categories.findAll().then( categories => {
+			app.content.categories = categories;
+            res.render('amazon/index', app.content);
 		});
 	});
 
@@ -32,6 +33,8 @@ module.exports = (app) => {
 		// if getting values via url params, query the Request.query
 		let isPostman = (Object.keys(req.query).length > 0) ? true : false;
 		let searchData = (isPostman === true) ? req.query : req.body;
+        let sortBy = (searchData.SearchIndex === 'All') ? null : 'salesrank';
+
 
 		client.itemSearch({
 			SearchIndex: searchData.SearchIndex,
@@ -57,6 +60,7 @@ module.exports = (app) => {
 					// Assign desired product info to variables -JR
 					let productAsin = results[i].ASIN[0];
 					let productTitle = results[i].ItemAttributes[0].Title[0];
+                    let thumbnailImage = results[i].ImageSets[0].ImageSet[0].TinyImage[0].URL[0];
 					let productImage = results[i].ImageSets[0].ImageSet[0].LargeImage[0].URL[0];
 					// let productPrice = results[i].OfferSummary[0].LowestNewPrice[0].Amount[0];
                     // updating price to show the displayed Amazon price
@@ -67,12 +71,12 @@ module.exports = (app) => {
                     let productCategory = (Object.keys(itemAttributes).includes('ProductGroup')) ? itemAttributes.ProductGroup[0] : null;
 
 					// Create new productCard for each product using above variables -JR
-					let productCard = new ProductCard(productAsin, productTitle, productImage, productPrice, productDetailPage, productDescription, productCategory);
+					let productCard = new ProductCard(productAsin, productTitle, productImage, thumbnailImage, productPrice, productDetailPage, productDescription, productCategory);
 
 					// Push new productCard to the productCardArray -JR
 					productCardArr.push(productCard);
 
-					if (app.pageContent.debug_mode === true) {
+					if (app.content.debug_mode === true) {
 						console.log("======== AMAZON API RESULTS " + i + " ===========")
 						console.log("ASIN -        " + productAsin);
 						console.log("Title -       " + productTitle);

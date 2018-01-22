@@ -5,18 +5,25 @@ module.exports = (app) => {
     // all recipients list
     app.get("/events", function(req, res) {
         // look for the current user in the database
-        db.Events.findAll().then( events => {
+        db.events.findAll().then( events => {
             // res.json(events)
-            app.pageContent.events = events;
-            app.pageContent.pagetitle = 'Events'
-            res.render('events', app.pageContent)
+            app.content.events = events;
+            app.content.pagetitle = 'Events'
+            res.render('events', app.content)
         })
     });
 
     // add a new event screen
     app.get("/add-event", function(req, res) {
         // look for the current user in the database
-        db.Events.findAll().then( events => {
+
+        db.users.findOne({
+            where: {
+                user_id: app.content.user.user_id
+            }
+        })
+
+        db.events.findAll().then( events => {
             res.json(events)
         })
     });
@@ -24,10 +31,11 @@ module.exports = (app) => {
     // add a new recipient
     app.post("/events", (req, res, next) => {
         let eventData = (Object.keys(req.query).length > 0) ? req.query : req.body;
+
         console.log(` - requesting ${req.url}`);
         console.log(eventData);
         // look for the current user in the database
-        db.Events.create(
+        db.events.create(
             eventData
         ).then( data => {
             //console.log( recipient.get({plain: true }))

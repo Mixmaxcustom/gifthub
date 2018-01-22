@@ -1,6 +1,6 @@
 // user searches table
 module.exports = function (sequelize, DataTypes) {
-	var Interests = sequelize.define("Interests", {
+	var Interests = sequelize.define("interests", {
 		interest_id: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
@@ -26,18 +26,14 @@ module.exports = function (sequelize, DataTypes) {
 
 
 	Interests.associate = (models) => {
-		Interests.belongsToMany(models.Recipients, {
-			through: 'recipient_interest_mappings',
-			as: 'interests',
-			foreignKey: 'interest_id'
+		Interests.belongsToMany(models.recipients, {
+			through: 'recipient_interest_mappings'
 		});
 	};
 
 	Interests.associate = (models) => {
-		Interests.belongsToMany(models.Categories, {
-			through: 'recipient_interest_mappings',
-			as: 'interests',
-			foreignKey: 'interest_id'
+		Interests.belongsToMany(models.categories, {
+			through: 'recipient_interest_mappings'
 		});
 	};
 

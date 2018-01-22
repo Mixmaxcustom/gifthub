@@ -7,10 +7,10 @@ module.exports = (app) => {
 	app.get("/", (req, res) => {
 		console.log(` - requesting ${req.url}`);
 
-		db.Categories.findAll().then(categories => {
-			app.pageContent.layout = 'main';
-			app.pageContent.categories = categories;
-            res.render('index', app.pageContent);
+		db.categories.findAll().then(categories => {
+			app.content.layout = 'main';
+			app.content.categories = categories;
+            res.render('index', app.content);
 		});
 	});
 };
