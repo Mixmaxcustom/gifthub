@@ -9,6 +9,8 @@ logs
 *.log
 npm-debug.log*
 
+karma.config.js
+
 # Dependency directories
 node_modules/
 
