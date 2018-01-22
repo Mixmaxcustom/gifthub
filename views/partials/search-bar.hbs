@@ -2,42 +2,44 @@
     <form>
         <!-- removed valign-wrapper -->
         <div class="row form-row">
-        <div class="input-field col s12 m3">
 
-            {{!-- Categories Menu --}}
-            <select id="gift_category_menu">
-                <option value="" disabled selected>Gift Type</option>
+            <div class="input-field col s12 l3">
 
-                {{#each categories as | category |}}
-                <option value="{{category.category_id}}" data-value="{{category.category_name}}">{{category.category_description}}</option>
-                {{/each}}
-            </select>
-            <label>Gift Type</label>
-        </div>
+                {{!-- Categories Menu --}}
+                <select id="gift_category_menu">
+                    <option value="" disabled selected>Gift Type</option>
 
-            {{!-- Keywords --}}
-        <div class="input-field col s12 m3">
-            <input id="keyword" type="text">
-        </div>
+                    {{#each categories as | category |}}
+                        <option value="{{category.category_id}}" data-value="{{category.category_name}}">{{category.category_description}}</option>
+                    {{/each}}
 
-        {{!-- Price Menu --}}
-            <div class="input-field col s12 m3">
-            <select id="max-price">
-                <option value="" disabled selected>Maximum Price</option>
-                <option value="2500">$25</option>
-                <option value="5000">$50</option>
-                <option value="10000">$100</option>
-                <option value="20000">$200</option>
-                <option value="30000">$300</option>
-                <option value="50000">$500</option>
-            </select>
-            <label>Maximum Price</label>
-        </div>
+                </select>
+                <label>Gift Type</label>
+            </div>
 
-            <div class="col sm12 m3">
+                {{!-- Keywords --}}
+            <div class="input-field col s12 l3">
+                <input id="keyword" type="text">
+            </div>
+
+            {{!-- Price Menu --}}
+            <div class="input-field col s12 l3">
+                <select id="max-price">
+                    <option value="" disabled selected>Maximum Price</option>
+                    <option value="2500">$25</option>
+                    <option value="5000">$50</option>
+                    <option value="10000">$100</option>
+                    <option value="20000">$200</option>
+                    <option value="30000">$300</option>
+                    <option value="50000">$500</option>
+                </select>
+                <label>Maximum Price</label>
+            </div>
+
+            <div class="col sm12 l3 search-btn-wrapper">
                 <a id="search-submit-btn" class="btn">Search</a>
-        </div>
+            </div>
 
-    </div>
+        </div>
 </form>
 </div>

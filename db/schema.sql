@@ -1,13 +1,13 @@
 -- Heroku
 /*
-DROP DATABASE IF EXISTS `pbtid0lyjykvxit5`;
-CREATE DATABASE `pbtid0lyjykvxit5`;
-USE `pbtid0lyjykvxit5`;
+DROP DATABASE IF EXISTS pbtid0lyjykvxit5;
+CREATE DATABASE pbtid0lyjykvxit5;
+USE pbtid0lyjykvxit5;
 */
 
 -- Local Database
-DROP DATABASE IF EXISTS `gifthub_db`;
-CREATE DATABASE `gifthub_db`;
+DROP DATABASE IF EXISTS gifthub_db;
+CREATE DATABASE gifthub_db;
 USE `gifthub_db`;
 
 
@@ -130,3 +130,19 @@ CREATE TABLE searches (
   updated_at datetime,
   PRIMARY KEY(search_id)
 ) COMMENT='Saved user searches';
+
+
+
+
+-- Sequelize
+
+/*
+CREATE TABLE user_recipient_mappings (
+  created_at datetime not null,
+  updated_at datetime not null,
+  recipient_recipient_id int(11) not null,
+  user_user_id int(11) not null,
+  PRIMARY KEY (recipient_recipient_id,user_user_id), KEY user_user_id (user_user_id),
+  CONSTRAINT user_recipient_mappings_ibfk_1 FOREIGN KEY (recipient_recipient_id) REFERENCES recipients (recipient_id) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT user_recipient_mappings_ibfk_2 FOREIGN KEY (user_user_id) REFERENCES users (user_id) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;*/

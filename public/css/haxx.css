@@ -211,11 +211,13 @@ Cards
   padding: 10px 20px;
 }
 
+
 #card-alert i {
   font-size: 20px;
   position: relative;
   top: 2px;
 }
+
 
 #card-alert .alert-circle {
   display: inline-block;
@@ -227,6 +229,7 @@ Cards
   top: -5px;
   left: -2px;
 }
+
 
 #card-alert .single-alert {
   line-height: 42px;

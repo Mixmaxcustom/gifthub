@@ -97,7 +97,7 @@ $(document).ready(function () {
 			if (results.status == 100) {
 				// window.location = data.redirect;
 				console.log(`added user!`);
-				$( "#recipient_title" ).load('/profile');
+				window.location.reload()
 
 			} else if (results.status > 400) {
 				console.log(`Error: ${res.message}`);

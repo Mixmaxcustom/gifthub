@@ -24,14 +24,15 @@ module.exports = function (sequelize, DataTypes) {
 	});
 
 
-
+	/*
 	Users.associate = (models) => {
 	    Users.hasMany(models.recipients);
-	};
+	};*/
 
 	Users.associate = (models) => {
 		Users.belongsToMany(models.recipients, {
-			through: 'user_recipient_mappings'
+			through: 'user_recipient_mappings',
+			foreignKey: 'user_id'
 		});
 	};
 

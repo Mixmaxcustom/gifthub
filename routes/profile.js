@@ -33,28 +33,30 @@ module.exports = (app) => {
         console.log(` - requesting ${req.url}`);
 
         console.log(`- [profile]: searching for user id ${app.content.user.user_id}`);
+        console.log(`- [profile]: ${app.content.user.user_is_logged_in}`);
+
         app.content.recipients = [];
         db.users.findOne({
-            where: {user_id: app.content.user.user_id}
-        }).then(user => {
+            where: { user_id: app.content.user.user_id }
+        }).then( user => {
             user.getRecipients().then( recipients => {
                 console.log(`- [profile]: found ${recipients.length} recipients...`);
 
-                
+
                 recipients.forEach( user => {
 
                     let data = user['dataValues'];
-				let userdata = new Recipient(data.recipient_id, data.recipient_firstname, data.recipient_lastname,data.recipient_title,
+	                let userdata = new Recipient(data.recipient_id, data.recipient_firstname, data.recipient_lastname,data.recipient_title,
 												data.recipient_bio, data.recipient_photo, data.recipient_birthday, data.recipient_max_budget,
                                                     data.recipient_city, data.recipient_state);
 				console.log(userdata);
                     app.content.recipients.push(userdata);
 
 
-			})
+              })
 
-                res.render('profile', { recipients: app.content.recipients });
-		});
-	});
+                res.render('profile', app.content);
+           });
+        });
 	});
 };

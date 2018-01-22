@@ -31,12 +31,10 @@ module.exports = function(sequelize, DataTypes) {
 
     Recipients.associate = (models) => {
         Recipients.belongsToMany(models.users, {
-            through: 'user_recipient_mappings'
+            through: 'user_recipient_mappings',
+            foreignKey: 'recipient_id'
         });
     };
-
-    
-
 
     return Recipients;
 };

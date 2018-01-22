@@ -21,14 +21,23 @@ module.exports = (app) => {
         let userData = (Object.keys(req.query).length > 0) ? req.query : req.body;
         console.log(` - requesting ${req.url}`);
         // add a new recipient
-        db.Recipients.create(
+        db.recipients.create(
             userData
-        ).then( data => {
-            res.status(200);
-            res.json(data.get({ plain: true }));
+        ).then( recipient => {
+            // link the recipient
+            recipient.addUser(app.content.user.user_id)
+            res.status(100).send({message: 'recipient added', redirect: '/profile'})
+
         }).catch( err => {
             res.status(500);
             res.json({error: err, stackError: err.stack});
         })
+    });
+
+    // post a gift to a recipient
+    app.post("/save", (req, res, next) => {
+        let data = req.body;
+        console.log(data);
+        res.send(data)
     });
 };

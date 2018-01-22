@@ -28,53 +28,53 @@ function setupStateMenu() {
 (function($) {
     $(function() {
 
-    $('.button-collapse').sideNav();
+        $('.button-collapse').sideNav();
 
-    console.log(`> initializing Materialize...`);
+        console.log(`> initializing Materialize...`);
 
-    //Dropdowns
-    $('select').material_select();
+        //Dropdowns
+        $('select').material_select();
 
-    //Side Nav - Landing Page
-    // Initialize collapse button
-    // $(".button-collapse").sideNav();
-    // $('.button-collapse').sideNav('hide');
+        //Side Nav - Landing Page
+        // Initialize collapse button
+        // $(".button-collapse").sideNav();
+        // $('.button-collapse').sideNav('hide');
         $('.button-collapse').sideNav({
             'edge': 'left'
         });
 
-    //Modal Dialog for profile page
-    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-    $('.modal').modal();
+        //Modal Dialog for profile page
+        // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+        $('.modal').modal();
 
-    //Modal Dialog Date Picker
-    $('.datepicker').pickadate({
-        selectMonths: true, // Creates a dropdown to control month
-        selectYears: 100,
-        today: 'Today',
-        clear: 'Clear',
-        close: 'Ok',
-        closeOnSelect: false // Close upon selecting a date,
-    });
+        //Modal Dialog Date Picker
+        $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 100,
+            today: 'Today',
+            clear: 'Clear',
+            close: 'Ok',
+            closeOnSelect: false // Close upon selecting a date,
+        });
 
 
-    // initialize text fields
-    Materialize.updateTextFields();
-    $('select').material_select();
-    setupStateMenu();
+        // initialize text fields
+        Materialize.updateTextFields();
+        $('select').material_select();
+        setupStateMenu();
 
-    $(".dropdown-button").dropdown({
-        hover: false
-    });
+        $(".dropdown-button").dropdown({
+            hover: false
+        });
 
-    $('ul.tabs').tabs();
-    $('.materialboxed').materialbox();
+        $('ul.tabs').tabs();
+        $('.materialboxed').materialbox();
 
-    $('.chat-collapse').sideNav('hide');
-	$('.chat-collapse').sideNav({
-      menuWidth: 300,
-      edge: 'right',
-    });
+        $('.chat-collapse').sideNav('hide');
+        $('.chat-collapse').sideNav({
+            menuWidth: 300,
+            edge: 'right',
+        });
 
 
         $('.chips').material_chip();
@@ -109,5 +109,5 @@ function setupStateMenu() {
         $("#gift_category_menu").val(1);
         $("#gift_category_menu").material_select();
 
-}); // end of document ready
+    }); // end of document ready
 })(jQuery); // end of jQuery name space

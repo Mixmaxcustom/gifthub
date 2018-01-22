@@ -11,7 +11,7 @@ TRUNCATE TABLE gifts;
 TRUNCATE TABLE interests;
 TRUNCATE TABLE recipients;
 TRUNCATE TABLE searches;
-
+-- TRUNCATE TABLE user_recipient_mappings;
 
 -- users
 
@@ -358,3 +358,18 @@ VALUES ('Christmas 2018', 'holy shit, Christmas is coming up fast!', '2018-12-25
 
 INSERT INTO events (event_name, event_description, event_date, event_budget)
 VALUES ('Halloween 2018', "yes I'm weird, I give out presents on Halloween", '2018-10-31', 200);
+
+/*
+INSERT INTO user_recipient_mappings (user_user_id, recipient_recipient_id, created_at, updated_at)
+VALUES (1, 1, '2018-1-21', '2018-1-21');
+
+INSERT INTO user_recipient_mappings (user_user_id, recipient_recipient_id, created_at, updated_at)
+VALUES (1, 2, '2018-1-21', '2018-1-21');
+
+
+INSERT INTO user_recipient_mappings (user_user_id, recipient_recipient_id, created_at, updated_at)
+VALUES (2, 3, '2018-1-21', '2018-1-21');
+
+INSERT INTO user_recipient_mappings (user_user_id, recipient_recipient_id, created_at, updated_at)
+VALUES (2, 4, '2018-1-21', '2018-1-21');
+*/

@@ -56,8 +56,8 @@ require("./routes/dbtest")(app);
 
 
 // sync database and run app
-db.sequelize.sync().then(function () {
-	app.listen(port, function () {
+db.sequelize.sync({ force: false }).then( () => {
+	app.listen(port, () => {
 		console.log("App listening on PORT " + port);
 	});
 });
