@@ -1,4 +1,7 @@
 // user searches table
+
+'use strict';
+
 module.exports = function (sequelize, DataTypes) {
 	var Events = sequelize.define("events", {
 		event_id: {
@@ -16,19 +19,19 @@ module.exports = function (sequelize, DataTypes) {
         timestamps: true,
         underscored: true
 	});
-
+	/*
 	Events.associate = (models) => {
 		Events.belongsToMany(models.users, {
-			through: 'user_event_mappings'
+			through: models.user_event_mappings
 		});
 	};
 
 
 	Events.associate = (models) => {
 		Events.belongsToMany(models.recipients, {
-			through: 'recipient_event_mappings'
+			through: models.recipient_event_mappings
 		});
-	};
+	};*/
 
 	return Events;
 };

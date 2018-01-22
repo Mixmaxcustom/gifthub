@@ -1,4 +1,6 @@
 // gifts table
+'use strict';
+
 module.exports = function (sequelize, DataTypes) {
 	var Gifts = sequelize.define("gifts", {
 		gift_id: {
@@ -24,7 +26,7 @@ module.exports = function (sequelize, DataTypes) {
 
 	Gifts.associate = (models) => {
 		Gifts.belongsToMany(models.searches, {
-			through: 'search_gift_mappings'
+			through: models.search_gift_mappings
 		});
 	};
 

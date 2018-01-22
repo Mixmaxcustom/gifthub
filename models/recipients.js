@@ -1,4 +1,6 @@
 // recipients table
+'use strict';
+
 module.exports = function(sequelize, DataTypes) {
     var Recipients = sequelize.define("recipients", {
 		recipient_id: {
@@ -31,7 +33,7 @@ module.exports = function(sequelize, DataTypes) {
 
     Recipients.associate = (models) => {
         Recipients.belongsToMany(models.users, {
-            through: 'user_recipient_mappings',
+            through: models.user_recipient_mappings,
             foreignKey: 'recipient_id'
         });
     };

@@ -1,4 +1,6 @@
 // user searches table
+'use strict';
+
 module.exports = function (sequelize, DataTypes) {
 	var Interests = sequelize.define("interests", {
 		interest_id: {
@@ -27,13 +29,11 @@ module.exports = function (sequelize, DataTypes) {
 
 	Interests.associate = (models) => {
 		Interests.belongsToMany(models.recipients, {
-			through: 'recipient_interest_mappings'
+			through: models.recipient_interest_mappings
 		});
-	};
 
-	Interests.associate = (models) => {
 		Interests.belongsToMany(models.categories, {
-			through: 'recipient_interest_mappings'
+			through: models.recipient_interest_mappings
 		});
 	};
 

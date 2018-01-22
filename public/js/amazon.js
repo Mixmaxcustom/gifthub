@@ -41,13 +41,8 @@ $(document).ready(function () {
 });
 
 
-/*
-// set the index, then re-init
-$("#gift_category_menu").val(2);
-$("#gift_category_menu").material_select();
-*/
 
-
+// gift card object used to render search results
 
 class GiftCard {
     constructor(data) {

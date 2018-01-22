@@ -39,6 +39,7 @@ $(document).ready(function () {
 	$('body').on('click', '#user_registration_submit', event => {
 		event.preventDefault();
 		event.stopPropagation();
+
 		let button = $(event.currentTarget);
 
 		let userData = {
@@ -59,11 +60,15 @@ $(document).ready(function () {
 		$.ajax("/register", {
 			type: "POST",
 			data: userData
-		}).done( user => {
+		})
+
+		.done( user => {
 			if (user.status == 100) {
 				console.log(`added user id: ${user.user_id}`);
 			}
-		}).fail( data => {
+		})
+
+		.fail( data => {
 			console.log(data);
 		});
 	});
@@ -72,7 +77,6 @@ $(document).ready(function () {
 	$('body').on('click', '#recipient_registration_submit', event => {
 		event.preventDefault();
 		event.stopPropagation();
-
 
 		let recipient = {
 			recipient_title: $('#recipient_title').val(),
@@ -92,17 +96,15 @@ $(document).ready(function () {
 		$.ajax("/recipients", {
 			type: "POST",
 			data: recipient
-		}).done( results => {
-			console.log(results);
-			if (results.status == 100) {
-				// window.location = data.redirect;
-				console.log(`added user!`);
-				window.location.reload()
+		})
 
-			} else if (results.status > 400) {
-				console.log(`Error: ${res.message}`);
-			}
-		}).fail( data => {
+		.done( results => {
+			console.log(`added user!`);
+			window.location.reload()
+		})
+
+		.fail( data => {
+			console.log('fail');
 			console.log(data);
 		});
 	});
@@ -122,7 +124,9 @@ $(document).ready(function () {
 		$.ajax("/login", {
 			type: "POST",
 			data: user
-		}).done(data => {
+		})
+
+		.done(data => {
 			console.log(`data`);
 
 			if (data.status == 100) {
@@ -136,20 +140,3 @@ $(document).ready(function () {
 	});
 
 });
-
-
-const allRelationships = ['husband', 'wife', 'father', 'mother', 'son', 'sister', 'mother-in-law', 'father-in-law', 'brother']
-
-/*
-// launch search results modal
-$('#search-results-modal').modal('open');
-
-// selected category category_name
-('#gift_category_menu').find(":selected").data();
-
-// selected category category_id
-('#gift_category_menu').find(":selected").val();
-
-Materialize.toast('I am a toast!', 4000)
-
-*/

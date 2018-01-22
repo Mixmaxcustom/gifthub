@@ -23,14 +23,18 @@ module.exports = (app) => {
         // add a new recipient
         db.recipients.create(
             userData
-        ).then( recipient => {
+        )
+
+        .then( recipient => {
+            console.log(`- [recipients]: added recipient id ${recipient.recipient_id}`);
             // link the recipient
             recipient.addUser(app.content.user.user_id)
-            res.status(100).send({message: 'recipient added', redirect: '/profile'})
+            res.send({ message: 'recipient added', redirect: '/profile'})
 
-        }).catch( err => {
-            res.status(500);
-            res.json({error: err, stackError: err.stack});
+        })
+
+        .catch( err => {
+            res.status(500).send({ message: err.stack, redirect: '/profile'})
         })
     });
 

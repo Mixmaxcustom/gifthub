@@ -1,5 +1,4 @@
 const db 		= require("../models/");
-const auth 		= require("../config/auth");
 const cookie 	= require('cookie');
 const jwt 		= require("jsonwebtoken");
 const secret 	= require("../config/secret").secret;
@@ -24,8 +23,9 @@ module.exports = (app) => {
             where: {
                 user_email: userData.user_email
               }
-        }).then( user => {
+        })
 
+		.then( user => {
             // user match in database
             if (user) {
                 // user logged in successfully
@@ -39,8 +39,6 @@ module.exports = (app) => {
                         user_is_admin: user.user_is_admin
                     }
 
-
-
                     // sign and create cookie
                     const token = jwt.sign(dbuser, secret);
                     // res.cookie('gifthub-user', token, { maxAge: 86400 });
@@ -51,34 +49,42 @@ module.exports = (app) => {
                 } else {
                     res.json({ status: 403, message: 'incorrect password.', redirect: '/login' });
                 }
-            
+
             // email not found in the database
             } else {
                 // res.status(500).json({ error: 'message', redirect: '/login' });
                 res.json({ status: 401, message: 'user not in database.', redirect: '/login' });
             }
+        })
+
+		.catch(err => {
+            res.json(err);
         });
     });
 
     // user registration
 	app.get("/register", function (req, res, next) {
         res.render('register', app.content);
-        });
+    });
 
 	// check user credentials
 	app.post("/register", (req, res, next) => {
 		let userData = (Object.keys(req.query).length > 0) ? req.query : req.body;
         console.log(` - requesting ${req.url}`);
-		
+
         // add a new recipient
         // TODO: need to check that user email isn't registered already
         db.users.create(
             userData
-        ).then( data => {
+        )
+
+		.then( data => {
             res.status(200);
 			res.json({ status: 200, redirect: '/' });
             // res.json(data.get({ plain: true }));
-        }).catch( err => {
+        })
+
+		.catch( err => {
             res.status(500);
             res.json({error: err, stackError: err.stack});
         })
@@ -100,5 +106,4 @@ module.exports = (app) => {
 		app.content.layout = 'home';
 		res.clearCookie('gifthub-user').render('login', app.content);
     });
-
 };

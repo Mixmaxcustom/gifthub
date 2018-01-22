@@ -1,4 +1,7 @@
 // categories table
+'use strict';
+
+
 module.exports = function (sequelize, DataTypes) {
 	var Categories = sequelize.define("categories", {
 		category_id: {
@@ -13,32 +16,31 @@ module.exports = function (sequelize, DataTypes) {
         timestamps: true,
         underscored: true
 	});
-
+	/*
 	Categories.associate = (models) => {
 		Categories.belongsToMany(models.gifts, {
-			through: 'gift_category_mappings',
-			as: 'categories',
+			through: models.gift_category_mappings,
 			foreignKey: 'category_id'
 		});
 	};
 
 	Categories.associate = (models) => {
 		Categories.belongsToMany(models.recipients, {
-			through: 'recipient_category_mappings'
+			through: models.recipient_category_mappings
 		});
 	};
 
 	Categories.associate = (models) => {
 		Categories.belongsToMany(models.searches, {
-			through: 'search_category_mappings'
+			through: models.search_category_mappings
 		});
 	};
 
 	Categories.associate = (models) => {
 		Categories.belongsToMany(models.interests, {
-			through: 'interest_category_mappings'
+			through: models.interest_category_mappings
 		});
-	};
+	};*/
 
 
 	return Categories;

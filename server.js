@@ -1,10 +1,10 @@
 // server module
-const express = require('express');
-const bp = require('body-parser');
-const exphbs = require("express-handlebars");
-const path = require("path");
-const cookieParser = require('cookie-parser')
-const db = require("./models");
+const express 		= require('express');
+const bp 			= require('body-parser');
+const exphbs 		= require("express-handlebars");
+const path 			= require("path");
+const cookieParser 	= require('cookie-parser')
+const db 			= require("./models");
 
 
 // use process.env for heroku
@@ -21,10 +21,8 @@ app.use(bp.urlencoded({ extended: true }));
 app.use(bp.text());
 app.use(bp.json({ type: "application/vnd.api+json" }));
 
-// setup
+// app globals
 require("./config/init")(app);
-require("./config/auth")(app);
-
 
 // serve static content from the "public"
 app.use(express.static(path.join(__dirname, 'public')));

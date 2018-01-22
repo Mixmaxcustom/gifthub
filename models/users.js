@@ -1,4 +1,6 @@
 // users table
+'use strict';
+
 module.exports = function (sequelize, DataTypes) {
 	var Users = sequelize.define("users", {
 		user_id: {
@@ -23,19 +25,16 @@ module.exports = function (sequelize, DataTypes) {
         underscored: true
 	});
 
-
-	/*
-	Users.associate = (models) => {
-	    Users.hasMany(models.recipients);
-	};*/
-
 	Users.associate = (models) => {
 		Users.belongsToMany(models.recipients, {
-			through: 'user_recipient_mappings',
+			through: models.user_recipient_mappings,
 			foreignKey: 'user_id'
 		});
-	};
 
+		Users.belongsToMany(models.searches, {
+			through: models.user_search_mappings
+		});
+	};
 
 	return Users;
 };
