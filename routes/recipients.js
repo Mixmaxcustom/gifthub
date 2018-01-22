@@ -4,14 +4,14 @@ const db = require("../models/");
 module.exports = (app) => {
     // all recipients list
     app.get("/recipients", function(req, res) {
-        db.Recipients.findAll().then(recipients => {
+        db.recipients.findAll().then(recipients => {
             res.json(recipients)
         })
     });
 
     // add a new recipient screen
     app.get("/add-recipient", function(req, res) {
-        db.Recipients.findAll().then(recipients => {
+        db.recipients.findAll().then(recipients => {
             res.json(recipients)
         })
     });
