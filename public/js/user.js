@@ -22,11 +22,15 @@ $(document).ready(function () {
 		$.ajax("/save", {
 			type: "POST",
 			data: productData
-		}).done( result => {
+		})
+
+		.done( result => {
 			if (result.status == 100) {
 				console.log(`success!`);
 			}
-		}).fail( data => {
+		})
+
+		.fail( data => {
 			console.log(data);
 		});
 	});
@@ -47,12 +51,16 @@ $(document).ready(function () {
 		$.ajax("/save", {
 			type: "POST",
 			data: productData
-		}).done( result => {
+		})
+
+		.done( result => {
 			if (result.status == 100) {
 				console.log(`success!`);
 				window.location.reload()
 			}
-		}).fail( data => {
+		})
+
+		.fail( data => {
 			console.log(data);
 		});
 	});

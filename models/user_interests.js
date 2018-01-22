@@ -8,6 +8,7 @@ module.exports = function (sequelize, DataTypes) {
 			autoIncrement: true,
 			primaryKey: true
 		},
+		
 		interest_name: DataTypes.STRING ,
         interest_description: DataTypes.TEXT,
 		interest_icon: DataTypes.STRING,

@@ -21,6 +21,11 @@
                     <i class="material-icons right">close</i>
                 </span>
                 <p>{{bio}}</p>
+            <p>Birthday: {{birthday}}</p>
+            <p>Gift Budget Total: $0 of ${{shortPrice max_budget}}</p>
+            <div id="saved-gifts-container">
+                {{#each gifts as | gift |}} {{> recipients/recipient-gift-collection}} {{/each}} {{!-- Row End --}}
+            </div>
         </div>
     </div>
 </div>

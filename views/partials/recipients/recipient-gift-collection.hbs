@@ -4,11 +4,11 @@
         <span id="gift_name">{{name}}</span>
         <span id="gift_price">{{price}}</span>
         <span id="gift_link">
-            <a href="{{link}}">Link to Product</a>
+            <a target="_blank" href="{{link}}">Link</a>
         </span>
         <form action="#">
             <p class="right-align">
-                <input type="checkbox" id="gift-purchased"/>
+                <input data-value="{{gift_id}}" type="checkbox" id="gift-purchased"/>
                 <label for="test5">Purchased</label>
             </p>
         </form>

@@ -86,6 +86,7 @@ $(document).ready(function () {
 			recipient_state: $('#recipient_state').val() || null,
 			recipient_email: $('#recipient_email').val() || null,
 			recipient_bio: $('#recipient_email').val() || null
+			recipient_max_budget: parseInt($('#recipient_max_budget').val()) || 0;
 		}
 
 		let birthday = $('#recipient_birthday').val();
