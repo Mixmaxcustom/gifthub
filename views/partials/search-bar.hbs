@@ -1,5 +1,7 @@
-<form class="col s12">
-    <div class="row form-row valign-wrapper">
+<div class="row">
+    <form>
+        <!-- removed valign-wrapper -->
+        <div class="row form-row">
         <div class="input-field col s12 m3">
 
             {{!-- Categories Menu --}}
@@ -9,36 +11,33 @@
                 {{#each categories as | category |}}
                 <option value="{{category.category_id}}" data-value="{{category.category_name}}">{{category.category_description}}</option>
                 {{/each}}
-
             </select>
             <label>Gift Type</label>
         </div>
 
+            {{!-- Keywords --}}
         <div class="input-field col s12 m3">
             <input id="keyword" type="text">
-
         </div>
 
         {{!-- Price Menu --}}
-        <div class="input-field col s12 m4">
+            <div class="input-field col s12 m3">
             <select id="max-price">
                 <option value="" disabled selected>Maximum Price</option>
-
-
                 <option value="2500">$25</option>
                 <option value="5000">$50</option>
                 <option value="10000">$100</option>
                 <option value="20000">$200</option>
                 <option value="30000">$300</option>
                 <option value="50000">$500</option>
-
             </select>
             <label>Maximum Price</label>
+        </div>
 
+            <div class="col sm12 m3">
+                <a id="search-submit-btn" class="btn">Search</a>
         </div>
-        <div class="col m2">
-            <a id="search-submit-btn" class="btn">
-                <i class="material-icons">search</i>Search</a>
-        </div>
+
     </div>
 </form>
+</div>

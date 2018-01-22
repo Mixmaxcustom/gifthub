@@ -13,12 +13,12 @@
 
 
 			{{!-- user logged in (duh) --}}
-			{{#if user.is_logged_in}}
+			{{#if user.user_is_logged_in}}
 
 				{{!--  Menu (normal) --}}
 				<ul class="right hide-on-med-and-down">
 					<li><a class="dropdown-button" href="/" data-activates="user-dropdown-mobile"><i class="fa fa-user-circle" aria-hidden="true"></i> {{user.user_firstname}} {{user.user_lastname}}<i class="material-icons right">arrow_drop_down</i></a></li>
-					<!-- <li><a href="#" data-activates="slide-out" class="waves-effect waves-block waves-light chat-collapse"><i class="material-icons">format_indent_increase</i></a></li> -->
+					<li><a href="#" data-activates="admin-slide-out" class="waves-effect waves-block waves-light chat-collapse"><i class="material-icons">format_indent_increase</i></a></li>
 				</ul>
 
 				{{!-- Menu (collapsed) --}}
@@ -28,6 +28,13 @@
 					<li><a href="/profile"><i class="fa fa-users" aria-hidden="true"></i>Friends & Family</a></li>
 					<li><a href="/search"><i class="fa fa-search" aria-hidden="true"></i>Search for Gifts</a></li>
 					<li><a href="/events"><i class="fa fa-calendar-check-o" aria-hidden="true"></i>Events</a></li>
+
+					{{#if ./user.user_is_admin}}
+						<li class="divider"></li>
+						<li><a href="/api"><i class="fa fa-cogs" aria-hidden="true"></i>API</a></li>
+					{{/if}}
+
+
 					<li class="divider"></li>
 					<li><a href="/logout"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li>
 				</ul>

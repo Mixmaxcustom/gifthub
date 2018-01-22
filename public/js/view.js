@@ -81,8 +81,7 @@ $(document).ready(function () {
 			recipient_city: $('#recipient_city').val() || null,
 			recipient_state: $('#recipient_state').val() || null,
 			recipient_email: $('#recipient_email').val() || null,
-			recipient_max_budget: $('#recipient_max_budget').val() || null,
-			recipient_bio: $('#recipient_bio').val() || null
+			recipient_bio: $('#recipient_email').val() || null
 		}
 
 		let birthday = $('#recipient_birthday').val();

@@ -105,5 +105,9 @@ function setupStateMenu() {
             }
         });
 
+        // initialize the amazon category menu
+        $("#gift_category_menu").val(1);
+        $("#gift_category_menu").material_select();
+
 }); // end of document ready
 })(jQuery); // end of jQuery name space

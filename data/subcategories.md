@@ -4,32 +4,30 @@ VALUES ('Kat Von D Shade + Light Glimmer Eye Palette', 'An eye contouring palett
 
 
 ## Women
-- Anytime
-- Funny
-- Personalized
-- Unique
-- Art & Design
-- Beauty
-- Cooking & Entertaining
-- Fitness & Sports
-- Games & Puzzles
-- Geeky
-- Happy Hour
-- Home & Garden
-- Home Improvement
-- Movies & TV
-- Music
-- Outdoor
-- Adventure
-- Reading
-- Style & Fashion
-- Tech & Gadgets
-- Travel
-- Workplace
+Funny
+Personalized
+Unique
+Art & Design
+-Beauty
+Cooking & Entertaining
+Fitness & Sports
+Games & Puzzles
+Geeky
+Happy Hour
+Home & Garden
+Home Improvement
+Movies & TV
+Music
+Outdoor
+Adventure
+Reading
+Style & Fashion
+Tech & Gadgets
+Travel
+Workplace
 
 
 ## Men
-Anytime
 Funny
 Personalized
 Unique
@@ -53,14 +51,13 @@ Travel
 Workplace
 
 ## Kids 8-12
-Anytime
 Arts & Crafts
 Books
-Building Toys
-Education & Science
-Electronic Toys
+-Building Toys
+-Education & Science
+-Electronic Toys
 Games & Puzzles
 Geeky
 Movies
-Outdoor Toys
-Super Heroes
+-Outdoor Toys
+-Super Heroes

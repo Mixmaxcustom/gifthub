@@ -9,8 +9,8 @@ module.exports = (app) => {
 
 	// user login
 	app.get("/login", function (req, res) {
-        app.pageContent.layout = 'home';
-        res.render('login', app.pageContent);
+		app.content.layout = 'home';
+		res.render('login', app.content);
 	});
 
     // check user credentials
@@ -39,6 +39,8 @@ module.exports = (app) => {
                         user_is_admin: user.user_is_admin
                     }
 
+
+
                     // sign and create cookie
                     const token = jwt.sign(dbuser, secret);
                     // res.cookie('gifthub-user', token, { maxAge: 86400 });
@@ -60,7 +62,7 @@ module.exports = (app) => {
 
     // user registration
 	app.get("/register", function (req, res, next) {
-        res.render('register', app.pageContent);
+        res.render('register', app.content);
         });
 
 	// check user credentials
@@ -85,17 +87,18 @@ module.exports = (app) => {
 	// user logged out
 	app.get("/logout", function (req, res) {
 		// reset the page content user
-		app.pageContent.user = {
+		app.content.user = {
 			user_id: -1,
 			user_email: null,
 			user_firstname: null,
 			user_lastname: null,
-			is_logged_in: false
+			user_is_logged_in: false,
+			user_is_admin: false
 		}
 
 		// clear the cookie
-		app.pageContent.layout = 'home';
-		res.clearCookie('gifthub-user').render('login', app.pageContent);
+		app.content.layout = 'home';
+		res.clearCookie('gifthub-user').render('login', app.content);
     });
 
 };

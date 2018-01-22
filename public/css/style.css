@@ -66,10 +66,6 @@ main {
 	margin-left: 20px;
 }
 
-a.button-collapse {
-	float: right;
-}
-
 .main-section,
 .form-questions {
 	margin: 0;
@@ -175,16 +171,14 @@ img[class] {
 /* Materialize Buttons
   -------------------------------------------------- */
 
-.btn,
-.btn-large {
-	border-radius: 0.7rem;
+.btn, .btn-large {
+    /*border-radius: 0.7rem;*/
 	text-shadow: 0px 1px 0 #1b1b1b55;
 	text-transform: none;
-    border-bottom: 4px solid #0a0a0a33;
+    border-bottom: 2px solid #0a0a0a33;
 }
 
-.btn-flat,
-.btn-flat:hover  {
+.btn-flat, .btn-flat:hover {
 	border-radius: 0.7rem;
 	border: 1px solid #98989820;
 }
@@ -192,7 +186,6 @@ img[class] {
 .btn-flat:hover {
 	background-color: #ededed;
 }
-
 
 .page-footer h2,
 .page-footer h3,

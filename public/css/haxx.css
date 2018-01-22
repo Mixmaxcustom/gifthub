@@ -1,0 +1,287 @@
+/* profile card */
+#profile-card .card-image {
+  height: 150px;
+}
+
+#profile-card .card-profile-image {
+  width: 70px;
+  position: absolute;
+  top: 110px;
+  z-index: 1;
+  cursor: pointer;
+}
+
+#profile-card .btn-move-up {
+  position: relative;
+  top: -40px;
+  right: -18px;
+  margin-right: 10px !important;
+}
+
+#profile-card .card-content p {
+  font-size: 1.2rem;
+  margin: 10px 0 12px;
+}
+
+.card-move-up .move-up {
+  padding: 20px;
+}
+
+
+/*----------------------------------------
+  Healper Classes
+------------------------------------------*/
+/* Width */
+.width-10 {
+  width: 10% !important;
+}
+
+.width-20 {
+  width: 20% !important;
+}
+
+.width-30 {
+  width: 30% !important;
+}
+
+.width-40 {
+  width: 40% !important;
+}
+
+.width-50 {
+  width: 50% !important;
+}
+
+.width-60 {
+  width: 60% !important;
+}
+
+.width-70 {
+  width: 70% !important;
+}
+
+.width-80 {
+  width: 80% !important;
+}
+
+.width-90 {
+  width: 90% !important;
+}
+
+.width-100 {
+  width: 100% !important;
+}
+
+/* Border Radius */
+.border-radius-1 {
+  border-radius: 1px !important;
+}
+
+.border-radius-2 {
+  border-radius: 2px !important;
+}
+
+.border-radius-3 {
+  border-radius: 3px !important;
+}
+
+.border-radius-4 {
+  border-radius: 4px !important;
+}
+
+.border-radius-5 {
+  border-radius: 5px !important;
+}
+
+.border-radius-6 {
+  border-radius: 6px !important;
+}
+
+.border-radius-7 {
+  border-radius: 7px !important;
+}
+
+.border-radius-8 {
+  border-radius: 8px !important;
+}
+
+.border-radius-9 {
+  border-radius: 9px !important;
+}
+
+.border-radius-10 {
+  border-radius: 10px !important;
+}
+
+.border-round {
+  border-radius: 50px !important;
+}
+
+/*----------------------------------------
+    Tables
+------------------------------------------*/
+.jsgrid-edit-row input[type="checkbox"], .jsgrid-insert-row input[type="checkbox"], .jsgrid-filter-row input[type="checkbox"], .jsgrid-alt-row input[type="checkbox"], .jsgrid-row input[type="checkbox"], .config-panel input[type=checkbox] {
+  position: relative !important;
+  left: 0 !important;
+  visibility: visible !important;
+}
+
+.jsgrid-grid-body {
+  height: auto !important;
+}
+
+.jsgrid-edit-row select {
+  display: block !important;
+}
+
+.jsgrid-insert-row select {
+  display: block !important;
+}
+
+.jsgrid-insert-row .select-wrapper .caret {
+  display: none !important;
+}
+
+.jsgrid-insert-row .select-wrapper .select-dropdown {
+  display: none !important;
+}
+
+#jsGrid-sorting {
+  height: 500px !important;
+  overflow: scroll !important;
+}
+
+#jsGrid-page {
+  height: 500px !important;
+  overflow: scroll !important;
+}
+
+#jsGrid-custom-row {
+  height: 500px !important;
+  overflow: scroll !important;
+}
+
+/*----------------------------------------
+Cards
+------------------------------------------*/
+.card {
+  overflow: hidden;
+}
+
+#card-stats .card-content {
+  text-align: center;
+}
+
+#card-stats .card-stats-title {
+  font-size: 1rem;
+}
+
+#card-stats .card-stats-title i {
+  font-size: 1.2rem;
+  top: 4px;
+  position: relative;
+}
+
+#card-stats .card-stats-compare {
+  font-size: 1.0rem;
+}
+
+#card-stats .card-stats-compare i {
+  position: relative;
+  top: 5px;
+}
+
+#card-stats .card-stats-number {
+  font-size: 1.8rem;
+  line-height: 2.0rem;
+  margin: 0.2rem 0 0.2rem 0;
+  font-weight: 500;
+}
+
+#card-stats .card .card-content {
+  padding: 10px 14px;
+}
+
+#card-stats .card .card-action {
+  padding: 10px 14px;
+}
+
+/* alert card */
+#card-alert .card-content {
+  padding: 10px 20px;
+}
+
+#card-alert i {
+  font-size: 20px;
+  position: relative;
+  top: 2px;
+}
+
+#card-alert .alert-circle {
+  display: inline-block;
+  width: 40px;
+  white-space: nowrap;
+  border-radius: 1000px;
+  vertical-align: bottom;
+  position: relative;
+  top: -5px;
+  left: -2px;
+}
+
+#card-alert .single-alert {
+  line-height: 42px;
+}
+
+#card-alert button {
+  background: none;
+  border: none;
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  font-size: 20px;
+  color: #fff;
+}
+
+#card-alert .card .card-content {
+  padding: 20px 40px 20px 20px;
+}
+
+#card-alert .card-action i {
+  top: 0;
+  margin: 0;
+}
+
+/* work card */
+#work-collections .collection-header {
+  font-size: 1.14rem;
+  font-weight: 500;
+}
+
+#work-collections p.collections-title {
+  font-size: 1.0rem;
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+}
+
+#work-collections p.collections-content {
+  font-size: 0.9rem;
+  padding: 0;
+  margin: 0;
+  font-weight: 400;
+}
+
+#work-collections .collection-item.avatar {
+  height: auto;
+  padding-top: 22px;
+}
+
+
+/* Gifthub Recipient  */
+#recipient-card .card-profile-image {
+  width: 70px;
+  position: absolute;
+  top: 110px;
+  z-index: 1;
+  cursor: pointer;
+}

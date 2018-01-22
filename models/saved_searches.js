@@ -1,6 +1,6 @@
 // user searches table
 module.exports = function (sequelize, DataTypes) {
-	var saved_searches = sequelize.define("saved_searches", {
+	var Searches = sequelize.define("searches", {
 		search_id: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
@@ -8,8 +8,19 @@ module.exports = function (sequelize, DataTypes) {
 		},
 		search_name: DataTypes.STRING ,
 		search_description: DataTypes.TEXT,
-		createdAt: DataTypes.DATE,
-		updatedAt: DataTypes.DATE,
+		created_at: DataTypes.DATE,
+		updated_at: DataTypes.DATE,
+	}, {
+        timestamps: true,
+        underscored: true
 	});
-	return saved_searches;
+
+
+	Searches.associate = (models) => {
+		Searches.belongsToMany(models.users, {
+			through: 'user_search_mappings'
+		});
+	};
+
+	return Searches;
 };

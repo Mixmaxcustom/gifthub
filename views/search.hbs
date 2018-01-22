@@ -1,33 +1,21 @@
 <div class="container">
 
-
         <div class="section">
             <h4>{{pagetitle}}</h2>
 
                 {{> search-bar}}
 
                 {{!-- Results Section --}}
-                <div id="search-result-cards" class="row">
-
+                <div id="search-result-cards" class="row row flex-container">
+                    <div class="item product">
                     {{#each gifts as | gift |}}
-                        {{> gifts/gift-result}}
+                            {{> gifts/gift-detail}}
                     {{/each}}
-
-
-                {{!-- Row End --}}
+                    </div>
                 </div>
 
-                {{!-- Pagination --}}
-                <div class="row">
-                    <ul class="pagination right-align">
-                        <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-                        <li class="active blue-grey lighten-1"><a href="#!">1</a></li>
-                        <li class="waves-effect"><a href="#!">2</a></li>
-                        <li class="waves-effect"><a href="#!">3</a></li>
-                        <li class="waves-effect"><a href="#!">4</a></li>
-                        <li class="waves-effect"><a href="#!">5</a></li>
-                        <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-                    </ul>
+                <div id="search-result-cards2" class="row row flex-container">
+                    <div id="search-results"></div>
                 </div>
         </div>
     </div>

@@ -1,6 +1,6 @@
 // users table
 module.exports = function (sequelize, DataTypes) {
-	var users = sequelize.define("users", {
+	var Users = sequelize.define("users", {
 		user_id: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
@@ -16,8 +16,25 @@ module.exports = function (sequelize, DataTypes) {
 		user_city: DataTypes.STRING,
 		user_state: DataTypes.STRING,
 		user_photo: DataTypes.STRING,
-		createdAt: DataTypes.DATE,
-		updatedAt: DataTypes.DATE,
+		created_at: DataTypes.DATE,
+		updated_at: DataTypes.DATE,
+	}, {
+        timestamps: true,
+        underscored: true
 	});
-	return users;
+
+
+
+	Users.associate = (models) => {
+	    Users.hasMany(models.recipients);
+	};
+
+	Users.associate = (models) => {
+		Users.belongsToMany(models.recipients, {
+			through: 'user_recipient_mappings'
+		});
+	};
+
+
+	return Users;
 };
