@@ -85,8 +85,13 @@ $(document).ready(function () {
 			recipient_city: $('#recipient_city').val() || null,
 			recipient_state: $('#recipient_state').val() || null,
 			recipient_email: $('#recipient_email').val() || null,
-			recipient_bio: $('#recipient_email').val() || null
-			recipient_max_budget: parseInt($('#recipient_max_budget').val()) || 0;
+			recipient_bio: $('#recipient_email').val() || null,
+			recipient_max_budget: 0
+		}
+
+		let budgetValue = $('#recipient_max_budget').val();
+		if (budgetValue) {
+			recipient.recipient_max_budget = parseInt(budgetValue)
 		}
 
 		let birthday = $('#recipient_birthday').val();
@@ -100,8 +105,8 @@ $(document).ready(function () {
 		})
 
 		.done( results => {
-			console.log(`added user!`);
 			window.location.reload()
+			Materialize.toast(`Recipient added!`, 5000);
 		})
 
 		.fail( data => {
