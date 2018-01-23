@@ -7,7 +7,7 @@
 
                 {{!-- Categories Menu --}}
                 <select id="gift_category_menu">
-                    <option value="" disabled selected>Gift Type</option>
+                    <!-- <option value="" disabled selected>Gift Type</option> -->
 
                     {{#each categories as | category |}}
                         <option value="{{category.category_id}}" data-value="{{category.category_name}}">{{category.category_description}}</option>
@@ -19,7 +19,9 @@
 
                 {{!-- Keywords --}}
             <div class="input-field col s12 l3">
+                <!-- <label for="keyword">Search By</label> -->
                 <input id="keyword" type="text">
+                <label for="keyword">Search By</label>
             </div>
 
             {{!-- Price Menu --}}

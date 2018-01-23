@@ -12,22 +12,17 @@ $(document).ready(function () {
 		event.stopPropagation();
 
 		let button = $(event.currentTarget)
-		console.log(button.attr('userid'));
-
+		let productASIN = button.attr('aisn');
 		curbutton = button;
-		let productData = button.parent().closest('div.item.product').data().value;
-		productData = JSON.parse(productData.split(`'`).join(`"`));
-		console.log(productData);
+		console.log(`Amazon ID: ${productASIN}`);
 
-		$.ajax("/save", {
+		$.ajax("/favorite", {
 			type: "POST",
-			data: productData
+			data: {aisn: productASIN}
 		})
 
 		.done( result => {
-			if (result.status == 100) {
-				console.log(`success!`);
-			}
+			console.log(result);
 		})
 
 		.fail( data => {
@@ -41,23 +36,18 @@ $(document).ready(function () {
 		event.stopPropagation();
 
 		let button = $(event.currentTarget)
-		console.log(button.attr('userid'));
-
-		let productData = button.parent().closest('div.item.product').data().value;
-		productData = JSON.parse(productData.split(`'`).join(`"`));
-		console.log(productData);
-
+		let productASIN = button.attr('aisn');
+		curbutton = button;
+		console.log(`Amazon ID: ${productASIN}`);
 
 		$.ajax("/save", {
 			type: "POST",
-			data: productData
+			data: {aisn: productASIN}
 		})
 
 		.done( result => {
-			if (result.status == 100) {
-				console.log(`success!`);
-				window.location.reload()
-			}
+			console.log(result);
+
 		})
 
 		.fail( data => {

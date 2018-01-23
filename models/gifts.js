@@ -17,6 +17,7 @@ module.exports = function (sequelize, DataTypes) {
 		gift_price: DataTypes.INTEGER,
 		gift_purchased: DataTypes.BOOLEAN,
 		gift_url: DataTypes.STRING,
+		gift_favorite: DataTypes.BOOLEAN,
 		created_at: DataTypes.DATE,
 		updated_at: DataTypes.DATE
 	}, {

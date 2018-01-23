@@ -46,6 +46,7 @@ $(document).ready(function () {
 
 class GiftCard {
     constructor(data) {
+        this.gift_id = data.gift_id,
         this.user_id = data.user_id,
         this.asin = data.asin,
         this.title = data.title,
@@ -59,15 +60,10 @@ class GiftCard {
     get formattedPrice() {
         return '$' + (this.price / 100).toFixed(2);
     }
-
-    get dataValue() {
-        return JSON.stringify(this).split('"').join("'");
-    }
-
     // output html
     get html() {
         let output =
-            `<div class="item product" data-value="${this.dataValue}">` +
+            `<div class="item product">` +
             `<div class="card medium">` +
             `<div class="card-image waves-effect waves-block waves-light crop">` +
             `<a target="_blank" href="${this.detailsURL}" class="btn-floating btn-large btn-price waves-effect waves-light accent-4 teal">${this.formattedPrice}</a>` +
@@ -75,9 +71,9 @@ class GiftCard {
             `<a href="#"><img src="${this.image}" alt="item-img"></a>` +
             `</div>` +
             `<ul class="card-action-buttons">` +
-            `<li><a userid="${this.user_id}" class="btn-floating waves-effect waves-light teal lighten-3 add-gift-button"><i class="material-icons">add_circle</i></a></li>` +
-            `<li><a userid="${this.user_id}" class="btn-floating waves-effect waves-light teal lighten-2 favorite-gift-button"><i class="material-icons">favorite</i></a></li>` +
-            `<li><a userid="${this.user_id}" class="btn-floating waves-effect waves-light teal lighten-1"><i class="material-icons activator">info_outline</i></a></li>` +
+            `<li><a aisn="${this.asin}" class="btn-floating waves-effect waves-light teal lighten-3 add-gift-button"><i class="material-icons">add_circle</i></a></li>` +
+            `<li><a aisn="${this.asin}" class="btn-floating waves-effect waves-light teal lighten-2 favorite-gift-button"><i class="material-icons">favorite</i></a></li>` +
+            `<li><a aisn="${this.asin}" class="btn-floating waves-effect waves-light teal lighten-1"><i class="material-icons activator">info_outline</i></a></li>` +
             `</ul>` +
             `<div class="card-content">` +
             `<div class="row">` +

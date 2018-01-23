@@ -76,6 +76,7 @@ CREATE TABLE gifts (
   gift_price integer default 0,
   gift_purchased boolean default 0,
   gift_url varchar(255),
+  gift_favorite boolean default 0,
   created_at datetime,
   updated_at datetime,
   PRIMARY KEY(gift_id)

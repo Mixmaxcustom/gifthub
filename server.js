@@ -49,9 +49,6 @@ require("./routes/search")(app);
 require("./routes/user")(app);
 require("./routes/amazon")(app);
 require("./routes/recipients")(app);
-//  test routes
-require("./routes/dbtest")(app);
-
 
 // sync database and run app
 db.sequelize.sync({ force: false }).then( () => {
