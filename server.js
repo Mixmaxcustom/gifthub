@@ -50,6 +50,7 @@ require("./routes/user")(app);
 require("./routes/amazon")(app);
 require("./routes/recipients")(app);
 
+
 // sync database and run app
 db.sequelize.sync({ force: false }).then( () => {
 	app.listen(port, () => {

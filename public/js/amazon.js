@@ -1,6 +1,5 @@
 // amazon api module
 
-
 $(document).ready(function () {
 
     console.log(`> loading Amazon API...`);
@@ -33,9 +32,10 @@ $(document).ready(function () {
             });
 
 
-
+        // status is text
         }).fail( (xhr, status) => {
-            Materialize.toast(`Error: ${status}`, 10000)
+            let errmsg = xhr.responseJSON.Error[0].Message[0];
+            Materialize.toast(`Error: ${errmsg}`, 10000)
         });
     });
 });

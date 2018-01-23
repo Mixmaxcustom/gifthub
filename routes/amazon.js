@@ -122,8 +122,6 @@ module.exports = (app) => {
         }
 
         }).catch(err => {
-            // console.log(err[0].Error[0].Message[0]);
-            console.log(err);
             res.status(500).send(err);
         });
     });

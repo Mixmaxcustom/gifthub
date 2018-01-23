@@ -567,6 +567,27 @@ h5.homepage {
 /* .collection .collection-item.avatar {} */
 
 
+/* Style Placeholders */
+
+::-webkit-input-placeholder {
+	color: #606060;
+}
+
+::-moz-placeholder {
+	color: #606060;
+}
+
+:-ms-input-placeholder {
+	color: #606060;
+}
+
+::placeholder {
+	color: #606060;
+}
+
+
+
+
 /* Large devices (desktops, less than 1200px) */
 
 @media (max-width: 1500px) {
