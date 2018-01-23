@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js",
-    "seed": "node ./bin/setup seeds.sql",
-    "setup": "node ./bin/setup schema.sql"
+    "db": "node ./bin/setup schema.sql",
+    "seed": "node ./bin/setup seeds.sql"
   },
   "repository": {
     "type": "git",
@@ -37,7 +37,8 @@
     "mysql2": "^1.5.1",
     "nodemon": "^1.14.8",
     "path": "^0.12.7",
-    "sequelize": "^4.29.0"
+    "sequelize": "^4.29.0",
+    "sweetalert": "^2.1.0"
   },
   "devDependencies": {
     "browserify": "^15.2.0",

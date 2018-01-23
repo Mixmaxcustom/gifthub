@@ -1,5 +1,4 @@
 <!--   User Profile Page   -->
-
 <div class="section no-pad-bot" id="index-banner">
     <div class="container">
         <div class="row">
@@ -26,99 +25,18 @@
 <div class="container">
     <div class="section">
 
+        {{!-- Results Section --}}
+        <div id="search-result-cards" class="row">
 
-        {{!-- Card #1 --}}
-        <div class="row">
-            <div class="col s12 m6">
-                <div class="card large">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="responsive-img" src="/img/recipients/woman.jpg">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Samantha
-                            <i class="material-icons right">more_vert</i>
-                        </span>
-                        <p>Gift Budget Total: $127 of $150</p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Samantha
-                            <i class="material-icons right">close</i>
-                        </span>
-                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                    </div>
-                </div>
-            </div>
-
-            {{!-- Card #2 --}}
-            <div class="col s12 m6">
-                <div class="card large">
-                    <div class="card-image waves-effect waves-block waves-light">
-                        <img class="responsive-img" src="/img/recipients/grandma.jpg">
-                    </div>
-                    <div class="card-content">
-                        <span class="card-title activator grey-text text-darken-4">Great Aunt Susan
-                            <i class="material-icons right">more_vert</i>
-                        </span>
-                        <p>Gift Budget Total: $127 of $150</p>
-                    </div>
-                    <div class="card-reveal">
-                        <span class="card-title grey-text text-darken-4">Card Title
-                            <i class="material-icons right">close</i>
-                        </span>
-                        <p>Here is some more information about this product that is only revealed once clicked on.</p>
-                    </div>
-                </div>
-            </div>
+            {{#each recipients as | recipient |}}
+                {{> recipients/recipient-detail}}
+            {{/each}}
 
 
+        {{!-- Row End --}}
         </div>
-    </div>
-</div>
 
 
-{{!-- New Recipient Modal --}}
 
-<div id="add_new_recipient" class="modal modal-fixed-footer">
-    <div class="modal-content">
-        <i class="material-icons left">face</i>
-        <h4>Add New Recipient</h4>
-        <p>( not working just yet )</p>
-        <form>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="recipient_title" type="text" class="validate">
-                    <label for="recipient_title">Title</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s6">
-                    <input id="recipient_firstname" type="text" class="validate">
-                    <label for="recipient_firstname">First Name</label>
-                </div>
-                <div class="input-field col s6">
-                    <input id="recipient_lastname" type="text" class="validate">
-                    <label for="recipient_lastname">Last Name</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s3">
-                    <input id="recipient_birthday" type="text" class="datepicker validate">
-                    <label for="recipient_birthday">Birthday</label>
-                </div>
-                <div class="input-field col s9">
-                    <input id="recipient_email" type="email" class="validate">
-                    <label for="recipient_email">Email (optional)</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <textarea id="recipient_bio" class="materialize-textarea"></textarea>
-                    <label for="recipient_bio">Recipient Details</label>
-                </div>
-            </div>
-        </form>
-    </div>
-    <div class="modal-footer">
-        <a href="/recipient" id="recipient_registration_submit" class="modal-action modal-close waves-effect waves-green btn-flat"><i class="material-icons left">person_add</i>Add</a>
     </div>
 </div>

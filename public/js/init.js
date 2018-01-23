@@ -14,7 +14,7 @@ function setupStateMenu() {
     if (statesmenu.length > 0) {
         let selected_state = statesmenu.data().value;
         statesmenu.empty();
-        statesmenu.append($(`<option selected>Choose...</option>`));
+        statesmenu.append($(`<option selected>State</option>`));
         allStates.forEach(state => {
             statesmenu.append($(`<option date-value="${state}">${state}</option>`));
         })
@@ -25,57 +25,89 @@ function setupStateMenu() {
 
 
 // document start
-(function($){
-  $(function(){
+(function($) {
+    $(function() {
 
-    $('.button-collapse').sideNav();
+        $('.button-collapse').sideNav();
 
-    console.log(`> initializing Materialize...`);
+        console.log(`> initializing Materialize...`);
 
-    //Dropdowns
-    $('select').material_select();
+        //Dropdowns
+        $('select').material_select();
 
-    //Side Nav - Landing Page
-    // Initialize collapse button
-    // $(".button-collapse").sideNav();
-    // $('.button-collapse').sideNav('hide');
-    $('.button-collapse').sideNav({'edge': 'left'});
+        //Side Nav - Landing Page
+        // Initialize collapse button
+        // $(".button-collapse").sideNav();
+        // $('.button-collapse').sideNav('hide');
+        $('.button-collapse').sideNav({
+            'edge': 'left'
+        });
 
-    //Modal Dialog for profile page
-    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-    $('.modal').modal();
+        //Modal Dialog for profile page
+        // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+        $('.modal').modal();
 
-    //Modal Dialog Date Picker
-    $('.datepicker').pickadate({
-        selectMonths: true, // Creates a dropdown to control month
-        selectYears: 100,
-        today: 'Today',
-        clear: 'Clear',
-        close: 'Ok',
-        closeOnSelect: false // Close upon selecting a date,
-    });
-
-
-    // initialize text fields
-    Materialize.updateTextFields();
-    $('select').material_select();
-    setupStateMenu();
-
-    $(".dropdown-button").dropdown({
-        hover: false
-    });
-
-    $('ul.tabs').tabs();
-    $('.materialboxed').materialbox();
-
-    $('.chat-collapse').sideNav('hide');
-	$('.chat-collapse').sideNav({
-      menuWidth: 300,
-      edge: 'right',
-    });
+        //Modal Dialog Date Picker
+        $('.datepicker').pickadate({
+            selectMonths: true, // Creates a dropdown to control month
+            selectYears: 100,
+            today: 'Today',
+            clear: 'Clear',
+            close: 'Ok',
+            closeOnSelect: false // Close upon selecting a date,
+        });
 
 
-    // chat-collapse
+        // initialize text fields
+        Materialize.updateTextFields();
+        $('select').material_select();
+        setupStateMenu();
 
-}); // end of document ready
+        $(".dropdown-button").dropdown({
+            hover: false
+        });
+
+        $('ul.tabs').tabs();
+        $('.materialboxed').materialbox();
+
+        $('.chat-collapse').sideNav('hide');
+        $('.chat-collapse').sideNav({
+            menuWidth: 300,
+            edge: 'right',
+        });
+
+
+        $('.chips').material_chip();
+        $('.chips-initial').material_chip({
+            data: [{
+                tag: 'Apple',
+            }, {
+                tag: 'Microsoft',
+            }, {
+                tag: 'Google',
+            }],
+        });
+
+        $('.chips-placeholder').material_chip({
+            placeholder: 'Enter a tag',
+            secondaryPlaceholder: '+Tag',
+        });
+
+        $('.chips-autocomplete').material_chip({
+            autocompleteOptions: {
+                data: {
+                    'Apple': null,
+                    'Microsoft': null,
+                    'Google': null
+                },
+                limit: Infinity,
+                minLength: 1
+            }
+        });
+
+        // initialize the amazon category menu
+        $("#gift_category_menu").val(1);
+        $("#gift_category_menu").material_select();
+
+    }); // end of document ready
 })(jQuery); // end of jQuery name space
