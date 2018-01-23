@@ -1,15 +1,17 @@
 // recipients table
-module.exports = function (sequelize, DataTypes) {
-	var recipients = sequelize.define("recipients", {
+'use strict';
+
+module.exports = function(sequelize, DataTypes) {
+    var Recipients = sequelize.define("recipients", {
 		recipient_id: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
 			primaryKey: true
         },
-
 		recipient_title: {
 			type: DataTypes.STRING
 		},
+
 		recipient_firstname: DataTypes.STRING,
 		recipient_lastname: DataTypes.STRING,
 		recipient_email: DataTypes.STRING,
@@ -20,9 +22,21 @@ module.exports = function (sequelize, DataTypes) {
 			type: DataTypes.STRING,
 			defaultValue: '/img/user-avatar.png'
 		},
-        recipient_max_budget: DataTypes.DECIMAL(10, 2),
-		createdAt: DataTypes.DATE,
-        updatedAt: DataTypes.DATE,
+
+        recipient_budget: DataTypes.INTEGER,
+        created_at: DataTypes.DATE,
+        updated_at: DataTypes.DATE,
+    }, {
+        timestamps: true,
+        underscored: true
 	});
-	return recipients;
+
+    Recipients.associate = (models) => {
+        Recipients.belongsToMany(models.users, {
+            through: models.user_recipient_mappings,
+            foreignKey: 'recipient_id'
+        });
+    };
+
+    return Recipients;
 };

@@ -1,15 +1,42 @@
 // user searches table
+'use strict';
+
 module.exports = function (sequelize, DataTypes) {
-	var user_interests = sequelize.define("user_interests", {
+	var Interests = sequelize.define("interests", {
 		interest_id: {
 			type: DataTypes.INTEGER,
 			autoIncrement: true,
 			primaryKey: true
 		},
+		
 		interest_name: DataTypes.STRING ,
         interest_description: DataTypes.TEXT,
-		createdAt: DataTypes.DATE,
-		updatedAt: DataTypes.DATE,
+		interest_icon: DataTypes.STRING,
+		interest_age_min: {
+			type: DataTypes.INTEGER ,
+			defaultValue: 13
+		},
+		interest_female: {
+			type: DataTypes.BOOLEAN ,
+			defaultValue: 0
+		},
+		created_at: DataTypes.DATE,
+		updated_at: DataTypes.DATE,
+	}, {
+        timestamps: true,
+        underscored: true
 	});
-	return user_interests;
+
+
+	Interests.associate = (models) => {
+		Interests.belongsToMany(models.recipients, {
+			through: models.recipient_interest_mappings
+		});
+
+		Interests.belongsToMany(models.categories, {
+			through: models.recipient_interest_mappings
+		});
+	};
+
+	return Interests;
 };
