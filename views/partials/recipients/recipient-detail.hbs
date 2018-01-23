@@ -1,15 +1,24 @@
 
 <!-- Recipient Detail Card -->
 
+<<<<<<< HEAD
     <div class="col s12 m6">
     <div id="recipient-card" class="card large">
         <div id="recipient-card-image" class="card-image waves-effect waves-block waves-light">
                     <img class="responsive-img" src="{{photo}}">
             </div>
+=======
+<div class="col s12 m6">
+    <div id="recipient-card" class="card large">
+        <div id="recipient-card-image" class="card-image waves-effect waves-block waves-light">
+                    <img class="responsive-img" src="{{photo}}">
+        </div>
+>>>>>>> hotfix/routing
         <div id="recipient-card-content" class="card-content">
             <span id="recipient-card-title" class="card-title activator grey-text text-darken-4">{{name}}
                     <i class="material-icons right">more_vert</i>
                 </span>
+<<<<<<< HEAD
                 <p>Gift Budget Total: $0 of ${{shortPrice max_budget}}</p>
             </div>
             <div class="card-reveal">
@@ -20,6 +29,18 @@
                 <p>Birthday: {{birthday}}</p>
                 <p>Gift Budget Total: $0 of ${{shortPrice max_budget}}</p>
                 <div id="saved-gifts-container">
+=======
+            <p>Gift Budget Total: $0 of ${{shortPrice max_budget}}</p>
+        </div>
+        <div class="card-reveal">
+            <span class="card-title activator grey-text text-darken-4">{{name}}
+                    <i class="material-icons right">close</i>
+                </span>
+                <p>Bio: {{bio}}</p>
+            <p>Birthday: {{birthday}}</p>
+            <p>Gift Budget Total: $0 of ${{shortPrice max_budget}}</p>
+            <div id="saved-gifts-container">
+>>>>>>> hotfix/routing
                     {{#each gifts as | gift |}}
                         {{> recipients/recipient-gift-collection}}
                     {{/each}} {{!-- Row End --}}
