@@ -88,7 +88,7 @@ module.exports = (app) => {
             })
 
             .catch(err => {
-                res.json({message: 'not working'});
+                res.json({message: err});
             })
     });
 };

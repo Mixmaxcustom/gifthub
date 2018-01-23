@@ -87,41 +87,46 @@ module.exports = (app) => {
 						console.log("detail page - " + productDetailPage);
 					}
 
-                    db.gifts.findOrCreate({
-                            where: {
-                                gift_asin: productAsin
-                            }
-                        })
-                        .spread((gift, created) => {
+                db.Gift.findOrCreate({
+                        where: {
+                            gift_asin: productAsin
+                        }
+                    })
+                    .spread((gift, created) => {
 
-                            // creating a new gift
-                            if (created == true) {
-                                db.gifts.update({
-                                    gift_name: productTitle,
-                                    gift_description: productDescription,
-                                    gift_photo: productImage,
-                                    gift_price: productPrice,
-                                    gift_purchased: false,
-                                    gift_url: productDetailPage,
-                                    gift_favorite: false
+                        // creating a new gift
+                        if (created == true) {
+                            db.Gift.update({
+                                gift_name: productTitle,
+                                gift_description: productDescription,
+                                gift_photo: productImage,
+                                gift_price: productPrice,
+                                gift_purchased: false,
+                                gift_url: productDetailPage,
+                                gift_favorite: false
 
-                                }, {
-                                    where: { gift_asin: productAsin },
-                                    returning: true,
-                                    plain: true
-                                })
-                                .then(result => {
-                                    console.log(result);
-                                });
-                            }
-                        });
+                            }, {
+                                where: { gift_asin: productAsin },
+                                returning: true,
+                                plain: true
+                            })
+                            .then(result => {
+                                console.log(result);
+
+                            })
+                            .catch(err => {
+                                res.json(err);
+                            })
+                        }
+                    });
             });
 
             // res.status(200).send({products: productCardArr, redirect: '/search'})
             res.status(200).send(productCardArr);
-        }
+        };
 
         }).catch(err => {
+            console.log(err);
             res.status(500).send(err);
         });
     });
