@@ -8,7 +8,6 @@
                 {{!-- Categories Menu --}}
                 <select id="gift_category_menu">
                     <!-- <option value="" disabled selected>Gift Type</option> -->
-
                     {{#each categories as | category |}}
                         <option value="{{category.category_id}}" data-value="{{category.category_name}}">{{category.category_description}}</option>
                     {{/each}}

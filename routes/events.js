@@ -17,9 +17,9 @@ module.exports = (app) => {
     app.get("/add-event", function(req, res) {
         // look for the current user in the database
 
-        db.users.findOne({
+        db.User.findOne({
             where: {
-                user_id: app.content.user.user_id
+                UserId: app.content.user.UserId
             }
         })
 

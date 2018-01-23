@@ -64,7 +64,7 @@ $(document).ready(function () {
 
 		.done( user => {
 			if (user.status == 100) {
-				console.log(`added user id: ${user.user_id}`);
+				console.log(`added user id: ${user.UserId}`);
 			}
 		})
 
@@ -86,12 +86,12 @@ $(document).ready(function () {
 			recipient_state: $('#recipient_state').val() || null,
 			recipient_email: $('#recipient_email').val() || null,
 			recipient_bio: $('#recipient_email').val() || null,
-			recipient_max_budget: 0
+			recipient_budget: 0
 		}
 
-		let budgetValue = $('#recipient_max_budget').val();
+		let budgetValue = $('#recipient_budget').val();
 		if (budgetValue) {
-			recipient.recipient_max_budget = parseInt(budgetValue)
+			recipient.recipient_budget = parseInt(budgetValue)
 		}
 
 		let birthday = $('#recipient_birthday').val();

@@ -5,6 +5,7 @@ const exphbs 		= require("express-handlebars");
 const path 			= require("path");
 const cookieParser 	= require('cookie-parser')
 const db 			= require("./models");
+const apirouter     = require('./routes/api');
 
 
 // use process.env for heroku
@@ -50,6 +51,8 @@ require("./routes/user")(app);
 require("./routes/amazon")(app);
 require("./routes/recipients")(app);
 
+
+app.use('/api', apirouter);
 
 // sync database and run app
 db.sequelize.sync({ force: false }).then( () => {

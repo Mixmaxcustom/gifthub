@@ -3,14 +3,20 @@
 $(document).ready(function () {
 
     console.log(`> loading Amazon API...`);
-
     let resultsroot = $('#search-results');
+    $("#gift_category_menu").material_select();
 
     // user clicked search button
     $('body').on('click', '#search-submit-btn', event => {
 
-        var searchIndex = $('#gift_category_menu').find('option:selected').data().value || 'All';
+        var searchIndex = `All`;
+        let selectedValue = $('#gift_category_menu').find('option:selected').data();
+        if (selectedValue) {
+            searchIndex = selectedValue.value;
+        }
 
+
+        console.log(`index: ${searchIndex}`);
         let searchData = {
             SearchIndex: searchIndex,
             Keywords: $('#keyword').val(),
@@ -47,7 +53,7 @@ $(document).ready(function () {
 class GiftCard {
     constructor(data) {
         this.gift_id = data.gift_id,
-        this.user_id = data.user_id,
+        this.UserId = data.UserId,
         this.asin = data.asin,
         this.title = data.title,
         this.image = data.image,

@@ -19,7 +19,7 @@ module.exports = (app) => {
         // TODO: sanity check user
 
         // look for the current user in the database
-        db.users.findOne({
+        db.User.findOne({
             where: {
                 user_email: userData.user_email
               }
@@ -35,7 +35,7 @@ module.exports = (app) => {
                         user_firstname: user.user_firstname,
                         user_lastname: user.user_lastname,
                         user_email: user.user_email,
-                        user_id: user.user_id,
+                        user_id: user.UserId,
                         user_is_admin: user.user_is_admin
                     }
 
@@ -91,7 +91,7 @@ module.exports = (app) => {
 
         // add a new recipient
         // TODO: need to check that user email isn't registered already
-        db.users.create(
+        db.User.create(
             userData
         )
 

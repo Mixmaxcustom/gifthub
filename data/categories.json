@@ -1,0 +1,338 @@
+[
+  {
+    "category_name": "All",
+    "category_description": "All Departments",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "Appliances",
+    "category_description": "Appliances",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "ArtsAndCrafts",
+    "category_description": "Crafts & Sewing",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "Automotive",
+    "category_description": "Automotive",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "Baby",
+    "category_description": "Baby",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "Beauty",
+    "category_description": "Beauty",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "Books",
+    "category_description": "Books",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "Collectibles",
+    "category_description": "Collectibles & Fine Arts",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "Electronics",
+    "category_description": "Electronics",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "Fashion",
+    "category_description": "Shoes & Jewelry",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "FashionBaby",
+    "category_description": "Shoes & Jewelry - Baby",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "FashionBoys",
+    "category_description": "Shoes & Jewelry - Boys",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "FashionGirls",
+    "category_description": "Shoes & Jewelry - Girls",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "FashionMen",
+    "category_description": "Shoes & Jewelry - Men",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "FashionWomen",
+    "category_description": "Shoes & Jewelry - Women",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "GiftCards",
+    "category_description": "Gift Cards",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "Grocery",
+    "category_description": "Grocery & Gourmet Food",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "Handmade",
+    "category_description": "Handmade",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "HealthPersonalCare",
+    "category_description": "Health & Personal Care",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "HomeGarden",
+    "category_description": "Home & Kitchen",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "Industrial",
+    "category_description": "Industrial & Scientific",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "KindleStore",
+    "category_description": "Kindle Store",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "LawnAndGarden",
+    "category_description": "Lawn & Garden",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "Luggage",
+    "category_description": "Luggage & Travel Gear",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "Magazines",
+    "category_description": "Magazine Subscriptions",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "MobileApps",
+    "category_description": "Apps & Games",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "Movies",
+    "category_description": "Movies & TV",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "MP3Downloads",
+    "category_description": "Digital Music",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "Music",
+    "category_description": "CDs & Vinyl",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "MusicalInstruments",
+    "category_description": "Musical Instruments",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "OfficeProducts",
+    "category_description": "Office Products",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "Pantry",
+    "category_description": "Prime Pantry",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "PCHardware",
+    "category_description": "Computers",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "PetSupplies",
+    "category_description": "Pet Supplies",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "Software",
+    "category_description": "Software",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "Tools",
+    "category_description": "Tools & Home Improvement",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "Toys",
+    "category_description": "Toys & Games",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "UnboxVideo",
+    "category_description": "Amazon Instant Video",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "Vehicles",
+    "category_description": "Vehicles",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "VideoGames",
+    "category_description": "Video Games",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "Wine",
+    "category_description": "Wine",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "category_name": "Wireless",
+    "category_description": "Cell Phones & Accessories",
+    "category_icon": "play_circle_filled",
+    "category_age_limit": 0,
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  }
+]

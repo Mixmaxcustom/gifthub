@@ -24,7 +24,7 @@ module.exports = {
 
     // price formatter
     shortPrice: (price) => {
-        return parseInt(price);
+        return parseInt(price) / 100;
     },
 
     component: (partial, options) => {

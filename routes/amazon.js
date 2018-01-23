@@ -4,9 +4,9 @@ const client 		= require('../config/amazon');
 const amazon 		= require('amazon-product-api');
 
 
-var ProductCard = function(user_id, asin, title, image, thumbnail, price, detailsURL, description, category) {
-    this.user_id = user_id,
-    this.gift_id = 0,
+var ProductCard = function(UserId, asin, title, image, thumbnail, price, detailsURL, description, category) {
+    this.UserId = UserId,
+    this.GiftId = 0,
     this.asin = asin,
     this.title = title,
     this.image = image,
@@ -22,7 +22,7 @@ module.exports = (app) => {
 	app.get("/amazon", (req, res, next) => {
 		console.log(` - requesting ${req.url}`);
 
-		db.categories.findAll().then( categories => {
+		db.Category.findAll().then( categories => {
 			app.content.categories = categories;
             res.render('amazon/index', app.content);
 		});
@@ -73,7 +73,7 @@ module.exports = (app) => {
                     let productCategory = (Object.keys(itemAttributes).includes('ProductGroup')) ? itemAttributes.ProductGroup[0] : null;
 
 					// Create new productCard for each product using above variables -JR
-					let productCard = new ProductCard(app.content.user.user_id, productAsin, productTitle, productImage, thumbnailImage, productPrice, productDetailPage, productDescription, productCategory);
+					let productCard = new ProductCard(app.content.user.UserId, productAsin, productTitle, productImage, thumbnailImage, productPrice, productDetailPage, productDescription, productCategory);
 
 					// Push new productCard to the productCardArray -JR
 					productCardArr.push(productCard);

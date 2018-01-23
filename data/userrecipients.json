@@ -1,0 +1,38 @@
+[
+    {
+        "UserId": 1,
+        "RecipientId": 1,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    },
+    {
+        "UserId": 1,
+        "RecipientId": 2,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    },
+    {
+        "UserId": 1,
+        "RecipientId": 2,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    },
+    {
+        "UserId": 1,
+        "RecipientId": 2,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    },
+    {
+        "UserId": 1,
+        "RecipientId": 2,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    },
+    {
+        "UserId": 1,
+        "RecipientId": 2,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    }
+]

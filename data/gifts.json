@@ -1,0 +1,54 @@
+[
+    {
+        "gift_name": "Art That Changed the World",
+        "gift_description": "Art That Changed the World tells the story of every major art style, movement by movement, giving art lovers a visual timeline showing key paintings that sparked each transition and explaining major events that shaped their evolution..",
+        "gift_asin": "1465414355",
+        "gift_part_num":null,
+        "gift_photo": "https://images-na.ssl-images-amazon.com/images/I/61Y1UqLcEYL._SX420_BO1,204,203,200_.jpg",
+        "gift_price": 2821,
+        "gift_purchased": false,
+        "gift_url": "https://www.amazon.com/dp/1465414355",
+        "gift_favorite": false,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    },
+    {
+        "gift_name": "Kat Von D Shade + Light Glimmer Eye Palette",
+        "gift_description": "An eye contouring palette with 12 neutral shades in a range of glimmer finishes.",
+        "gift_asin": "B00HG9SIO8",
+        "gift_part_num": "816657022117",
+        "gift_photo": "https://images-na.ssl-images-amazon.com/images/I/41OU%2Bavm7CL.jpg",
+        "gift_price": 1279,
+        "gift_purchased": false,
+        "gift_url": "https://www.amazon.com/dp/B00HG9SIO8",
+        "gift_favorite": false,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    },
+    {
+        "gift_name": "KitchenAid 8-Quart Stand Mixer with Bowl Lift",
+        "gift_description": "The KitchenAid 8-Quart Stand Mixer is a large capacity baker's essential equipped to handle more than 8 pounds of dough for the perfect batch of cookies, bread, or crust in a single bowl.",
+        "gift_asin": "B00L2EZIP0",
+        "gift_part_num": "KSM8990NP",
+        "gift_photo": "https://images-na.ssl-images-amazon.com/images/I/81ERKuqTYXL._SL1500_.jpg",
+        "gift_price": 55999,
+        "gift_purchased": false,
+        "gift_url": "https://www.amazon.com/KitchenAid-KSM8990NP-8-Quart-Stand-Nickel/dp/B00L2EZIP0",
+        "gift_favorite": false,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    },
+    {
+        "gift_name": "Super NES Classic",
+        "gift_description": "The Super NES Classic Edition system has the original look and feel of the ’90s home console, only smaller.",
+        "gift_asin": "B0721GGGS9",
+        "gift_part_num": "CLVSSNSG",
+        "gift_photo": "https://images-na.ssl-images-amazon.com/images/I/51kpDq7MmZL._AC_SX430_.jpg",
+        "gift_price": 11989,
+        "gift_purchased": false,
+        "gift_url": "https://www.amazon.com/Super-NES-Classic-nintendo/dp/B0721GGGS9",
+        "gift_favorite": false,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    }
+]

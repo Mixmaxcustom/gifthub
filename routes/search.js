@@ -7,7 +7,7 @@ module.exports = (app) => {
 	app.get("/search", (req, res) => {
         console.log(` - requesting ${req.url}`);
 
-		db.categories.findAll().then(categories => {
+		db.Category.findAll().then(categories => {
 			app.content.layout = 'main';
 			app.content.categories = categories;
 			res.render('search', app.content);
@@ -18,7 +18,7 @@ module.exports = (app) => {
 	app.get("/results", (req, res) => {
 		console.log(` - requesting ${req.url}`);
 
-		db.categories.findAll().then(categories => {
+		db.Category.findAll().then(categories => {
 			app.content.layout = 'main';
 			app.content.categories = categories;
 			res.render('search', app.content);
