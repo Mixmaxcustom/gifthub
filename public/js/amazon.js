@@ -1,8 +1,8 @@
 // amazon api module
 
 $(document).ready(function () {
-
     console.log(`> loading Amazon API...`);
+
     let resultsroot = $('#search-results');
     $("#gift_category_menu").material_select();
 
@@ -15,8 +15,6 @@ $(document).ready(function () {
             searchIndex = selectedValue.value;
         }
 
-
-        console.log(`index: ${searchIndex}`);
         let searchData = {
             SearchIndex: searchIndex,
             Keywords: $('#keyword').val(),
@@ -40,8 +38,12 @@ $(document).ready(function () {
 
         // status is text
         }).fail( (xhr, status) => {
-            let errmsg = xhr.responseJSON.Error[0].Message[0];
-            Materialize.toast(`Error: ${errmsg}`, 10000)
+
+            //["readyState", "getResponseHeader", "getAllResponseHeaders", "setRequestHeader", "overrideMimeType", "statusCode", "abort", "state", "always", "catch", "pipe", "then", "promise", "progress", "done", "fail", "responseText", "responseJSON", "status", "statusText"]
+            // ["readyState", "getResponseHeader", "getAllResponseHeaders", "setRequestHeader", "overrideMimeType", "statusCode", "abort", "state", "always", "catch", "pipe", "then", "promise", "progress", "done", "fail", "responseText", "responseJSON", "status", "statusText"]
+            // console.log(xhr.responseJSON[0].Error[0].Message[0]);
+            // let errmsg = xhr.responseJSON.Error[0].Message[0];
+            Materialize.toast(`Error: ${status}`, 10000)
         });
     });
 });

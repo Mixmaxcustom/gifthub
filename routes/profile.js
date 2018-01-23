@@ -48,7 +48,7 @@ module.exports = (app) => {
 
         var results = [];
         db.User.findOne({
-                where: {
+            where: {
                     id: app.content.user.user_id
                 },
                 include: [{
@@ -88,7 +88,7 @@ module.exports = (app) => {
             })
 
             .catch(err => {
-                res.json(err);
+                res.json({message: 'not working'});
             })
     });
 };
