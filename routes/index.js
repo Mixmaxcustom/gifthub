@@ -280,7 +280,7 @@ module.exports = (app) => {
             Keywords: searchData.Keywords,
             MaximumPrice: searchData.MaximumPrice,
             // Hard coded a minimum price so the price result wouldn't error out.
-            MinimumPrice: "0001",
+            MinimumPrice: "0500",
             ResponseGroup: 'ItemAttributes,Offers,Images'
         }).then( results => {
 
