@@ -142,6 +142,10 @@ $(document).ready(function () {
 				$('#card-login-alert').removeClass('hide');
 				$('#login-error-msg').text(data.message);
 			}
+		})
+		.fail( data => {
+			console.log('fail');
+			console.log(data);
 		});
 	});
 
