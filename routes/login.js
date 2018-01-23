@@ -62,6 +62,23 @@ module.exports = (app) => {
         });
     });
 
+	// user logged out
+	app.get("/logout", function (req, res) {
+		// reset the page content user
+		app.content.user = {
+			user_id: -1,
+			user_email: null,
+			user_firstname: null,
+			user_lastname: null,
+			user_is_logged_in: false,
+			user_is_admin: false
+		}
+
+		// clear the cookie
+		app.content.layout = 'home';
+		res.clearCookie('gifthub-user').render('login', app.content);
+    });
+
     // user registration
 	app.get("/register", function (req, res, next) {
         res.render('register', app.content);
@@ -90,20 +107,5 @@ module.exports = (app) => {
         })
 	});
 
-	// user logged out
-	app.get("/logout", function (req, res) {
-		// reset the page content user
-		app.content.user = {
-			user_id: -1,
-			user_email: null,
-			user_firstname: null,
-			user_lastname: null,
-			user_is_logged_in: false,
-			user_is_admin: false
-		}
 
-		// clear the cookie
-		app.content.layout = 'home';
-		res.clearCookie('gifthub-user').render('login', app.content);
-    });
 };
