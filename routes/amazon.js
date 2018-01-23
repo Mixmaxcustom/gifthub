@@ -6,6 +6,7 @@ const amazon 		= require('amazon-product-api');
 
 var ProductCard = function(user_id, asin, title, image, thumbnail, price, detailsURL, description, category) {
     this.user_id = user_id,
+    this.gift_id = 0,
     this.asin = asin,
     this.title = title,
     this.image = image,
@@ -42,7 +43,7 @@ module.exports = (app) => {
 			Keywords: searchData.Keywords,
 			MaximumPrice: searchData.MaximumPrice,
 			// Hard coded a minimum price so the price result wouldn't error out.
-			MinimumPrice: "0001",
+			MinimumPrice: "0500",
 			ResponseGroup: 'ItemAttributes,Offers,Images'
 		}).then( results => {
 
@@ -85,19 +86,45 @@ module.exports = (app) => {
 						console.log("Price -       " + productPrice);
 						console.log("detail page - " + productDetailPage);
 					}
-				});
 
-				// Send the productCardArray to the client as JSON -JR
-				// Need to use ".send" instead of ".json", or AJAX wont capture response -JR
-				res.status(200).send(productCardArr);
-				// res.status(200).send({products: productCardArr, redirect: '/search'})
+                    db.gifts.findOrCreate({
+                            where: {
+                                gift_asin: productAsin
+                            }
+                        })
+                        .spread((gift, created) => {
 
-			}
+                            // creating a new gift
+                            if (created == true) {
+                                db.gifts.update({
+                                    gift_name: productTitle,
+                                    gift_description: productDescription,
+                                    gift_photo: productImage,
+                                    gift_price: productPrice,
+                                    gift_purchased: false,
+                                    gift_url: productDetailPage,
+                                    gift_favorite: false
 
-		}).catch( err => {
-			// console.log(err[0].Error[0].Message[0]);
-			console.log(err);
-			res.status(500).send(err);
-		});
-	});
+                                }, {
+                                    where: { gift_asin: productAsin },
+                                    returning: true,
+                                    plain: true
+                                })
+                                .then(result => {
+                                    console.log(result);
+                                });
+                            }
+                        });
+            });
+
+            // res.status(200).send({products: productCardArr, redirect: '/search'})
+            res.status(200).send(productCardArr);
+        }
+
+        }).catch(err => {
+            // console.log(err[0].Error[0].Message[0]);
+            console.log(err);
+            res.status(500).send(err);
+        });
+    });
 };
