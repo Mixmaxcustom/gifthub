@@ -28,7 +28,7 @@ function setupStateMenu() {
 (function($) {
     $(function() {
 
-        $('.button-collapse').sideNav();
+        // $('.button-collapse').sideNav();
 
         console.log(`> initializing Materialize...`);
 

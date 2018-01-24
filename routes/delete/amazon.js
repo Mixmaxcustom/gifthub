@@ -4,9 +4,8 @@ const client 		= require('../config/amazon');
 const amazon 		= require('amazon-product-api');
 
 
-var ProductCard = function(UserId, asin, title, image, thumbnail, price, detailsURL, description, category) {
-    this.UserId = UserId,
-    this.GiftId = 0,
+var ProductCard = function(asin, title, image, thumbnail, price, detailsURL, description, category) {
+    this.gift_id = 0,
     this.asin = asin,
     this.title = title,
     this.image = image,
@@ -83,7 +82,7 @@ module.exports = (app) => {
                     let productCategory = (Object.keys(itemAttributes).includes('ProductGroup')) ? itemAttributes.ProductGroup[0] : null;
 
 					// Create new productCard for each product using above variables -JR
-					let productCard = new ProductCard(app.content.user.UserId, productAsin, productTitle, productImage, thumbnailImage, productPrice, productDetailPage, productDescription, productCategory);
+					let productCard = new ProductCard(productAsin, productTitle, productImage, thumbnailImage, productPrice, productDetailPage, productDescription, productCategory);
 
 					// Push new productCard to the productCardArray -JR
 					productCardArr.push(productCard);
@@ -97,38 +96,6 @@ module.exports = (app) => {
 						console.log("detail page - " + productDetailPage);
 					}
 
-                db.Gift.findOrCreate({
-                        where: {
-                            gift_asin: productAsin
-                        }
-                    })
-                    .spread((gift, created) => {
-
-                        // creating a new gift
-                        if (created == true) {
-                            db.Gift.update({
-                                gift_name: productTitle,
-                                gift_description: productDescription,
-                                gift_photo: productImage,
-                                gift_price: productPrice,
-                                gift_purchased: false,
-                                gift_url: productDetailPage,
-                                gift_favorite: false
-
-                            }, {
-                                where: { gift_asin: productAsin },
-                                returning: true,
-                                plain: true
-                            })
-                            .then(result => {
-                                console.log(result);
-
-                            })
-                            .catch(err => {
-                                res.json(err);
-                            })
-                        }
-                    });
             });
 
             // res.status(200).send({products: productCardArr, redirect: '/search'})

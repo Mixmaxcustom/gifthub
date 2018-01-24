@@ -17,6 +17,8 @@ function b64DecodeUnicode(str) {
 	}).join(''));
 }
 
+
+// validate the registration form
 function userRegistrationValidation() {
 	const form = document.getElementById("user_registration_form");
 	const password = $("#input_user_password").val();
@@ -42,7 +44,7 @@ var currentCategoryID;
 
 // document load
 $(document).ready(function () {
-	console.log(`> loading view module...`);
+	console.log(`> loading view controller...`);
 
 
 	// user registration clicked
@@ -70,20 +72,12 @@ $(document).ready(function () {
 				userData.user_password = b64EncodeUnicode(userData.user_password)
 			}
 
-			$.ajax("/register", {
-					type: "POST",
-					data: userData
-				})
+			$.post('/register', userData, res => {
+				console.log(res);
+				// redirect home
+				window.location = `/`
+			});
 
-				.done(user => {
-					if (user.status == 100) {
-						console.log(`added user id: ${user.UserId}`);
-					}
-				})
-
-				.fail(data => {
-					console.log(data);
-				});
 
 		} else {
 			console.log('failed validation');
@@ -136,8 +130,10 @@ $(document).ready(function () {
 
 	// user clicked login button
 	$('body').on('click', '#user_login_submit', event => {
+
 		event.preventDefault();
 		event.stopPropagation();
+
 		let user_email = $('#input_user_email').val();
 		let user_password = $('#input_user_password').val();
 
@@ -146,26 +142,14 @@ $(document).ready(function () {
 			user_password: b64EncodeUnicode(user_password)
 		}
 
-		$.ajax("/login", {
-				type: "POST",
-				data: user
-			})
+		console.log(`- [view]: logging in: ${user_email}...`);
 
-			.done(data => {
-				console.log(`data`);
+		$.post('/login', user, res => {
+			console.log(res);
 
-				if (data.status == 100) {
-					window.location = data.redirect;
-
-				} else if (data.status > 400) {
-					$('#card-login-alert').removeClass('hide');
-					$('#login-error-msg').text(data.message);
-				}
-			})
-			.fail(data => {
-				console.log('fail');
-				console.log(data);
-			});
+			// redirect home
+			window.location = `/`
+		});
 	});
 
 });

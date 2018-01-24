@@ -39,9 +39,40 @@ module.exports = (app) => {
     });
 
     // post a gift to a recipient
-    app.post("/save", (req, res, next) => {
-        let data = req.body;
-        console.log(data);
-        res.send(data)
+    app.post("/gift-saved", (req, res, next) => {
+        console.log(`saving gift...`);
+        res.send({message: 'shut the fuck up'})
+    });
+
+    // update status of a gift
+    app.post("/gift-purchased/:giftid/:purchased", (req, res, next) => {
+        let msg = (req.params.purchased == 1) ? 'purchased' : "didn't purchase"
+
+        console.log(`${msg} gift id: ${req.params.giftid}`);
+
+        db.Gift.findOne({
+            where: {
+                id: req.params.giftid
+            },
+
+            // include recipient and the owning user
+            include: [{
+                model: db.Recipient
+            }]
+        })
+
+        .then( gift => {
+            gift.update(
+                { gift_purchased: true })
+
+                .then( result => {
+                    result
+                    res.send({message: 'success'})
+                })
+        })
+
+        .catch(err => {
+            res.json(err);
+        });
     });
 };

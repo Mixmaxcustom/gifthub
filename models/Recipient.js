@@ -11,6 +11,15 @@ module.exports = (sequelize, DataTypes) => {
         recipient_state: DataTypes.STRING,
         recipient_photo: DataTypes.STRING,
         recipient_budget: DataTypes.INTEGER
+    }, {
+        getterMethods: {
+            // props go to Jake for figuring this out!!
+            unpurchasedGifts() {
+                return this.getGifts({
+                    where: { gift_purchased: { [sequelize.Op.gt]: false } }
+                })
+            }
+        },
     });
 
     Recipient.associate = (models) => {

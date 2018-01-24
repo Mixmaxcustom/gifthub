@@ -4,45 +4,21 @@
 
 var curbutton;
 $(document).ready(function () {
-	console.log(`> loading user module...`);
-
-	// gift is favorited
-	$('body').on('click', '.favorite-gift-button', event => {
-		event.preventDefault();
-		event.stopPropagation();
-
-		let button = $(event.currentTarget)
-		let productASIN = button.attr('aisn');
-		curbutton = button;
-		console.log(`Amazon ID: ${productASIN}`);
-
-		$.ajax("/favorite", {
-			type: "POST",
-			data: {aisn: productASIN}
-		})
-
-		.done( result => {
-			console.log(result);
-		})
-
-		.fail( data => {
-			console.log(data);
-		});
-	});
+	console.log(`> loading user controller...`);
 
 	// gift is added to a user
-	$('body').on('click', '.add-gift-button', event => {
+	$('body').on('click', '.gift-action', event => {
+		console.log(`gift action button clicked...`);
+
 		event.preventDefault();
 		event.stopPropagation();
 
-		let button = $(event.currentTarget)
-		let productASIN = button.attr('aisn');
-		curbutton = button;
-		console.log(`Amazon ID: ${productASIN}`);
+		let button = $(event.currentTarget);
 
-		$.ajax("/save", {
-			type: "POST",
-			data: {aisn: productASIN}
+		curbutton = button;
+
+		$.ajax("/gift-saved", {
+			type: "POST"
 		})
 
 		.done( result => {
@@ -56,23 +32,19 @@ $(document).ready(function () {
 	});
 
 	// user clicks on purchased checkbox in recipient card
-	$('body').on('click', '#gift-purchased', event => {
-		// event.preventDefault();
-		// event.stopPropagation();
+	$('body').on('click', '.gift-purchased', event => {
 
-		let button = $(event.currentTarget)
-		let productASIN = button.data().value;
-		curbutton = button;
-		console.log(`Amazon ID: ${productASIN}`);
+		let checkbox = $(event.currentTarget)
+		let giftID = checkbox.data().value;
+		let isChecked = checkbox.is(':checked')
+		curbutton = checkbox;
 
-		$.ajax("/save", {
+		$.ajax(`/gift-purchased/${giftID}/${(isChecked == true ? 1 : 0)}`, {
 			type: "POST",
-			data: {id: productASIN, gift_purchased: true}
 		})
 
 		.done( result => {
-			console.log(result);
-
+			console.log(result.message);
 		})
 
 		.fail( data => {
@@ -82,4 +54,3 @@ $(document).ready(function () {
 
 
 });
-

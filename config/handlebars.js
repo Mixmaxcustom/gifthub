@@ -17,6 +17,11 @@ module.exports = {
         return `${shdate}/XXXX`;
     },
 
+    // date formatter
+    obscurePassword: (pword) => {
+        return pword.split('').map( c => { return '*'}).join('')
+    },
+
     // price formatter
     formatPrice: (price) => {
         return (price / 100).toFixed(2);

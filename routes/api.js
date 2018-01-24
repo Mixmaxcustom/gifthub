@@ -1,12 +1,41 @@
+// api routing module
 const db        = require('../models/');
 const express   = require('express');
-const router    = express.Router();
 
 
-console.log(Object.keys(db));
+// define a router
+const router = express.Router();
+
+
+//  page content
+router.content = {
+    layout: 'api',
+    projname: 'gifthub-api',
+    pagetitle: '',
+    favicon: process.env.PROD_FAVICON_NAME || 'favicon-oval-128x128-dev',
+    search_modal_title: 'Search Results',
+    debug_mode: false,
+    searchData: {
+        seachCategory: null,
+        results: []
+    }
+}
+
 
 router.get('/', (req, res) => {
-    res.json({message: 'Please query a table...'})
+    let content = {
+        layout: 'api',
+        users: []
+    }
+
+    db.User.findAll()
+    .then( users => {
+        content.users = users;
+        res.render('api/index', content)
+    })
+    .catch(err => {
+        res.json(err);
+    })
 });
 
 
@@ -22,15 +51,16 @@ router.get('/users', (req, res) => {
 
 
 
-router.get('/users/:UserId', (req, res) => {
-    console.log(`user id: ${req.params.UserId}`);
+router.get('/users/:userid', (req, res) => {
+    console.log(`user id: ${req.params.userid}`);
     db.User.findOne({
         where: {
-            id: req.params.UserId
+            id: req.params.userid
         },
         include: [{
             model: db.Recipient,
-                attributes: ['recipient_title', 'recipient_firstname', 'recipient_lastname', 'recipient_lastname', 'recipient_budget']
+                attributes: ['recipient_title', 'recipient_firstname', 'recipient_lastname',
+                             'recipient_lastname', 'recipient_budget']
         }]
     })
 

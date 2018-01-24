@@ -9,20 +9,28 @@
 
 	<!-- CSS  -->
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	<link href="/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+	<link href="/vendor/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	<link href="/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="/css/hsxx.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="/css/gifts.css" type="text/css" rel="stylesheet" media="screen,projection"/>
 	<script src="https://use.fontawesome.com/3f13c469b8.js"></script>
-	<!-- <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script> -->
 </head>
 
 <body>
+	<!-- Header -->
+	<header>
+		{{> api/header}}
+	</header>
 
 	<!-- Body -->
 	<main>
 		{{{body}}}
 	</main>
 
+
+	<!-- Footer -->
+	<footer class="page-footer footer-fixed grey darken-3">
+		{{> api/footer}}
+	</footer>
 
 	{{> actions}}
 	{{> sidebar}}
@@ -31,10 +39,12 @@
 	<!--  Scripts-->
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
+	<script src="/vendor/js/materialize.js"></script>
 	<script src="/vendor/js/jquery.nestable.js"></script>
-	<script src="/js/materialize.js"></script>
+	<script src="/vendor/js/mindmup-editabletable.js"></script>
+	<script src="/vendor/js/numeric-input-example.js"></script>
+	<script src="/js/api.js"></script>
 	<script src="/js/init.js"></script>
-	<script src="/js/materialize-pagination.js"></script>
 	<script src="/js/view.js"></script>
 	<script src="/js/amazon.js"></script>
 	<script src="/js/user.js"></script>

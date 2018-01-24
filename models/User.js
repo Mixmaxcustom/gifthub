@@ -12,6 +12,12 @@ module.exports = (sequelize, DataTypes) => {
         user_city: DataTypes.STRING,
         user_state: DataTypes.STRING,
         user_photo: DataTypes.STRING
+    }, {
+        getterMethods: {
+          fullName() {
+              return this.user_firstname + ' ' + this.user_lastname
+          }
+        },
     });
 
     User.associate = (models) => {
