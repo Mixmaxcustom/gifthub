@@ -23,6 +23,15 @@ function setupStateMenu() {
     $('select').material_select();
 }
 
+// get the user id of a logged in user
+function getUserID() {
+	if ($('#user-menu-root').data()) {
+		return parseInt($('#user-menu-root').data().value);
+	}
+	return -1;
+}
+
+
 
 // document start
 (function($) {
@@ -56,6 +65,15 @@ function setupStateMenu() {
             close: 'Ok',
             closeOnSelect: false // Close upon selecting a date,
         });
+
+
+        // confirmation modal
+        $('#confirmation-model').modal({
+            dismissible: false,
+            inDuration: 300,
+            outDuration: 200,
+            complete: function() { console.log('Closed'); }
+        })
 
 
         // initialize text fields

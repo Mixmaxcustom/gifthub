@@ -7,7 +7,6 @@ const cookieParser 	= require('cookie-parser')
 const db 			= require("./models");
 const apirouter     = require('./routes/api');
 const router 		= require('./routes/index');
-const authenticate  = require('./routes/auth');
 
 
 // use process.env for heroku
@@ -17,8 +16,6 @@ const port = process.env.PORT || 5000;
 // create & configure express app
 var app = express();
 app.use(cookieParser());
-
-
 app.use(bp.json());
 app.use(bp.urlencoded({ extended: true }));
 app.use(bp.text());
@@ -38,6 +35,7 @@ app.engine('hbs', exphbs({
 	helpers: require('./config/handlebars'),
 	extname: '.hbs'
 }));
+
 
 app.set("view engine", "hbs");
 

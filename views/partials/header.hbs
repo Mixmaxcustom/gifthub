@@ -16,7 +16,7 @@
 			{{#if user.user_is_logged_in}}
 
 				{{!--  Menu (normal) --}}
-				<ul class="right hide-on-med-and-down">
+				<ul class="right hide-on-med-and-down" id="user-menu-root" data-value="{{user.user_id}}">
 					<li><a class="dropdown-button" href="/" data-activates="user-dropdown-mobile"><i class="fa fa-user-circle" aria-hidden="true"></i> {{user.user_firstname}} {{user.user_lastname}}<i class="material-icons right">arrow_drop_down</i></a></li>
 					<!-- <li><a href="#" data-activates="admin-slide-out" class="waves-effect waves-block waves-light chat-collapse"><i class="material-icons">format_indent_increase</i></a></li> -->
 				</ul>

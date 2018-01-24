@@ -60,23 +60,39 @@
     </div>
 </div>
 
-<!-- Recipient list -->
-<div id="recipients-list-modal" class="modal">
-    <ul class="collapsible" data-collapsible="accordion">
-       <li>
-         <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-         <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-       </li>
-       <li>
-         <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-         <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-       </li>
-       <li>
-         <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-         <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-       </li>
-     </ul>
+
+ <!-- Recipients Modal -->
+
+ <div id="recipients-list-modal" class="modal bottom-sheet">
+     <div class="modal-content">
+     <h4>Your Recipients</h4>
+     <ul class="collection">
+         {{#each recipients as | recipient |}}
+
+            <li class="collection-item avatar">
+                <img src="{{recipient.recipient_photo}}" alt="" class="circle">
+                <span class="title">{{recipient.recipient_firstname}}</span>
+                <p>{{recipient.recipient_bio}}</p>
+                <a href="#!" data-value="{{recipient.id}}" gift-id="-1" class="secondary-content recipient-list-check"><i class="material-icons">crop_din</i></a>  <!--check_circle-->
+            </li>
+        {{/each}}
+      </ul>
+     </div>
  </div>
+
+<!-- Confirmation Dialog -->
+<!-- Modal Structure -->
+<div id="confirmation-model" class="modal">
+    <div class="modal-content">
+        <h4>{{confirm_options.confirm_title}}</h4>
+        <p>{{confirm_options.confirm_text}}</p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">No</a>
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Yes</a>
+    </div>
+</div>
+
 
 <!-- Admin Side Modal -->
 <aside id="admin-sidebar-nav">
@@ -87,93 +103,8 @@
                 <div class="card-content center">
                     <h3>Profile</h3>
                 </div>
-
             </div>
-
         </div>
     </li>
   </ul>
 </aside>
-
-
-
-<!-- Recipient list -->
-<div id="recipients-list-modal" class="modal">
-    <ul class="collapsible" data-collapsible="accordion">
-       <li>
-         <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
-         <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-       </li>
-       <li>
-         <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
-         <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-       </li>
-       <li>
-         <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
-         <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
-       </li>
-     </ul>
- </div>
-
-
-<!-- Side Modal -->
-<aside id="admin-sidebar-nav">
-  <ul id="admin-slide-out" class="side-nav rightside-navigation">
-    <li class="li-hover">
-        <div>
-            <div class="card">
-                <div class="card-content center">
-                    <h3>Saved Recipients</h3>
-                </div>
-
-            </div>
-
-        </div>
-    </li>
-  </ul>
-</aside>
-
-
-
-<!-- Search Results Modal -->
-
-<div id="search-results-modal" class="modal bottom-sheet">
-    <div class="modal-content">
-    <h4>{{search_modal_title}}</h4>
-
-    <ul class="collection">
-        <li class="collection-item avatar">
-        <i class="material-icons circle">folder</i>
-        <span class="title">Title</span>
-        <p>First Line <br>
-            Second Line
-        </p>
-        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li>
-        <li class="collection-item avatar">
-        <i class="material-icons circle">folder</i>
-        <span class="title">Title</span>
-        <p>First Line <br>
-            Second Line
-        </p>
-        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li>
-        <li class="collection-item avatar">
-        <i class="material-icons circle green">assessment</i>
-        <span class="title">Title</span>
-        <p>First Line <br>
-            Second Line
-        </p>
-        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li>
-        <li class="collection-item avatar">
-        <i class="material-icons circle red">play_arrow</i>
-        <span class="title">Title</span>
-        <p>First Line <br>
-            Second Line
-        </p>
-        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-        </li>
-    </ul>
-    </div>
-</div>
