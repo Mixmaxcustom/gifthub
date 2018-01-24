@@ -1,0 +1,19 @@
+<ul id="saved-gift-collection" class="collection">
+    <li class="collection-item avatar">
+        <img src="{{gift_photo}}" alt="" class="circle">
+        <span id="gift_name">{{gift_name}}</span>
+        <span id="gift_price"> - ${{shortPrice gift_price}}</span>
+        <span id="gift_link">
+            <p>
+                <a target="_blank" href="{{gift_url}}">Link</a>
+            </p>
+        </span>
+        <form action="#">
+            <p class="right-align">
+                <input data-value="{{id}}" type="checkbox" id="gift-purchased" />
+                <label for="gift-purchased">Purchased</label>
+                <a id="delete-gift-button"><i style="cursor: pointer" class="material-icons right blue-grey-text">close</i></a>
+            </p>
+        </form>
+    </li>
+</ul>

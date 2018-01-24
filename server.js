@@ -1,10 +1,11 @@
 // server module
-const express = require('express');
-const bp = require('body-parser');
-const exphbs = require("express-handlebars");
-const path = require("path");
-const cookieParser = require('cookie-parser')
-const db = require("./models");
+const express 		= require('express');
+const bp 			= require('body-parser');
+const exphbs 		= require("express-handlebars");
+const path 			= require("path");
+const cookieParser 	= require('cookie-parser')
+const db 			= require("./models");
+const apirouter     = require('./routes/api');
 
 
 // use process.env for heroku
@@ -21,10 +22,8 @@ app.use(bp.urlencoded({ extended: true }));
 app.use(bp.text());
 app.use(bp.json({ type: "application/vnd.api+json" }));
 
-// setup
+// app globals
 require("./config/init")(app);
-require("./config/auth")(app);
-
 
 // serve static content from the "public"
 app.use(express.static(path.join(__dirname, 'public')));
@@ -51,15 +50,13 @@ require("./routes/search")(app);
 require("./routes/user")(app);
 require("./routes/amazon")(app);
 require("./routes/recipients")(app);
-//  test routes
-require("./routes/test")(app);
-require("./routes/api")(app);
-require("./routes/dbtest")(app);
 
+
+app.use('/api', apirouter);
 
 // sync database and run app
-db.sequelize.sync().then(function () {
-	app.listen(port, function () {
+db.sequelize.sync({ force: false }).then( () => {
+	app.listen(port, () => {
 		console.log("App listening on PORT " + port);
 	});
 });

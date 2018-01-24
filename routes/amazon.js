@@ -4,7 +4,9 @@ const client 		= require('../config/amazon');
 const amazon 		= require('amazon-product-api');
 
 
-var ProductCard = function(asin, title, image, thumbnail, price, detailsURL, description, category) {
+var ProductCard = function(UserId, asin, title, image, thumbnail, price, detailsURL, description, category) {
+    this.UserId = UserId,
+    this.GiftId = 0,
     this.asin = asin,
     this.title = title,
     this.image = image,
@@ -20,7 +22,7 @@ module.exports = (app) => {
 	app.get("/amazon", (req, res, next) => {
 		console.log(` - requesting ${req.url}`);
 
-		db.categories.findAll().then( categories => {
+		db.Category.findAll().then( categories => {
 			app.content.categories = categories;
             res.render('amazon/index', app.content);
 		});
@@ -41,10 +43,11 @@ module.exports = (app) => {
 			Keywords: searchData.Keywords,
 			MaximumPrice: searchData.MaximumPrice,
 			// Hard coded a minimum price so the price result wouldn't error out.
-			MinimumPrice: "0001",
+			MinimumPrice: "0500",
 			ResponseGroup: 'ItemAttributes,Offers,Images'
 		}).then( results => {
-
+            console.log(`results: ${results.length}`);
+            console.log(results);
             // send results via json if using postman
 			if (isPostman === true) {
 				res.json(results);
@@ -63,15 +66,24 @@ module.exports = (app) => {
                     let thumbnailImage = results[i].ImageSets[0].ImageSet[0].TinyImage[0].URL[0];
 					let productImage = results[i].ImageSets[0].ImageSet[0].LargeImage[0].URL[0];
 					// let productPrice = results[i].OfferSummary[0].LowestNewPrice[0].Amount[0];
-                    // updating price to show the displayed Amazon price
-                    let productPrice = results[i].ItemAttributes[0].ListPrice[0].Amount[0];
-					let productDetailPage = results[i].DetailPageURL[0];
 
+                    // updating price to show the displayed Amazon price
+                    var productPrice;
+
+                    try {
+                        productPrice = results[i].ItemAttributes[0].ListPrice[0].Amount[0];
+                    } catch(error) {
+                        productPrice = results[i].OfferSummary[0].LowestNewPrice[0].Amount[0];
+                    } finally {
+                        productPrice = 0;
+                    }
+
+					let productDetailPage = (results[i].DetailPageURL.length > 0) ? results[i].DetailPageURL.length[0] : "";
                     let productDescription = (Object.keys(itemAttributes).includes('Feature')) ? itemAttributes.Feature[0] : null;
                     let productCategory = (Object.keys(itemAttributes).includes('ProductGroup')) ? itemAttributes.ProductGroup[0] : null;
 
 					// Create new productCard for each product using above variables -JR
-					let productCard = new ProductCard(productAsin, productTitle, productImage, thumbnailImage, productPrice, productDetailPage, productDescription, productCategory);
+					let productCard = new ProductCard(app.content.user.UserId, productAsin, productTitle, productImage, thumbnailImage, productPrice, productDetailPage, productDescription, productCategory);
 
 					// Push new productCard to the productCardArray -JR
 					productCardArr.push(productCard);
@@ -84,19 +96,48 @@ module.exports = (app) => {
 						console.log("Price -       " + productPrice);
 						console.log("detail page - " + productDetailPage);
 					}
-				});
 
-				// Send the productCardArray to the client as JSON -JR
-				// Need to use ".send" instead of ".json", or AJAX wont capture response -JR
-				res.status(200).send(productCardArr);
-				// res.status(200).send({products: productCardArr, redirect: '/search'})
+                db.Gift.findOrCreate({
+                        where: {
+                            gift_asin: productAsin
+                        }
+                    })
+                    .spread((gift, created) => {
 
-			}
+                        // creating a new gift
+                        if (created == true) {
+                            db.Gift.update({
+                                gift_name: productTitle,
+                                gift_description: productDescription,
+                                gift_photo: productImage,
+                                gift_price: productPrice,
+                                gift_purchased: false,
+                                gift_url: productDetailPage,
+                                gift_favorite: false
 
-		}).catch( err => {
-			// console.log(err[0].Error[0].Message[0]);
-			console.log(err);
-			res.status(500).send(err);
-		});
-	});
+                            }, {
+                                where: { gift_asin: productAsin },
+                                returning: true,
+                                plain: true
+                            })
+                            .then(result => {
+                                console.log(result);
+
+                            })
+                            .catch(err => {
+                                res.json(err);
+                            })
+                        }
+                    });
+            });
+
+            // res.status(200).send({products: productCardArr, redirect: '/search'})
+            res.status(200).send(productCardArr);
+        };
+
+        }).catch(err => {
+            console.log(err);
+            res.status(500).send(err);
+        });
+    });
 };

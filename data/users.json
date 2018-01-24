@@ -1,0 +1,72 @@
+[
+  {
+    "user_firstname": "Michael",
+    "user_lastname": "Fessenden",
+    "user_password": "cGFzc3dvcmQ=",
+    "user_is_admin": true,
+    "user_email": "michael.fessenden@gmail.com",
+    "user_birthday": "1980-02-19",
+    "user_bio": null,
+    "user_city": "Portsmouth",
+    "user_state": "NH",
+    "user_photo": "/img/avatars/avatar-12.png",
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "user_firstname": "Elizah",
+    "user_lastname": "Hulseman",
+    "user_password": "cGFzc3dvcmQ=",
+    "user_is_admin": true,
+    "user_email": "ehulseman@gmail.com",
+    "user_birthday": "1990-11-01",
+    "user_bio": null,
+    "user_city": "Portsmouth",
+    "user_state": "NH",
+    "user_photo": "/img/avatars/avatar-14.png",
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "user_firstname": "Jacob",
+    "user_lastname": "Letourneau",
+    "user_password": "M0lmNEEkI3JyNE1k",
+    "user_is_admin": true,
+    "user_email": "mntypython74@gmail.com",
+    "user_birthday": "1992-06-03",
+    "user_bio": null,
+    "user_city": "Dover",
+    "user_state": "NH",
+    "user_photo": "/img/avatars/avatar-13.png",
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "user_firstname": "Mike",
+    "user_lastname": "Sherman",
+    "user_password": "UXdlcnR5XzEyMw==",
+    "user_is_admin": true,
+    "user_email": "msherman83@gmail.com",
+    "user_birthday": "1983-05-01",
+    "user_bio": null,
+    "user_city": "Portsmouth",
+    "user_state": "NH",
+    "user_photo": "/img/avatars/avatar-12.png",
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  },
+  {
+    "user_firstname": "James",
+    "user_lastname": "Roth",
+    "user_password": "cGFzc3dvcmQ=",
+    "user_is_admin": true,
+    "user_email": "jkltroth@gmail.com",
+    "user_birthday": "1991-10-30",
+    "user_bio": null,
+    "user_city": "Danville",
+    "user_state": "NH",
+    "user_photo": "/img/avatars/avatar-11.png",
+    "createdAt": "2017-12-30",
+    "updatedAt": "2017-12-30"
+  }
+]

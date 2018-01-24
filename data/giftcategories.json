@@ -1,0 +1,24 @@
+[
+    {
+        "GiftId": 1,
+        "CategoryId": 8,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    },
+    {
+        "GiftId": 2,
+        "CategoryId": 7,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    }, {
+        "GiftId": 3,
+        "CategoryId": 3,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    }, {
+        "GiftId": 4,
+        "CategoryId": 41,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    }
+]

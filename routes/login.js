@@ -1,5 +1,4 @@
 const db 		= require("../models/");
-const auth 		= require("../config/auth");
 const cookie 	= require('cookie');
 const jwt 		= require("jsonwebtoken");
 const secret 	= require("../config/secret").secret;
@@ -13,19 +12,20 @@ module.exports = (app) => {
 		res.render('login', app.content);
 	});
 
-	// check user credentials
+    // check user credentials
     app.post("/login", (req, res, next) => {
         let userData = req.body;
 
         // TODO: sanity check user
 
         // look for the current user in the database
-        db.users.findOne({
+        db.User.findOne({
             where: {
                 user_email: userData.user_email
               }
-        }).then( user => {
+        })
 
+		.then( user => {
             // user match in database
             if (user) {
                 // user logged in successfully
@@ -35,7 +35,7 @@ module.exports = (app) => {
                         user_firstname: user.user_firstname,
                         user_lastname: user.user_lastname,
                         user_email: user.user_email,
-                        user_id: user.user_id,
+                        user_id: user.id,
                         user_is_admin: user.user_is_admin
                     }
 
@@ -57,32 +57,12 @@ module.exports = (app) => {
                 // res.status(500).json({ error: 'message', redirect: '/login' });
                 res.json({ status: 401, message: 'user not in database.', redirect: '/login' });
             }
+        })
+
+		.catch(err => {
+            res.json(err);
         });
     });
-
-    // user registration
-	app.get("/register", function (req, res, next) {
-        res.render('register', app.content);
-	});
-
-	// check user credentials
-	app.post("/register", (req, res, next) => {
-		let userData = (Object.keys(req.query).length > 0) ? req.query : req.body;
-        console.log(` - requesting ${req.url}`);
-
-        // add a new recipient
-        // TODO: need to check that user email isn't registered already
-        db.users.create(
-            userData
-        ).then( data => {
-            res.status(200);
-			res.json({ status: 200, redirect: '/' });
-            // res.json(data.get({ plain: true }));
-        }).catch( err => {
-            res.status(500);
-            res.json({error: err, stackError: err.stack});
-        })
-	});
 
 	// user logged out
 	app.get("/logout", function (req, res) {
@@ -99,6 +79,35 @@ module.exports = (app) => {
 		// clear the cookie
 		app.content.layout = 'home';
 		res.clearCookie('gifthub-user').render('login', app.content);
+    });
+
+    // user registration
+	app.get("/register", function (req, res, next) {
+        res.render('register', app.content);
+    });
+
+	// check user credentials
+	app.post("/register", (req, res, next) => {
+		let userData = (Object.keys(req.query).length > 0) ? req.query : req.body;
+        console.log(` - requesting ${req.url}`);
+
+        // add a new recipient
+        // TODO: need to check that user email isn't registered already
+        db.User.create(
+            userData
+        )
+
+		.then( data => {
+            res.status(200);
+			res.json({ status: 200, redirect: '/' });
+            // res.json(data.get({ plain: true }));
+        })
+
+		.catch( err => {
+            res.status(500);
+            res.json({error: err, stackError: err.stack});
+        })
 	});
+
 
 };

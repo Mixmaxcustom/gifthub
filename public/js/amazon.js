@@ -1,16 +1,19 @@
 // amazon api module
 
-
 $(document).ready(function () {
-
     console.log(`> loading Amazon API...`);
 
     let resultsroot = $('#search-results');
+    $("#gift_category_menu").material_select();
 
     // user clicked search button
     $('body').on('click', '#search-submit-btn', event => {
 
-        var searchIndex = $('#gift_category_menu').find('option:selected').data().value || 'All';
+        var searchIndex = `All`;
+        let selectedValue = $('#gift_category_menu').find('option:selected').data();
+        if (selectedValue) {
+            searchIndex = selectedValue.value;
+        }
 
         let searchData = {
             SearchIndex: searchIndex,
@@ -33,24 +36,26 @@ $(document).ready(function () {
             });
 
 
-
+        // status is text
         }).fail( (xhr, status) => {
+
+            //["readyState", "getResponseHeader", "getAllResponseHeaders", "setRequestHeader", "overrideMimeType", "statusCode", "abort", "state", "always", "catch", "pipe", "then", "promise", "progress", "done", "fail", "responseText", "responseJSON", "status", "statusText"]
+            // ["readyState", "getResponseHeader", "getAllResponseHeaders", "setRequestHeader", "overrideMimeType", "statusCode", "abort", "state", "always", "catch", "pipe", "then", "promise", "progress", "done", "fail", "responseText", "responseJSON", "status", "statusText"]
+            // console.log(xhr.responseJSON[0].Error[0].Message[0]);
+            // let errmsg = xhr.responseJSON.Error[0].Message[0];
             Materialize.toast(`Error: ${status}`, 10000)
         });
     });
 });
 
 
-/*
-// set the index, then re-init
-$("#gift_category_menu").val(2);
-$("#gift_category_menu").material_select();
-*/
 
-
+// gift card object used to render search results
 
 class GiftCard {
     constructor(data) {
+        this.gift_id = data.gift_id,
+        this.UserId = data.UserId,
         this.asin = data.asin,
         this.title = data.title,
         this.image = data.image,
@@ -63,7 +68,6 @@ class GiftCard {
     get formattedPrice() {
         return '$' + (this.price / 100).toFixed(2);
     }
-
     // output html
     get html() {
         let output =
@@ -75,9 +79,9 @@ class GiftCard {
             `<a href="#"><img src="${this.image}" alt="item-img"></a>` +
             `</div>` +
             `<ul class="card-action-buttons">` +
-            `<li><a class="btn-floating waves-effect waves-light teal lighten-3"><i class="material-icons">add_circle</i></a></li>` +
-            `<li><a class="btn-floating waves-effect waves-light teal lighten-2"><i class="material-icons">favorite</i></a></li>` +
-            `<li><a class="btn-floating waves-effect waves-light teal lighten-1"><i class="material-icons activator">info_outline</i></a></li>` +
+            `<li><a aisn="${this.asin}" class="btn-floating waves-effect waves-light teal lighten-3 add-gift-button"><i class="material-icons">add_circle</i></a></li>` +
+            `<li><a aisn="${this.asin}" class="btn-floating waves-effect waves-light teal lighten-2 favorite-gift-button"><i class="material-icons">favorite</i></a></li>` +
+            `<li><a aisn="${this.asin}" class="btn-floating waves-effect waves-light teal lighten-1"><i class="material-icons activator">info_outline</i></a></li>` +
             `</ul>` +
             `<div class="card-content">` +
             `<div class="row">` +

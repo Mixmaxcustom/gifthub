@@ -6,52 +6,52 @@
 
         <div class="row center-align">
 
-            <!-- Registration Form -->
-            <form id="user_registration_form">
-                <div class="row">
+		<!-- Registration Form -->
+        <form id="user_registration_form"> 
+            <div class="row">
 
-                    <div class="input_field col m6 s12">
-                        <input id="input_user_firstname" type="text" class="homepage center-align validate" data-error=".err_user_fn" placeholder="First Name">
-                        <div class=".err_user_fn"></div>
-                    </div>
-
-                    <div class="input_field col m6 s12">
-                        <input id="input_user_lastname" type="text" class="homepage center-align validate" placeholder="Last Name">
-                    </div>
+                <div class="input_field col m6 s12">
+                        <input id="input_user_firstname" type="text" class="homepage center-align validate" data-error=".err_user_fn" placeholder="First Name" required="required">
+                    <div class=".err_user_fn"></div>
                 </div>
 
-                <div class="row">
-                    <input id="input_user_email" type="email" class="homepage center-align validate" placeholder="Email">
+                <div class="input_field col m6 s12">
+                        <input id="input_user_lastname" type="text" class="homepage center-align validate" placeholder="Last Name" required="required">
+                </div>
+            </div>
+
+            <div class="row">
+                    <input id="input_user_email" type="email" class="homepage center-align validate" placeholder="Email" required="required">
+            </div>
+
+            <div class="row">
+                <div class="input_field col s12 m4">
+                        <input id="input_user_birthday" class="datepicker center-align validate" placeholder="Birthday" required="required">
                 </div>
 
-                <div class="row">
-                    <div class="input_field col s12 m4">
-                        <input id="input_user_birthday" type="text" class="datepicker center-align validate" placeholder="Birthday">
-                    </div>
-
-                    <div class="input_field col s12 m4">
-                        <input id="input_user_city" type="text" class="homepage center-align validate" placeholder="City">
-                    </div>
-
-                    <div class="input_field col s12 m4">
-                        <select id="input_user_state" data-value=""  class="homepage center-align validate" placeholder="State"></select>
-                    </div>
+                <div class="input_field col s12 m4">
+                        <input id="input_user_city" type="text" class="homepage center-align validate" placeholder="City" required="required">
                 </div>
 
-                <div class="row">
-                    <div class="input_field col m6 s12">
-                        <input id="input_user_password" type="password" class="homepage center-align validate" placeholder="Password">
-                    </div>
-
-                    <div class="input_field col m6 s12">
-                        <input id="input_user_password_confirm" type="password" class="homepage center-align validate" placeholder="Confirm">
-                    </div>
-
+                <div class="input_field col s12 m4">
+                        <select id="input_user_state" data-value=""  class="homepage center-align validate" placeholder="State" required="required"></select>
                 </div>
+            </div>
+
+            <div class="row">
+                <div class="input_field col m6 s12">
+                        <input id="input_user_password" type="password" class="homepage center-align validate" placeholder="Password" required="required">
+                </div>
+
+                <div class="input_field col m6 s12">
+                        <input id="input_user_password_confirm" type="password" class="homepage center-align validate" placeholder="Confirm Password" required="required">
+                </div>
+
+            </div>
                 <div class="row">
                     <input id="user_registration_submit" type="submit" class="waves-effect waves-light btn homepage blue-grey" value="Submit">
-                </div>
-            </form>
+            </div>
+        </form>
 
 
         </div>

@@ -1,12 +1,11 @@
 // user authentication module
 const db        = require("../models/");
 const secret    = require("../config/secret").secret;
-const auth      = require("../config/auth");
 const cookie    = require('cookie');
 const jwt       = require("jsonwebtoken");
 
 
-
+// run check before each request to authenticate user
 module.exports = (app) => {
 
 	app.get("*", (req, res, next) => {
@@ -27,8 +26,9 @@ module.exports = (app) => {
                     res.clearCookie('gifthub-user');
                     res.json({ status: 402, message: err, redirect: '/login' });
 
-				// successful authentication
+                // successful authentication
                 } else {
+					console.log(data);
                     app.content.user = data;
                     app.content.user.user_is_logged_in = true;
 					app.content.user.is_admin = data.user_is_admin;
@@ -46,20 +46,4 @@ module.exports = (app) => {
 			res.render(nonUserURL, {layout: 'home'})
         }
     });
-
-    // get user data
-	app.getUser = (user_id) => {
-		// return the promise itself
-		return db.users.find({
-			where: {
-			   user_id: user_id
-			}
-		}).then( user => {
-			if (!user) {
-				return 'not find';
-			}
-			return user.dataValues;
-		 });
-	}
-
 };

@@ -104,7 +104,7 @@ function setupStateMenu() {
                 minLength: 1
             }
         });
-
+        console.log(`initializing category menu...`);
         // initialize the amazon category menu
         $("#gift_category_menu").val(1);
         $("#gift_category_menu").material_select();

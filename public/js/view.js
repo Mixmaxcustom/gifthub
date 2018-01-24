@@ -17,12 +17,22 @@ function b64DecodeUnicode(str) {
 	}).join(''));
 }
 
+function userRegistrationValidation() {
+	const form = document.getElementById("user_registration_form");
+	const password = $("#input_user_password").val();
+	const passwordConfirm = $("#input_user_password_confirm").val();
+
+	if (form.checkValidity() && (password === passwordConfirm)) {
+		return true
+	} else {
+		return false
+	};
+};
 
 // validate the recipient registration form
 function validateUserRegistrationForm() {
 	console.log(`# validating recipient registration...`);
 }
-
 
 // yep, these are globals
 var currentUserID;
@@ -37,42 +47,55 @@ $(document).ready(function () {
 
 	// user registration clicked
 	$('body').on('click', '#user_registration_submit', event => {
-		event.preventDefault();
-		event.stopPropagation();
-		let button = $(event.currentTarget);
 
-		let userData = {
-			user_firstname: $('#input_user_firstname').val(),
-			user_lastname: $('#input_user_lastname').val() || null,
-			user_password: $('#input_user_password').val() || null,
-			user_email: $('#input_user_email').val() || null,
-			user_birthday: $('#input_user_birthday').val() || null,
-			user_city: $('#input_user_city').val() || null,
-			user_state: $('#input_user_state').val() || null
-		}
+		if (userRegistrationValidation()) {
 
-        // has password on the client side
-		if (userData.user_password != null) {
-			userData.user_password = b64EncodeUnicode(userData.user_password)
-		}
+			event.preventDefault();
+			event.stopPropagation();
 
-		$.ajax("/register", {
-			type: "POST",
-			data: userData
-		}).done( user => {
-			if (user.status == 100) {
-				console.log(`added user id: ${user.user_id}`);
+			let button = $(event.currentTarget);
+
+			let userData = {
+				user_firstname: $('#input_user_firstname').val(),
+				user_lastname: $('#input_user_lastname').val() || null,
+				user_password: $('#input_user_password').val() || null,
+				user_email: $('#input_user_email').val() || null,
+				user_birthday: $('#input_user_birthday').val() || null,
+				user_city: $('#input_user_city').val() || null,
+				user_state: $('#input_user_state').val() || null
 			}
-		}).fail( data => {
-			console.log(data);
-		});
+
+			// has password on the client side
+			if (userData.user_password != null) {
+				userData.user_password = b64EncodeUnicode(userData.user_password)
+			}
+
+			$.ajax("/register", {
+					type: "POST",
+					data: userData
+				})
+
+				.done(user => {
+					if (user.status == 100) {
+						console.log(`added user id: ${user.UserId}`);
+					}
+				})
+
+				.fail(data => {
+					console.log(data);
+				});
+
+		} else {
+			console.log('failed validation');
+			event.preventDefault();
+			event.stopPropagation();
+		}
 	});
 
 	// recipient registration clicked
 	$('body').on('click', '#recipient_registration_submit', event => {
 		event.preventDefault();
 		event.stopPropagation();
-
 
 		let recipient = {
 			recipient_title: $('#recipient_title').val(),
@@ -81,7 +104,13 @@ $(document).ready(function () {
 			recipient_city: $('#recipient_city').val() || null,
 			recipient_state: $('#recipient_state').val() || null,
 			recipient_email: $('#recipient_email').val() || null,
-			recipient_bio: $('#recipient_email').val() || null
+			recipient_bio: $('#recipient_bio').val() || null,
+			recipient_budget: 0
+		}
+
+		let budgetValue = $('#recipient_budget').val();
+		if (budgetValue) {
+			recipient.recipient_budget = parseInt(budgetValue)*100
 		}
 
 		let birthday = $('#recipient_birthday').val();
@@ -90,21 +119,19 @@ $(document).ready(function () {
 		}
 
 		$.ajax("/recipients", {
-			type: "POST",
-			data: recipient
-		}).done( results => {
-			console.log(results);
-			if (results.status == 100) {
-				// window.location = data.redirect;
-				console.log(`added user!`);
-				$( "#recipient_title" ).load('/profile');
+				type: "POST",
+				data: recipient
+			})
 
-			} else if (results.status > 400) {
-				console.log(`Error: ${res.message}`);
-			}
-		}).fail( data => {
-			console.log(data);
-		});
+			.done(results => {
+				window.location.reload()
+				Materialize.toast(`Recipient added!`, 5000);
+			})
+
+			.fail(data => {
+				console.log('fail');
+				console.log(data);
+			});
 	});
 
 	// user clicked login button
@@ -120,36 +147,25 @@ $(document).ready(function () {
 		}
 
 		$.ajax("/login", {
-			type: "POST",
-			data: user
-		}).done(data => {
-			console.log(`data`);
+				type: "POST",
+				data: user
+			})
 
-			if (data.status == 100) {
-				window.location = data.redirect;
+			.done(data => {
+				console.log(`data`);
 
-			} else if (data.status > 400) {
-				$('#card-login-alert').removeClass('hide');
-				$('#login-error-msg').text(data.message);
-			}
-		});
+				if (data.status == 100) {
+					window.location = data.redirect;
+
+				} else if (data.status > 400) {
+					$('#card-login-alert').removeClass('hide');
+					$('#login-error-msg').text(data.message);
+				}
+			})
+			.fail(data => {
+				console.log('fail');
+				console.log(data);
+			});
 	});
 
 });
-
-
-const allRelationships = ['husband', 'wife', 'father', 'mother', 'son', 'sister', 'mother-in-law', 'father-in-law', 'brother']
-
-/*
-// launch search results modal
-$('#search-results-modal').modal('open');
-
-// selected category category_name
-('#gift_category_menu').find(":selected").data();
-
-// selected category category_id
-('#gift_category_menu').find(":selected").val();
-
-Materialize.toast('I am a toast!', 4000)
-
-*/

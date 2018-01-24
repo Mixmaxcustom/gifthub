@@ -2,26 +2,29 @@
     <form>
         <!-- removed valign-wrapper -->
         <div class="row form-row">
-            <div class="input-field col s12 m3">
-                
+
+            <div class="input-field col s12 l3">
+
                 {{!-- Categories Menu --}}
                 <select id="gift_category_menu">
-                    <option value="" disabled selected>Gift Type</option>
-
+                    <!-- <option value="" disabled selected>Gift Type</option> -->
                     {{#each categories as | category |}}
                         <option value="{{category.category_id}}" data-value="{{category.category_name}}">{{category.category_description}}</option>
                     {{/each}}
+
                 </select>
                 <label>Gift Type</label>
             </div>
 
-            {{!-- Keywords --}}
-            <div class="input-field col s12 m3">
-                <input id="keyword" type="text">
+                {{!-- Keywords --}}
+            <div class="input-field col s12 l3">
+                <!-- <label for="keyword">Search By</label> -->
+                <input placeholder="Keyword" id="keyword" type="text">
+                <label for="keyword">Search By</label>
             </div>
 
             {{!-- Price Menu --}}
-            <div class="input-field col s12 m3">
+            <div class="input-field col s12 l3">
                 <select id="max-price">
                     <option value="" disabled selected>Maximum Price</option>
                     <option value="2500">$25</option>
@@ -30,14 +33,15 @@
                     <option value="20000">$200</option>
                     <option value="30000">$300</option>
                     <option value="50000">$500</option>
+                    <option value="100000">$1000</option>
                 </select>
                 <label>Maximum Price</label>
             </div>
 
-            <div class="col sm12 m3">
-                <a id="search-submit-btn" class="btn">Search</a>
+            <div class="col sm12 l3 search-btn-wrapper">
+                <a id="search-submit-btn" class="btn blue-grey"><i class="material-icons left">search</i> Search</a>
             </div>
 
         </div>
-    </form>
+</form>
 </div>
