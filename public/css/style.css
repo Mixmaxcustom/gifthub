@@ -39,6 +39,7 @@ html {
 /* body & main tweaks for sticky footer */
 body {
     /* font-family: 'Cabin', sans-serif; */
+    font-family: 'Raleway', sans-serif;
     display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -63,6 +64,7 @@ main {
 
 .brand-logo {
     margin-left: 20px;
+    font-family: 'Berkshire Swash', cursive;
 }
 
 .main-section,
@@ -201,9 +203,10 @@ img[class] {
 }
 
 /* logo headline */
-.page-header {
-    text-shadow: 1px 2px 0 #46464691;
-}
+/* Commenting out text-shadow out as the shadow doesn't look good on the new font*/
+/* .page-header {
+    text-shadow: 1px 2px 0 #46464691; 
+} */
 
 /* Materialize Tabs
   -------------------------------------------------- */
@@ -448,6 +451,10 @@ span.gift-title {
     margin-bottom: 0px;
 }
 
+#recipient-hr {
+    width: 100%;
+}
+
 /* Custom Stylesheet */
 .home-container {
     background-image: url("/img/gift-background.jpg");
@@ -531,10 +538,6 @@ h5.homepage {
     font-size: inherit;
 }
 
-.brand-logo {
-    margin-left: 20px;
-}
-
 .main-section,
 .form-questions {
     margin: 0;
@@ -586,16 +589,23 @@ hr {
 @media (max-width: 991px) {
 }
 
-hr {
-    width: 85%;
-}
-
 .search-btn-wrapper .btn {
     align-self: center;
 }
 
 /* Small devices (landscape phones, less than 768px) */
-@media (max-width: 767px) {
+@media (max-width: 768px) {
+    .brand-logo {
+        margin-left: 0px;
+    }
+
+    .user-home-title {
+        font-size: 2.2rem;
+    }
+
+    hr {
+        width: 85%;
+    }
 }
 
 /* Extra small devices (portrait phones, less than 576px) */
@@ -653,4 +663,9 @@ hr {
         width: 90%;
     }
 }
+
+@media (max-width: 425px) {
+    #add-recipient-title {
+        font-size: 2rem;
+    }
 }

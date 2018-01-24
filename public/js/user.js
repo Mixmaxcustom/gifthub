@@ -55,4 +55,31 @@ $(document).ready(function () {
 		});
 	});
 
+	// user clicks on purchased checkbox in recipient card
+	$('body').on('click', '#gift-purchased', event => {
+		// event.preventDefault();
+		// event.stopPropagation();
+
+		let button = $(event.currentTarget)
+		let productASIN = button.data().value;
+		curbutton = button;
+		console.log(`Amazon ID: ${productASIN}`);
+
+		$.ajax("/save", {
+			type: "POST",
+			data: {id: productASIN, gift_purchased: true}
+		})
+
+		.done( result => {
+			console.log(result);
+
+		})
+
+		.fail( data => {
+			console.log(data);
+		});
+	});
+
+
 });
+
