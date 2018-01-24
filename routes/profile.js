@@ -45,7 +45,7 @@ module.exports = (app) => {
         console.log(`- [profile]: searching for user id ${app.content.user.user_id}`);
         console.log(`- [profile]: ${app.content.user.user_is_logged_in}`);
 
-
+        
         var results = [];
         db.User.findOne({
             where: {

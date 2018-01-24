@@ -35,7 +35,7 @@ module.exports = (app) => {
                         user_firstname: user.user_firstname,
                         user_lastname: user.user_lastname,
                         user_email: user.user_email,
-                        user_id: user.UserId,
+                        user_id: user.id,
                         user_is_admin: user.user_is_admin
                     }
 

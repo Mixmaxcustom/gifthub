@@ -28,6 +28,7 @@ module.exports = (app) => {
 
                 // successful authentication
                 } else {
+					console.log(data);
                     app.content.user = data;
                     app.content.user.user_is_logged_in = true;
 					app.content.user.is_admin = data.user_is_admin;
