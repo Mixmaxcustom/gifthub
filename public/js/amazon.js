@@ -29,7 +29,7 @@ $(document).ready(function () {
         // empty the search div
         resultsroot.empty();
 
-        // post to amazon
+
         $.ajax("/amazon", {
             type: "POST",
             data: searchData,
@@ -45,11 +45,11 @@ $(document).ready(function () {
 
         // status is text
         }).fail( (xhr, status) => {
-
             //["readyState", "getResponseHeader", "getAllResponseHeaders", "setRequestHeader", "overrideMimeType", "statusCode", "abort", "state", "always", "catch", "pipe", "then", "promise", "progress", "done", "fail", "responseText", "responseJSON", "status", "statusText"]
             // ["readyState", "getResponseHeader", "getAllResponseHeaders", "setRequestHeader", "overrideMimeType", "statusCode", "abort", "state", "always", "catch", "pipe", "then", "promise", "progress", "done", "fail", "responseText", "responseJSON", "status", "statusText"]
             // console.log(xhr.responseJSON[0].Error[0].Message[0]);
             // let errmsg = xhr.responseJSON.Error[0].Message[0];
+
             Materialize.toast(`Error: ${status}`, 10000)
         });
     });
@@ -85,8 +85,8 @@ class GiftCard {
         `<a href="#"><img src="${this.image}" alt="item-img"></a>` +
         `</div>` +
         `<ul class="card-action-buttons">` +
-        `<li><a data-value="${this.id}" data-action="add-gift" class="btn-floating gift-action waves-effect waves-light teal lighten-3"><i class="material-icons">add_circle</i></a></li>` +
-        `<li><a data-value="${this.id}" data-action="favorite-git" class="btn-floating gift-action waves-effect waves-light teal lighten-2"><i class="material-icons">favorite</i></a></li>` +
+        `<li><a data-value="${this.asin}" data-action="add-gift" class="btn-floating gift-action waves-effect waves-light teal lighten-3"><i class="material-icons">add_circle</i></a></li>` +
+        `<li><a data-value="${this.asin}" data-action="favorite-git" class="btn-floating gift-action waves-effect waves-light teal lighten-2"><i class="material-icons">favorite</i></a></li>` +
         `<li><a aisn="${this.asin}" class="btn-floating waves-effect waves-light teal lighten-1"><i class="material-icons activator">info_outline</i></a></li>` +
         `</ul>` +
         `<div class="card-content">` +

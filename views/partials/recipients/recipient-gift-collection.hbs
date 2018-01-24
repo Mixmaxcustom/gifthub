@@ -12,7 +12,7 @@
             <p class="right-align">
                 <input data-value="{{id}}" type="checkbox" class="gift-purchased" id="gift-id-{{id}}" {{#if gift_purchased}}checked{{/if}}/>
                 <label for="gift-id-{{id}}">Purchased</label>
-                <a id="delete-gift-button"><i style="cursor: pointer" class="material-icons right blue-grey-text">close</i></a>
+                <a class="delete-gift-button" data-value="{{id}}"><i style="cursor: pointer" class="material-icons right blue-grey-text">close</i></a>
             </p>
         </form>
     </li>

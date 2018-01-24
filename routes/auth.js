@@ -41,7 +41,6 @@ function authenticate(req, res, next) {
 			// successful authentication
 			} else {
 
-
 				user.user_id = data.user_id;
 				user.user_email = data.user_email;
 				user.user_firstname = data.user_firstname;

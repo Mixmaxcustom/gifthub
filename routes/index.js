@@ -76,6 +76,11 @@ Recipient.prototype.currentTotal = function() {
 };
 
 
+
+var currentSearchResults = [];
+var userRecipients = [];
+
+
 // ROUTES
 
 router.get("/", auth, (req, res) => {
@@ -230,14 +235,14 @@ router.get("/profile", auth, (req, res) => {
     console.log(`- [profile]: user is logged in: ${req.user.user_is_logged_in}`);
 
 
-    var results = [];
+    userRecipients = [];
     db.User.findOne({
         where: {
                 id: req.user.user_id
             },
             include: [{
                 model: db.Recipient,
-                attributes: ['id', 'recipient_title', 'recipient_firstname', 'recipient_lastname', 'recipient_lastname', 'recipient_budget', 'recipient_bio',
+                attributes: ['id', 'recipient_title', 'recipient_firstname', 'recipient_lastname', 'recipient_bio',
                             'recipient_photo', 'recipient_birthday', 'recipient_budget', 'recipient_city', 'recipient_state'],
                 include: [{
                     model: db.Gift,
@@ -259,14 +264,13 @@ router.get("/profile", auth, (req, res) => {
 
 
                 rdata.Gifts.forEach( gift => {
-                    console.log(gift.dataValues);
+                    // console.log(gift.dataValues);
                     robj.gifts.push (gift.dataValues)
                 })
-
-                results.push(robj);
+                userRecipients.push(robj);
             })
 
-            router.content.recipients = results;
+            router.content.recipients = userRecipients;
             // render the page
             res.render('profile', router.content);
         })
@@ -290,6 +294,9 @@ router.get("/amazon", (req, res, next) => {
 
 router.post("/amazon", (req, res, next) => {
     console.log(` - posting ${req.url}`);
+
+
+    currentSearchResults = [];
 
     // if getting values via url params, query the Request.query
     let isPostman = (Object.keys(req.query).length > 0) ? true : false;
@@ -327,14 +334,12 @@ router.post("/amazon", (req, res, next) => {
                 // let productPrice = results[i].OfferSummary[0].LowestNewPrice[0].Amount[0];
 
                 // updating price to show the displayed Amazon price
-                var productPrice;
+                var productPrice = 0;
 
                 try {
                     productPrice = results[i].ItemAttributes[0].ListPrice[0].Amount[0];
                 } catch(error) {
                     productPrice = results[i].OfferSummary[0].LowestNewPrice[0].Amount[0];
-                } finally {
-                    productPrice = 0;
                 }
 
                 let productDetailPage = (results[i].DetailPageURL.length > 0) ? results[i].DetailPageURL.length[0] : "";
@@ -346,6 +351,7 @@ router.post("/amazon", (req, res, next) => {
 
                 // Push new productCard to the productCardArray -JR
                 productCardArr.push(productCard);
+                currentSearchResults.push(productCard);
 
                 if (router.content.debug_mode === true) {
                     console.log("======== AMAZON API RESULTS " + i + " ===========")
@@ -374,13 +380,42 @@ router.post("/amazon", (req, res, next) => {
 // search page
 router.get("/search", auth, (req, res) => {
     console.log(` - requesting ${req.url}`);
+
     db.Category.findAll().then(categories => {
+
         router.content.layout = 'main';
         router.content.user = req.user;
         router.content.categories = categories;
+        router.content.recipients = [];
 
+        db.User.findOne({
+            where: {
+                    id: req.user.user_id
+                },
+                include: [{
+                    model: db.Recipient,
+                    attributes: ['id', 'recipient_title', 'recipient_firstname', 'recipient_lastname', 'recipient_budget', 'recipient_bio',
+                                'recipient_photo']
+                }]
+            })
+
+            .then( user => {
+                let thisUser = user.dataValues;
+                let recipients = thisUser.Recipients;
+
+                recipients.forEach(data => {
+                    let recipient = data.dataValues;
+                    // id,recipient_title,recipient_firstname,recipient_lastname,recipient_budget,recipient_bio,recipient_photo
+                    router.content.recipients.push(recipient)
+                    console.log(`recipient: ${recipient.recipient_firstname}`);
+                })
+
+            });
+
+
+        // TODO: send last search here?
         res.render('search', router.content);
-    });
+    })
 });
 
 
@@ -399,7 +434,7 @@ router.get("/results", auth, (req, res) => {
 
 router.get("/events", function(req, res) {
     // look for the current user in the database
-    db.events.findAll().then( events => {
+    db.Event.findAll().then( events => {
         // res.json(events)
         router.content.events = events;
         router.content.user = req.user;
@@ -427,7 +462,7 @@ router.get("/add-event", function(req, res) {
 
 
 // RECIPIENTS
-// all recipients list
+// CLEANUP
 router.get("/recipients", auth, (req, res) => {
     db.Recipient.findAll().then(recipients => {
         res.json(recipients)
@@ -458,10 +493,48 @@ router.post("/recipients", (req, res, next) => {
     })
 });
 
+
 // post a gift to a recipient
 router.post("/gift-saved", (req, res, next) => {
     console.log(`saving gift...`);
     res.send({message: 'saving this thing...'})
+});
+
+
+// post a gift to a recipient
+router.post("/gift-added/:aisn/:recipientId", (req, res, next) => {
+
+    let selectedAISN = req.params.aisn;
+    let recipientId = req.params.recipientId;
+
+    //currentSearchResults
+    console.log(`saving gift ${selectedAISN} to user: ${recipientId}`);
+
+    db.Recipient.findOne({
+        where: {
+            id: recipientId
+        }
+    })
+
+    .then( recipient => {
+        var newGift;
+        currentSearchResults.forEach( item => {
+            if (item.asin == selectedAISN) {
+                recipient.createGift({
+                    gift_name: item.title,
+                    gift_aisn: item.asin,
+                    gift_photo: item.thumbnail,
+                    gift_description: item.description,
+                    gift_url:  item.detailsURL,
+                    gift_price: item.price
+                })
+
+                .then( gift => {
+                    console.log(`added gift: ${gift}`);
+                })
+            }
+        })
+    });
 });
 
 
@@ -498,6 +571,26 @@ router.post("/gift-purchased/:giftid/:purchased", (req, res, next) => {
     });
 });
 
+
+// remove a saved gift
+router.post("/gift-removed/:giftid", (req, res, next) => {
+
+    console.log(`removing gift id: ${req.params.giftid}`);
+
+    db.Gift.destroy({
+        where: {
+            id: req.params.giftid
+        }
+    })
+
+    .then( rows => {
+        res.send({status: 200, row: rows})
+    })
+
+    .catch(err => {
+        res.json(err);
+    });
+});
 
 // EVENTS
 

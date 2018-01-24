@@ -72,6 +72,8 @@ $(document).ready(function () {
 				userData.user_password = b64EncodeUnicode(userData.user_password)
 			}
 
+
+            // TODO: catch error here
 			$.post('/register', userData, res => {
 				console.log(res);
 				// redirect home
