@@ -451,6 +451,10 @@ span.gift-title {
     margin-bottom: 0px;
 }
 
+#recipient-hr {
+    width: 100%;
+}
+
 /* Custom Stylesheet */
 .home-container {
     background-image: url("/img/gift-background.jpg");

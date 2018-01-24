@@ -1,4 +1,3 @@
-
 <!-- Recipient Detail Card -->
 
 <div class="col s12 m6">
@@ -8,24 +7,25 @@
         </div>
         <div id="recipient-card-content" class="card-content">
             <span id="recipient-card-title" class="card-title activator grey-text text-darken-4">{{name}}
-                <i class="material-icons right">more_vert</i></span>
-                <p>Gift Budget Total: ${{currentTotal}} of ${{shortPrice budget}}</p>
+                <i class="material-icons right">more_vert</i>
+            </span>
+            <p>Gift Budget Total: ${{currentTotal}} of ${{shortPrice budget}}</p>
         </div>
 
-            <!--  reveal space -->
-            <div class="card-reveal">
-                <span class="card-title activator grey-text text-darken-4">{{name}}
-                            <i class="material-icons right">close</i>
-                        </span>
-                    <p>Bio: {{bio}}</p>
-                    <p>Birthday: {{birthday}}</p>
-                    <p>Gift Budget Total: ${{currentTotal}} of ${{shortPrice budget}}</p>
-                    <div id="saved-gifts-container">
+        <!--  reveal space -->
+        <div class="card-reveal">
+            <span class="card-title activator grey-text text-darken-4">{{name}}
+                <i class="material-icons right">close</i>
+            </span>
+            <hr id="recipient-hr">
+            <p class="grey-text">bio <span class="black-text">{{bio}}</span></p>
+            <p class="grey-text">birthday <span class="black-text">{{formatTime birthday 'MMMM, DDDo YYYY'}}</span></p>
+            <p class="grey-text">gift budget total <span class="black-text">${{currentTotal}} of ${{shortPrice budget}}</span></p>
+            <hr id="recipient-hr">
 
-                        {{#each gifts as | gift |}}
-                             {{> recipients/recipient-gift-collection}}
-                        {{/each}} {{!-- Row End --}}
-                </div>
+            <div id="saved-gifts-container">
+                {{#each gifts as | gift |}} {{> recipients/recipient-gift-collection}} {{/each}} {{!-- Row End --}}
+            </div>
         </div>
     </div>
 </div>
