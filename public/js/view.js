@@ -17,12 +17,22 @@ function b64DecodeUnicode(str) {
 	}).join(''));
 }
 
+function userRegistrationValidation() {
+	const form = document.getElementById("user_registration_form");
+	const password = $("#input_user_password").val();
+	const passwordConfirm = $("#input_user_password_confirm").val();
+
+	if (form.checkValidity() && (password === passwordConfirm)) {
+		return true
+	} else {
+		return false
+	};
+};
 
 // validate the recipient registration form
 function validateUserRegistrationForm() {
 	console.log(`# validating recipient registration...`);
 }
-
 
 // yep, these are globals
 var currentUserID;
@@ -37,40 +47,49 @@ $(document).ready(function () {
 
 	// user registration clicked
 	$('body').on('click', '#user_registration_submit', event => {
-		event.preventDefault();
-		event.stopPropagation();
 
-		let button = $(event.currentTarget);
+		if (userRegistrationValidation()) {
 
-		let userData = {
-			user_firstname: $('#input_user_firstname').val(),
-			user_lastname: $('#input_user_lastname').val() || null,
-			user_password: $('#input_user_password').val() || null,
-			user_email: $('#input_user_email').val() || null,
-			user_birthday: $('#input_user_birthday').val() || null,
-			user_city: $('#input_user_city').val() || null,
-			user_state: $('#input_user_state').val() || null
-		}
+			event.preventDefault();
+			event.stopPropagation();
 
-        // has password on the client side
-		if (userData.user_password != null) {
-			userData.user_password = b64EncodeUnicode(userData.user_password)
-		}
+			let button = $(event.currentTarget);
 
-		$.ajax("/register", {
-			type: "POST",
-			data: userData
-		})
-
-		.done( user => {
-			if (user.status == 100) {
-				console.log(`added user id: ${user.UserId}`);
+			let userData = {
+				user_firstname: $('#input_user_firstname').val(),
+				user_lastname: $('#input_user_lastname').val() || null,
+				user_password: $('#input_user_password').val() || null,
+				user_email: $('#input_user_email').val() || null,
+				user_birthday: $('#input_user_birthday').val() || null,
+				user_city: $('#input_user_city').val() || null,
+				user_state: $('#input_user_state').val() || null
 			}
-		})
 
-		.fail( data => {
-			console.log(data);
-		});
+			// has password on the client side
+			if (userData.user_password != null) {
+				userData.user_password = b64EncodeUnicode(userData.user_password)
+			}
+
+			$.ajax("/register", {
+					type: "POST",
+					data: userData
+				})
+
+				.done(user => {
+					if (user.status == 100) {
+						console.log(`added user id: ${user.UserId}`);
+					}
+				})
+
+				.fail(data => {
+					console.log(data);
+				});
+
+		} else {
+			console.log('failed validation');
+			event.preventDefault();
+			event.stopPropagation();
+		}
 	});
 
 	// recipient registration clicked
@@ -100,19 +119,19 @@ $(document).ready(function () {
 		}
 
 		$.ajax("/recipients", {
-			type: "POST",
-			data: recipient
-		})
+				type: "POST",
+				data: recipient
+			})
 
-		.done( results => {
-			window.location.reload()
-			Materialize.toast(`Recipient added!`, 5000);
-		})
+			.done(results => {
+				window.location.reload()
+				Materialize.toast(`Recipient added!`, 5000);
+			})
 
-		.fail( data => {
-			console.log('fail');
-			console.log(data);
-		});
+			.fail(data => {
+				console.log('fail');
+				console.log(data);
+			});
 	});
 
 	// user clicked login button
@@ -128,25 +147,25 @@ $(document).ready(function () {
 		}
 
 		$.ajax("/login", {
-			type: "POST",
-			data: user
-		})
+				type: "POST",
+				data: user
+			})
 
-		.done(data => {
-			console.log(`data`);
+			.done(data => {
+				console.log(`data`);
 
-			if (data.status == 100) {
-				window.location = data.redirect;
+				if (data.status == 100) {
+					window.location = data.redirect;
 
-			} else if (data.status > 400) {
-				$('#card-login-alert').removeClass('hide');
-				$('#login-error-msg').text(data.message);
-			}
-		})
-		.fail( data => {
-			console.log('fail');
-			console.log(data);
-		});
+				} else if (data.status > 400) {
+					$('#card-login-alert').removeClass('hide');
+					$('#login-error-msg').text(data.message);
+				}
+			})
+			.fail(data => {
+				console.log('fail');
+				console.log(data);
+			});
 	});
 
 });
