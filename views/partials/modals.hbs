@@ -7,28 +7,37 @@
         <form>
             <div class="row">
                 <div class="input-field col s12">
-                    <input id="recipient_title" type="text" class="validate">
                     <label for="recipient_title">Title</label>
+                    <input id="recipient_title" type="text" class="validate">
+
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col m6 s12">
                     <input id="recipient_firstname" type="text" class="validate">
                     <label for="recipient_firstname">First Name</label>
+                    <input id="recipient_firstname" type="text" class="validate">
+
                 </div>
                 <div class="input-field col m6 s12">
                     <input id="recipient_lastname" type="text" class="validate">
                     <label for="recipient_lastname">Last Name</label>
+                    <input id="recipient_lastname" type="text" class="validate">
+
                 </div>
             </div>
             <div class="row">
                 <div class="input-field col m3 s12">
                     <input id="recipient_birthday" type="text" class="datepicker validate">
                     <label for="recipient_birthday">Birthday</label>
+                    <input id="recipient_birthday" type="text" class="datepicker validate">
+
                 </div>
                 <div class="input-field col m9 s12">
                     <input id="recipient_email" type="email" class="validate">
                     <label for="recipient_email">Email (optional)</label>
+                    <input id="recipient_email" type="email" class="validate">
+
                 </div>
             </div>
             <div class="row">
@@ -50,6 +59,42 @@
             <i class="material-icons left">person_add</i>Add</a>
     </div>
 </div>
+
+<!-- Recipient list -->
+<div id="recipients-list-modal" class="modal">
+    <ul class="collapsible" data-collapsible="accordion">
+       <li>
+         <div class="collapsible-header"><i class="material-icons">filter_drama</i>First</div>
+         <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+       </li>
+       <li>
+         <div class="collapsible-header"><i class="material-icons">place</i>Second</div>
+         <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+       </li>
+       <li>
+         <div class="collapsible-header"><i class="material-icons">whatshot</i>Third</div>
+         <div class="collapsible-body"><span>Lorem ipsum dolor sit amet.</span></div>
+       </li>
+     </ul>
+ </div>
+
+<!-- Admin Side Modal -->
+<aside id="admin-sidebar-nav">
+  <ul id="admin-slide-out" class="side-nav rightside-navigation">
+    <li class="li-hover">
+        <div>
+            <div class="card">
+                <div class="card-content center">
+                    <h3>Profile</h3>
+                </div>
+
+            </div>
+
+        </div>
+    </li>
+  </ul>
+</aside>
+
 
 
 <!-- Recipient list -->

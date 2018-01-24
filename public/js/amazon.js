@@ -1,5 +1,8 @@
 // amazon api module
 
+var recentlySearchedProducts = [];
+
+
 $(document).ready(function () {
     console.log(`> loading Amazon API...`);
 
@@ -8,6 +11,8 @@ $(document).ready(function () {
 
     // user clicked search button
     $('body').on('click', '#search-submit-btn', event => {
+
+        recentlySearchedProducts = [];
 
         var searchIndex = `All`;
         let selectedValue = $('#gift_category_menu').find('option:selected').data();
@@ -21,6 +26,7 @@ $(document).ready(function () {
             MaximumPrice: parseInt($('#max-price').val())
         }
 
+        // empty the search div
         resultsroot.empty();
 
         // post to amazon
@@ -32,6 +38,7 @@ $(document).ready(function () {
 
             products.forEach( data => {
                 let card = new GiftCard(data);
+                recentlySearchedProducts.push(card);
                 resultsroot.append($(card.html));
             });
 
@@ -50,11 +57,11 @@ $(document).ready(function () {
 
 
 
-// gift card object used to render search results
 
+// gift card object used to render search results
 class GiftCard {
     constructor(data) {
-        this.gift_id = data.gift_id,
+        this.id = data.gift_id,
         this.UserId = data.UserId,
         this.asin = data.asin,
         this.title = data.title,
@@ -71,34 +78,38 @@ class GiftCard {
     // output html
     get html() {
         let output =
-            `<div class="item product">` +
-            `<div class="card medium">` +
-            `<div class="card-image waves-effect waves-block waves-light crop">` +
-            `<a target="_blank" href="${this.detailsURL}" class="btn-floating btn-large btn-price waves-effect waves-light accent-4 teal">${this.formattedPrice}</a>` +
-            // `<a href="#"><img class="responsive-img object-fit_fill" src="${this.image}" alt="item-img"></a>` +
-            `<a href="#"><img src="${this.image}" alt="item-img"></a>` +
-            `</div>` +
-            `<ul class="card-action-buttons">` +
-            `<li><a aisn="${this.asin}" class="btn-floating waves-effect waves-light teal lighten-3 add-gift-button"><i class="material-icons">add_circle</i></a></li>` +
-            `<li><a aisn="${this.asin}" class="btn-floating waves-effect waves-light teal lighten-2 favorite-gift-button"><i class="material-icons">favorite</i></a></li>` +
-            `<li><a aisn="${this.asin}" class="btn-floating waves-effect waves-light teal lighten-1"><i class="material-icons activator">info_outline</i></a></li>` +
-            `</ul>` +
-            `<div class="card-content">` +
-            `<div class="row">` +
-            `<div class="col s12">` +
-            `<p class="card-title grey-text text-darken-4">` +
-            `<a href="#" class="grey-text text-darken-4 truncate" alt="${this.title}">${this.title}</a>` +
-            `</p>` +
-            `</div></div>` +
-            `<div class="row">` +
-            `<div class="col s12">` +
-            `<div class="chip">${this.category}</div>` +
-            `</div></div></div>` +
-            `<div class="card-reveal">` +
-            `<span class="card-title grey-text text-darken-4">` +
-            `<i class="material-icons right">close</i>${this.title}</span>` +
-            `<p>${this.description}</p>` +
-            `</div></div></div>`
+        `<div class="item product">` +
+        `<div class="card medium">` +
+        `<div class="card-image waves-effect waves-block waves-light crop">` +
+        `<a target="_blank" href="${this.detailsURL}" class="btn-floating btn-large btn-price waves-effect waves-light accent-4 teal">${this.formattedPrice}</a>` +
+        `<a href="#"><img src="${this.image}" alt="item-img"></a>` +
+        `</div>` +
+        `<ul class="card-action-buttons">` +
+        `<li><a data-value="${this.id}" data-action="add-gift" class="btn-floating gift-action waves-effect waves-light teal lighten-3"><i class="material-icons">add_circle</i></a></li>` +
+        `<li><a data-value="${this.id}" data-action="favorite-git" class="btn-floating gift-action waves-effect waves-light teal lighten-2"><i class="material-icons">favorite</i></a></li>` +
+        `<li><a aisn="${this.asin}" class="btn-floating waves-effect waves-light teal lighten-1"><i class="material-icons activator">info_outline</i></a></li>` +
+        `</ul>` +
+        `<div class="card-content">` +
+        `<div class="row">` +
+        `<div class="col s12">` +
+        `<p class="card-title grey-text text-darken-4">` +
+        `<a href="#" class="grey-text text-darken-4 truncate" alt="${this.title}">${this.title}</a>` +
+        `</p>` +
+        `</div>` +
+        `</div>` +
+        `<div class="row">` +
+        `<div class="col s12">` +
+        `<div class="chip">${this.category}</div>` +
+        `</div>` +
+        `</div>` +
+        `</div>` +
+        `<div class="card-reveal">` +
+        `<span class="card-title grey-text text-darken-4">` +
+        `<i class="material-icons right">close</i>${this.title}</span>` +
+        `<p>${this.description}</p>` +
+        `</div>` +
+        `</div>` +
+        `</div>`
         return output
     }
 }

@@ -7,6 +7,7 @@ font-family: 'Cabin', sans-serif;
 */
 @import url('https://fonts.googleapis.com/css?family=Cabin|Cabin+Condensed|Slabo+27px|Source+Sans+Pro|Berkshire+Swash|Raleway');
 
+@import url('https://fonts.googleapis.com/css?family=Cabin|Cabin+Condensed|Slabo+27px|Source+Sans+Pro');
 /* github font :) */
 @font-face {
     font-family: 'Collegia';
@@ -117,8 +118,8 @@ footer a:hover {
 
 /*
 img {
-	height: 260px display: block;
-	margin: 0 auto;
+    height: 260px display: block;
+    margin: 0 auto;
 }
 
 
@@ -198,6 +199,7 @@ img[class] {
 }
 
 /* fix for white text in modals */
+
 .page-footer {
     color: #000;
 }
@@ -229,6 +231,7 @@ img[class] {
 }
 
 /* fix for side nav on mobile */
+
 #sidenav-overlay {
     /*margin-left: 300px;*/
     z-index: 996;
@@ -467,6 +470,20 @@ span.gift-title {
     display: flex;
     align-items: center;
     margin: 0px;
+}
+
+/*
+.home-container {
+    background-image: url("/img/gift-background.jpg");
+    background-repeat: no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+    height: 100vh;
+
+	/*  materialize valign */
+	display: flex;
+	align-items: center;
+	margin: 0px;
 }
 
 /*

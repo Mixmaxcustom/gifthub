@@ -39,6 +39,8 @@ module.exports = (app) => {
                         user_is_admin: user.user_is_admin
                     }
 
+
+
                     // sign and create cookie
                     const token = jwt.sign(dbuser, secret);
                     // res.cookie('gifthub-user', token, { maxAge: 86400 });

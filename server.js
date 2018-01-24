@@ -6,6 +6,8 @@ const path 			= require("path");
 const cookieParser 	= require('cookie-parser')
 const db 			= require("./models");
 const apirouter     = require('./routes/api');
+const router 		= require('./routes/index');
+const authenticate  = require('./routes/auth');
 
 
 // use process.env for heroku
@@ -40,19 +42,10 @@ app.engine('hbs', exphbs({
 app.set("view engine", "hbs");
 
 
-//  routing
-require("./routes/auth")(app);
-require("./routes/login")(app);
-require("./routes/index")(app);
-require("./routes/events")(app);
-require("./routes/profile")(app);
-require("./routes/search")(app);
-require("./routes/user")(app);
-require("./routes/amazon")(app);
-require("./routes/recipients")(app);
-
-
+// set routes
+app.use('/', router);
 app.use('/api', apirouter);
+
 
 // sync database and run app
 db.sequelize.sync({ force: false }).then( () => {
