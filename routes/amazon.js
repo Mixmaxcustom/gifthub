@@ -46,7 +46,8 @@ module.exports = (app) => {
 			MinimumPrice: "0500",
 			ResponseGroup: 'ItemAttributes,Offers,Images'
 		}).then( results => {
-
+            console.log(`results: ${results.length}`);
+            console.log(results);
             // send results via json if using postman
 			if (isPostman === true) {
 				res.json(results);
@@ -65,10 +66,19 @@ module.exports = (app) => {
                     let thumbnailImage = results[i].ImageSets[0].ImageSet[0].TinyImage[0].URL[0];
 					let productImage = results[i].ImageSets[0].ImageSet[0].LargeImage[0].URL[0];
 					// let productPrice = results[i].OfferSummary[0].LowestNewPrice[0].Amount[0];
-                    // updating price to show the displayed Amazon price
-                    let productPrice = results[i].ItemAttributes[0].ListPrice[0].Amount[0];
-					let productDetailPage = results[i].DetailPageURL[0];
 
+                    // updating price to show the displayed Amazon price
+                    var productPrice;
+
+                    try {
+                        productPrice = results[i].ItemAttributes[0].ListPrice[0].Amount[0];
+                    } catch(error) {
+                        productPrice = results[i].OfferSummary[0].LowestNewPrice[0].Amount[0];
+                    } finally {
+                        productPrice = 0;
+                    }
+
+					let productDetailPage = (results[i].DetailPageURL.length > 0) ? results[i].DetailPageURL.length[0] : "";
                     let productDescription = (Object.keys(itemAttributes).includes('Feature')) ? itemAttributes.Feature[0] : null;
                     let productCategory = (Object.keys(itemAttributes).includes('ProductGroup')) ? itemAttributes.ProductGroup[0] : null;
 
