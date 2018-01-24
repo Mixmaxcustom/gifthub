@@ -1,7 +1,7 @@
 module.exports = {
 	development: {
 		username: 'root',
-		password: '',
+		password: 'password',
 		database: 'gifthub_db',
 		host: 'localhost',
 		dialect: 'mysql'
