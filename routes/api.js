@@ -12,7 +12,7 @@ router.content = {
     layout: 'api',
     projname: 'gifthub-api',
     pagetitle: '',
-    favicon: process.env.PROD_FAVICON_NAME || 'favicon-oval-128x128-dev',
+    favicon: process.env.PROD_FAVICON_NAME || 'favicon-dev',
     search_modal_title: 'Search Results',
     debug_mode: false,
     searchData: {
@@ -41,7 +41,13 @@ router.get('/', (req, res) => {
 
 
 router.get('/users', (req, res) => {
-    db.User.findAll()
+    db.User.findAll({
+        include: [{
+            model: db.Recipient,
+                attributes: ['recipient_title', 'recipient_firstname', 'recipient_lastname',
+                             'recipient_lastname', 'recipient_budget']
+        }]
+    })
     .then(users => {
         res.json(users);
     })
@@ -51,7 +57,7 @@ router.get('/users', (req, res) => {
 });
 
 
-
+// CLEANUP
 router.get('/users/:userid', (req, res) => {
     console.log(`user id: ${req.params.userid}`);
     db.User.findOne({

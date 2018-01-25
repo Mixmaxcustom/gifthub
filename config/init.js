@@ -5,7 +5,7 @@ let content = {
     layout: 'main',
     projname: 'gifthub',
     pagetitle: '',
-    favicon: process.env.PROD_FAVICON_NAME || 'favicon-oval-128x128-dev',
+    favicon: process.env.PROD_FAVICON_NAME || 'favicon-dev',
     search_modal_title: 'Search Results',
     debug_mode: false,
     searchData: {

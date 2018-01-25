@@ -83,14 +83,19 @@ $(document).ready(function () {
 		let aisn = button.attr(`gift-id`);
 
 		curbutton = button;
-		button.find('i').text('check_box');
-		$.ajax(`/gift-added/${aisn}/${recipId}`, {
+
+		let checkState = button.find('i').text();
+		let newState = (checkState === 'check_box') ? 'crop_din' : 'check_box';
+
+		let routeAction = (checkState === 'check_box') ? 'gift-added' : 'gift-removed';
+		button.find('i').text(newState);
+
+		$.ajax(`/${routeAction}/${aisn}/${recipId}`, {
 			type: "POST",
 		})
 
 		.done( result => {
 			console.log(result.message);
-
 		})
 
 		.fail( data => {

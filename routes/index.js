@@ -16,7 +16,7 @@ router.content = {
     layout: 'main',
     projname: 'gifthub',
     pagetitle: '',
-    favicon: process.env.PROD_FAVICON_NAME || 'favicon-oval-128x128-dev',
+    favicon: process.env.PROD_FAVICON_NAME || 'favicon-dev',
     search_modal_title: 'Search Results',
     debug_mode: false,
     user: {},
@@ -136,6 +136,7 @@ router.post("/login", (req, res) => {
 				}
 
 				// sign and create cookie
+                router.content.layout = 'main';
 				const token = jwt.sign(dbuser, secret);
 				// res.cookie('gifthub-user', token, { maxAge: 86400 });
 				res.cookie('gifthub-user', token);
@@ -235,7 +236,6 @@ router.get("/profile", auth, (req, res) => {
     console.log(`- [profile]: searching for user id: ${req.user.user_id}`);
     console.log(`- [profile]: user is logged in: ${req.user.user_is_logged_in}`);
 
-
     userRecipients = [];
     db.User.findOne({
         where: {
@@ -270,8 +270,9 @@ router.get("/profile", auth, (req, res) => {
                 })
                 userRecipients.push(robj);
             })
-
+            router.content.layout = 'main';
             router.content.recipients = userRecipients;
+            console.log(` - adding ${userRecipients.length}`);
             // render the page
             res.render('profile', router.content);
         })
@@ -282,16 +283,6 @@ router.get("/profile", auth, (req, res) => {
 });
 
 // AMAZON
-
-router.get("/amazon", (req, res, next) => {
-    console.log(` - requesting ${req.url}`);
-
-    db.Category.findAll().then( categories => {
-        router.content.categories = categories;
-        res.render('amazon/index', router.content);
-    });
-});
-
 
 router.post("/amazon", (req, res, next) => {
     console.log(` - posting ${req.url}`);
@@ -326,6 +317,7 @@ router.post("/amazon", (req, res, next) => {
 
                 // Assign desired product info to variables -JR
                 let productAsin = results[i].ASIN[0];
+                console.log(` -->> AISN: ${productAsin}`);
                 let productTitle = results[i].ItemAttributes[0].Title[0];
                 let thumbnailImage = results[i].ImageSets[0].ImageSet[0].TinyImage[0].URL[0];
                 let productImage = results[i].ImageSets[0].ImageSet[0].LargeImage[0].URL[0];
@@ -405,19 +397,50 @@ router.get("/search", auth, (req, res) => {
             })
 
             .then( user => {
+
+
                 let thisUser = user.dataValues;
                 let recipients = thisUser.Recipients;
 
+                console.log(`\n -->> User:`);
+                console.log(thisUser);
+
+
+
                 recipients.forEach(data => {
                     let recipient = data.dataValues;
+                    console.log(`\n -->> Recipient:`);
+
+                    /*
+                    id
+                    recipient_title
+                    recipient_firstname
+                    recipient_lastname
+                    recipient_budget
+                    recipient_bio
+                    recipient_photo
+                    */
+                    console.log(recipient);
+
+
+
+
+
+                    let mappingData = recipient.UserRecipients.dataValues;
+
+
+                    let recipientID = mappingData.RecipientId;
+                    let userID = mappingData.UserId;
+                    console.log(`\n -->> Mapping:  recipient: ${recipientID} -> user: ${userID}`);
+
                     // id,recipient_title,recipient_firstname,recipient_lastname,recipient_budget,recipient_bio,recipient_photo
                     router.content.recipients.push(recipient)
                 })
+
+                // TODO: send last search here?
+                res.render('search', router.content);
             });
 
-
-        // TODO: send last search here?
-        res.render('search', router.content);
     })
 });
 
@@ -486,8 +509,12 @@ router.post("/recipients", (req, res, next) => {
     .then( recipient => {
         console.log(`- [index]: added recipient id ${recipient.id}`);
         // link the recipient
-        recipient.addUser(router.user.user_id)
-        res.send({ message: 'recipient added', redirect: '/profile'})
+        recipient.addUser(router.user.user_id).then( user => {
+            console.log(` -> linking user:`);
+            console.log(user);
+            res.send({ message: 'recipient added', redirect: '/profile'})
+        })
+
 
     })
 
@@ -510,6 +537,12 @@ router.post("/gift-added/:aisn/:recipientId", (req, res, next) => {
     let selectedAISN = req.params.aisn;
     let recipientId = req.params.recipientId;
 
+
+    if (selectedAISN == -1) {
+        console.log(`no gifts selected, returning`);
+        return;
+    }
+
     //currentSearchResults
     console.log(`saving gift ${selectedAISN} to user: ${recipientId}`);
 
@@ -523,6 +556,49 @@ router.post("/gift-added/:aisn/:recipientId", (req, res, next) => {
         var newGift;
         currentSearchResults.forEach( item => {
             if (item.asin == selectedAISN) {
+                recipient.createGift({
+                    gift_name: item.title,
+                    gift_aisn: item.asin,
+                    gift_photo: item.thumbnail,
+                    gift_description: item.description,
+                    gift_url:  item.detailsURL,
+                    gift_price: item.price
+                })
+
+                .then( gift => {
+                    console.log(`added gift: ${gift}`);
+                })
+            }
+        })
+    });
+});
+
+// post a gift to a recipient
+router.post("/gift-removed/:aisn/:recipientId", (req, res, next) => {
+
+    let selectedAISN = req.params.aisn;
+    let recipientId = req.params.recipientId;
+
+    if (selectedAISN == -1) {
+        console.log(`no gifts selected, returning`);
+        return;
+    }
+
+    //currentSearchResults
+    console.log(`saving gift ${selectedAISN} to user: ${recipientId}`);
+
+    db.Recipient.findOne({
+        where: {
+            id: recipientId
+        }
+    })
+
+    .then( recipient => {
+        var newGift;
+        currentSearchResults.forEach( item => {
+            if (item.asin == selectedAISN) {
+
+                // TODO: need to remove gift here
                 recipient.createGift({
                     gift_name: item.title,
                     gift_aisn: item.asin,

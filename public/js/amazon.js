@@ -37,7 +37,10 @@ $(document).ready(function () {
         }).done( products => {
 
             products.forEach( data => {
+                // TODO: amazon AISN error here
+                // console.log(Object.keys(data));
                 let card = new GiftCard(data);
+                console.log(card);
                 recentlySearchedProducts.push(card);
                 resultsroot.append($(card.html));
             });

@@ -1,6 +1,11 @@
-[
-    {
+[{
         "UserId": 1,
+        "RecipientId": 1,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    },
+    {
+        "UserId": 2,
         "RecipientId": 1,
         "createdAt": "2017-12-30",
         "updatedAt": "2017-12-30"
@@ -12,26 +17,55 @@
         "updatedAt": "2017-12-30"
     },
     {
-        "UserId": 1,
+        "UserId": 2,
         "RecipientId": 2,
         "createdAt": "2017-12-30",
         "updatedAt": "2017-12-30"
     },
     {
         "UserId": 1,
-        "RecipientId": 2,
+        "RecipientId": 3,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    },
+    {
+        "UserId": 2,
+        "RecipientId": 3,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    }, {
+        "UserId": 1,
+        "RecipientId": 4,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    },
+    {
+        "UserId": 2,
+        "RecipientId": 4,
         "createdAt": "2017-12-30",
         "updatedAt": "2017-12-30"
     },
     {
         "UserId": 1,
-        "RecipientId": 2,
+        "RecipientId": 5,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    },
+    {
+        "UserId": 2,
+        "RecipientId": 5,
         "createdAt": "2017-12-30",
         "updatedAt": "2017-12-30"
     },
     {
         "UserId": 1,
-        "RecipientId": 2,
+        "RecipientId": 6,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    },
+    {
+        "UserId": 2,
+        "RecipientId": 6,
         "createdAt": "2017-12-30",
         "updatedAt": "2017-12-30"
     }
