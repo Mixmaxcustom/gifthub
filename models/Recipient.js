@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
         recipient_state: DataTypes.STRING,
         recipient_photo: {
             type: DataTypes.STRING,
-            defaultValue: '/img/user-avatar.png'
+            defaultValue: '/img/generic-avatar.png'
         },
         recipient_budget: DataTypes.INTEGER
     }, {

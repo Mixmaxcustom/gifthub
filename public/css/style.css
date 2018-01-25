@@ -445,7 +445,9 @@ span.gift-title {
     color: rgba(255, 255, 255, 0.3);
 }
 
-/**RECIPIENT CARD STYLING**/
+
+/*
+
 #recipient-card-image {
     max-height: 85%;
 }
@@ -461,6 +463,27 @@ span.gift-title {
 #recipient-hr {
     width: 100%;
 }
+*/
+
+/**RECIPIENT CARD STYLING**/
+.recipient-card-image {
+    max-height: 65% !important;
+}
+
+.recipient-card-content {
+    padding: 15px;
+}
+
+.recipient-card-title {
+    margin-bottom: 0px;
+}
+
+.recipient-hr {
+    width: 100%;
+}
+
+
+
 
 table.recipient-details {
     font-size: 0.9rem;
@@ -581,7 +604,10 @@ hr {
     width: 70%;
     align-content: center;
 }
-
+.error-header {
+    font-size: 6rem;
+    color: #494949;
+}
 /* Modals */
 /* .collection .collection-item.avatar {} */
 /* Style Placeholders */
@@ -676,19 +702,19 @@ hr {
         width: 100%;
     }
 
-    #recipient-card-image {
+    .recipient-card-image {
         max-height: 75%;
     }
 
-    #recipient-card-content {
+    .recipient-card-content {
         padding: 8px;
     }
 
-    #recipient-card-title {
+    .recipient-card-title {
         margin-bottom: 0px;
     }
 
-    #add-new-row {
+    .add-new-row {
         text-align: left;
         padding-top: 8px;
     }
@@ -700,7 +726,7 @@ hr {
 }
 
 @media (max-width: 425px) {
-    #add-recipient-title {
+    .add-recipient-title {
         font-size: 2rem;
     }
 }

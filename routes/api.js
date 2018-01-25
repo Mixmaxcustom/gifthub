@@ -1,10 +1,12 @@
 // api routing module
-const db        = require('../models/');
 const express   = require('express');
+const auth   	= require('./auth');
+const db        = require('../models/');
 
 
 // define a router
 const router = express.Router();
+router.use(auth);
 
 
 //  page content
@@ -32,8 +34,10 @@ router.get('/', (req, res) => {
     db.User.findAll()
     .then( users => {
         content.users = users;
+            console.log(`found ${users.length} users`);
         res.render('api/index', content)
     })
+
     .catch(err => {
         res.json(err);
     })

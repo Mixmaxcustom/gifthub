@@ -13,14 +13,14 @@ module.exports = {
         return mmnt.format(format);
     },
 
-    // date formatter
+    // date formatter minus the year
     obscureYear: (date) => {
         var mmnt = moment(date);
         let shdate = mmnt.format('M/D');
         return `${shdate}/XXXX`;
     },
 
-    // date formatter
+    // password formatter
     obscurePassword: (pword) => {
         return pword.split('').map( c => { return '*'}).join('')
     },

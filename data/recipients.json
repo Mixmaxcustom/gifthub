@@ -96,5 +96,19 @@
         "recipient_budget": 10000,
         "createdAt": "2017-12-30",
         "updatedAt": "2017-12-30"
+    },
+    {
+        "recipient_title": null,
+        "recipient_firstname": "Alex",
+        "recipient_lastname": "Adams",
+        "recipient_email": "alexa@salesforce.com",
+        "recipient_birthday": "1981-03-18",
+        "recipient_bio": "he's a big runner",
+        "recipient_city": "New York",
+        "recipient_state": "NY",
+        "recipient_photo": "/img/recipients/alex.jpg",
+        "recipient_budget": 12000,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
     }
 ]

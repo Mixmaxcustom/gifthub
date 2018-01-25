@@ -24,6 +24,8 @@ function authenticate(req, res, next) {
 
 	var token = cookies['gifthub-user'] || {};
 
+	// add user data to request
+	req.user = user;
 	// if we find a value...
 	if (token.length > 0) {
 
@@ -41,16 +43,13 @@ function authenticate(req, res, next) {
 			// successful authentication
 			} else {
 
-				user.user_id = data.user_id;
-				user.user_email = data.user_email;
-				user.user_firstname = data.user_firstname;
-				user.user_lastname = data.user_lastname;
-				user.user_is_logged_in = true;
-				user.user_is_admin = data.user_is_admin;
+				req.user.user_id = data.user_id;
+				req.user.user_email = data.user_email;
+				req.user.user_firstname = data.user_firstname;
+				req.user.user_lastname = data.user_lastname;
+				req.user.user_is_logged_in = true;
+				req.user.user_is_admin = data.user_is_admin;
 
-
-				console.log(`- [auth]: setting request user data...`);
-				req.user = user;
 				console.log(`- [auth] user logged in with id: ${req.user.user_id}...`);
 
 				// continue to the next route

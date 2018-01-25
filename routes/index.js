@@ -130,6 +130,13 @@ router.get("/", auth, (req, res) => {
 });
 
 
+// page not found
+router.get("/404", (req, res) => {
+    router.content.layout = 'home';
+    res.render('404', router.content);
+});
+
+
 // user login
 router.get("/login", (req, res) => {
 	router.content.layout = 'home';
