@@ -304,6 +304,7 @@ router.post("/amazon", (req, res, next) => {
         // Hard coded a minimum price so the price result wouldn't error out.
         MinimumPrice: "0500",
         ResponseGroup: 'ItemAttributes,Offers,Images'
+
     }).then( results => {
         // send results via json if using postman
         if (isPostman === true) {
@@ -564,6 +565,12 @@ router.post("/gift-added/:aisn/:recipientId", (req, res, next) => {
                     gift_description: item.description,
                     gift_url:  item.detailsURL,
                     gift_price: item.price
+                })
+
+                .then( gift => {
+                    console.log(`- [debug]: gift saved to recipient: "${item.title}"`);
+
+
                 })
 
                 .then( gift => {
