@@ -462,6 +462,22 @@ span.gift-title {
     width: 100%;
 }
 
+table.recipient-details {
+    font-size: 0.9rem;
+}
+
+table.recipient-details th, table.recipient-details td {
+    padding: 5px 5px;
+    display: table-cell;
+    text-align: left;
+    vertical-align: top;
+    border-radius: 2px;
+}
+
+table.recipient-details th {
+    text-align: right;
+}
+
 /* Custom Stylesheet */
 .home-container {
     background-image: url("/img/gift-background.jpg");
@@ -584,6 +600,7 @@ hr {
 ::placeholder {
     color: #606060;
 }
+
 
 /* Large devices (desktops, less than 1200px) */
 @media (max-width: 1500px) {

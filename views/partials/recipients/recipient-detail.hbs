@@ -18,9 +18,29 @@
                 <i class="material-icons right">close</i>
             </span>
             <hr id="recipient-hr">
-            <p class="grey-text">bio <span class="black-text">{{bio}}</span></p>
-            <p class="grey-text">birthday <span class="black-text">{{formatTime birthday 'MMMM, DDDo YYYY'}}</span></p>
-            <p class="grey-text">gift budget total <span class="black-text">${{currentTotal}} of ${{shortPrice budget}}</span></p>
+            <!-- <p class="grey-text">bio      <span class="black-text">{{bio}}</span></p> -->
+            <!-- <p class="grey-text">birthday <span class="black-text">{{formatTime birthday 'MMMM, DDDo YYYY'}}</span></p> -->
+            <!-- <p class="grey-text">budget   <span class="black-text">${{currentTotal}} of ${{shortPrice budget}}</span></p> -->
+
+                <table class="recipient-details">
+                    <tbody>
+                        <tr>
+                            <th class="grey-text">bio</th>
+                            <td><span class="black-text">{{bio}}</span></td>
+                        </tr>
+                        <tr>
+                            <th class="grey-text">birthday</th>
+                            <td>{{formatTime birthday 'MMMM, DDDo YYYY'}}</td>
+                        </tr>
+                        <tr>
+                            <th class="grey-text">budget</th>
+                            <td>${{currentTotal}} of ${{shortPrice budget}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
+
             <hr id="recipient-hr">
 
             <div id="saved-gifts-container">
