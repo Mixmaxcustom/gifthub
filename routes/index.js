@@ -11,6 +11,9 @@ const amazon 		= require('amazon-product-api');
 // create a router
 const router = express.Router();
 
+
+
+
 //  page content
 router.content = {
     layout: 'main',
@@ -20,13 +23,11 @@ router.content = {
     search_modal_title: 'Search Results',
     debug_mode: false,
     user: {},
-    searchData: {
-        seachCategory: null,
-        results: []
-    }
+    searchData: { seachCategory: null, results: [] }
 }
 
 
+// update the router page content dynamically
 function updateContent(req, res, next) {
     let nexturl = req.url;
     this.content = {
@@ -43,21 +44,26 @@ function updateContent(req, res, next) {
         }
     }
 
+    // if going to login/register, force different layout
     if (['/login', '/register'].includes()) {
         this.content.layout = 'home';
     }
 
+    // check for user authentication
     if (req.user) {
         this.user = req.user;
         console.log(`- [router]: user:  "${this.user}"`);
     }
 
 
+    if (userRecipients.length > 0) {
+        console.log(`- [router]: ${userRecipients.length} recipients found`);
+    }
     console.log(`- [router]: using layout "${this.content.layout}"`);
     next();
 }
 
-
+// add content middleware to the router
 router.use(updateContent);
 
 
@@ -104,16 +110,21 @@ Recipient.prototype.name = function() {
 
 Recipient.prototype.currentTotal = function() {
     var total = 0;
-    this.gifts.forEach( gift => {
-        total += gift.gift_price;
-    })
-    return total / 100;
+    if (this.gifts) {
+        this.gifts.forEach( gift => {
+            if (gift.gift_purchased) {
+                total += gift.gift_price;
+            }
+        })
+        return total / 100;
+    }
+    return total;
 };
-
 
 
 var currentSearchResults = [];
 var userRecipients = [];
+
 
 
 // ROUTES
@@ -127,6 +138,12 @@ router.get("/", auth, (req, res) => {
         router.content.user = req.user;
         res.render('index', router.content);
 	});
+});
+
+// page not found
+router.get("/404", (req, res) => {
+    router.content.layout = 'home';
+    res.render('404', router.content);
 });
 
 
@@ -654,6 +671,11 @@ router.post("/gift-added/:aisn/:recipientId", (req, res, next) => {
                 })
             }
         })
+
+        recipient.purchasedGifts().then( pgifts => {
+            console.log(`\n -> purchased gifts:`);
+            console.log(pgifts);
+        })
     });
 });
 
@@ -705,8 +727,8 @@ router.post("/gift-removed/:aisn/:recipientId", (req, res, next) => {
 
 // update status of a gift
 router.post("/gift-purchased/:giftid/:purchased", (req, res, next) => {
-    let msg = (req.params.purchased == 1) ? 'purchased' : "didn't purchase"
-
+    let msg = (req.params.purchased == 1) ? 'marking' : "unmarking"
+    let isPurchased = (req.params.purchased == 1) ? true : false;
     console.log(`${msg} gift id: ${req.params.giftid}`);
 
     db.Gift.findOne({
@@ -721,12 +743,49 @@ router.post("/gift-purchased/:giftid/:purchased", (req, res, next) => {
     })
 
     .then( gift => {
+
         gift.update(
-            { gift_purchased: true })
+            { gift_purchased: isPurchased })
 
             .then( result => {
-                result
-                res.send({message: 'success'})
+
+                gift.getRecipients().then( recipients => {
+                    console.log(`\n-> Gift Recipients: `);
+
+
+                    if (recipients.length > 0) {
+
+                        // query the associated recipient
+                        let giftRecipient = recipients[0];
+
+                        let spentAmount = 0
+                        let totalBudget = giftRecipient.recipient_budget;
+                        let recipientId = giftRecipient.id;
+                        console.log(`\n-> Recipient Budget: ${totalBudget}`);
+
+                        giftRecipient.getGifts().then( gifts => {
+                            console.log(`\n -> Purchased Gifts:`);
+                            gifts.forEach(g => {
+                                let giftPrice = g.dataValues.gift_price;
+                                let isPurchased = g.dataValues.gift_purchased;
+
+                                if (isPurchased) {
+                                    spentAmount += giftPrice;
+                                    console.log(`adding: ${giftPrice}`);
+                                }
+                                console.log(`  -> ${g.dataValues.gift_name}, ${giftPrice}, ${isPurchased}`);
+                            })
+
+                            //res.send({message: 'success', spent: spentAmount, budget: totalBudget})
+                            res.status(200).send({status: 200, message: 'success', recipientId: recipientId, spent: spentAmount, budget: totalBudget})
+
+                        })
+
+                    }
+                })
+
+
+
             })
     })
 

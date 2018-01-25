@@ -22,7 +22,7 @@
             <hr class="recipient-hr">
                 <!-- added a table to neaten up this section for mobile -Michael -->
 
-                <table data-value="{{RecipientId}}" class="recipient-details truncate">
+                <table data-value="{{id}}" class="recipient-details truncate">
                     <tbody>
                         <tr>
                             <th class="grey-text">bio</th>
@@ -34,7 +34,7 @@
                         </tr>
                         <tr>
                             <th class="grey-text">budget</th>
-                            <td>${{currentTotal}} of ${{shortPrice budget}}</td>
+                            <td> <span id="spent-total-{{id}}">${{currentTotal}}</span> of $ <span id="budget-total-{{id}}">{{shortPrice budget}}</span></td>
                         </tr>
                     </tbody>
                 </table>

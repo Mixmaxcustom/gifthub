@@ -32,15 +32,15 @@ router.get('/', (req, res) => {
     }
 
     db.User.findAll()
-    .then( users => {
-        content.users = users;
+        .then( users => {
+            content.users = users;
             console.log(`found ${users.length} users`);
-        res.render('api/index', content)
-    })
+            res.render('api/index', content)
+        })
 
-    .catch(err => {
-        res.json(err);
-    })
+        .catch(err => {
+            res.json(err);
+        })
 });
 
 

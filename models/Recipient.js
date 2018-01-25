@@ -17,9 +17,9 @@ module.exports = (sequelize, DataTypes) => {
     }, {
         getterMethods: {
             // props go to Jake for figuring this out!!
-            unpurchasedGifts() {
+            purchasedGifts() {
                 return this.getGifts({
-                    where: { gift_purchased: { [sequelize.Op.gt]: false } }
+                    where: { gift_purchased: { [sequelize.Op.gt]: true } }
                 })
             }
         },
