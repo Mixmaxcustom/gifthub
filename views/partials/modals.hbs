@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="row">
-                
+
                 <div class="input-field col m3 s12">
                     <input id="recipient_birthday" type="text" class="datepicker validate">
                     <label for="recipient_birthday">Birthday</label>
@@ -50,6 +50,59 @@
             <i class="material-icons left">close</i>Close</a>
         <a id="recipient_registration_submit" class="modal-action modal-close waves-effect waves-green btn-flat">
             <i class="material-icons left">person_add</i>Add</a>
+    </div>
+</div>
+
+
+<!--  User Profile Modal -->
+<div id="edit-user-modal" data-value="" class="modal">
+    <div class="modal-content">
+        <h4 id="edit-user-title">User Profile</h4>
+
+        <form>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="user-edit-firstname" type="text" class="validate" value="{{user.user_firstname}}">
+                    <label for="user-edit-firstname">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="user-edit-lastname" type="text" class="validate" value="{{user.user_lastname}}">
+                    <label for="user-edit-lastname">Last Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="user-edit-email" type="email" class="validate" value="{{user.user_email}}">
+                    <label for="user-edit-email">Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="user-edit-password" type="password" class="validate" value="{{user.user_password}}">
+                    <label for="user-edit-password">Password</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="user-edit-password-confirm" type="password" class="validate">
+                    <label for="user-edit-password-confirm">Confirm</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="user-edit-city" type="text" class="validate" value="{{user.user_city}}">
+                    <label for="user-edit-city">City</label>
+                </div>
+                <div class="input-field col s6">
+                    <select id="user-edit-state"></select>
+                    <label for="user-edit-state">State</label>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a id="user-edit-close" class="modal-action modal-close waves-effect waves-green btn-flat">
+            <i class="material-icons left">close</i>Close</a>
+        <a id="user-edit-submit" data-value="{{id}}" class="modal-action modal-close waves-effect waves-green btn-flat">
+            <i class="material-icons left">person_add</i>Update</a>
     </div>
 </div>
 
@@ -147,15 +200,30 @@
                 </div>
             </div>
             <div class="row">
-                <div class="input-field col m3 s12">
-                    <input id="recipient_birthday_edit" type="text" class="datepicker validate" value="{{recipient_birthday}}">
-                    <label for="recipient_birthday">Birthday</label>
-                </div>
-                <div class="input-field col m9 s12">
+                <div class="input-field col s12">
                     <input id="recipient_email_edit" type="email" class="validate" value="{{recipient_email}}">
                     <label for="recipient_email_edit">Email (optional)</label>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="input-field col m4">
+                    <input id="recipient_birthday_edit" type="text" class="datepicker validate" value="{{recipient_birthday}}">
+                    <label for="recipient_birthday">Birthday</label>
+                </div>
+
+                <div class="input-field col m4">
+                    <input id="recipient_city_edit" type="text" value="{{recipient_city}}">
+                    <label for="recipient_city_edit">City</label>
+                </div>
+                <div class="input-field col m4">
+                    <select id="recipient_state_edit" data-value=""  class="center-align validate" placeholder="State" required="required"></select>
+                    <!-- <input id="recipient_state_edit" class="validate" value="{{recipient_state}}"> -->
+                    <label for="recipient_state_edit">State</label>
+                </div>
+            </div>
+
+
             <div class="row">
                 <div class="input-field col m3 s12">
                     <input id="recipient_budget_edit" type="number" value="{{recipient_budget}}"></input>

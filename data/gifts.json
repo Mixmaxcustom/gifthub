@@ -50,5 +50,97 @@
         "gift_favorite": false,
         "createdAt": "2017-12-30",
         "updatedAt": "2017-12-30"
+    },
+    {
+        "gift_name": "PlayStation 4 Slim 1TB Console",
+        "gift_description": "Includes a new slim 1TB PlayStation®4 system, a matching DualShock 4 Wireless Controller.",
+        "gift_asin": "B071CV8CG2",
+        "gift_part_num": null,
+        "gift_photo": "https://images-na.ssl-images-amazon.com/images/I/31gUIfoiCcL._SL110_.jpg",
+        "gift_price": 29999,
+        "gift_purchased": false,
+        "gift_url": "https://www.amazon.com/PlayStation-4-Slim-1TB-Console/dp/B071CV8CG2",
+        "gift_favorite": false,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    },
+    {
+        "gift_name": "Apple Lightning to 3.5mm Headphone Jack Adapter",
+        "gift_description": "This adapter lets you connect devices that use a 3.5 mm audio plug to your lightning devices.",
+        "gift_asin": "B01LXJFMGF",
+        "gift_part_num": null,
+        "gift_photo": "https://images-na.ssl-images-amazon.com/images/I/31wBZD7Y%2BML._SL110_.jpg",
+        "gift_price": 1399,
+        "gift_purchased": false,
+        "gift_url": "https://www.amazon.com/Apple-Lightning-3-5mm-Headphone-Adapter/dp/B01LXJFMGF",
+        "gift_favorite": false,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    },
+    {
+        "gift_name": "Williams-Sonoma Classic Striped Towels, Set of 4 (Drizzle)",
+        "gift_description": "Williams Sonoma's highly absorbent basketweave designer striped kitchen towels are made of Turkish cotton in contrasting colors, with a loop for hanging.",
+        "gift_asin": "B01LZ96GAG",
+        "gift_part_num": null,
+        "gift_photo": "https://images-na.ssl-images-amazon.com/images/I/61MvL9IupjL._SX757_.jpg",
+        "gift_price": 3495,
+        "gift_purchased": false,
+        "gift_url": "https://www.amazon.com/Williams-Sonoma-Classic-Striped-Towels-Drizzle/dp/B01LZ96GAG",
+        "gift_favorite": false,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    },
+    {
+        "gift_name": "Banana Republic Womens Contrast Ribbed Mock Neck Sweater",
+        "gift_description": "Mid weight mock-neck sweater with horizontal and vertical ribbed contrast panels.",
+        "gift_asin": "B077NQDVVC",
+        "gift_part_num": null,
+        "gift_photo": "https://images-na.ssl-images-amazon.com/images/I/91takcxcpwL._UL1500_.jpg",
+        "gift_price": 6499,
+        "gift_purchased": false,
+        "gift_url": "https://www.amazon.com/Banana-Republic-Womens-Contrast-Sweater/dp/B077NQDVVC",
+        "gift_favorite": false,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    },
+    {
+        "gift_name": "Nathan NS4912 Marathon Running Belt, Lightweight Training Pack with Stretch Pocket",
+        "gift_description": "Mid weight mock-neck sweater with horizontal and vertical ribbed contrast panels.",
+        "gift_asin": "B06VWC93CK",
+        "gift_part_num": null,
+        "gift_photo": "https://images-na.ssl-images-amazon.com/images/I/71B4VBAkpxL._SL1500_.jpg",
+        "gift_price": 2614,
+        "gift_purchased": false,
+        "gift_url": "https://www.amazon.com/Nathan-Marathon-Running-Lightweight-Training/dp/B06VWC93CK",
+        "gift_favorite": false,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    },
+    {
+        "gift_name": "ETEVON Men’s ‘Air Force’ Soft Big Face Analog Digital Watch",
+        "gift_description": "The stylish watch features with big round watch face with showy plane item, wing-shape watch hands and big stainless steel crown.",
+        "gift_asin": "B0711316GG",
+        "gift_part_num": null,
+        "gift_photo": "https://images-na.ssl-images-amazon.com/images/I/71BQ8Fhjl4L._UX522_.jpg",
+        "gift_price": 2499,
+        "gift_purchased": false,
+        "gift_url": "https://www.amazon.com/ETEVON-Digital-Waterproof-Backlight-Military/dp/B0711316GG",
+        "gift_favorite": false,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    },
+    {
+        "gift_name": "I Just Want To Drink Wine & Rescue Dogs",
+        "gift_description": "This whimsical wood box sign describes rewarding pleasures of rescue adoption and enjoying a glass of wine.",
+        "gift_asin": "B01MZE4935",
+        "gift_part_num": null,
+        "gift_photo": "https://images-na.ssl-images-amazon.com/images/I/810HWE5cMQL._SL1500_.jpg",
+        "gift_price": 830,
+        "gift_purchased": false,
+        "gift_url": "https://www.amazon.com/dp/B01MZE4935",
+        "gift_favorite": false,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
     }
+
 ]

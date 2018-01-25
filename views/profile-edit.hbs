@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="card">
+        <div class="card-title">
+            <h3>User Profile</h3>
+            <p>Update your details here.</p>
+        </div>
+        <form>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="user_firstname" type="text" class="validate" value="{{user.user_firstname}}">
+                    <label for="user_firstname">First Name</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="user_lastname" type="text" class="validate" value="{{user.user_lastname}}">
+                    <label for="user_lastname">Last Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="user_email" type="email" class="validate" value="{{user.user_email}}">
+                    <label for="user_email">Email</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="user_password" type="password" class="validate" value="{{user.user_password}}">
+                    <label for="user_password">Password</label>
+                </div>
+                <div class="input-field col s6">
+                    <input id="user_password_confirm" type="password" class="validate">
+                    <label for="user_password_confirm">Confirm</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <input id="user_state" type="text" class="validate" value="{{user.user_city}}">
+                    <label for="user_state">City</label>
+                </div>
+                <div class="input-field col s6">
+                    <select id="input_user_state"></select>
+                    <label for="user_city">State</label>
+                </div>
+            </div>
+        </form>
+        <div class="card-action">
+            <a class="waves-effect waves-light btn blue-grey"><i class="material-icons left">person_add</i> Update</a>
+        </div>
+    </div>
+</div>

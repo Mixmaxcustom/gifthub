@@ -16,5 +16,47 @@
         "GiftId": 3,
         "createdAt": "2017-12-30",
         "updatedAt": "2017-12-30"
+    },
+    {
+        "RecipientId": 8,
+        "GiftId": 5,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    },
+    {
+        "RecipientId": 8,
+        "GiftId": 6,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    },
+    {
+        "RecipientId": 2,
+        "GiftId": 7,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    },
+    {
+        "RecipientId": 4,
+        "GiftId": 8,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    },
+    {
+        "RecipientId": 6,
+        "GiftId": 9,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    },
+    {
+        "RecipientId": 7,
+        "GiftId": 10,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
+    },
+    {
+        "RecipientId": 5,
+        "GiftId": 11,
+        "createdAt": "2017-12-30",
+        "updatedAt": "2017-12-30"
     }
 ]

@@ -52,8 +52,7 @@ $(document).ready(function () {
             // ["readyState", "getResponseHeader", "getAllResponseHeaders", "setRequestHeader", "overrideMimeType", "statusCode", "abort", "state", "always", "catch", "pipe", "then", "promise", "progress", "done", "fail", "responseText", "responseJSON", "status", "statusText"]
             // console.log(xhr.responseJSON[0].Error[0].Message[0]);
             // let errmsg = xhr.responseJSON.Error[0].Message[0];
-
-            Materialize.toast(`Error: ${status}`, 10000)
+            Materialize.toast(`Error ${xhr.status || 400}: ${xhr.statusText}`, 10000)
         });
     });
 });
@@ -89,7 +88,7 @@ class GiftCard {
         `</div>` +
         `<ul class="card-action-buttons">` +
         `<li><a data-value="${this.asin}" data-action="add-gift" class="btn-floating gift-action-add waves-effect waves-light teal lighten-3"><i class="material-icons">add_circle</i></a></li>` +
-        `<li><a data-value="${this.asin}" data-action="favorite-git" class="btn-floating gift-action-favorite waves-effect waves-light teal lighten-2"><i class="material-icons">favorite</i></a></li>` +
+        `<li><a data-value="${this.asin}" data-action="favorite-gift" class="btn-floating gift-action-favorite waves-effect waves-light teal lighten-2"><i class="material-icons">favorite</i></a></li>` +
         `<li><a aisn="${this.asin}" class="btn-floating waves-effect waves-light teal lighten-1"><i class="material-icons activator">info_outline</i></a></li>` +
         `</ul>` +
         `<div class="card-content">` +

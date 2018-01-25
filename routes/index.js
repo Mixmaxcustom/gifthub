@@ -347,6 +347,63 @@ router.get("/profile", auth, (req, res) => {
         })
 });
 
+
+// user profile
+router.get("/profile-edit", auth, (req, res) => {
+
+    router.content.user = req.user;
+
+    userRecipients = [];
+    db.User.findOne({
+        where: {
+                id: req.user.user_id
+            },
+            include: [{
+                model: db.Recipient,
+                attributes: ['id', 'recipient_title', 'recipient_firstname', 'recipient_lastname', 'recipient_bio',
+                            'recipient_photo', 'recipient_birthday', 'recipient_budget', 'recipient_city', 'recipient_state'],
+                include: [{
+                    model: db.Gift,
+                    attributes: ['id', 'gift_name', 'gift_description', 'gift_asin', 'gift_part_num', 'gift_url', 'gift_photo', 'gift_price', 'gift_purchased', 'gift_favorite']
+                }]
+            }]
+        })
+
+        .then( user => {
+            console.log(user);
+
+            let thisUser = user.dataValues;
+            let recipients = thisUser.Recipients;  /* array */
+
+            recipients.forEach(recipient => {
+
+                let rdata = recipient.dataValues;
+                // fixed recipient id value here - Michael
+                let robj = new Recipient(rdata.id, rdata.recipient_title, rdata.recipient_firstname, rdata.recipient_lastname,
+                                         rdata.recipient_budget, rdata.recipient_bio, rdata.recipient_photo, rdata.recipient_birthday)
+
+
+                rdata.Gifts.forEach( gift => {
+                    // console.log(gift.dataValues);
+                    robj.gifts.push (gift.dataValues)
+                })
+                userRecipients.push(robj);
+            })
+
+            router.content.layout = 'main';
+            console.log(`\n -> adding ${userRecipients.length}`);
+            console.log(userRecipients);
+            router.content.recipients = userRecipients;
+            router.content.user = user;
+            // render the page
+            res.render('profile-edit', router.content);
+        })
+
+        .catch(err => {
+            res.json({message: err});
+        })
+});
+
 // AMAZON
 
 router.post("/amazon", (req, res, next) => {
@@ -380,27 +437,29 @@ router.post("/amazon", (req, res, next) => {
             results.forEach((result, i) => {
 
                 let itemAttributes = results[i].ItemAttributes[0];
+                let priceAttributes = results[i].OfferSummary[0];
 
                 // Assign desired product info to variables -JR
                 let productAsin = results[i].ASIN[0];
-                console.log(` -->> AISN: ${productAsin}`);
                 let productTitle = results[i].ItemAttributes[0].Title[0];
                 let thumbnailImage = results[i].ImageSets[0].ImageSet[0].TinyImage[0].URL[0];
                 let productImage = results[i].ImageSets[0].ImageSet[0].LargeImage[0].URL[0];
-                // let productPrice = results[i].OfferSummary[0].LowestNewPrice[0].Amount[0];
 
+                // console.log(Object.keys(priceAttributes));
 
-
-                // updating price to show the displayed Amazon price
+                // filter price
                 var productPrice = 0;
 
-                try {
-                    productPrice = results[i].ItemAttributes[0].ListPrice[0].Amount[0];
-                } catch(err) {
-                    errorString = `Price cannot be determined for this item: ${productAsin}`;
-                    productPrice = results[i].OfferSummary[0].LowestNewPrice[0].Amount[0];
+                if (Object.keys(priceAttributes).includes('LowestNewPrice')) {
+                    productPrice =priceAttributes.LowestNewPrice[0].Amount[0];
                 }
 
+                if (Object.keys(itemAttributes).includes('ListPrice')) {
+                    productPrice = itemAttributes.ListPrice[0].Amount[0];
+                }
+
+
+                console.log(`   -price: $${productPrice}`);
                 let productDetailPage = (results[i].DetailPageURL.length > 0) ? results[i].DetailPageURL[0] : "";
                 let productDescription = (Object.keys(itemAttributes).includes('Feature')) ? itemAttributes.Feature[0] : null;
                 let productCategory = (Object.keys(itemAttributes).includes('ProductGroup')) ? itemAttributes.ProductGroup[0] : null;
@@ -429,11 +488,12 @@ router.post("/amazon", (req, res, next) => {
 
     }).catch(err => {
         var errmsg = 'Amazon API Error'
+        /*
         if (err instanceof db.mySequel.ForeignKeyConstraintError) {
             errmsg = 'Foreign key error'
          } else {
            console.log(typeof err);
-         }
+       }*/
         res.status(500).send(errmsg);
     });
 
@@ -813,6 +873,47 @@ router.post("/gift-removed/:giftid", (req, res, next) => {
     .catch(err => {
         res.json(err);
     });
+});
+
+
+// USERS
+
+router.get("/user/:userid", auth, (req, res) => {
+    db.User.findOne({
+        where: {
+                id: req.params.userid
+            }
+        })
+        .then( user => {
+            res.send(user)
+        })
+});
+
+
+// edit a user
+router.post("/user/:userid", auth, (req, res) => {
+    let data = req.body;
+    db.User.findOne({
+        where: {
+                id: req.params.userid
+            }
+        })
+        .then( user => {
+            user.update(
+                {
+                    user_firstname: data.user_firstname,
+                    user_lastname: data.user_lastname,
+                    user_email: data.user_email,
+                    user_password: data.user_password,
+                    user_birthday: data.user_birthday,
+                    user_city: data.user_city,
+                    user_state: data.user_state
+                 })
+
+                .then( result => {
+                    res.send({message: 'success', redirect: '/profile'})
+                })
+        })
 });
 
 // EVENTS

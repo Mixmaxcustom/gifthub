@@ -8,18 +8,22 @@ const allStates = ["AK", "AL", "AR", "AS", "AZ", "CA", "CO", "CT", "DC", "DE", "
 
 // initialize the states menu
 function setupStateMenu() {
-    let statesmenu = $('#input_user_state');
-    // var curstate = statesmenu.find(":selected").text();
-    if (statesmenu.length > 0) {
-        let selected_state = statesmenu.data().value;
-        statesmenu.empty();
-        statesmenu.append($(`<option selected>State</option>`));
-        allStates.forEach(state => {
-            statesmenu.append($(`<option date-value="${state}">${state}</option>`));
-        })
-        statesmenu.val(selected_state);
-    }
-    $('select').material_select();
+    let statesMenuNames = ['user-edit-state','recipient_state_edit']
+
+    statesMenuNames.forEach(stateMenu => {
+        let statesmenu = $(`#${stateMenu}`);
+        // var curstate = statesmenu.find(":selected").text();
+        if (statesmenu.length > 0) {
+            let selected_state = statesmenu.data().value;
+            statesmenu.empty();
+            statesmenu.append($(`<option selected>State</option>`));
+            allStates.forEach(state => {
+                statesmenu.append($(`<option date-value="${state}">${state}</option>`));
+            })
+            statesmenu.val(selected_state);
+        }
+        $('select').material_select();
+    })
 }
 
 // get the user id of a logged in user

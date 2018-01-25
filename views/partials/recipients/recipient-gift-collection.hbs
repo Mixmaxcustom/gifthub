@@ -3,7 +3,7 @@
     <li class="collection-item avatar" alt="{{gift_name}}">
         <img src="{{gift_photo}}" alt="" class="circle">
         <span id="gift_name" class="truncate" alt="{{gift_name}}">{{gift_name}}</span>
-        <span id="gift_price"> - ${{shortPrice gift_price}}</span>
+        <span id="gift_price"> - ${{formatPrice gift_price}}</span>
         <span id="gift_link">
             <p><a target="_blank" href="{{gift_url}}">Link</a></p>
         </span>
@@ -11,7 +11,7 @@
             <p class="right-align">
                 <input data-value="{{id}}" type="checkbox" class="gift-purchased" id="gift-id-{{id}}" {{#if gift_purchased}}checked{{/if}}/>
                 <label for="gift-id-{{id}}">Purchased</label>
-                <a class="delete-gift-button" data-value="{{id}}"><i style="cursor: pointer" class="material-icons right blue-grey-text">close</i></a>
+                <a class="delete-gift-button" alt="Remove Gift" data-value="{{id}}"><i style="cursor: pointer" class="material-icons right grey-text">delete</i></a>
             </p>
         </form>
     </li>

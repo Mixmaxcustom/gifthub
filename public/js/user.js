@@ -13,7 +13,8 @@ function openRecipientEditModal(data) {
 	$('#recipient_firstname_edit').val(data.recipient_firstname);
 	$('#recipient_lastname_edit').val(data.recipient_lastname);
 	$('#recipient_birthday_edit').val(data.recipient_birthday);
-	$('#recipient_email_edit').val(data.recipient_emai);
+	$('#recipient_email_edit').val(data.recipient_email);
+	$('#recipient_city_edit').val(data.recipient_city);
 	$('#recipient_bio_edit').val(data.recipient_bio);
 
     // amazon -> dollars conversion
@@ -22,8 +23,41 @@ function openRecipientEditModal(data) {
 		$('#recipient_budget_edit').val(budgetInDollats);
 	}
 
+	// amazon -> dollars conversion
+	if (data.recipient_state) {
+		$('#recipient_state_edit').val(data.recipient_state);
+		$('#recipient_state_edit').material_select();
+	}
+
 	Materialize.updateTextFields();
 	$('#edit-recipient-modal').modal('open');
+}
+
+
+// open the edit recipient dialog and fill initial values
+function openUserEditModal(data) {
+	$('#user-edit-submit').attr('data-value', data.id);
+	$('#user-edit-firstname').val(data.user_firstname);
+	$('#user-edit-lastname').val(data.user_lastname);
+	$('#user-edit-email').val(data.user_email);
+	$('#user-edit-password').val(data.user_password);
+	$('#user-edit-password-confirm').val(data.user_password);
+	$('#user-edit-city').val(data.user_city);
+
+    // amazon -> dollars conversion
+	if (data.recipient_budget) {
+		let budgetInDollats = parseInt(data.recipient_budget) / 100;
+		$('#recipient_budget_edit').val(budgetInDollats);
+	}
+
+	// amazon -> dollars conversion
+	if (data.user_state) {
+		$('#user-edit-state').val(data.user_state);
+		$('#user-edit-state').material_select();
+	}
+
+	Materialize.updateTextFields();
+	$('#edit-user-modal').modal('open');
 }
 
 
@@ -64,7 +98,6 @@ $(document).ready(function () {
 
 	// gift is added to a user
 	$('body').on('click', '.gift-action-add', event => {
-		console.log(`adding gift to recipient...`);
 
 		event.preventDefault();
 		event.stopPropagation();
@@ -83,7 +116,6 @@ $(document).ready(function () {
 
 	// gift is saved to a list
 	$('body').on('click', '.gift-action-favorite', event => {
-		console.log(`adding gift to list...`);
 
 		event.preventDefault();
 		event.stopPropagation();
@@ -97,8 +129,8 @@ $(document).ready(function () {
 			$(checkbox).attr('gift-id', giftID)
 		});
 
-		// open the recipients modal
-		openRecipientsModal();
+
+		Materialize.toast(`Adding gift to favorites`, 4000)
 	});
 
 
@@ -141,16 +173,10 @@ $(document).ready(function () {
 		})
 
 		.done( result => {
-			console.log(result);
-			console.log(result.status)
 			if (result.status == 200) {
-				console.log(`Success! `);
-				console.log(result);
 
 				let spentAmount = '$' + parseInt(result.spent) / 100
 				let budgetTotal = '$' + parseInt(result.budget) / 100
-
-				console.log(`spent: ${spentAmount}, budget: ${budgetTotal}`);
 
 				$(`#spent-total-${result.recipientId}`).text(spentAmount);
 				$(`#budget-total-${result.recipientId}`).text(budgetTotal);
@@ -158,6 +184,7 @@ $(document).ready(function () {
 		})
 
 		.fail( data => {
+			Materialize.toast(`Error purchasing gift!`);
 			console.log(data);
 		});
 	});
@@ -184,27 +211,25 @@ $(document).ready(function () {
 		})
 
 		.fail( data => {
+			Materialize.toast(`Error removing gift!`);
 			console.log(data);
 		});
 	});
 
 
-	// user deletes a gift from the recipient list
+	// user edits a recipient
 	$('body').on('click', '.edit-recipient-button', event => {
 		event.preventDefault();
 		event.stopPropagation();
 
 		let editbutton = $(event.currentTarget)
 		let recipientID = editbutton.data().value;
-		console.log(`editing recipient: ${recipientID}`);
-
 
 		$.ajax(`/recipient/${recipientID}`, {
 			type: "GET",
 		})
 
 		.done( recipient => {
-			console.log(recipient);
 			openRecipientEditModal(recipient)
 		})
 	});
@@ -218,8 +243,6 @@ $(document).ready(function () {
 
 		let editbutton = $(event.currentTarget)
 		let recipientID = editbutton.data().value;
-		console.log(`editing recipient: ${recipientID}`);
-
 
 		let recipient = {
 			recipient_title: $('#recipient_title_edit').val(),
@@ -229,8 +252,6 @@ $(document).ready(function () {
 			recipient_bio: $('#recipient_bio_edit').val() || null,
 			recipient_budget: 0
 		}
-
-		console.log(recipient);
 
 		let budgetValue = $('#recipient_budget_edit').val();
 		if (budgetValue) {
@@ -251,9 +272,61 @@ $(document).ready(function () {
 		})
 
 		.done( result => {
-			console.log(result);
 			window.location = `/profile`
 		})
 	});
+
+	// user profile edit
+	$('body').on('click', '#open-user-profile', event => {
+		event.preventDefault();
+		event.stopPropagation();
+
+		let editbutton = $(event.currentTarget)
+		let userID = getUserID()
+
+		$.ajax(`/user/${userID}`, {
+			type: "GET",
+		})
+
+		.done( user => {
+			openUserEditModal(user)
+		})
+
+
+		console.log(`editing user profile...`);
+		$('#edit-user-modal').modal('open');
+
+	});
+
+
+	// user edits their profile
+	$('body').on('click', '#user-edit-submit', event => {
+		event.preventDefault();
+		event.stopPropagation();
+
+		let editbutton = $(event.currentTarget)
+		let userID = editbutton.data().value;
+
+		let user = {
+			user_firstname: $('#user-edit-firstname').val() || null,
+			user_lastname: $('#user-edit-lastname').val() || null,
+			user_email: $('#user-edit-email').val() || null,
+			user_password: $('#user-edit-password').val() || null,
+			user_city: $('#user-edit-city').val() || null,
+			user_state: $('#user-edit-state').val() || null
+		}
+
+		console.log(`user: ${JSON.stringify(user)}`);
+
+		$.ajax(`/user/${userID}`, {
+			type: "POST",
+			data: user
+		})
+
+		.done( result => {
+			window.location = `/profile`
+		})
+	});
+
 
 });
