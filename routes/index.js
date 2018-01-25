@@ -184,6 +184,7 @@ router.get("/logout", function (req, res) {
 
 // user registration
 router.get("/register", function (req, res, next) {
+    router.content.layout = 'home';
 	res.render('register', router.content);
 });
 
@@ -303,7 +304,6 @@ router.post("/amazon", (req, res, next) => {
     let searchData = (isPostman === true) ? req.query : req.body;
     let sortBy = (searchData.SearchIndex === 'All') ? null : 'salesrank';
 
-
     client.itemSearch({
         SearchIndex: searchData.SearchIndex,
         Keywords: searchData.Keywords,
@@ -312,8 +312,6 @@ router.post("/amazon", (req, res, next) => {
         MinimumPrice: "0500",
         ResponseGroup: 'ItemAttributes,Offers,Images'
     }).then( results => {
-        console.log(`results: ${results.length}`);
-        console.log(results);
         // send results via json if using postman
         if (isPostman === true) {
             res.json(results);
@@ -333,16 +331,19 @@ router.post("/amazon", (req, res, next) => {
                 let productImage = results[i].ImageSets[0].ImageSet[0].LargeImage[0].URL[0];
                 // let productPrice = results[i].OfferSummary[0].LowestNewPrice[0].Amount[0];
 
+
+
                 // updating price to show the displayed Amazon price
                 var productPrice = 0;
 
                 try {
                     productPrice = results[i].ItemAttributes[0].ListPrice[0].Amount[0];
-                } catch(error) {
+                } catch(err) {
+                    errorString = `Price cannot be determined for this item: ${productAsin}`;
                     productPrice = results[i].OfferSummary[0].LowestNewPrice[0].Amount[0];
                 }
 
-                let productDetailPage = (results[i].DetailPageURL.length > 0) ? results[i].DetailPageURL.length[0] : "";
+                let productDetailPage = (results[i].DetailPageURL.length > 0) ? results[i].DetailPageURL[0] : "";
                 let productDescription = (Object.keys(itemAttributes).includes('Feature')) ? itemAttributes.Feature[0] : null;
                 let productCategory = (Object.keys(itemAttributes).includes('ProductGroup')) ? itemAttributes.ProductGroup[0] : null;
 
@@ -369,12 +370,16 @@ router.post("/amazon", (req, res, next) => {
     };
 
     }).catch(err => {
-        console.log(err);
-        res.status(500).send(err);
+        var errmsg = 'Amazon API Error'
+        if (err instanceof db.mySequel.ForeignKeyConstraintError) {
+            errmsg = 'Foreign key error'
+         } else {
+           console.log(typeof err);
+         }
+        res.status(500).send(errmsg);
     });
 
 });
-
 
 
 // search page
@@ -407,9 +412,7 @@ router.get("/search", auth, (req, res) => {
                     let recipient = data.dataValues;
                     // id,recipient_title,recipient_firstname,recipient_lastname,recipient_budget,recipient_bio,recipient_photo
                     router.content.recipients.push(recipient)
-                    console.log(`recipient: ${recipient.recipient_firstname}`);
                 })
-
             });
 
 
