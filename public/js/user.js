@@ -8,10 +8,9 @@ function openRecipientsModal() {
 
 // open the edit recipient dialog and fill initial values
 function openRecipientEditModal(data) {
-
 	$('#recipient-edit-submit').attr('data-value', data.id);
 	$('#recipient_title_edit').val(data.recipient_title);
-	$('#recipient_irstname_edit').val(data.recipient_firstname);
+	$('#recipient_firstname_edit').val(data.recipient_firstname);
 	$('#recipient_lastname_edit').val(data.recipient_lastname);
 	$('#recipient_birthday_edit').val(data.recipient_birthday);
 	$('#recipient_email_edit').val(data.recipient_emai);
