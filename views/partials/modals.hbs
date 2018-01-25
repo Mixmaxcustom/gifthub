@@ -9,7 +9,6 @@
                 <div class="input-field col s12">
                     <label for="recipient_title">Title</label>
                     <input id="recipient_title" type="text" class="validate">
-
                 </div>
             </div>
             <div class="row">
@@ -23,10 +22,12 @@
                 </div>
             </div>
             <div class="row">
+                
                 <div class="input-field col m3 s12">
                     <input id="recipient_birthday" type="text" class="datepicker validate">
                     <label for="recipient_birthday">Birthday</label>
                 </div>
+
                 <div class="input-field col m9 s12">
                     <input id="recipient_email" type="email" class="validate">
                     <label for="recipient_email">Email (optional)</label>
@@ -72,8 +73,28 @@
      </div>
  </div>
 
+
+ <!-- Saved Gifts Modal -->
+
+ <div id="saved-gifts-modal" class="modal bottom-sheet">
+     <div class="modal-content">
+     <h4>Saved Gifts</h4>
+     <ul class="collection">
+         {{#each gifts as | gift |}}
+
+            <li class="collection-item avatar">
+                <img src="{{gift.gift_photo}}" alt="" class="circle">
+                <span class="title">{{gift.gift_name}}</span>
+                <p>{{gift.gift_description}}</p>
+                <a href="#!" data-value="{{gift.gift_id}}" gift-id="-1" class="secondary-content recipient-list-check"><i class="material-icons">crop_din</i></a>  <!--check_circle-->
+            </li>
+        {{/each}}
+      </ul>
+     </div>
+ </div>
+
+
 <!-- Confirmation Dialog -->
-<!-- Modal Structure -->
 <div id="confirmation-model" class="modal">
     <div class="modal-content">
         <h4>{{confirm_options.confirm_title}}</h4>
@@ -100,3 +121,57 @@
     </li>
   </ul>
 </aside>
+
+
+
+{{!-- Edit Recipient Modal --}}
+
+<div id="edit-recipient-modal" data-value="" class="modal">
+    <div class="modal-content">
+        <h4 id="edit-recipient-title">Edit Recipient</h4>
+        <form>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="recipient_title_edit" type="text" class="validate active" value="{{title}}">
+                    <label for="recipient_title_edit" class="active">Title</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col m6 s12">
+                    <input id="recipient_firstname_edit" type="text" class="validate" value="{{recipient_firstname}}">
+                    <label for="recipient_firstname_edit">First Name</label>
+                </div>
+                <div class="input-field col m6 s12">
+                    <input id="recipient_lastname_edit" type="text" class="validate" value="{{recipient_lastname}}">
+                    <label for="recipient_lastname_edit">Last Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col m3 s12">
+                    <input id="recipient_birthday_edit" type="text" class="datepicker validate" value="{{recipient_birthday}}">
+                    <label for="recipient_birthday">Birthday</label>
+                </div>
+                <div class="input-field col m9 s12">
+                    <input id="recipient_email_edit" type="email" class="validate" value="{{recipient_email}}">
+                    <label for="recipient_email_edit">Email (optional)</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col m3 s12">
+                    <input id="recipient_budget_edit" type="number" value="{{recipient_budget}}"></input>
+                    <label for="recipient_budget_edit">Budget</label>
+                </div>
+                <div class="input-field col m9 s12">
+                    <input id="recipient_bio_edit" type="text"></input>
+                    <label for="recipient_bio_edit">Details</label>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <a id="recipient-edit-close" class="modal-action modal-close waves-effect waves-green btn-flat">
+            <i class="material-icons left">close</i>Close</a>
+        <a id="recipient-edit-submit" data-value="{{id}}" class="modal-action modal-close waves-effect waves-green btn-flat">
+            <i class="material-icons left">person_add</i>Update</a>
+    </div>
+</div>

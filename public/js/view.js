@@ -27,6 +27,9 @@ function userRegistrationValidation() {
 	if (form.checkValidity() && (password === passwordConfirm)) {
 		return true
 	} else {
+		$("#input_user_password").addClass('invalid')
+		 $("#input_user_password_confirm").addClass('invalid')
+		 Materialize.toast('Please enter a valid password')
 		return false
 	};
 };
@@ -112,6 +115,7 @@ $(document).ready(function () {
 		}
 
 		let birthday = $('#recipient_birthday').val();
+
 		if (birthday) {
 			recipient.recipient_birthday = birthday;
 		}

@@ -26,6 +26,41 @@ router.content = {
     }
 }
 
+
+function updateContent(req, res, next) {
+    let nexturl = req.url;
+    this.content = {
+        layout: 'main',
+        projname: 'gifthub',
+        pagetitle: '',
+        favicon: process.env.PROD_FAVICON_NAME || 'favicon-dev',
+        search_modal_title: 'Search Results',
+        debug_mode: false,
+        user: {},
+        searchData: {
+            seachCategory: null,
+            results: []
+        }
+    }
+
+    if (['/login', '/register'].includes()) {
+        this.content.layout = 'home';
+    }
+
+    if (req.user) {
+        this.user = req.user;
+        console.log(`- [router]: user:  "${this.user}"`);
+    }
+
+
+    console.log(`- [router]: using layout "${this.content.layout}"`);
+    next();
+}
+
+
+router.use(updateContent);
+
+
 // Amazon product object
 var ProductCard = function(asin, title, image, thumbnail, price, detailsURL, description, category) {
     this.gift_id = 0,
@@ -232,6 +267,8 @@ router.post("/register", (req, res, next) => {
 // user profile
 router.get("/profile", auth, (req, res) => {
     console.log(` - requesting ${req.url}`);
+    console.log(` - [debug]: user check: ${JSON.stringify(req.user)}`);
+    router.content.user = req.user;
 
     console.log(`- [profile]: searching for user id: ${req.user.user_id}`);
     console.log(`- [profile]: user is logged in: ${req.user.user_is_logged_in}`);
@@ -260,7 +297,8 @@ router.get("/profile", auth, (req, res) => {
             recipients.forEach(recipient => {
 
                 let rdata = recipient.dataValues;
-                let robj = new Recipient(rdata.recipient_id, rdata.recipient_title, rdata.recipient_firstname, rdata.recipient_lastname,
+                // fixed recipient id value here - Michael
+                let robj = new Recipient(rdata.id, rdata.recipient_title, rdata.recipient_firstname, rdata.recipient_lastname,
                                          rdata.recipient_budget, rdata.recipient_bio, rdata.recipient_photo, rdata.recipient_birthday)
 
 
@@ -270,9 +308,12 @@ router.get("/profile", auth, (req, res) => {
                 })
                 userRecipients.push(robj);
             })
+
             router.content.layout = 'main';
+            console.log(`\n -> adding ${userRecipients.length}`);
+            console.log(userRecipients);
             router.content.recipients = userRecipients;
-            console.log(` - adding ${userRecipients.length}`);
+
             // render the page
             res.render('profile', router.content);
         })
@@ -302,6 +343,7 @@ router.post("/amazon", (req, res, next) => {
         // Hard coded a minimum price so the price result wouldn't error out.
         MinimumPrice: "0500",
         ResponseGroup: 'ItemAttributes,Offers,Images'
+
     }).then( results => {
         // send results via json if using postman
         if (isPostman === true) {
@@ -488,19 +530,48 @@ router.get("/add-event", function(req, res) {
 
 
 // RECIPIENTS
-// CLEANUP
-router.get("/recipients", auth, (req, res) => {
-    db.Recipient.findAll().then(recipients => {
-        res.json(recipients)
-    })
+
+router.get("/recipient/:recipientId", auth, (req, res) => {
+    db.Recipient.findOne({
+        where: {
+                id: req.params.recipientId
+            }
+        })
+        .then( recipient => {
+            res.send(recipient)
+        })
+});
+
+router.post("/recipient/:recipientId", auth, (req, res) => {
+    let data = req.body;
+    db.Recipient.findOne({
+        where: {
+                id: req.params.recipientId
+            }
+        })
+        .then( recipient => {
+            recipient.update(
+                {
+                    recipient_title: data.recipient_title,
+                    recipient_firstname: data.recipient_firstname,
+                    recipient_lastname: data.recipient_lastname,
+                    recipient_email: data.recipient_email,
+                    recipient_birthday: data.recipient_birthday,
+                    recipient_bio: data.recipient_bio,
+                    recipient_budget: data.recipient_budget
+                 })
+
+                .then( result => {
+                    res.send({message: 'success', redirect: '/profile'})
+                })
+        })
 });
 
 
 // add a new recipient
-router.post("/recipients", (req, res, next) => {
-
+router.post("/recipients", auth, (req, res, next) => {
     let userData = (Object.keys(req.query).length > 0) ? req.query : req.body;
-    console.log(` - posting ${req.url}`);
+    router.user = req.user;
     // add a new recipient
     db.Recipient.create(
         userData
@@ -563,6 +634,12 @@ router.post("/gift-added/:aisn/:recipientId", (req, res, next) => {
                     gift_description: item.description,
                     gift_url:  item.detailsURL,
                     gift_price: item.price
+                })
+
+                .then( gift => {
+                    console.log(`- [debug]: gift saved to recipient: "${item.title}"`);
+
+
                 })
 
                 .then( gift => {

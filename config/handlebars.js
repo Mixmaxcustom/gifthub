@@ -6,6 +6,9 @@ const Handlebars = require('handlebars');
 module.exports = {
     // date formatter
     formatTime: (date, format) => {
+        if (date == null) {
+            return "no birthdate"
+        }
         var mmnt = moment(date);
         return mmnt.format(format);
     },
