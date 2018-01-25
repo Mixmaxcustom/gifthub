@@ -232,6 +232,8 @@ router.post("/register", (req, res, next) => {
 // user profile
 router.get("/profile", auth, (req, res) => {
     console.log(` - requesting ${req.url}`);
+    console.log(` - [debug]: user check: ${JSON.stringify(req.user)}`);
+    router.content.user = req.user;
 
     console.log(`- [profile]: searching for user id: ${req.user.user_id}`);
     console.log(`- [profile]: user is logged in: ${req.user.user_is_logged_in}`);
@@ -497,10 +499,9 @@ router.get("/recipients", auth, (req, res) => {
 
 
 // add a new recipient
-router.post("/recipients", (req, res, next) => {
-
+router.post("/recipients", auth, (req, res, next) => {
     let userData = (Object.keys(req.query).length > 0) ? req.query : req.body;
-    console.log(` - posting ${req.url}`);
+    router.user = req.user;
     // add a new recipient
     db.Recipient.create(
         userData

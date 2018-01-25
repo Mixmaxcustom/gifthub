@@ -9,7 +9,6 @@
                 <div class="input-field col s12">
                     <label for="recipient_title">Title</label>
                     <input id="recipient_title" type="text" class="validate">
-
                 </div>
             </div>
             <div class="row">
@@ -72,8 +71,28 @@
      </div>
  </div>
 
+
+ <!-- Saved Gifts Modal -->
+
+ <div id="saved-gifts-modal" class="modal bottom-sheet">
+     <div class="modal-content">
+     <h4>Saved Gifts</h4>
+     <ul class="collection">
+         {{#each gifts as | gift |}}
+
+            <li class="collection-item avatar">
+                <img src="{{gift.gift_photo}}" alt="" class="circle">
+                <span class="title">{{gift.gift_name}}</span>
+                <p>{{gift.gift_description}}</p>
+                <a href="#!" data-value="{{gift.gift_id}}" gift-id="-1" class="secondary-content recipient-list-check"><i class="material-icons">crop_din</i></a>  <!--check_circle-->
+            </li>
+        {{/each}}
+      </ul>
+     </div>
+ </div>
+
+
 <!-- Confirmation Dialog -->
-<!-- Modal Structure -->
 <div id="confirmation-model" class="modal">
     <div class="modal-content">
         <h4>{{confirm_options.confirm_title}}</h4>
