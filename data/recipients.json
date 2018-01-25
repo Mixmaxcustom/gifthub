@@ -8,7 +8,7 @@
         "recipient_city": "Boston",
         "recipient_state": "MA",
         "recipient_photo": "/img/recipients/woman.jpg",
-        "recipient_budget": 7500,
+        "recipient_budget": 17500,
         "createdAt": "2017-12-30",
         "updatedAt": "2017-12-30"
     },
@@ -22,7 +22,7 @@
         "recipient_city": "Bowling Green",
         "recipient_state": "KY",
         "recipient_photo": "/img/recipients/glasses-guy.png",
-        "recipient_budget": 7500,
+        "recipient_budget": 37500,
         "createdAt": "2017-12-30",
         "updatedAt": "2017-12-30"
     },
@@ -36,7 +36,7 @@
         "recipient_city": "Boston",
         "recipient_state": "MA",
         "recipient_photo": "/img/recipients/grandma.jpg",
-        "recipient_budget": 20000,
+        "recipient_budget": 40000,
         "createdAt": "2017-12-30",
         "updatedAt": "2017-12-30"
     },
@@ -50,7 +50,7 @@
         "recipient_city": "Dorchester",
         "recipient_state": "MA",
         "recipient_photo": "/img/recipients/fran.jpg",
-        "recipient_budget": 5000,
+        "recipient_budget": 15000,
         "createdAt": "2017-12-30",
         "updatedAt": "2017-12-30"
     },
@@ -64,7 +64,7 @@
         "recipient_city": "Amherst",
         "recipient_state": "MA",
         "recipient_photo": "/img/recipients/flower.jpg",
-        "recipient_budget": 5000,
+        "recipient_budget": 51000,
         "createdAt": "2017-12-30",
         "updatedAt": "2017-12-30"
     },
@@ -78,7 +78,7 @@
         "recipient_city": "Boston",
         "recipient_state": "MA",
         "recipient_photo": "/img/recipients/ted.jpg",
-        "recipient_budget": 20000,
+        "recipient_budget": 40000,
         "createdAt": "2017-12-30",
         "updatedAt": "2017-12-30"
     },
@@ -92,7 +92,7 @@
         "recipient_city": "Washington",
         "recipient_state": "DC",
         "recipient_photo": "/img/recipients/frank.jpg",
-        "recipient_budget": 10000,
+        "recipient_budget": 40000,
         "createdAt": "2017-12-30",
         "updatedAt": "2017-12-30"
     }

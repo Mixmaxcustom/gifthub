@@ -36,8 +36,8 @@ $(document).ready(function () {
 	console.log(`> loading user controller...`);
 
 	// gift is added to a user
-	$('body').on('click', '.gift-action', event => {
-		console.log(`gift action button clicked...`);
+	$('body').on('click', '.gift-action-add', event => {
+		console.log(`adding gift to recipient...`);
 
 		event.preventDefault();
 		event.stopPropagation();
@@ -55,13 +55,33 @@ $(document).ready(function () {
 		openRecipientsModal();
 	});
 
+	// gift is saved to a list
+	$('body').on('click', '.gift-action-favorite', event => {
+		console.log(`adding gift to list...`);
+
+		event.preventDefault();
+		event.stopPropagation();
+
+		let button = $(event.currentTarget);
+		curbutton = button;
+		let giftAction = button.attr('data-action');
+		let giftID = button.data().value;
+
+		$('#recipients-list-modal').find('a.recipient-list-check').each((i, checkbox) => {
+			$(checkbox).attr('gift-id', giftID)
+		});
+
+		// open the recipients modal
+		openRecipientsModal();
+	});
+
 
 	// recipient clicked in the list (gift added to recpient)
 	$('body').on('click', '.recipient-list-check', event => {
 		let button = $(event.currentTarget)
 		let recipId = button.data().value;
 		let aisn = button.attr(`gift-id`);
-		console.log(`recipient clicked: ${recipId}, gift: ${aisn}`);
+
 		curbutton = button;
 		button.find('i').text('check_box');
 		$.ajax(`/gift-added/${aisn}/${recipId}`, {

@@ -25,7 +25,8 @@ router.content = {
 router.get('/', (req, res) => {
     let content = {
         layout: 'api',
-        users: []
+        users: [],
+        user: req.user
     }
 
     db.User.findAll()

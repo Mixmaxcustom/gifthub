@@ -104,6 +104,8 @@ $(document).ready(function () {
 			recipient_budget: 0
 		}
 
+		console.log(recipient);
+
 		let budgetValue = $('#recipient_budget').val();
 		if (budgetValue) {
 			recipient.recipient_budget = parseInt(budgetValue)*100
@@ -153,5 +155,4 @@ $(document).ready(function () {
 			window.location = `/`
 		});
 	});
-
 });

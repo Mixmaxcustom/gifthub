@@ -9,7 +9,10 @@ module.exports = (sequelize, DataTypes) => {
         recipient_bio: DataTypes.TEXT,
         recipient_city: DataTypes.STRING,
         recipient_state: DataTypes.STRING,
-        recipient_photo: DataTypes.STRING,
+        recipient_photo: {
+            type: DataTypes.STRING,
+            defaultValue: '/img/user-avatar.png'
+        },
         recipient_budget: DataTypes.INTEGER
     }, {
         getterMethods: {
