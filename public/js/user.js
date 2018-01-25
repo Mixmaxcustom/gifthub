@@ -8,6 +8,21 @@ function openRecipientsModal() {
 	$('#recipients-list-modal').modal('open');
 }
 
+// open the edit recipient dialog and fill initial values
+function openRecipientEditModal(data) {
+	// $('#edit-recipient-modal').modal();
+	$('#recipient-edit-submit').attr('data-value', data.id);
+	$('#recipient_title_edit').val(data.recipient_title);
+	$('#recipient_irstname_edit').val(data.recipient_firstname);
+	$('#recipient_lastname_edit').val(data.recipient_lastname);
+	$('#recipient_birthday_edit').val(data.recipient_birthday);
+	$('#recipient_email_edit').val(data.recipient_emai);
+	$('#recipient_budget_edit').val(data.recipient_budget);
+	$('#recipient_bio_edit').val(data.recipient_bio);
+
+	Materialize.updateTextFields();
+	$('#edit-recipient-modal').modal('open');
+}
 
 function openConfirmModal(title, body) {
 	$('#confirmation-model').modal('open');
@@ -133,13 +148,15 @@ $(document).ready(function () {
 
         // remove the card
 		closebox.parents().find('#saved-gift-collection').remove()
+
 		$.ajax(`/gift-removed/${giftID}`, {
 			type: "POST",
 		})
 
 		.done( result => {
 			if (result.status == 200) {
-				Materialize.toast(`removed item at row: ${result.row}`)
+				Materialize.toast(`removed item at row: ${result.row}`);
+				window.location = '/profile'
 			}
 		})
 
@@ -148,5 +165,74 @@ $(document).ready(function () {
 		});
 	});
 
+
+	// user deletes a gift from the recipient list
+	$('body').on('click', '.edit-recipient-button', event => {
+		event.preventDefault();
+		event.stopPropagation();
+
+		let editbutton = $(event.currentTarget)
+		let recipientID = editbutton.data().value;
+		console.log(`editing recipient: ${recipientID}`);
+		curbutton = editbutton;
+
+
+		$.ajax(`/recipient/${recipientID}`, {
+			type: "GET",
+		})
+
+		.done( recipient => {
+			console.log(recipient);
+			openRecipientEditModal(recipient)
+
+		})
+	});
+
+
+
+	// user edits a recipient
+	$('body').on('click', '#recipient-edit-submit', event => {
+		event.preventDefault();
+		event.stopPropagation();
+
+		let editbutton = $(event.currentTarget)
+		let recipientID = editbutton.data().value;
+		console.log(`editing recipient: ${recipientID}`);
+		curbutton = editbutton;
+
+
+		let recipient = {
+			recipient_title: $('#recipient_title_edit').val(),
+			recipient_firstname: $('#recipient_firstname_edit').val() || null,
+			recipient_lastname: $('#recipient_lastname_edit').val() || null,
+			recipient_email: $('#recipient_email_edit').val() || null,
+			recipient_bio: $('#recipient_bio_edit').val() || null,
+			recipient_budget: 0
+		}
+
+		console.log(recipient);
+
+		let budgetValue = $('#recipient_budget_edit').val();
+		if (budgetValue) {
+			recipient.recipient_budget = parseInt(budgetValue)*100
+		}
+
+
+		let birthday = $('#recipient_birthday_edit').val();
+		if (birthday) {
+			recipient.recipient_birthday = birthday;
+		}
+
+
+		$.ajax(`/recipient/${recipientID}`, {
+			type: "POST",
+			data: recipient
+		})
+
+		.done( result => {
+			console.log(result);
+			window.location = `/profile`
+		})
+	});
 
 });

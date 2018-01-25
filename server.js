@@ -22,7 +22,7 @@ app.use(bp.text());
 app.use(bp.json({ type: "application/vnd.api+json" }));
 
 // app globals
-require("./config/init")(app);
+// require("./config/init")(app);
 
 // serve static content from the "public"
 app.use(express.static(path.join(__dirname, 'public')));

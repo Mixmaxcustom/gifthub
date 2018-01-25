@@ -15,18 +15,19 @@
         <!--  reveal space -->
         <div class="card-reveal">
             <span class="card-title activator grey-text text-darken-4">{{name}}
+                <i data-value="{{id}}" class="material-icons edit-recipient-button">edit</i>
                 <i class="material-icons right">close</i>
             </span>
             <hr id="recipient-hr">
 
 
             <!-- <p class="grey-text">bio      <span class="black-text">{{bio}}</span></p> -->
-            <!-- <p class="grey-text">birthday <span class="black-text">{{formatTime birthday 'MMMM, DDDo YYYY'}}</span></p> -->
+            <!-- <p class="grey-text">birthday <span class="black-text">{{formatTime birthday 'MMMM, DDD YYYY'}}</span></p> -->
             <!-- <p class="grey-text">budget   <span class="black-text">${{currentTotal}} of ${{shortPrice budget}}</span></p> -->
 
                 <!-- added a table to neaten up this section -Michael -->
 
-                <table class="recipient-details">
+                <table data-value="{{RecipientId}}" class="recipient-details">
                     <tbody>
                         <tr>
                             <th class="grey-text">bio</th>
@@ -34,7 +35,7 @@
                         </tr>
                         <tr>
                             <th class="grey-text">birthday</th>
-                            <td>{{formatTime birthday 'MMMM, DDDo YYYY'}}</td>
+                            <td>{{formatTime birthday 'MMMM, DD YYYY'}}</td>
                         </tr>
                         <tr>
                             <th class="grey-text">budget</th>

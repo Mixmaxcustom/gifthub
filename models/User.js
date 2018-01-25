@@ -24,6 +24,10 @@ module.exports = (sequelize, DataTypes) => {
         User.belongsToMany(models.Recipient, {
             through: models.UserRecipients
         });
+
+        User.belongsToMany(models.Gift, {
+            through: models.UserGifts
+        });
     };
 
     return User;

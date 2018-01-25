@@ -14,12 +14,12 @@
 
                 <h2 class="card-title">{{user.user_firstname}} {{user.user_lastname}}</h2>
                 <p>{{user.user_city}}, {{user.user_state}}</p>
-                <p class="lead">Birthday: {{formatTime user.user_birthday "MMMM D, YYYY"}}</p>
+                <p class="lead">Birthday: {{formatTime user.user_birthday "MMMM dd, YYYY"}}</p>
                 <p class="card-text">{{user.user_bio}}</p>
 
                 {{!-- User Interest Badges --}}
                 <div class="tags-list-container">
-                    
+
                     <ul class="list-inline tags-list-inline">
 
                         {{#each categories as | category |}}

@@ -1,11 +1,18 @@
 ### Migrating & Seeding the Database
 
 ```
-sequelize db:drop         # drop the current database
-sequelize db:create       # recreate database
-sequelize db:migrate      # rebuild the tables
-sequelize db:seed:all     # seed all tables
+sequelize db:drop                  # drop the current database
+sequelize db:create                # recreate database
+sequelize db:migrate               # rebuild the tables
+sequelize db:seed:all              # seed all tables
 ```
+
+### Updating Heroku
+```
+heroku run bash -a gift-hub        # run heroku command
+
+``
+
 
 ### Sequelize Info
 
