@@ -50,6 +50,10 @@ main {
     flex: 1 0 auto;
 }
 
+#login-logo {
+    font-family: 'Berkshire Swash', cursive;
+}
+
 /* Materialize */
 .multiply {
     background-blend-mode: multiply;
@@ -519,9 +523,6 @@ span.gift-title {
       margin: 0;
   }
 */
-h1.homepage {
-    font-family: 'Berkshire Swash', cursive;
-}
 
 input.homepage,
 h5.homepage {
