@@ -95,7 +95,7 @@ function Recipient(id, title, firstname, lastname, budget, bio, photo, birthday 
 };
 
 
-Recipient.prototype.name = () => {
+Recipient.prototype.name = function() {
     var result = this.title;
     if (this.firstname) {
         result = this.firstname
@@ -108,7 +108,7 @@ Recipient.prototype.name = () => {
 };
 
 
-Recipient.prototype.currentTotal = () => {
+Recipient.prototype.currentTotal = function() {
     var total = 0;
     if (this.gifts) {
         this.gifts.forEach( gift => {
@@ -126,21 +126,22 @@ var userRecipients = [];
 
 
 // ROUTES
-router.get("/404", (req, res) => {
-	// res.sendFile('404.html')
-    res.sendStatus(404);
-});
-
 
 router.get("/", auth, (req, res) => {
 	console.log(` - requesting ${req.url}`);
 
 	db.Category.findAll().then(categories => {
-		// router.content.layout = 'main';
+		router.content.layout = 'main';
 		router.content.categories = categories;
         router.content.user = req.user;
         res.render('index', router.content);
 	});
+});
+
+// page not found
+router.get("/404", (req, res) => {
+    router.content.layout = 'home';
+    res.render('404', router.content);
 });
 
 
@@ -661,6 +662,11 @@ router.post("/gift-added/:aisn/:recipientId", (req, res, next) => {
                 })
             }
         })
+
+        recipient.purchasedGifts().then( pgifts => {
+            console.log(`\n -> purchased gifts:`);
+            console.log(pgifts);
+        })
     });
 });
 
@@ -712,8 +718,8 @@ router.post("/gift-removed/:aisn/:recipientId", (req, res, next) => {
 
 // update status of a gift
 router.post("/gift-purchased/:giftid/:purchased", (req, res, next) => {
-    let msg = (req.params.purchased == 1) ? 'purchased' : "didn't purchase"
-
+    let msg = (req.params.purchased == 1) ? 'marking' : "unmarking"
+    let isPurchased = (req.params.purchased == 1) ? true : false;
     console.log(`${msg} gift id: ${req.params.giftid}`);
 
     db.Gift.findOne({
@@ -728,12 +734,49 @@ router.post("/gift-purchased/:giftid/:purchased", (req, res, next) => {
     })
 
     .then( gift => {
+
         gift.update(
-            { gift_purchased: true })
+            { gift_purchased: isPurchased })
 
             .then( result => {
-                result
-                res.send({message: 'success'})
+
+                gift.getRecipients().then( recipients => {
+                    console.log(`\n-> Gift Recipients: `);
+
+
+                    if (recipients.length > 0) {
+
+                        // query the associated recipient
+                        let giftRecipient = recipients[0];
+
+                        let spentAmount = 0
+                        let totalBudget = giftRecipient.recipient_budget;
+                        let recipientId = giftRecipient.id;
+                        console.log(`\n-> Recipient Budget: ${totalBudget}`);
+
+                        giftRecipient.getGifts().then( gifts => {
+                            console.log(`\n -> Purchased Gifts:`);
+                            gifts.forEach(g => {
+                                let giftPrice = g.dataValues.gift_price;
+                                let isPurchased = g.dataValues.gift_purchased;
+
+                                if (isPurchased) {
+                                    spentAmount += giftPrice;
+                                    console.log(`adding: ${giftPrice}`);
+                                }
+                                console.log(`  -> ${g.dataValues.gift_name}, ${giftPrice}, ${isPurchased}`);
+                            })
+
+                            //res.send({message: 'success', spent: spentAmount, budget: totalBudget})
+                            res.status(200).send({status: 200, message: 'success', recipientId: recipientId, spent: spentAmount, budget: totalBudget})
+
+                        })
+
+                    }
+                })
+
+
+
             })
     })
 

@@ -49,6 +49,15 @@ function Recipient(id, title, firstname, lastname, budget, bio, photo, birthday 
 
 
 
+function updateRecipients(msg=null) {
+	var updatemsg = `updating`;
+	if (msg) {
+		updatemsg += `: ${msg}...`;
+	}
+	Materialize.toast(updatemsg, 4000);
+}
+
+
 
 $(document).ready(function () {
 	console.log(`> loading user controller...`);
@@ -111,6 +120,7 @@ $(document).ready(function () {
 
 		.done( result => {
 			console.log(result.message);
+			updateRecipients(result.message)
 		})
 
 		.fail( data => {
@@ -132,6 +142,19 @@ $(document).ready(function () {
 
 		.done( result => {
 			console.log(result);
+			console.log(result.status)
+			if (result.status == 200) {
+				console.log(`Success! `);
+				console.log(result);
+
+				let spentAmount = '$' + parseInt(result.spent) / 100
+				let budgetTotal = '$' + parseInt(result.budget) / 100
+
+				console.log(`spent: ${spentAmount}, budget: ${budgetTotal}`);
+
+				$(`#spent-total-${result.recipientId}`).text(spentAmount);
+				$(`#budget-total-${result.recipientId}`).text(budgetTotal);
+			}
 		})
 
 		.fail( data => {
@@ -140,6 +163,7 @@ $(document).ready(function () {
 	});
 
 	// user deletes a gift from the recipient list
+    // DOES BUDGET CALC HERE
 	$('body').on('click', '.delete-gift-button', event => {
 
 		let closebox = $(event.currentTarget)

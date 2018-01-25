@@ -21,6 +21,7 @@ function authenticate(req, res, next) {
 	// query existing cookie
 	let cookies = req.cookies;
 	var nexturl = req.url;
+
 	var token = cookies['gifthub-user'] || {};
 
 	// add user data to request

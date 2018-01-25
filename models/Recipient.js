@@ -11,15 +11,15 @@ module.exports = (sequelize, DataTypes) => {
         recipient_state: DataTypes.STRING,
         recipient_photo: {
             type: DataTypes.STRING,
-            defaultValue: '/img/user-avatar.png'
+            defaultValue: '/img/generic-avatar.png'
         },
         recipient_budget: DataTypes.INTEGER
     }, {
         getterMethods: {
             // props go to Jake for figuring this out!!
-            unpurchasedGifts() {
+            purchasedGifts() {
                 return this.getGifts({
-                    where: { gift_purchased: { [sequelize.Op.gt]: false } }
+                    where: { gift_purchased: { [sequelize.Op.gt]: true } }
                 })
             }
         },

@@ -2,11 +2,11 @@
 
 <div class="col s12 m6">
     <div id="recipient-card" class="card large">
-        <div id="recipient-card-image" class="card-image waves-effect waves-block waves-light">
+        <div id="" class="card-image recipient-card-image waves-effect waves-block waves-light">
             <img class="responsive-img" src="{{photo}}">
         </div>
-        <div id="recipient-card-content" class="card-content">
-            <span id="recipient-card-title" class="card-title activator grey-text text-darken-4">{{name}}
+        <div id="" class="card-content recipient-card-content">
+            <span id="" class="card-title recipient-card-title activator grey-text text-darken-4">{{name}}
                 <i class="material-icons right">more_vert</i>
             </span>
             <p>Gift Budget Total: ${{currentTotal}} of ${{shortPrice budget}}</p>
@@ -19,10 +19,10 @@
                 <i class="material-icons right">close</i>
             </span>
 
-            <hr id="recipient-hr">
+            <hr class="recipient-hr">
                 <!-- added a table to neaten up this section for mobile -Michael -->
 
-                <table data-value="{{RecipientId}}" class="recipient-details truncate">
+                <table data-value="{{id}}" class="recipient-details truncate">
                     <tbody>
                         <tr>
                             <th class="grey-text">bio</th>
@@ -34,12 +34,12 @@
                         </tr>
                         <tr>
                             <th class="grey-text">budget</th>
-                            <td>${{currentTotal}} of ${{shortPrice budget}}</td>
+                            <td> <span id="spent-total-{{id}}">${{currentTotal}}</span> of $ <span id="budget-total-{{id}}">{{shortPrice budget}}</span></td>
                         </tr>
                     </tbody>
                 </table>
 
-            <hr id="recipient-hr">
+            <hr class="recipient-hr">
 
             <div id="saved-gifts-container">
                 {{#each gifts as | gift |}}
