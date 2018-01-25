@@ -1,12 +1,11 @@
+<!-- Product detail card (for smaller sizes) -->
 <ul id="saved-gift-collection" class="collection">
-    <li class="collection-item avatar">
+    <li class="collection-item avatar" alt="{{gift_name}}">
         <img src="{{gift_photo}}" alt="" class="circle">
-        <span id="gift_name">{{gift_name}}</span>
+        <span id="gift_name" class="truncate" alt="{{gift_name}}">{{gift_name}}</span>
         <span id="gift_price"> - ${{shortPrice gift_price}}</span>
         <span id="gift_link">
-            <p>
-                <a target="_blank" href="{{gift_url}}">Link</a>
-            </p>
+            <p><a target="_blank" href="{{gift_url}}">Link</a></p>
         </span>
         <form action="#">
             <p class="right-align">

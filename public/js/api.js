@@ -1,11 +1,5 @@
-
-// editable table
+// API view module
 
 $(function() {
-
-    $('#api-users-table').editableTableWidget({
-        cloneProperties: ['background', 'border', 'outline']
-    });
-    $('#textAreaEditor').editableTableWidget({editor: $('<textarea>')});
-    window.prettyPrint && prettyPrint();
+    console.log(`> loading API controller...`);
 });

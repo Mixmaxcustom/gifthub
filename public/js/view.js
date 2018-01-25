@@ -1,4 +1,5 @@
-/* UI Helper Functions */
+// View controller module
+
 
 
 // encode a string to base64
@@ -23,13 +24,19 @@ function userRegistrationValidation() {
 	const form = document.getElementById("user_registration_form");
 	const password = $("#input_user_password").val();
 	const passwordConfirm = $("#input_user_password_confirm").val();
+	const email = $("#input_user_email").val();
+
 
 	if (form.checkValidity() && (password === passwordConfirm)) {
 		return true
 	} else {
+		if (email === "") {
+			$("#input_user_email").addClass('invalid');
+		}
+
 		$("#input_user_password").addClass('invalid')
 		 $("#input_user_password_confirm").addClass('invalid')
-		 Materialize.toast('Please enter a valid password')
+		 Materialize.toast('Please enter a valid password', 4000);
 		return false
 	};
 };

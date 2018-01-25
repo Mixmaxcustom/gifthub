@@ -18,20 +18,15 @@
                 <i data-value="{{id}}" class="material-icons edit-recipient-button">edit</i>
                 <i class="material-icons right">close</i>
             </span>
+
             <hr id="recipient-hr">
+                <!-- added a table to neaten up this section for mobile -Michael -->
 
-
-            <!-- <p class="grey-text">bio      <span class="black-text">{{bio}}</span></p> -->
-            <!-- <p class="grey-text">birthday <span class="black-text">{{formatTime birthday 'MMMM, DDD YYYY'}}</span></p> -->
-            <!-- <p class="grey-text">budget   <span class="black-text">${{currentTotal}} of ${{shortPrice budget}}</span></p> -->
-
-                <!-- added a table to neaten up this section -Michael -->
-
-                <table data-value="{{RecipientId}}" class="recipient-details">
+                <table data-value="{{RecipientId}}" class="recipient-details truncate">
                     <tbody>
                         <tr>
                             <th class="grey-text">bio</th>
-                            <td><span class="black-text">{{bio}}</span></td>
+                            <td><span class="black-text" alt="{{bio}}">{{bio}}</span></td>
                         </tr>
                         <tr>
                             <th class="grey-text">birthday</th>
@@ -44,12 +39,12 @@
                     </tbody>
                 </table>
 
-
-
             <hr id="recipient-hr">
 
             <div id="saved-gifts-container">
-                {{#each gifts as | gift |}} {{> recipients/recipient-gift-collection}} {{/each}} {{!-- Row End --}}
+                {{#each gifts as | gift |}}
+                    {{> recipients/recipient-gift-collection}}
+                {{/each}}
             </div>
         </div>
     </div>

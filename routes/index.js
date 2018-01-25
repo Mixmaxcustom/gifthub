@@ -11,6 +11,9 @@ const amazon 		= require('amazon-product-api');
 // create a router
 const router = express.Router();
 
+
+
+
 //  page content
 router.content = {
     layout: 'main',
@@ -20,13 +23,11 @@ router.content = {
     search_modal_title: 'Search Results',
     debug_mode: false,
     user: {},
-    searchData: {
-        seachCategory: null,
-        results: []
-    }
+    searchData: { seachCategory: null, results: [] }
 }
 
 
+// update the router page content dynamically
 function updateContent(req, res, next) {
     let nexturl = req.url;
     this.content = {
@@ -43,21 +44,26 @@ function updateContent(req, res, next) {
         }
     }
 
+    // if going to login/register, force different layout
     if (['/login', '/register'].includes()) {
         this.content.layout = 'home';
     }
 
+    // check for user authentication
     if (req.user) {
         this.user = req.user;
         console.log(`- [router]: user:  "${this.user}"`);
     }
 
 
+    if (userRecipients.length > 0) {
+        console.log(`- [router]: ${userRecipients.length} recipients found`);
+    }
     console.log(`- [router]: using layout "${this.content.layout}"`);
     next();
 }
 
-
+// add content middleware to the router
 router.use(updateContent);
 
 
@@ -89,7 +95,7 @@ function Recipient(id, title, firstname, lastname, budget, bio, photo, birthday 
 };
 
 
-Recipient.prototype.name = function() {
+Recipient.prototype.name = () => {
     var result = this.title;
     if (this.firstname) {
         result = this.firstname
@@ -102,27 +108,35 @@ Recipient.prototype.name = function() {
 };
 
 
-Recipient.prototype.currentTotal = function() {
+Recipient.prototype.currentTotal = () => {
     var total = 0;
-    this.gifts.forEach( gift => {
-        total += gift.gift_price;
-    })
-    return total / 100;
+    if (this.gifts) {
+        this.gifts.forEach( gift => {
+            total += gift.gift_price;
+        })
+        return total / 100;
+    }
+    return total;
 };
-
 
 
 var currentSearchResults = [];
 var userRecipients = [];
 
 
+
 // ROUTES
+router.get("/404", (req, res) => {
+	// res.sendFile('404.html')
+    res.sendStatus(404);
+});
+
 
 router.get("/", auth, (req, res) => {
 	console.log(` - requesting ${req.url}`);
 
 	db.Category.findAll().then(categories => {
-		router.content.layout = 'main';
+		// router.content.layout = 'main';
 		router.content.categories = categories;
         router.content.user = req.user;
         res.render('index', router.content);
