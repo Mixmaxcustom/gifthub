@@ -1,28 +1,32 @@
-/* UI Helper Functions */
-
-// document load
-var curbutton;    // CLEANUP
+/* Users Controller  */
 
 
 function openRecipientsModal() {
 	$('#recipients-list-modal').modal('open');
 }
 
+
 // open the edit recipient dialog and fill initial values
 function openRecipientEditModal(data) {
-	// $('#edit-recipient-modal').modal();
+
 	$('#recipient-edit-submit').attr('data-value', data.id);
 	$('#recipient_title_edit').val(data.recipient_title);
 	$('#recipient_irstname_edit').val(data.recipient_firstname);
 	$('#recipient_lastname_edit').val(data.recipient_lastname);
 	$('#recipient_birthday_edit').val(data.recipient_birthday);
 	$('#recipient_email_edit').val(data.recipient_emai);
-	$('#recipient_budget_edit').val(data.recipient_budget);
 	$('#recipient_bio_edit').val(data.recipient_bio);
+
+    // amazon -> dollars conversion
+	if (data.recipient_budget) {
+		let budgetInDollats = parseInt(data.recipient_budget) / 100;
+		$('#recipient_budget_edit').val(budgetInDollats);
+	}
 
 	Materialize.updateTextFields();
 	$('#edit-recipient-modal').modal('open');
 }
+
 
 function openConfirmModal(title, body) {
 	$('#confirmation-model').modal('open');
@@ -58,7 +62,6 @@ $(document).ready(function () {
 		event.stopPropagation();
 
 		let button = $(event.currentTarget);
-		curbutton = button;
 		let giftAction = button.attr('data-action');
 		let giftID = button.data().value;
 
@@ -96,8 +99,6 @@ $(document).ready(function () {
 		let button = $(event.currentTarget)
 		let recipId = button.data().value;
 		let aisn = button.attr(`gift-id`);
-
-		curbutton = button;
 
 		let checkState = button.find('i').text();
 		let newState = (checkState === 'check_box') ? 'crop_din' : 'check_box';
@@ -144,7 +145,6 @@ $(document).ready(function () {
 
 		let closebox = $(event.currentTarget)
 		let giftID = closebox.data().value;
-		curbutton = closebox;
 
         // remove the card
 		closebox.parents().find('#saved-gift-collection').remove()
@@ -174,7 +174,6 @@ $(document).ready(function () {
 		let editbutton = $(event.currentTarget)
 		let recipientID = editbutton.data().value;
 		console.log(`editing recipient: ${recipientID}`);
-		curbutton = editbutton;
 
 
 		$.ajax(`/recipient/${recipientID}`, {
@@ -184,7 +183,6 @@ $(document).ready(function () {
 		.done( recipient => {
 			console.log(recipient);
 			openRecipientEditModal(recipient)
-
 		})
 	});
 
@@ -198,7 +196,6 @@ $(document).ready(function () {
 		let editbutton = $(event.currentTarget)
 		let recipientID = editbutton.data().value;
 		console.log(`editing recipient: ${recipientID}`);
-		curbutton = editbutton;
 
 
 		let recipient = {
@@ -214,7 +211,8 @@ $(document).ready(function () {
 
 		let budgetValue = $('#recipient_budget_edit').val();
 		if (budgetValue) {
-			recipient.recipient_budget = parseInt(budgetValue)*100
+			// amazon -> dollars conversion
+			recipient.recipient_budget = parseInt(budgetValue) * 100
 		}
 
 

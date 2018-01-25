@@ -542,6 +542,7 @@ router.get("/recipient/:recipientId", auth, (req, res) => {
         })
 });
 
+// edit a recipient
 router.post("/recipient/:recipientId", auth, (req, res) => {
     let data = req.body;
     db.Recipient.findOne({
@@ -608,7 +609,6 @@ router.post("/gift-added/:aisn/:recipientId", (req, res, next) => {
     let selectedAISN = req.params.aisn;
     let recipientId = req.params.recipientId;
 
-
     if (selectedAISN == -1) {
         console.log(`no gifts selected, returning`);
         return;
@@ -649,6 +649,7 @@ router.post("/gift-added/:aisn/:recipientId", (req, res, next) => {
         })
     });
 });
+
 
 // post a gift to a recipient
 router.post("/gift-removed/:aisn/:recipientId", (req, res, next) => {
