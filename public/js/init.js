@@ -8,7 +8,7 @@ const allStates = ["AK", "AL", "AR", "AS", "AZ", "CA", "CO", "CT", "DC", "DE", "
 
 // initialize the states menu
 function setupStateMenu() {
-    let statesMenuNames = ['user-edit-state','recipient_state_edit']
+    let statesMenuNames = ['user-edit-state','recipient_state_edit', 'input_user_state']
 
     statesMenuNames.forEach(stateMenu => {
         let statesmenu = $(`#${stateMenu}`);
